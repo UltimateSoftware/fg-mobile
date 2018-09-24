@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Image, Text, View }  from 'react-native';
+import { Image, Text, View, StyleSheet }  from 'react-native';
 
 export class Avatar extends Component {
 
-    //TODO: Add box shadow to Avatar component.
-    //TODO: Ask about default background color and text color for initials
+    //TODO: Ask about default background color and text color for initials, currently Pink(from wire frame Buttons)
     //TODO: Create README for Avatar Component
 
     static defaultProps = {
@@ -60,7 +59,7 @@ export class Avatar extends Component {
         }
 
         return (
-            <View>{ inner }</View>
+            <View style={styles.shadow}>{ inner }</View>
         );
 
 
@@ -92,5 +91,16 @@ export class Avatar extends Component {
         }
     }
 
-
 }
+
+const styles = StyleSheet.create({
+    shadow: {
+        shadowOffset: {width: 0, height: 6},
+        shadowColor: '#000000',
+        shadowOpacity: 0.16,
+        elevation: 3,
+        shadowRadius: 10,
+        // background color must be set
+        backgroundColor: "#0000" // invisible color
+    }
+});

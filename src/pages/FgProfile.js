@@ -10,6 +10,7 @@ const BANNER_HEIGHT_WIDTH_RATIO = 0.45;
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
+//TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
     member = this.props.member;
