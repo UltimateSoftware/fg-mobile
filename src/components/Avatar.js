@@ -3,6 +3,10 @@ import { Image, Text, View }  from 'react-native';
 
 export class Avatar extends Component {
 
+    //TODO: Add box shadow to Avatar component.
+    //TODO: Ask about default background color and text color for initials
+    //TODO: Create README for Avatar Component
+
     static defaultProps = {
         name: 'Fearlessly Girl',
         size: 'l'
@@ -17,6 +21,8 @@ export class Avatar extends Component {
 
         const size = this.styleValuesFromSize(avatarSize).size;
         const fontSizeForInitials = this.styleValuesFromSize(avatarSize).font;
+        const topPaddingForInitials = this.styleValuesFromSize(avatarSize).padding;
+
 
         let inner = null;
 
@@ -46,7 +52,7 @@ export class Avatar extends Component {
                         color: 'white',
                         overflow: 'hidden',
                         textAlign: 'center',
-                        paddingTop: 25
+                        paddingTop: topPaddingForInitials
                     }}
                 >
                     { this.initialsFromName(name) }
@@ -62,9 +68,9 @@ export class Avatar extends Component {
 
     styleValuesFromSize(size) {
         if (size === 'small' || size === 's') {
-            return { size: 78, font: 48 } ;
+            return { size: 78, font: 42, padding: 8 } ;
         }else if (size === 'large' || size === 'l') {
-            return { size: 166, font: 84 } ;
+            return { size: 166, font: 84, padding: 25 } ;
         }else {
             console.log(`ERROR: Avatar Component: Invalid size, \'${size}\', passed to prop. Defaulting to size: 'large'. Avatar currently supports the following sizes: 'small' and 'large'.`)
             return { size: 166, font: 72 };
@@ -72,6 +78,7 @@ export class Avatar extends Component {
     }
 
    initialsFromName(name) {
+        console.log(name);
         if(!name) {
             return 'FG';
         }else {

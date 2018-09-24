@@ -5,18 +5,23 @@ import {Avatar} from "../components/Avatar";
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const BANNER_HEIGHT_WIDTH_RATIO = 0.45;
 
+//TODO: Ask about default Banner Image when user supplied image is missing.
+//TODO: Wrap FgProfile in a ScrollView
+//TODO: Create AvatarGroup component to display chapter sisters.
+//TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
+//TODO: Add ChapterSisters section below Inspiration Block
+
 export class FgProfile extends React.Component {
+    member = this.props.member;
 
     render() {
-        const { bannerSource, avatarSource, name, schoolName, gradYear, inspiration } = this.props;
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
-
         return (
             <View style={styles.container}>
 
                 // Render the Banner
                 <Image
-                    source={{ uri: bannerSource }}
+                    source={{ uri: this.member.bannerSource }}
                     style={{
                         height: bannerHeight,
                         width: SCREEN_WIDTH,
@@ -27,15 +32,15 @@ export class FgProfile extends React.Component {
                 <View style={{ top: bannerHeight / 2 }}>
                     <Avatar
                         avatarSize={'large'}
-                        name={name}
-                        source={avatarSource}/>
+                        name={this.member.fullName()}
+                        source={this.props.member.avatarSource}/>
                 </View>
 
                 // Render the member's name, school, and graduation year
                 <Text style={[styles.textContainer, { top: bannerHeight * 1.5 }]}>
-                    <Text style={styles.nameLabel}>{name}</Text>{'\n'}
-                    <Text style={styles.schoolLabel}>{schoolName}</Text>{'\n'}
-                    <Text style={styles.gradYearLabel}>Class of {gradYear}</Text>{'\n'}
+                    <Text style={styles.nameLabel}>{this.member.fullName()}</Text>{'\n'}
+                    <Text style={styles.schoolLabel}>{this.member.schoolName}</Text>{'\n'}
+                    <Text style={styles.gradYearLabel}>Class of {this.member.gradYear}</Text>{'\n'}
                 </Text>
 
                 // Render the 'Inspiration' title with horizontal dividers on each side
@@ -47,10 +52,8 @@ export class FgProfile extends React.Component {
 
                 // Render the member's inspiration block
                 <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6 }]}>
-                    {inspiration}
+                    {this.member.inspiration}
                 </Text>
-
-
             </View>
         );
     }
