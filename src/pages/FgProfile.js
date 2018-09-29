@@ -1,5 +1,6 @@
 import React from 'react';
 import {Dimensions, Image, StyleSheet, View, Text, ScrollView} from 'react-native';
+
 import {Avatar} from "../components/Avatar";
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -18,10 +19,8 @@ export class FgProfile extends React.Component {
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
-            <ScrollView style={{height: SCREEN_HEIGHT, width: SCREEN_WIDTH}}>
-            <View style={styles.container}>
-
-                // Render the Banner
+            <View style={{height: SCREEN_HEIGHT, width: SCREEN_WIDTH,opacity: 1}}>
+            // Render the Banner
                 <Image
                     source={{ uri: this.member.bannerSource }}
                     style={{
@@ -29,6 +28,10 @@ export class FgProfile extends React.Component {
                         width: SCREEN_WIDTH,
                         position: 'absolute'
                     }}/>
+            <ScrollView style={{height: SCREEN_HEIGHT, width: SCREEN_WIDTH,opacity: 1}}>
+            <View style={styles.container}>
+
+                
 
                 // Render the Avatar
                 <View style={{ top: bannerHeight / 2 }}>
@@ -58,6 +61,7 @@ export class FgProfile extends React.Component {
                 </Text>
             </View>
             </ScrollView>
+            </View>
         );
     }
 
