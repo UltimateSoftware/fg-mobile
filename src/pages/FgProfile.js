@@ -1,8 +1,9 @@
 import React from 'react';
-import {Dimensions, Image, StyleSheet, View, Text} from 'react-native';
+import {Dimensions, Image, StyleSheet, View, Text, ScrollView} from 'react-native';
 import {Avatar} from "../components/Avatar";
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 const BANNER_HEIGHT_WIDTH_RATIO = 0.45;
 
 //TODO: Ask about default Banner Image when user supplied image is missing.
@@ -17,6 +18,7 @@ export class FgProfile extends React.Component {
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
+            <ScrollView style={{height: SCREEN_HEIGHT, width: SCREEN_WIDTH}}>
             <View style={styles.container}>
 
                 // Render the Banner
@@ -55,6 +57,7 @@ export class FgProfile extends React.Component {
                     {this.member.inspiration}
                 </Text>
             </View>
+            </ScrollView>
         );
     }
 
