@@ -1,12 +1,12 @@
 import React from 'react';
-import {Dimensions, Image, StyleSheet, View, Text} from 'react-native';
+import {Dimensions, Image, StyleSheet, View, Text, ScrollView} from 'react-native';
 import {Avatar} from "../components/Avatar";
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 const BANNER_HEIGHT_WIDTH_RATIO = 0.45;
 
 //TODO: Ask about default Banner Image when user supplied image is missing.
-//TODO: Wrap FgProfile in a ScrollView
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
@@ -18,6 +18,12 @@ export class FgProfile extends React.Component {
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
+            //Wrap entire profile in a ScrollView
+            <ScrollView
+                style={styles.scrollViewStyle}
+                directionalLockEnabled={true}
+            >
+
             <View style={styles.container}>
 
                 // Render the Banner
@@ -27,7 +33,7 @@ export class FgProfile extends React.Component {
                         height: bannerHeight,
                         width: SCREEN_WIDTH,
                         position: 'absolute'
-                    }}/>
+                }}/>
 
                 // Render the Avatar
                 <View style={{ top: bannerHeight / 2 }}>
@@ -56,12 +62,19 @@ export class FgProfile extends React.Component {
                     {this.member.inspiration}
                 </Text>
             </View>
+
+            </ScrollView>
         );
     }
 
 }
 
 const styles = StyleSheet.create({
+    scrollViewStyle: {
+        height: SCREEN_HEIGHT,
+        width: SCREEN_WIDTH,
+        opacity: 1
+    },
     container: {
         flex: 1,
         alignItems: 'center',
