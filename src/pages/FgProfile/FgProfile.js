@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
-import {Avatar} from "../components/Avatar";
-import {Banner} from "../components/Banner";
-import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
+import {Avatar} from "../../components/Avatar";
+import {Banner} from "../../components/Banner";
+import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../utils/sharedConstants";
 
 //TODO: Ask about default Banner Image when user supplied image is missing.
 //TODO: Create AvatarGroup component to display chapter sisters.

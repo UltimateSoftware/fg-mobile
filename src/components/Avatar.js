@@ -81,7 +81,6 @@ export class Avatar extends Component {
     }
 
    initialsFromName(name) {
-        console.log(name);
         if(!name) {
             return 'FG';
         }else {

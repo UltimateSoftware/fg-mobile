@@ -33,6 +33,7 @@ export const MOCKED_MEMBER_DARIA_with_AVATAR_no_BANNER = new FgMember(
     'Cypress Bay High School',
     2020,
     null,
+    'https://www.goodfreephotos.com/cache/people/female-face-woman-portrait_800.jpg',
     inspiration
 );
 
