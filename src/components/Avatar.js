@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, Text, View, StyleSheet }  from 'react-native';
-import {FgPastelColorPalette, PASTEL_COLORS} from "../utils/sharedConstants";
+import {PASTEL_COLORS} from "../utils/sharedConstants";
 
 export class Avatar extends Component {
 
