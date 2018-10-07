@@ -1,10 +1,8 @@
 import React from 'react';
-import {Dimensions, Image, StyleSheet, View, Text, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import {Avatar} from "../components/Avatar";
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const BANNER_HEIGHT_WIDTH_RATIO = 0.45;
+import {Banner} from "../components/Banner";
+import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 
 //TODO: Ask about default Banner Image when user supplied image is missing.
 //TODO: Create AvatarGroup component to display chapter sisters.
@@ -27,20 +25,14 @@ export class FgProfile extends React.Component {
             <View style={styles.container}>
 
                 // Render the Banner
-                <Image
-                    source={{ uri: this.member.bannerSource }}
-                    style={{
-                        height: bannerHeight,
-                        width: SCREEN_WIDTH,
-                        position: 'absolute'
-                }}/>
+                <Banner source={this.member.bannerSource}/>
 
                 // Render the Avatar
-                <View style={{ top: bannerHeight / 2 }}>
+                <View style={{ top: bannerHeight / 2, position: 'absolute'}}>
                     <Avatar
                         avatarSize={'large'}
                         name={this.member.fullName()}
-                        source={this.props.member.avatarSource}/>
+                        source={this.member.avatarSource}/>
                 </View>
 
                 // Render the member's name, school, and graduation year

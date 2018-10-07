@@ -2,7 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { FgProfile } from "./src/pages/FgProfile";
 import { AppLoading, Font } from 'expo'
-import { MOCKED_MEMBER_DARIA } from "./src/test/MockedTypes";
+import {
+    MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR, MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR
+} from "./src/test/MockedTypes";
 
 export default class App extends React.Component {
 
@@ -28,7 +30,7 @@ export default class App extends React.Component {
 
         return (
             <View>
-                <FgProfile member={MOCKED_MEMBER_DARIA}/>
+                <FgProfile member={ MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR}/>
             </View>
         );
     }

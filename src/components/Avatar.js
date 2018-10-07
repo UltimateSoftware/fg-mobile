@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Image, Text, View, StyleSheet }  from 'react-native';
+import {FgPastelColorPalette, PASTEL_COLORS} from "../utils/sharedConstants";
 
 export class Avatar extends Component {
 
-    //TODO: Ask about default background color and text color for initials, currently Pink(from wire frame Buttons)
+    //TODO: Edit scroll view so scrolling up (finger swipe down) does not move the banner from top of screen
     //TODO: Create README for Avatar Component
 
     static defaultProps = {
@@ -19,9 +20,6 @@ export class Avatar extends Component {
         } = this.props;
 
         const size = this.styleValuesFromSize(avatarSize).size;
-        const fontSizeForInitials = this.styleValuesFromSize(avatarSize).font;
-        const topPaddingForInitials = this.styleValuesFromSize(avatarSize).padding;
-
 
         let inner = null;
 
@@ -38,28 +36,34 @@ export class Avatar extends Component {
                     source={{uri: source}}
                 />
         }else {
+            const fontSizeForInitials = this.styleValuesFromSize(avatarSize).font;
+            const topPaddingForInitials = this.styleValuesFromSize(avatarSize).padding;
+            const initials = this.initialsFromName(name);
+            const bgColor = this.backgroundColorFromInitials(initials);
+
             inner =
                 <Text
-                    style={{
+                    style={[styles.textShadow,{
                         width: size,
                         height: size,
                         borderRadius: size / 2,
                         borderColor: 'white',
                         borderWidth: 4,
                         fontSize: fontSizeForInitials,
-                        backgroundColor: '#F313B7',
+                        backgroundColor: bgColor,
                         color: 'white',
                         overflow: 'hidden',
                         textAlign: 'center',
-                        paddingTop: topPaddingForInitials
-                    }}
+                        paddingTop: topPaddingForInitials,
+                        fontFamily: 'montserrat-bold'
+                    }]}
                 >
-                    { this.initialsFromName(name) }
+                    { initials }
                 </Text>
         }
 
         return (
-            <View style={styles.shadow}>{ inner }</View>
+            <View style={[styles.avatarShadow, ]}>{ inner }</View>
         );
 
 
@@ -69,7 +73,7 @@ export class Avatar extends Component {
         if (size === 'small' || size === 's') {
             return { size: 78, font: 42, padding: 8 } ;
         }else if (size === 'large' || size === 'l') {
-            return { size: 166, font: 84, padding: 25 } ;
+            return { size: 166, font: 72, padding: 32 } ;
         }else {
             console.log(`ERROR: Avatar Component: Invalid size, \'${size}\', passed to prop. Defaulting to size: 'large'. Avatar currently supports the following sizes: 'small' and 'large'.`)
             return { size: 166, font: 72 };
@@ -91,10 +95,20 @@ export class Avatar extends Component {
         }
     }
 
+    //Selects a pastel background color for the Avatar based on the members initials
+    backgroundColorFromInitials(initials){
+        if(!initials || initials.length < 2) {
+            return PASTEL_COLORS[0];
+        }else {
+            let colorIndex = (initials.charCodeAt(0) + initials.charCodeAt(1)) % PASTEL_COLORS.length;
+            return PASTEL_COLORS[colorIndex];
+        }
+    }
+
 }
 
 const styles = StyleSheet.create({
-    shadow: {
+    avatarShadow: {
         shadowOffset: {width: 0, height: 6},
         shadowColor: '#000000',
         shadowOpacity: 0.16,
@@ -102,5 +116,10 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         // background color must be set
         backgroundColor: "#0000" // invisible color
+    },
+    textShadow: {
+        textShadowColor: 'gray',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 6
     }
 });
