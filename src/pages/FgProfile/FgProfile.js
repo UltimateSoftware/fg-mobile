@@ -1,10 +1,9 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
 import {Avatar} from "../../components/Avatar";
 import {Banner} from "../../components/Banner";
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../utils/sharedConstants";
 
-//TODO: Ask about default Banner Image when user supplied image is missing.
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
@@ -19,9 +18,8 @@ export class FgProfile extends React.Component {
             //Wrap entire profile in a ScrollView
             <ScrollView
                 style={styles.scrollViewStyle}
-                directionalLockEnabled={true}
+                bounces={false}
             >
-
             <View style={styles.container}>
 
                 // Render the Banner
@@ -53,6 +51,8 @@ export class FgProfile extends React.Component {
                 <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6 }]}>
                     {this.member.inspiration}
                 </Text>
+
+
             </View>
 
             </ScrollView>
