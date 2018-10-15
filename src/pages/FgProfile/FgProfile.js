@@ -1,15 +1,13 @@
 import React from 'react';
-import {Dimensions, Image, StyleSheet, View, Text} from 'react-native';
-import {Avatar} from "../components/Avatar";
+import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
+import {Avatar} from "../../components/Avatar";
+import {Banner} from "../../components/Banner";
+import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../utils/sharedConstants";
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const BANNER_HEIGHT_WIDTH_RATIO = 0.45;
-
-//TODO: Ask about default Banner Image when user supplied image is missing.
-//TODO: Wrap FgProfile in a ScrollView
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
+//TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
     member = this.props.member;
@@ -17,23 +15,20 @@ export class FgProfile extends React.Component {
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
+            //Wrap entire profile in a ScrollView
+            <ScrollView
+                style={styles.scrollViewStyle}>
             <View style={styles.container}>
 
                 // Render the Banner
-                <Image
-                    source={{ uri: this.member.bannerSource }}
-                    style={{
-                        height: bannerHeight,
-                        width: SCREEN_WIDTH,
-                        position: 'absolute'
-                    }}/>
+                <Banner source={this.member.bannerSource}/>
 
                 // Render the Avatar
-                <View style={{ top: bannerHeight / 2 }}>
+                <View style={{ top: bannerHeight / 2, position: 'absolute'}}>
                     <Avatar
                         avatarSize={'large'}
                         name={this.member.fullName()}
-                        source={this.props.member.avatarSource}/>
+                        source={this.member.avatarSource}/>
                 </View>
 
                 // Render the member's name, school, and graduation year
@@ -54,13 +49,22 @@ export class FgProfile extends React.Component {
                 <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6 }]}>
                     {this.member.inspiration}
                 </Text>
+
+
             </View>
+
+            </ScrollView>
         );
     }
 
 }
 
 const styles = StyleSheet.create({
+    scrollViewStyle: {
+        height: SCREEN_HEIGHT,
+        width: SCREEN_WIDTH,
+        opacity: 1
+    },
     container: {
         flex: 1,
         alignItems: 'center',
