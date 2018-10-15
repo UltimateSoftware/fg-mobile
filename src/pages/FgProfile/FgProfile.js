@@ -17,9 +17,7 @@ export class FgProfile extends React.Component {
         return (
             //Wrap entire profile in a ScrollView
             <ScrollView
-                style={styles.scrollViewStyle}
-                bounces={false}
-            >
+                style={styles.scrollViewStyle}>
             <View style={styles.container}>
 
                 // Render the Banner
