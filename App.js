@@ -1,13 +1,21 @@
 import React from 'react';
 import { View } from 'react-native';
+import { AppLoading, Font } from 'expo'
+
 import { FgProfile } from "./src/pages/FgProfile/FgProfile";
 import { FgProfileService } from "./src/pages/FgProfile/FgProfile-Service";
-import { AppLoading, Font } from 'expo'
 import {
     MOCKED_MEMBER_DARIA_with_AVATAR_no_BANNER, MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR,
     MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR
 } from "./src/test/MockedTypes";
-import {FgMember} from "./src/types/FgMember";
+import { FgMember } from "./src/types/FgMember";
+import { Container, Header, Content, Tabs, StyleProvider, Text } from "./native-base-theme/components"
+
+// import getTheme from 'native-base';
+import getTheme from './native-base-theme/components'; 
+
+import material from './native-base-theme/variables/platform';
+import { TabProp } from './src/components/Tabs';
 
 const MOCKED_MEMBER_ID = '77bac705-1ce2-4a7b-8247-cf4bdfd451a9';
 
@@ -38,7 +46,8 @@ export default class App extends React.Component {
 
         return (
             <View>
-                <FgProfile member={ MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR }/>
+                <FgProfile member={ MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR }/>
+                <TabProp></TabProp>
             </View>
         );
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
+
 import {Avatar} from "../../components/Avatar";
 import {Banner} from "../../components/Banner";
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../utils/sharedConstants";
@@ -18,7 +19,6 @@ export class FgProfile extends React.Component {
             //Wrap entire profile in a ScrollView
             <ScrollView
                 style={styles.scrollViewStyle}
-                bounces={false}
             >
             <View style={styles.container}>
 
@@ -54,7 +54,6 @@ export class FgProfile extends React.Component {
 
 
             </View>
-
             </ScrollView>
         );
     }
@@ -63,7 +62,7 @@ export class FgProfile extends React.Component {
 
 const styles = StyleSheet.create({
     scrollViewStyle: {
-        height: SCREEN_HEIGHT,
+        height: SCREEN_HEIGHT*.93,
         width: SCREEN_WIDTH,
         opacity: 1
     },
