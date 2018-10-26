@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
-
 import {Avatar} from "../../components/Avatar";
 import {Banner} from "../../components/Banner";
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../utils/sharedConstants";
+import {NavigationActions} from 'react-navigation';
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -11,7 +11,7 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../uti
 //TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
-    member = this.props.member;
+    member = this.props.navigation.getParam('member');
 
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
@@ -25,7 +25,7 @@ export class FgProfile extends React.Component {
                 <Banner source={this.member.bannerSource}/>
 
                 // Render the Avatar
-                <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
+                <View style={{ top: bannerHeight / 2, position: 'absolute'}}>
                     <Avatar
                         avatarSize={'large'}
                         name={this.member.fullName()}
@@ -47,11 +47,13 @@ export class FgProfile extends React.Component {
                 </View>
 
                 // Render the member's inspiration block
-                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
+                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6 }]}>
                     {this.member.inspiration}
                 </Text>
 
+
             </View>
+
             </ScrollView>
         );
     }
@@ -60,17 +62,21 @@ export class FgProfile extends React.Component {
 
 const styles = StyleSheet.create({
     scrollViewStyle: {
-        flex: 1,
-        opacity: 1
+        height: SCREEN_HEIGHT,
+        width: SCREEN_WIDTH,
+        opacity: 1,
+        backgroundColor: '#ffffff'
     },
     container: {
         flex: 1,
         alignItems: 'center',
+        position: 'relative',
+        backgroundColor: '#ffffff'
     },
     textContainer: {
+        position: 'absolute',
         color: '#818282',
-        textAlign: 'center',
-        marginTop: -180
+        textAlign: 'center'
     },
     nameLabel: {
         fontFamily: 'montserrat-light',
@@ -85,11 +91,10 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     inspirationTitle: {
-        flex: 1,
+        position: 'absolute',
         flexDirection: 'row',
         alignContent: 'center',
-        justifyContent: 'center',
-        marginTop: -100
+        justifyContent: 'center'
     },
     inspirationLabel: {
         fontFamily: 'montserrat-regular',
@@ -97,19 +102,18 @@ const styles = StyleSheet.create({
         color: '#818282'
     },
     inspirationLine: {
-        // position: 'relative',
+        position: 'relative',
         borderBottomColor:'#818282',
         borderBottomWidth:1,
-        flex: 1
-        // height:'60%',
-        // width:'32%'
+        height:'60%',
+        width:'32%'
     },
     inspirationBlock: {
-        flex:1,
         fontFamily: 'open-sans-regular',
         fontSize: 14,
         textAlign: 'left',
         color: '#818282',
+        position: 'absolute',
         margin: 20
     }
 });

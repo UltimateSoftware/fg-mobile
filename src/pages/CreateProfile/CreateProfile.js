@@ -1,8 +1,9 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, ScrollView, TextInput} from 'react-native';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from "../../utils/sharedConstants";
+import {StyleSheet, View, Text, Image, ScrollView, TextInput, Picker} from 'react-native';
+import {SCREEN_WIDTH} from "../../utils/sharedConstants";
 import {FgButton} from "../../components/FgButton";
-import {Banner} from "../../components/Banner";
+import {INSPIRATION_TEXT} from "../../test/MockedTypes";
+import {FgMember} from "../../types/FgMember";
 
 export class CreateProfile extends React.Component {
 
@@ -16,7 +17,7 @@ export class CreateProfile extends React.Component {
             confirmPassword: '',
             inspiration: '',
             school: '',
-            gradYear: new Date().getFullYear(),
+            gradYear: '',
             hasError: false,
             error: '',
         };
@@ -28,10 +29,12 @@ export class CreateProfile extends React.Component {
         return (
 
             //Wrap entire profile in a ScrollView
-            <ScrollView style={styles.scrollViewStyle} contentContainerStyle={styles.container} >
-                <Banner source={require('assets/images/fearlesslyGirl_logo.jpg')}/>
+            <ScrollView style={styles.scrollViewStyle}
+                        contentContainerStyle={styles.container}
+                        bounces={false}>
+
                 <Image style={styles.logo} source={require('../../../assets/images/fearlesslyGirl_logo.jpg')}/>
-                <Text style={styles.profileLabel}>Create your account.</Text>
+                <Text style={styles.profileLabel}>Create your profile.</Text>
 
                 <View style={styles.inputContainer}>
                     // First name
@@ -48,37 +51,23 @@ export class CreateProfile extends React.Component {
                                onChangeText={(text) => this.setState({lastName: text})}
                                value={this.state.lastName}/>
 
-                    // Inspiration
+
+                    // School name
                     <TextInput style={styles.userInput}
-                               multiline={true}
-                               placeholder={'Inspiration'}
+                               placeholder={'School Name'}
                                placeholderTextColor={placeHolderTextColor}
-                               onChangeText={(text) => this.setState({inspiration: text})}
-                               value={this.state.inspiration}/>
+                               onChangeText={(text) => this.setState({school: text})}
+                               value={this.state.school}/>
 
 
-                    // Username
+                    //TODO: Substitute with Picker component when ScrollView issue resolved
                     <TextInput style={styles.userInput}
-                               placeholder={'Username'}
+                               placeholder={'Graduation Year'}
                                placeholderTextColor={placeHolderTextColor}
-                               onChangeText={(text) => this.setState({userName: text})}
-                               value={this.state.userName}/>
+                               onChangeText={(text) => this.setState({gradYear: text})}
+                               value={this.state.gradYear}/>
 
-                    // Password
-                    <TextInput style={styles.userInput}
-                               placeholder={'Password'}
-                               placeholderTextColor={placeHolderTextColor}
-                               secureTextEntry={true}
-                               onChangeText={(text) => this.setState({password: text})}
-                               value={this.state.password}/>
 
-                    // Confirm Password
-                    <TextInput style={styles.userInput}
-                               placeholder={'Re-enter Password'}
-                               placeholderTextColor={placeHolderTextColor}
-                               secureTextEntry={true}
-                               onChangeText={(text) => this.setState({confirmPassword: text})}
-                               value={this.state.confirmPassword}/>
 
                     // Submit button
                     <View style={styles.submitButton}>
@@ -92,7 +81,10 @@ export class CreateProfile extends React.Component {
     }
 
     handleSubmit() {
-        console.log(this.state);
+        const { navigate } = this.props.navigation;
+        console.log(this.state.firstName, this.state.lastName, this.state.school, this.state.gradYear, INSPIRATION_TEXT);
+        const fgMember = new FgMember(this.state.firstName, this.state.lastName, this.state.school, this.state.gradYear, null, null, INSPIRATION_TEXT);
+        navigate('Profile', {member: fgMember});
     }
 }
 
@@ -104,7 +96,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'relative',
         justifyContent: 'space-between',
-        flexGrow: 1
+        flexGrow: 1,
+        backgroundColor: '#ffffff'
     },
     inputContainer: {
         top: 165,
@@ -134,6 +127,13 @@ const styles = StyleSheet.create({
         borderColor: '#BDCDD1',
         borderBottomWidth: 1,
         lineHeight: 20
+    },
+    gradYearPicker: {
+        width: SCREEN_WIDTH * 0.78,
+        height: 40,
+        marginTop: 40,
+        borderColor: '#BDCDD1',
+        borderWidth: 1
     },
     submitButton: {
         marginTop: 40,
