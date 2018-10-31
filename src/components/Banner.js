@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Image, Text, View, StyleSheet, ImageBackground} from 'react-native';
 import {SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
-import { Header, Left, Button, Body, Right, Title, Card, H3} from 'native-base';
+import { Header, Left, Button, Body, Right, Title, Card, H1} from 'native-base';
 
 export class Banner extends Component {
 
@@ -22,7 +22,7 @@ export class Banner extends Component {
                 <ImageBackground
                     source={{ uri: source }}
                     style={styles.bannerStyleWithText}>
-                    <H3 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}>Hangouts</H3>
+                    <H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}>{this.props.text}</H1>
                     </ImageBackground>
             } else {
                 inner =
