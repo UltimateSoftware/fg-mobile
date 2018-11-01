@@ -96,7 +96,7 @@ export class HangoutLanding extends React.Component {
                 </Right>
             </Header>
             <Banner text='Hangouts' source='https://d31l02nbp0owar.cloudfront.net/m/t/198/1977194/a-0120.jpg' />
-                <IceBreakers />
+                <HangoutLanding />
             </View>
         );
     }

@@ -49,30 +49,8 @@ export class FgProfile extends React.Component {
                 </View>
 
                 // Render the member's inspiration block
-                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 150 }]}>
-                    {this.member.inspiration},
-                    habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                habsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
-                Viewhabsviabvilubsalivbyabviybalviybasdilvybasdoivbyasdiv
+                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
+                    {this.member.inspiration}
                 </Text>
 
             </View>
