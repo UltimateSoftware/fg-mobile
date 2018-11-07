@@ -4,6 +4,7 @@ import {SCREEN_WIDTH} from "../../utils/sharedConstants";
 import {FgButton} from "../../components/FgButton";
 import {FgMember} from "../../types/FgMember";
 import {FgProfileService} from "../../services/FgProfileService";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export class CreateProfile extends React.Component {
 
@@ -31,7 +32,11 @@ export class CreateProfile extends React.Component {
         const placeHolderTextColor = '#3A6A75';
         return (
 
-            <ScrollView style={styles.scrollViewStyle} bounces={false}>
+            <KeyboardAwareScrollView
+                style={styles.scrollViewStyle}
+                resetScrollToCoords={{x: 0, y: 0}}
+                scrollEnabled={true}
+                bounces={false}>
 
                 // FearlesslyGirl Logo
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
@@ -111,7 +116,7 @@ export class CreateProfile extends React.Component {
                     </View>
                 </View>
 
-            </ScrollView>
+            </KeyboardAwareScrollView>
         );
     }
 
