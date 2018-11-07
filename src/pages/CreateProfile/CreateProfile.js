@@ -83,8 +83,8 @@ export class CreateProfile extends React.Component {
                     <Text style={styles.inputLabelStyle}>What inspires you?</Text>
                     <TextInput style={[styles.textInputStyle, styles.inspirationInputStyle]}
                                multiline={true}
-                               onChangeText={(text) => this.setState({inspiration: text})}
-                               value={this.state.inspiration}/>
+                               onChangeText={(text) => this.setState({inspirationText: text})}
+                               value={this.state.inspirationText}/>
                 </View>
 
                 // Graduation year picker
@@ -115,10 +115,10 @@ export class CreateProfile extends React.Component {
         );
     }
 
-    handleSubmit() {
+    async handleSubmit() {
         const {navigate} = this.props.navigation;
         const fgMember = new FgMember(this.state.firstName, this.state.lastName, this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
-        const id = this.service.createMember(fgMember);
+        const id = await this.service.createMember(fgMember);
         console.log('id: ', id);
         navigate('Profile', {member: fgMember});
     }
