@@ -3,7 +3,7 @@ import {FgMember} from "../types/FgMember";
 export class FgProfileService {
 
     async createMember(member) {
-        return fetch('http://localhost:5000/api/v1/profile/create', {
+        return fetch('http://localhost:5000/api/v1/profile', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
