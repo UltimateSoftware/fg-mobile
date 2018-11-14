@@ -1,5 +1,9 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "27.0.0",
+    "name": "Fearlessly Girl Demo",
+    "slug": "fg-demo",
+    "privacy": "unlisted",
+    "orientation": "portrait"
   }
 }

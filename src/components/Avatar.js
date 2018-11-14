@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, Text, View, StyleSheet }  from 'react-native';
-import {PASTEL_COLORS} from "../utils/sharedConstants";
+import {AVATAR_BG_COLORS} from "../utils/sharedConstants";
 
 export class Avatar extends Component {
 
@@ -97,10 +97,10 @@ export class Avatar extends Component {
     //Selects a pastel background color for the Avatar based on the members initials
     backgroundColorFromInitials(initials){
         if(!initials || initials.length < 2) {
-            return PASTEL_COLORS[0];
+            return AVATAR_BG_COLORS[0];
         }else {
-            let colorIndex = (initials.charCodeAt(0) + initials.charCodeAt(1)) % PASTEL_COLORS.length;
-            return PASTEL_COLORS[colorIndex];
+            let colorIndex = (initials.charCodeAt(0) + initials.charCodeAt(1)) % AVATAR_BG_COLORS.length;
+            return AVATAR_BG_COLORS[colorIndex];
         }
     }
 

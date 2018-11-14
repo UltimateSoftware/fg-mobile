@@ -75,11 +75,7 @@ const Nav =  createBottomTabNavigator(
     }
   );
 
-
 export default class App extends React.Component {
-
-    service = new FgProfileService();
-    member : FgMember = this.service.getMemberWithId(MOCKED_MEMBER_ID);
 
     state = {
         isReady: false
