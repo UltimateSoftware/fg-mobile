@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from 'react-navigation';
 
 import { FgProfile } from "./src/pages/FgProfile/FgProfile";
-import { FgProfileService } from "./src/pages/FgProfile/FgProfile-Service";
 import {
     MOCKED_MEMBER_DARIA_with_AVATAR_no_BANNER, MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR,
     MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR
