@@ -2,8 +2,8 @@ import React from 'react';
 import Expo from 'expo';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
-import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, FlatList, Image} from 'react-native';
-import { Header, Left, Button, Body, Right, Title, Card, H3} from 'native-base';
+import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, FlatList, Image, ListView, TouchableOpacity} from 'react-native';
+import { Header, Left, Button, Body, Right, Title, Card, H2, CardItem} from 'native-base';
 
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 import {Banner} from "../components/Banner";
@@ -12,50 +12,92 @@ import {Banner} from "../components/Banner";
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
 //TODO: Status bar background should be white not translucent
+const ListOfHangouts = () => {return (
+<ScrollView
+                style={styles.scrollViewStyle}
+                bounces={false}
+            >
+ 
+            <View style={styles.container}>
+            <FlatList
+            data={[
+                {key: 1, id: 'Pot Luck', date: 'January, 10, 2019'},
+                {key: 2, id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
+                {key: 3, id: 'James Albright Foundation', date: 'March 10, 2019'},
+                {key: 4, id: 'Starbucks MeetUp', date: 'April 10, 2019'},
+                {key: 5, id: 'JFK Library', date: 'May 10, 2019'},
+                {key: 6, id: 'Jillian Fitness', date: 'June 10, 2019'},
+                {key: 7, id: 'Jimmy Kimell Watch Party', date: 'July 10, 2019'},
+                {key: 8, id: 'Julie\'s Birhtday', date: 'August 10, 2019'},
+                {key: 9, id: 'Ronald McDonald Foundation', date: 'September 10, 2019'},
+                {key: 10, id: 'Pot Luck', date: 'January, 10, 2019'},
+                {key: 11, id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
+                {key: 12, id: 'James Albright Foundation', date: 'March 10, 2019'},
+                {key: 13, id: 'Starbucks MeetUp', date: 'April 10, 2019'},
+                {key: 14, id: 'JFK Library', date: 'May 10, 2019'},
+            ]}
+            renderItem={({item}) => <Card style={{width: SCREEN_WIDTH*.85, flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}><Text style={styles.item}>{item.id}</Text><Text style={[styles.item]}>{item.date}</Text></Card>}
+            />
 
+            </View>
+            </ScrollView>
+);}
+const IceBreakers= () =>{
+    return (
+        <ScrollView
+                style={[styles.scrollViewStyle]}
+                bounces={false}
+                flexDirection='row'
+            >
+ 
+            <View style={styles.container}>
+            <FlatList
+            numColumns={2}
+            bounces={false}
+            style={{alignContent:'center', }}
+            data={[
+                {key: 'Devin', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
+                {key: 'Jackson', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
+                {key: 'James', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
+                {key: 'Joel', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
+                {key: 'John', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
+                {key: 'Jillian', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
+            ]}
+            renderItem={({item}) => <TouchableOpacity style={[styles.item,{borderRadius:10, padding:40, shadowRadius: 5, }]}>
+            <Card rounded style={{flex: 1, shadowOpacity: 10, margin: 10, borderRadius: 10, alignItems: 'center' }}>
+                    <Image source={{uri:item.img}} style={{width:35, height: 35}}/>
+                <CardItem footer bordered>
+                    <Text style={[{height:18}]}>{item.key}</Text>
+                </CardItem>
+            </Card></TouchableOpacity>}
+            />
+
+            </View>
+            </ScrollView>
+        
+    );
+}
 export class HangoutLanding extends React.Component {
 
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
-            <View style={{height: SCREEN_HEIGHT*.93, width: SCREEN_WIDTH}}>
-            <Header style={{width:SCREEN_WIDTH, height: SCREEN_HEIGHT*.1}}> 
+            <View style={{height: SCREEN_HEIGHT*.93, width: SCREEN_WIDTH, alignItems: 'center'}}>
+            <Header style={{width:SCREEN_WIDTH, height: SCREEN_HEIGHT*.125}}> 
                 <Left>
                     <Button transparent>
-                        <H3 style={{fontFamily: 'montserrat-regular'}}>Hangouts</H3>
+                        <H2 style={{fontFamily: 'montserrat-bold', color: '#818282', paddingLeft: 20}}>Hangouts</H2>
                     </Button>
                 </Left>
                 <Right style={{alignItems:'center'}}>
-                    <Button transparent>
+                    <Button transparent style={{paddingRight: 30}}>
                         <Image style={{width: 38, height: 38}} source={{uri:'https://banner2.kisspng.com/20180418/jjq/kisspng-spotify-computer-icons-paypal-5ad6d7b8ef88e3.0461224615240293689811.jpg'}}/>
                     </Button>
                 </Right>
             </Header>
-            <ScrollView
-                style={styles.scrollViewStyle}
-            >
-            <Banner text='lol' source='https://d31l02nbp0owar.cloudfront.net/m/t/198/1977194/a-0120.jpg'>
-            <View style={{flex: 1}}>
-                <Text>lol</Text>
-            </View>
-            </Banner>
-            <View style={styles.container}>
-            <FlatList
-            data={[
-                {key: 'Devin', date: '1,10,11'},
-                {key: 'Jackson', date: '1,10,11'},
-                {key: 'James', date: '1,10,11'},
-                {key: 'Joel', date: '1,10,11'},
-                {key: 'John', date: '1,10,11'},
-                {key: 'Jillian', date: '1,10,11'},
-                {key: 'Jimmy', date: '1,10,11'},
-                {key: 'Julie', date: '1,10,11'},
-            ]}
-            renderItem={({item}) => <Card style={{width: SCREEN_WIDTH*.9, flexDirection: 'row', shadowOpacity: 10 }}><Text style={styles.item}>{item.key}</Text><Text style={styles.item}>{item.date}</Text></Card>}
-            />
+            <Banner text='Hangouts' source='https://d31l02nbp0owar.cloudfront.net/m/t/198/1977194/a-0120.jpg' />
+                {<ListOfHangouts></ListOfHangouts>}
 
-            </View>
-            </ScrollView>
             </View>
         );
     }
@@ -65,9 +107,8 @@ export class HangoutLanding extends React.Component {
 const styles = StyleSheet.create({
     scrollViewStyle: {
         opacity: 1,
-        width: SCREEN_WIDTH,
-        height: SCREEN_HEIGHT*.8
-
+        flex: 1,
+        paddingBottom: 5
     },
     container: {
         flex: 1,
@@ -79,48 +120,15 @@ const styles = StyleSheet.create({
         color: '#818282',
         textAlign: 'center'
     },
-    nameLabel: {
-        fontFamily: 'montserrat-light',
-        fontSize: 24
-    },
-    schoolLabel: {
-        fontFamily: 'open-sans-regular',
-        fontSize: 16
-    },
-    gradYearLabel: {
-        fontFamily: 'open-sans-regular',
-        fontSize: 14
-    },
     inspirationTitle: {
         position: 'absolute',
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center'
     },
-    inspirationLabel: {
-        fontFamily: 'montserrat-regular',
-        fontSize: 18,
-        color: '#818282'
-    },
-    inspirationLine: {
-        position: 'relative',
-        borderBottomColor:'#818282',
-        borderBottomWidth:1,
-        height:'60%',
-        width:'32%'
-    },
-    inspirationBlock: {
-        fontFamily: 'open-sans-regular',
-        fontSize: 14,
-        textAlign: 'left',
-        color: '#818282',
-        position: 'absolute',
-        margin: 20
-    },
     item: {
         padding: 10,
-        fontSize: 18,
         height: 44,
-        width: SCREEN_WIDTH*.30
+        width: SCREEN_WIDTH*.40
     },
 });
