@@ -19,10 +19,20 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/vector-icons": "^8.0.0",
     "expo": "^27.1.1",
+    "expo-asset": "^1.1.0",
+    "expo-constants": "^1.0.2",
+    "expo-file-system": "^1.0.2",
+    "expo-font": "^1.0.0",
+    "expo-react-native-adapter": "^1.1.1",
+    "native-base": "^2.8.1",
     "prop-types": "latest",
     "react": "16.3.1",
-    "react-native": "~0.55.2"
+    "react-native": "~0.55.2",
+    "react-native-elements": "^0.19.1",
+    "react-native-vector-icons": "^6.0.2",
+    "react-navigation": "^2.18.1"
   },
   "rnpm": {
     "assets": [

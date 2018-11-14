@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Image, Text, View, StyleSheet} from 'react-native';
+import {Image, Text, View, StyleSheet, ImageBackground} from 'react-native';
 import {SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
+import { Header, Left, Button, Body, Right, Title, Card, H1} from 'native-base';
 
 export class Banner extends Component {
 
@@ -9,16 +10,26 @@ export class Banner extends Component {
 
     render() {
         const {
-            source
+            source,
+            text
         } = this.props;
 
         let inner = null;
 
         if(source) {
+            if(text) {
             inner =
+                <ImageBackground
+                    source={{ uri: source }}
+                    style={styles.bannerStyleWithText}>
+                    <H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}>{this.props.text}</H1>
+                    </ImageBackground>
+            } else {
+                inner =
                 <Image
                     source={{ uri: source }}
                     style={styles.bannerStyle}/>
+            }
         }else {
             //if user does not supply a banner image, simply render a grey background
             inner =
@@ -30,6 +41,7 @@ export class Banner extends Component {
 
         return (
             <View>{ inner }</View>
+            
         );
 
 
@@ -42,5 +54,13 @@ const styles = StyleSheet.create({
         height: SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO,
         width: SCREEN_WIDTH,
         position:'relative'
+    },
+    bannerStyleWithText: {
+        height: SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO,
+        width: SCREEN_WIDTH,
+        position:'relative',
+        alignItems:'center',
+        justifyContent:'center'
+        
     }
 });

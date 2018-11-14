@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
+
 import {Avatar} from "../../components/Avatar";
 import {Banner} from "../../components/Banner";
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../utils/sharedConstants";
@@ -24,7 +25,7 @@ export class FgProfile extends React.Component {
                 <Banner source={this.member.bannerSource}/>
 
                 // Render the Avatar
-                <View style={{ top: bannerHeight / 2, position: 'absolute'}}>
+                <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
                     <Avatar
                         avatarSize={'large'}
                         name={this.member.fullName()}
@@ -46,13 +47,11 @@ export class FgProfile extends React.Component {
                 </View>
 
                 // Render the member's inspiration block
-                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6 }]}>
+                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
                     {this.member.inspiration}
                 </Text>
 
-
             </View>
-
             </ScrollView>
         );
     }
@@ -61,19 +60,17 @@ export class FgProfile extends React.Component {
 
 const styles = StyleSheet.create({
     scrollViewStyle: {
-        height: SCREEN_HEIGHT,
-        width: SCREEN_WIDTH,
+        flex: 1,
         opacity: 1
     },
     container: {
         flex: 1,
         alignItems: 'center',
-        position: 'relative'
     },
     textContainer: {
-        position: 'absolute',
         color: '#818282',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: -180
     },
     nameLabel: {
         fontFamily: 'montserrat-light',
@@ -88,10 +85,11 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     inspirationTitle: {
-        position: 'absolute',
+        flex: 1,
         flexDirection: 'row',
         alignContent: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: -100
     },
     inspirationLabel: {
         fontFamily: 'montserrat-regular',
@@ -99,18 +97,19 @@ const styles = StyleSheet.create({
         color: '#818282'
     },
     inspirationLine: {
-        position: 'relative',
+        // position: 'relative',
         borderBottomColor:'#818282',
         borderBottomWidth:1,
-        height:'60%',
-        width:'32%'
+        flex: 1
+        // height:'60%',
+        // width:'32%'
     },
     inspirationBlock: {
+        flex:1,
         fontFamily: 'open-sans-regular',
         fontSize: 14,
         textAlign: 'left',
         color: '#818282',
-        position: 'absolute',
         margin: 20
     }
 });
