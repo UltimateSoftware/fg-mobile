@@ -23,6 +23,7 @@ import getTheme from './native-base-theme/components';
 
 import material from './native-base-theme/variables/platform';
 import { TabProp } from './src/components/Tabs';
+import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/utils/sharedConstants';
 
 const MOCKED_MEMBER_ID = '77bac705-1ce2-4a7b-8247-cf4bdfd451a9';
 const mapNavigationStateParamsToProps = (FgProfile) => {
