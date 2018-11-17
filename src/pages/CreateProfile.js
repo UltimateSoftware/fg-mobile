@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image, ScrollView, TextInput, Picker} from 'react-native';
-import {SCREEN_WIDTH} from "../utils/sharedConstants";
+import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {FgButton} from "../components/FgButton";
 import {FgMember} from "../types/FgMember";
 import {FgProfileService} from "../services/FgProfileService";
@@ -29,7 +29,6 @@ export class CreateProfile extends React.Component {
     }
 
     render() {
-        const placeHolderTextColor = '#3A6A75';
         return (
 
             <KeyboardAwareScrollView
@@ -58,7 +57,7 @@ export class CreateProfile extends React.Component {
                     <TextInput
                         style={styles.textInputStyle}
                         placeholder={'First Name'}
-                        placeholderTextColor={placeHolderTextColor}
+                        placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
                         onChangeText={(text) => this.setState({firstName: text})}
                         value={this.state.firstName}/>
                 </View>
@@ -68,7 +67,7 @@ export class CreateProfile extends React.Component {
                     <TextInput
                         style={styles.textInputStyle}
                         placeholder={'Last Name'}
-                        placeholderTextColor={placeHolderTextColor}
+                        placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
                         onChangeText={(text) => this.setState({lastName: text})}
                         value={this.state.lastName}/>
                 </View>
@@ -78,7 +77,7 @@ export class CreateProfile extends React.Component {
                     <TextInput
                         style={styles.textInputStyle}
                         placeholder={'School Name'}
-                        placeholderTextColor={placeHolderTextColor}
+                        placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
                         onChangeText={(text) => this.setState({schoolName: text})}
                         value={this.state.schoolName}/>
                 </View>
@@ -121,7 +120,7 @@ export class CreateProfile extends React.Component {
     }
 
     async handleSubmit() {
-        const {navigate} = this.props.navigation;
+        const { navigate } = this.props.navigation;
         const fgMember = new FgMember(this.state.firstName, this.state.lastName, this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
         const id = await this.service.createMember(fgMember);
         console.log('id: ', id);
@@ -135,11 +134,6 @@ const styles = StyleSheet.create({
     scrollViewStyle: {
         flex: 1,
         opacity: 1,
-        backgroundColor: 'white'
-    },
-    mainViewStyle: {
-        flex: 1,
-        alignItems: 'center',
         backgroundColor: 'white'
     },
     subViewStyle: {
