@@ -21,20 +21,20 @@ const ListOfHangouts = () => {return (
             <View style={styles.container}>
             <FlatList
             data={[
-                {key: 1, id: 'Pot Luck', date: 'January, 10, 2019'},
-                {key: 2, id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
-                {key: 3, id: 'James Albright Foundation', date: 'March 10, 2019'},
-                {key: 4, id: 'Starbucks MeetUp', date: 'April 10, 2019'},
-                {key: 5, id: 'JFK Library', date: 'May 10, 2019'},
-                {key: 6, id: 'Jillian Fitness', date: 'June 10, 2019'},
-                {key: 7, id: 'Jimmy Kimell Watch Party', date: 'July 10, 2019'},
-                {key: 8, id: 'Julie\'s Birhtday', date: 'August 10, 2019'},
-                {key: 9, id: 'Ronald McDonald Foundation', date: 'September 10, 2019'},
-                {key: 10, id: 'Pot Luck', date: 'January, 10, 2019'},
-                {key: 11, id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
-                {key: 12, id: 'James Albright Foundation', date: 'March 10, 2019'},
-                {key: 13, id: 'Starbucks MeetUp', date: 'April 10, 2019'},
-                {key: 14, id: 'JFK Library', date: 'May 10, 2019'},
+                {key: '1', id: 'Pot Luck', date: 'January, 10, 2019'},
+                {key: '2', id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
+                {key: '3', id: 'James Albright Foundation', date: 'March 10, 2019'},
+                {key: '4', id: 'Starbucks MeetUp', date: 'April 10, 2019'},
+                {key: '5', id: 'JFK Library', date: 'May 10, 2019'},
+                {key: '6', id: 'Jillian Fitness', date: 'June 10, 2019'},
+                {key: '7', id: 'Jimmy Kimell Watch Party', date: 'July 10, 2019'},
+                {key: '8', id: 'Julie\'s Birhtday', date: 'August 10, 2019'},
+                {key: '9', id: 'Ronald McDonald Foundation', date: 'September 10, 2019'},
+                {key: '10', id: 'Pot Luck', date: 'January, 10, 2019'},
+                {key: '11', id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
+                {key: '12', id: 'James Albright Foundation', date: 'March 10, 2019'},
+                {key: '13', id: 'Starbucks MeetUp', date: 'April 10, 2019'},
+                {key: '14', id: 'JFK Library', date: 'May 10, 2019'},
             ]}
             renderItem={({item}) => <Card style={{width: SCREEN_WIDTH*.85, flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}><Text style={styles.item}>{item.id}</Text><Text style={[styles.item]}>{item.date}</Text></Card>}
             />

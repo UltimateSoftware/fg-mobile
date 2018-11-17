@@ -1,30 +1,19 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import { Text, Container, Header, Content, Tab, FooterTab, Footer, Button, Icon, Tabs, StyleProvider } from 'native-base';
-import { AppLoading, Font } from 'expo';
+import {View} from 'react-native';
+import {AppLoading, Font} from 'expo';
 // import { Nav } from './src/components/Nav/Nav'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { createBottomTabNavigator } from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation';
 
-import { FgProfile } from "./src/pages/FgProfile/FgProfile";
-import {
-    MOCKED_MEMBER_DARIA_with_AVATAR_no_BANNER, MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR,
-    MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR
-} from "./src/test/MockedTypes";
-import { FgMember } from "./src/types/FgMember";
-import { HangoutLanding } from "./src/pages/HangoutLanding";
-import { Menu } from './src/pages/Menu';
-import { Chapter } from './src/pages/Chapter';
-import { Events } from './src/pages/Events'
+import {FgProfile} from "./src/pages/FgProfile";
+import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "./src/test/MockedTypes";
+import {HangoutLanding} from "./src/pages/HangoutLanding";
+import {Menu} from './src/pages/Menu';
+import {Chapter} from './src/pages/Chapter';
+import {Events} from './src/pages/Events'
 // import getTheme from 'native-base';
-import getTheme from './native-base-theme/components'; 
 
-import material from './native-base-theme/variables/platform';
-import { TabProp } from './src/components/Tabs';
-import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/utils/sharedConstants';
-
-const MOCKED_MEMBER_ID = '77bac705-1ce2-4a7b-8247-cf4bdfd451a9';
 const mapNavigationStateParamsToProps = (FgProfile) => {
     return class extends React.Component {
         render() {

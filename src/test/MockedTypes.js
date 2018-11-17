@@ -1,6 +1,6 @@
 import { FgMember } from "../types/FgMember";
 
-const inspiration = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ' +
+export const INSPIRATION_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ' +
     'incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ' +
     'ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ' +
     'in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat ' +
@@ -14,7 +14,7 @@ export const MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR = new FgMember(
     2020,
     'https://pics.freeartbackgrounds.com/midle/Autumn_Rural_Landscape_Background-637.jpg',
     'https://www.goodfreephotos.com/cache/people/female-face-woman-portrait_800.jpg',
-    inspiration
+    INSPIRATION_TEXT
 );
 
 export const MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR = new FgMember(
@@ -24,7 +24,7 @@ export const MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR = new FgMember(
     2020,
     'https://pics.freeartbackgrounds.com/midle/Autumn_Rural_Landscape_Background-637.jpg',
     null,
-    inspiration
+    INSPIRATION_TEXT
 );
 
 export const MOCKED_MEMBER_DARIA_with_AVATAR_no_BANNER = new FgMember(
@@ -34,7 +34,7 @@ export const MOCKED_MEMBER_DARIA_with_AVATAR_no_BANNER = new FgMember(
     2020,
     null,
     'https://www.goodfreephotos.com/cache/people/female-face-woman-portrait_800.jpg',
-    inspiration
+    INSPIRATION_TEXT
 );
 
 export const MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER = new FgMember(
@@ -44,5 +44,5 @@ export const MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER = new FgMember(
     2020,
     null,
     null,
-    inspiration
+    INSPIRATION_TEXT
 );
