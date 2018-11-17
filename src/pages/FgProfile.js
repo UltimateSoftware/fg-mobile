@@ -3,6 +3,7 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
+import {MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER} from "../test/MockedTypes";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -10,7 +11,7 @@ import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/s
 //TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
-    member = this.props.navigation?.getParam('member');
+    member = MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER; //stub member for now
 
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;

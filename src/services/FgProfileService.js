@@ -20,7 +20,7 @@ export class FgProfileService {
             .then(responseJSON => {
                 return responseJSON.id;
             })
-            .catch(error => console.log('createMemberError: ', error));
+            .catch(error => console.log('FgProfileService: ', error));
     }
 
 
