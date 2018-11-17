@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image, ScrollView, TextInput, Picker} from 'react-native';
-import {SCREEN_WIDTH} from "../../utils/sharedConstants";
-import {FgButton} from "../../components/FgButton";
-import {FgMember} from "../../types/FgMember";
-import {FgProfileService} from "../../services/FgProfileService";
+import {SCREEN_WIDTH} from "../utils/sharedConstants";
+import {FgButton} from "../components/FgButton";
+import {FgMember} from "../types/FgMember";
+import {FgProfileService} from "../services/FgProfileService";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export class CreateProfile extends React.Component {
@@ -40,7 +40,7 @@ export class CreateProfile extends React.Component {
 
                 // FearlesslyGirl Logo
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
-                    <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../../assets/images/fearlesslyGirl_logo.jpg')}/>
+                    <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
                 </View>
 
                 // Page title

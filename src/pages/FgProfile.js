@@ -1,9 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
-import {Avatar} from "../../components/Avatar";
-import {Banner} from "../../components/Banner";
-import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../utils/sharedConstants";
-import {NavigationActions} from 'react-navigation';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Avatar} from "../components/Avatar";
+import {Banner} from "../components/Banner";
+import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -11,7 +10,7 @@ import {NavigationActions} from 'react-navigation';
 //TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
-    member = this.props.navigation.getParam('member');
+    member = this.props.navigation?.getParam('member');
 
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
