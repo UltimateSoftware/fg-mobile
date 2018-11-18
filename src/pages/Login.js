@@ -52,7 +52,7 @@ export class Login extends React.Component {
         );
     }
     handleSignIn() {
-        console.log('User clicked sign in.');
+        console.log('Login not implemented.');
     }
     handleSignUp() {
         const { navigate } = this.props.navigation;

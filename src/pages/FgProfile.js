@@ -3,7 +3,8 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
-import {MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER} from "../test/MockedTypes";
+import {DataManager, SIGNED_IN_MEMBER} from "../DataManager";
+import {FgMember} from "../types/FgMember";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -11,9 +12,50 @@ import {MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER} from "../test/MockedTypes";
 //TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
-    member = MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER; //stub member for now
+
+    constructor() {
+        super();
+        this.state = {
+            loading: 'initial',
+            member: null
+        }
+    }
+
+    // Load current signed in member from local storage.
+    async loadFgMember() {
+        return DataManager.getItemWithKey(SIGNED_IN_MEMBER)
+            .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
+    }
+
+    componentDidMount() {
+        this.setState({ loading: 'true' });
+        this.loadFgMember()
+            .then( (data) => {
+                const fgMember = new FgMember(
+                    data.firstName,
+                    data.lastName,
+                    data.schoolName,
+                    data.gradYear,
+                    data.bannerSource,
+                    data.avatarSource,
+                    data.inspiration
+                );
+                this.setState({member: fgMember, loading: 'false'});
+            })
+            .catch( (error) => console.log(error.message));
+    }
 
     render() {
+
+        if( this.state.loading === 'initial' ) {
+            return <Text>Initializing</Text>
+        }
+
+        if( this.state.loading === 'true' ) {
+            return <Text>Loading</Text>
+        }
+
+        console.log("LOADED member: ", this.state.member);
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
             //Wrap entire profile in a ScrollView
@@ -22,21 +64,21 @@ export class FgProfile extends React.Component {
             <View style={styles.container}>
 
                 // Render the Banner
-                <Banner source={this.member.bannerSource}/>
+                <Banner source={this.state.member.bannerSource}/>
 
                 // Render the Avatar
                 <View style={{ top: bannerHeight / 2, position: 'absolute'}}>
                     <Avatar
                         avatarSize={'large'}
-                        name={this.member.fullName()}
-                        source={this.member.avatarSource}/>
+                        name={this.state.member.fullName()}
+                        source={this.state.member.avatarSource}/>
                 </View>
 
                 // Render the member's name, school, and graduation year
                 <Text style={[styles.textContainer, { top: bannerHeight * 1.5 }]}>
-                    <Text style={styles.nameLabel}>{this.member.fullName()}</Text>{'\n'}
-                    <Text style={styles.schoolLabel}>{this.member.schoolName}</Text>{'\n'}
-                    <Text style={styles.gradYearLabel}>Class of {this.member.gradYear}</Text>{'\n'}
+                    <Text style={styles.nameLabel}>{this.state.member.fullName()}</Text>{'\n'}
+                    <Text style={styles.schoolLabel}>{this.state.member.schoolName}</Text>{'\n'}
+                    <Text style={styles.gradYearLabel}>Class of {this.state.member.gradYear}</Text>{'\n'}
                 </Text>
 
                 // Render the 'Inspiration' title with horizontal dividers on each side
@@ -48,7 +90,7 @@ export class FgProfile extends React.Component {
 
                 // Render the member's inspiration block
                 <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6 }]}>
-                    {this.member.inspiration}
+                    {this.state.member.inspiration}
                 </Text>
 
 

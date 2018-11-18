@@ -1,12 +1,14 @@
 import React from 'react';
 import {AppLoading, Font} from 'expo';
-import {SignedOutNavigator, SignedInNavigator} from "./src/Router";
+import {createRootNavigator} from "./src/Router";
+import {isSignedIn, onSignOut} from "./src/Auth";
 
 
 export default class App extends React.Component {
 
     state = {
-        isReady: false
+        isReady: false,
+        signedIn: false
     };
 
     async componentWillMount() {
@@ -16,8 +18,18 @@ export default class App extends React.Component {
             'montserrat-regular': require('./assets/fonts/Montserrat-Regular.otf'),
             'montserrat-bold': require('./assets/fonts/Montserrat-Bold.otf'),
             'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
-            'Ionicons' : require("@expo/vector-icons/fonts/Ionicons.ttf")}),
-        this.setState({ isReady: true })
+            'Ionicons' : require("@expo/vector-icons/fonts/Ionicons.ttf")});
+
+        await onSignOut();
+
+        await isSignedIn()
+            .then(res => this.setState({ signedIn: res }))
+            .catch(err => {
+                alert("Oops, an error occurred.");
+                console.log("App.js > isSignedIn() > ERROR: ", err);
+            });
+
+        this.setState({ isReady: true });
     }
 
     render() {
@@ -26,32 +38,8 @@ export default class App extends React.Component {
               <AppLoading/>
             );
         }
-        return (<SignedInNavigator />);
+
+        const RootNavigator = createRootNavigator(this.state.signedIn);
+        return <RootNavigator />;
     }
-
 }
-/*
-navigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({ focused, horizontal, tintColor }) => {
-          const { routeName } = navigation.state;
-          let iconName;
-          if (routeName === 'Profile') {
-            iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-          } else if (routeName === 'Hangouts') {
-            iconName = `ios-options${focused ? '' : '-outline'}`;
-          }
-  
-          // You can return any component that you like here! We usually use an
-          // icon component from react-native-vector-icons
-          return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
-        },
-      }),
-(
-            <View>
-                <HangoutLanding />
-                <TabProp />
-            </View>
-        )
-                <FgProfile member={ MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR }/>
-
-*/

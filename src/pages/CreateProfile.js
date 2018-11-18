@@ -5,6 +5,8 @@ import {FgButton} from "../components/FgButton";
 import {FgMember} from "../types/FgMember";
 import {FgProfileService} from "../services/FgProfileService";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {DataManager, SIGNED_IN_MEMBER} from "../DataManager";
+import {onSignIn} from "../Auth";
 
 export class CreateProfile extends React.Component {
 
@@ -120,11 +122,20 @@ export class CreateProfile extends React.Component {
     }
 
     async handleSubmit() {
+        // Grab the navigator
         const { navigate } = this.props.navigation;
-        const fgMember = new FgMember(this.state.firstName, this.state.lastName, this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
-        const id = await this.service.createMember(fgMember);
-        console.log('id: ', id);
-        navigate('Profile', {member: fgMember});
+        // Create member object from form field values
+        const fgMember = new FgMember(this.state.firstName, this.state.lastName,
+            this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
+        // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
+        await this.service.createMember(fgMember)
+            .then( (id) => console.log("[CreateProfile]: FgMember created successfully, id: ", id))
+            .then( () => DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember) )
+            .then( (member) => console.log("[CreateProfile]: Local storage successful. FgMember: ", member))
+            .then( () => onSignIn() )
+            .then( () => navigate("SignedIn"))
+            .catch((error) => console.log("[ERROR - CreateProfile > handleSubmit()]: ", error.message))
+
     }
 
 

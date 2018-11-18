@@ -1,4 +1,4 @@
-import {createBottomTabNavigator, createStackNavigator} from "react-navigation";
+import {createBottomTabNavigator, createStackNavigator, createSwitchNavigator} from "react-navigation";
 
 import { CreateProfile } from "./pages/CreateProfile";
 import {Login} from "./pages/Login";
@@ -9,6 +9,18 @@ import {Events} from "./pages/Events";
 import {FgProfile} from "./pages/FgProfile";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";
+
+export const createRootNavigator = (signedIn = false) => {
+    return createSwitchNavigator(
+        {
+            SignedIn: { screen: SignedInNavigator },
+            SignedOut: { screen: SignedOutNavigator }
+        },
+        {
+            initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+        }
+    );
+};
 
 export const SignedOutNavigator = createStackNavigator({
     SignIn: { screen: Login },
