@@ -7,76 +7,13 @@ import { Header, Left, Button, Body, Right, Title, Card, H2, CardItem} from 'nat
 
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 import {Banner} from "../components/Banner";
+// import {HangoutsNav} from "../Navigators/HangoutsNav";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
 //TODO: Status bar background should be white not translucent
-const ListOfHangouts = () => {return (
-<ScrollView
-                style={styles.scrollViewStyle}
-                bounces={false}
-            >
- 
-            <View style={styles.container}>
-            <FlatList
-            data={[
-                {key: 'Pot Luck', date: 'January, 10, 2019'},
-                {key: 'Jackson Memorial', date: 'Feburary 10, 2019'},
-                {key: 'James Albright Foundation', date: 'March 10, 2019'},
-                {key: 'Starbucks MeetUp', date: 'April 10, 2019'},
-                {key: 'JFK Library', date: 'May 10, 2019'},
-                {key: 'Jillian Fitness', date: 'June 10, 2019'},
-                {key: 'Jimmy Kimell Watch Party', date: 'July 10, 2019'},
-                {key: 'Julie\'s Birhtday', date: 'August 10, 2019'},
-                {key: 'Ronald McDonald Foundation', date: 'September 10, 2019'},
-                {key: 'Pot Luck', date: 'January, 10, 2019'},
-                {key: 'Jackson Memorial', date: 'Feburary 10, 2019'},
-                {key: 'James Albright Foundation', date: 'March 10, 2019'},
-                {key: 'Starbucks MeetUp', date: 'April 10, 2019'},
-                {key: 'JFK Library', date: 'May 10, 2019'},
-            ]}
-            renderItem={({item}) => <Card style={{width: SCREEN_WIDTH*.85, flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}><Text style={styles.item}>{item.key}</Text><Text style={[styles.item]}>{item.date}</Text></Card>}
-            />
 
-            </View>
-            </ScrollView>
-);}
-const IceBreakers= () =>{
-    return (
-        <ScrollView
-                style={[styles.scrollViewStyle]}
-                bounces={false}
-                flexDirection='row'
-            >
- 
-            <View style={styles.container}>
-            <FlatList
-            numColumns={2}
-            bounces={false}
-            style={{alignContent:'center', }}
-            data={[
-                {key: 'Devin', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
-                {key: 'Jackson', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
-                {key: 'James', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
-                {key: 'Joel', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
-                {key: 'John', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
-                {key: 'Jillian', img: 'https://icon2.kisspng.com/20180320/sdq/kisspng-computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-5ab0ba010aeb80.8431035315215313930447.jpg'},
-            ]}
-            renderItem={({item}) => <TouchableOpacity style={[styles.item,{borderRadius:10, padding:40, shadowRadius: 5, }]}>
-            <Card rounded style={{flex: 1, shadowOpacity: 10, margin: 10, borderRadius: 10, alignItems: 'center' }}>
-                    <Image source={{uri:item.img}} style={{width:35, height: 35}}/>
-                <CardItem footer bordered>
-                    <Text style={[{height:18}]}>{item.key}</Text>
-                </CardItem>
-            </Card></TouchableOpacity>}
-            />
-
-            </View>
-            </ScrollView>
-        
-    );
-}
 export class HangoutLanding extends React.Component {
 
     render() {
@@ -96,7 +33,7 @@ export class HangoutLanding extends React.Component {
                 </Right>
             </Header>
             <Banner text='Hangouts' source='https://d31l02nbp0owar.cloudfront.net/m/t/198/1977194/a-0120.jpg' />
-                <HangoutLanding />
+                {this.props.children}
             </View>
         );
     }
