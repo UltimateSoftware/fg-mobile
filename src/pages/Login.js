@@ -1,12 +1,19 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
+import {Alert, Button, Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import {FgButton} from "../components/FgButton";
 import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
+import {dummySignInAuthorization, onSignIn} from "../Auth";
+import {DataManager, SIGNED_IN_MEMBER} from "../DataManager";
+import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 
 export class Login extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+            username: '',
+            password: ''
+        };
         this.handleSignUp.bind(this);
         this.handleSignIn.bind(this);
     }
@@ -15,44 +22,66 @@ export class Login extends React.Component {
         return (
             <View style={styles.mainViewStyle}>
 
-                <View style={[styles.subViewStyle, {marginTop: 25}]}>
-                    <Text>Sign In</Text>
-                </View>
+                <View style={[styles.subViewStyle, {paddingTop: 87}]}>
+                    // FG Logo
+                    <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
+                    // Page Title
+                    <Text style={{
+                        fontFamily: 'montserrat-light',
+                        fontSize: 22,
+                        color: '#818282',
+                        textAlign: 'center',
+                        marginTop: 5
+                    }}>Sign in.</Text>
 
-                // Username
-                <View style={styles.subViewStyle}>
-                    <TextInput
-                        style={styles.textInputStyle}
-                        placeholder={'Username'}
-                        placeholderTextColor={PLACEHOLDER_TEXT_COLOR}/>
-                </View>
+                    // Login section
+                    <View style={{marginTop: 30}}>
+                        //Username
+                        <TextInput
+                            style={styles.textInputStyle}
+                            placeholder={'Username'}
+                            placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
+                            onChangeText={(text) => this.setState({username: text})}
+                            value={this.state.username}/>
 
-                // Password
-                <View style={[styles.subViewStyle, {marginTop: 25}]}>
-                    <TextInput
-                        style={styles.textInputStyle}
-                        placeholder={'Password'}
-                        placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
-                        secureTextEntry={true}/>
-                </View>
+                        //Password
+                        <TextInput
+                            style={styles.textInputStyle}
+                            placeholder={'Password'}
+                            placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
+                            secureTextEntry={true}
+                            onChangeText={(text) => this.setState({password: text})}
+                            value={this.state.password}/>
+                    </View>
 
-                // Sign in button
-                <View style={styles.subViewStyle}>
-                    <View style={styles.submitButtonStyle}>
+                    <View style={{width: SCREEN_WIDTH / 2, marginTop: 25, marginBottom: 15}}>
                         <FgButton onPress={() => this.handleSignIn()} title={"Sign In"}/>
                     </View>
+
+                    <Button title={"Sign up"} onPress={() => this.handleSignUp()}/>
+
                 </View>
 
-                // Sign up button
-                <View style={styles.subViewStyle}>
-                    <Button title={"Sign up"} onPress={() => this.handleSignUp()}/>
-                </View>
+
 
             </View>
         );
     }
-    handleSignIn() {
-        console.log('Login not implemented.');
+    async handleSignIn() {
+        if(dummySignInAuthorization(this.state.username, this.state.password)) {
+            const { navigation } = this.props;
+            await DataManager.setItemForKey(SIGNED_IN_MEMBER, MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR)
+                .then(() => onSignIn())
+                .then(() => navigation.navigate("SignedIn"))
+                .catch( (error) => console.log("[ERROR - Login > handleSignIn()]:", error.message));
+        }else {
+            Alert.alert(
+                'Oops!',
+                'Invalid username and/or password.',
+                [{text: 'Ok', onPress: () => console.log('Cancel Pressed'), style: 'cancel'}],
+                { cancelable: false }
+            );
+        }
     }
     handleSignUp() {
         const { navigate } = this.props.navigation;

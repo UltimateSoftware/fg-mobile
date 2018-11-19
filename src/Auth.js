@@ -23,3 +23,7 @@ export const isSignedIn = () => {
             .catch(err => reject(err));
     });
 };
+
+export const dummySignInAuthorization = (username, password) => {
+    return (username.toLowerCase() === 'test' && password.toLowerCase() === 'test')
+};

@@ -5,5 +5,12 @@
     "slug": "fg-demo",
     "privacy": "unlisted",
     "orientation": "portrait"
+  },
+  "ios":{
+    "infoPlist": {
+      "NSAppTransportSecurity": {
+        "NSAllowsArbitraryLoads": "true"
+      }
+    }
   }
 }

@@ -7,6 +7,7 @@ import {AsyncStorage} from "react-native";
 
 // Storage Keys
 export const SIGNED_IN_MEMBER = "signed-in-member";
+export const SIGNED_IN_MEMBER_ID = "signed-in-member-id";
 
 export class DataManager {
 
@@ -22,6 +23,14 @@ export class DataManager {
         try {
             const retrievedItem =  await AsyncStorage.getItem(key, null);
             return JSON.parse(retrievedItem);
+        } catch (error) {
+            console.log("[ERROR - DataManager]: ", error.message);
+        }
+    }
+
+    static async removeItemWithKey(key) {
+        try {
+            await AsyncStorage.removeItem(key);
         } catch (error) {
             console.log("[ERROR - DataManager]: ", error.message);
         }

@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, ScrollView, TextInput, Picker} from 'react-native';
+import {StyleSheet, View, Text, Image, ScrollView, TextInput, Picker, Alert, Button} from 'react-native';
 import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {FgButton} from "../components/FgButton";
 import {FgMember} from "../types/FgMember";
 import {FgProfileService} from "../services/FgProfileService";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import {DataManager, SIGNED_IN_MEMBER} from "../DataManager";
+import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
 import {onSignIn} from "../Auth";
 
 export class CreateProfile extends React.Component {
@@ -28,6 +28,7 @@ export class CreateProfile extends React.Component {
             error: '',
         };
         this.handleSubmit.bind(this);
+        this.handleSignIn.bind(this);
     }
 
     render() {
@@ -115,6 +116,9 @@ export class CreateProfile extends React.Component {
                     <View style={styles.submitButtonStyle}>
                         <FgButton onPress={() => this.handleSubmit()} title={"Submit"}/>
                     </View>
+                    <View style={{marginBottom: 20}}>
+                        <Button title={"Back to Sign in"} onPress={() => this.handleSignIn()}/>
+                    </View>
                 </View>
 
             </KeyboardAwareScrollView>
@@ -128,14 +132,29 @@ export class CreateProfile extends React.Component {
         const fgMember = new FgMember(this.state.firstName, this.state.lastName,
             this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
         // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
-        await this.service.createMember(fgMember)
-            .then( (id) => console.log("[CreateProfile]: FgMember created successfully, id: ", id))
-            .then( () => DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember) )
-            .then( (member) => console.log("[CreateProfile]: Local storage successful. FgMember: ", member))
-            .then( () => onSignIn() )
-            .then( () => navigate("SignedIn"))
-            .catch((error) => console.log("[ERROR - CreateProfile > handleSubmit()]: ", error.message))
+        this.service.createMember(fgMember)
+            .then( (id) => {
+                console.log("CreateProfile Id: ", id);
+                if(id) {
+                    DataManager.setItemForKey(SIGNED_IN_MEMBER_ID, id)
+                        .then( () => DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember)
+                        .then(() => onSignIn())
+                        .then(() => navigate("SignedIn")))
+                        .catch( (error) => console.log(error.message));
+                } else {
+                    Alert.alert(
+                        'Server Error',
+                        'Oops! Something went wrong with creating your profile. Please try again.',
+                        [{text: 'Ok', onPress: () => console.log('Cancel Pressed'), style: 'cancel'}],
+                        { cancelable: false }
+                    );
+                }
+            }).catch((error) => console.log("[ERROR - CreateProfile > handleSubmit()]: ", error.message));
+    }
 
+    handleSignIn() {
+        const { navigate } = this.props.navigation;
+        navigate("SignIn");
     }
 
 
@@ -186,6 +205,6 @@ const styles = StyleSheet.create({
     submitButtonStyle: {
         width: '50%',
         marginTop: 20,
-        marginBottom: 40
+        marginBottom: 20
     }
 });

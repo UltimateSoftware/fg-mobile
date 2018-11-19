@@ -3,7 +3,6 @@ import {AppLoading, Font} from 'expo';
 import {createRootNavigator} from "./src/Router";
 import {isSignedIn, onSignOut} from "./src/Auth";
 
-
 export default class App extends React.Component {
 
     state = {
@@ -19,8 +18,6 @@ export default class App extends React.Component {
             'montserrat-bold': require('./assets/fonts/Montserrat-Bold.otf'),
             'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
             'Ionicons' : require("@expo/vector-icons/fonts/Ionicons.ttf")});
-
-        await onSignOut();
 
         await isSignedIn()
             .then(res => this.setState({ signedIn: res }))
