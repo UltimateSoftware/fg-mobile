@@ -1,9 +1,13 @@
 import React from 'react';
+
 import {AppLoading, Font} from 'expo';
 import {createRootNavigator} from "./src/Router";
 import {isSignedIn, onSignOut} from "./src/Auth";
 
 export default class App extends React.Component {
+  state = {
+    isReady: false,
+  };
 
     state = {
         isReady: false,
