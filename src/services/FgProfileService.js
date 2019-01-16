@@ -2,26 +2,26 @@ import {FgMember} from "../types/FgMember";
 
 export class FgProfileService {
 
-    async createMember(member) {
-        return fetch('http://localhost:5000/api/v1/profile', {
+    createMember(member) {
+        return fetch('http://localhost:5000/api/v1/profile/', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                firstName: member.firstName,
-                lastName: member.lastName,
-                schoolName: member.schoolName,
-                gradYear: member.gradYear,
-                inspiration: member.inspiration
-            }) })
-            .then(response => response.json())
-            .then(responseJSON => {
-                return responseJSON.id;
+                firstName: member.firstName ? member.firstName : null,
+                lastName: member.lastName ? member.lastName : null,
+                schoolName: member.schoolName ? member.schoolName : null,
+                gradYear: member.gradYear ? member.gradYear : null,
+                inspiration: member.inspiration ? member.inspiration : null
             })
-            .catch(error => console.log('FgProfileService: ', error));
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                return data.id;
+            })
+            .catch( (error) => console.log(error.message));
     }
-
 
 }
