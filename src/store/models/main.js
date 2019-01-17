@@ -21,7 +21,9 @@ const initialState = {
 
 const actions = {
   createNewUser: createAsyncAction('CREATE_NEW_USER', (firstName, lastName, schoolName, gradYear, bannerSource, avatarSource, inspiration) => {
-    return createNewUser(firstName, lastName, schoolName, gradYear, bannerSource, avatarSource, inspiration);
+    let user = createNewUser(firstName, lastName, schoolName, gradYear, bannerSource, avatarSource, inspiration);
+    console.log('New User ', user);
+    return user;
   })
 };
 

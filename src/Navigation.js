@@ -71,8 +71,8 @@ const MainNavigator =  createBottomTabNavigator(
 
   const InitialNavigator = createStackNavigator({
   
-    ScreenNotOnTabbar: { screen: CreateProfile },
-    Tab: { screen: MainNavigator },
+    ScreenNotOnTabbar: CreateProfile ,
+    Tab: MainNavigator,
     
   },{
       mode: "modal",
