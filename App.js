@@ -10,7 +10,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import { FgProfile } from "./src/pages/FgProfile/FgProfile";
 import {
     MOCKED_MEMBER_DARIA_with_AVATAR_no_BANNER, MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR,
-    MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR
+    MOCKED_MEMBER_DARIA_with_BANNER_no_AVATAR, MOCKED_CHAPTER_with_BANNER_and_AVATAR,
 } from "./src/test/MockedTypes";
 import { FgMember } from "./src/types/FgMember";
 import { HangoutLanding } from "./src/pages/HangoutLanding";
@@ -36,10 +36,24 @@ const mapNavigationStateParamsToProps = (FgProfile) => {
         };
     }
 }
+
+const mapChapterStateParamsToProps = (Chapter) => {
+    return class extends React.Component {
+        render () {
+            return (
+                <View style={{flex: 1}}>
+                    <Chapter info={ MOCKED_CHAPTER_with_BANNER_and_AVATAR } />
+                </View>
+            )
+        }
+    }
+}
+
+
 const Nav =  createBottomTabNavigator(
     {
       Menu: Menu,
-      MyChapter: Chapter,
+      MyChapter: mapChapterStateParamsToProps(Chapter),
       Hangouts: HangoutLanding,
       Events: Events,
       Profile: mapNavigationStateParamsToProps(FgProfile)
