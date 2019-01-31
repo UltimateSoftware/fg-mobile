@@ -1,12 +1,14 @@
 import {createBottomTabNavigator, createStackNavigator, createSwitchNavigator} from "react-navigation";
 
-import { CreateProfile } from "./pages/CreateProfile";
+import {CreateProfile } from "./pages/CreateProfile";
 import {Login} from "./pages/Login";
 import {Menu} from "./pages/Menu";
 import {Chapter} from "./pages/Chapter";
 import {HangoutLanding} from "./pages/HangoutLanding";
 import {Events} from "./pages/Events";
 import {FgProfile} from "./pages/FgProfile";
+import {ChapterSelector} from "./pages/ChapterSelector"
+import {CreateChapter} from "./pages/CreateChapter"
 import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";
 
@@ -22,10 +24,21 @@ export const createRootNavigator = (signedIn = false) => {
     );
 };
 
-export const SignedOutNavigator = createStackNavigator({
-    SignIn: { screen: Login },
-    SignUp: { screen: CreateProfile }
-}, { navigationOptions: { header: null }});
+export const SignedOutNavigator = createStackNavigator(
+    {
+        SignIn: { screen: Login },
+        SignUp: { screen: CreateProfile },
+        SelectChapter: { screen: ChapterSelector },
+        CreateChapter: { screen: CreateChapter }
+    },
+    {
+        initialRouteName: 'SignIn',
+        // initialRouteName: 'CreateChapter',
+        navigationOptions: { 
+            header: null 
+        }
+    }
+);
 
 export const SignedInNavigator =  createBottomTabNavigator(
     {

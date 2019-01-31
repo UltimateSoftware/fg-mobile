@@ -2,17 +2,22 @@ import React from 'react';
 
 import {AppLoading, Font} from 'expo';
 import {createRootNavigator} from "./src/Router";
-import {isSignedIn, onSignOut} from "./src/Auth";
+import {isSignedIn} from "./src/Auth";
+
+import {MOCKED_CHAPTER_with_BANNER_and_AVATAR} from "./src/test/MockedTypes"
 
 export default class App extends React.Component {
-  state = {
-    isReady: false,
-  };
 
-    state = {
-        isReady: false,
-        signedIn: false
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isReady: false,
+            signedIn: false,
+            userId: null,
+            chapterId: null
+        }
+    }
 
     async componentWillMount() {
         await Font.loadAsync({
@@ -42,5 +47,17 @@ export default class App extends React.Component {
 
         const RootNavigator = createRootNavigator(this.state.signedIn);
         return <RootNavigator />;
+    }
+}
+
+const mapChapterStateParamsToProps = (Chapter) => {
+    return class extends React.Component {
+        render () {
+            return (
+                <View style={{flex: 1}}>
+                    <Chapter info={ MOCKED_CHAPTER_with_BANNER_and_AVATAR } />
+                </View>
+            )
+        }
     }
 }

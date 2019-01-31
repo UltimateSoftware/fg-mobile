@@ -72,7 +72,8 @@ export class Login extends React.Component {
             const { navigation } = this.props;
             await DataManager.setItemForKey(SIGNED_IN_MEMBER, MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR)
                 .then(() => onSignIn())
-                .then(() => navigation.navigate("SignedIn"))
+                // .then(() => navigation.navigate("SignedIn"))
+                .then(() => navigation.navigate("SelectChapter"))
                 .catch( (error) => console.log("[ERROR - Login > handleSignIn()]:", error.message));
         }else {
             Alert.alert(
