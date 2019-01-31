@@ -3,6 +3,8 @@ import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
+import {DataManager, CHAPTER} from "../DataManager";
+
 import { MOCKED_CHAPTER_with_BANNER_and_AVATAR } from '../test/MockedTypes';
 
 export class Chapter extends React.Component {
@@ -10,15 +12,32 @@ export class Chapter extends React.Component {
         super(props)
 
         this.state = {
-            info: {}
-        }
+            loading: 'initial',
+            info: null
+        };
     }
-
+    async loadChapter() {
+        return DataManager.getItemWithKey(CHAPTER)
+            .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
+    }
     componentDidMount() {
-        this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR})
+        this.setState({ loading: 'true' });
+        (async () => {
+            var chapter = await this.loadChapter();
+            this.setState({info: chapter})
+        }
+        )();
     }
 
     render() {
+        if( this.state.loading === 'initial' ) {
+            return <Text>Initializing</Text>
+        }
+
+        if( this.state.loading === 'true' ) {
+            return <Text>Loading</Text>
+        }
+
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
             //Wrap entire profile in a ScrollView

@@ -2,6 +2,8 @@ import React from 'react'
 import {StyleSheet, View, Text, Image, TextInput, Picker, Button} from 'react-native';
 import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {FgButton} from "../components/FgButton";
+import {CHAPTER, DataManager} from '../DataManager'
+import {createChapter} from '../services/ChapterService'
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export class CreateChapter extends React.Component {
@@ -89,7 +91,9 @@ export class CreateChapter extends React.Component {
         );
     }
 
-    handleChapterCreate() {
+    async handleChapterCreate() {
+        var chapter = await createChapter(this.state)
+        DataManager.setItemForKey(CHAPTER, chapter);
         const { navigate } = this.props.navigation;
         navigate("SignedIn")
     }
