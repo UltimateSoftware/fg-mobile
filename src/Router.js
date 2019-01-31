@@ -32,11 +32,7 @@ export const SignedOutNavigator = createStackNavigator(
         CreateChapter: { screen: CreateChapter }
     },
     {
-        initialRouteName: 'SignIn',
-        // initialRouteName: 'CreateChapter',
-        navigationOptions: { 
-            header: null 
-        }
+        initialRouteName: 'SignIn'
     }
 );
 
@@ -49,6 +45,7 @@ export const SignedInNavigator =  createBottomTabNavigator(
         Profile: FgProfile
     },
     {
+        initialRouteName: 'Profile',
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, horizontal, tintColor }) => {
                 const { routeName } = navigation.state;

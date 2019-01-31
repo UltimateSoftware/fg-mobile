@@ -49,10 +49,10 @@ export const MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER = new FgMember(
 );
 
 export const MOCKED_CHAPTER_with_BANNER_and_AVATAR = new ChProfile(
-    'Cypress Bay',
-    'Chapter XII',
+    'Ultimate Software',
+    'FG Chapter',
     'https://en.wikipedia.org/wiki/School#/media/File:Larkmead_School,_Abingdon,_Oxfordshire.png',
     'https://dw3jhbqsbya58.cloudfront.net/school-mascot/5/d/f/5df2a4f9-1148-4246-9bf0-1c085ebdc228.gif?version=636443555400000000',
-    "boop",
+    "Our mission is to be kinder.",
     []
 );

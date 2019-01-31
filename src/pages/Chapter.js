@@ -6,11 +6,16 @@ import {Banner} from "../components/Banner";
 import { MOCKED_CHAPTER_with_BANNER_and_AVATAR } from '../test/MockedTypes';
 
 export class Chapter extends React.Component {
-    info = this.props.info
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            info: {}
+        }
+    }
 
     componentDidMount() {
-        chapter = MOCKED_CHAPTER_with_BANNER_and_AVATAR
-        this.info = chapter
+        this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR})
     }
 
     render() {
@@ -22,44 +27,32 @@ export class Chapter extends React.Component {
             <View style={styles.container}>
 
                 // Render the Banner
-                <Banner source={this.info.bannerSource}/>
+                <Banner source={this.state.info.bannerSource}/>
 
                 // Render the Avatar
                 <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
                     <Avatar
                         avatarSize={'large'}
-                        name={this.info.schoolName}
-                        source={this.info.avatarSource}/>
+                        name={this.state.info.schoolName}
+                        source={this.state.info.avatarSource}/>
                 </View>
 
-                // Render the member's name, school, and graduation year
+
                 <Text style={[styles.textContainer, { top: bannerHeight * 1.5 }]}>
-                    <Text style={styles.nameLabel}>{this.info.schoolName}</Text>{'\n'}
-                    <Text style={styles.gradYearLabel}>Class of {this.info.chapter}</Text>{'\n'}
+                    <Text style={styles.nameLabel}>{this.state.info.schoolName}</Text>{'\n'}
+                    <Text style={styles.gradYearLabel}>{this.state.info.chapter}</Text>{'\n'}
                 </Text>
 
                 // Render the 'Inspiration' title with horizontal dividers on each side
                 <View style={[styles.inspirationTitle, {top: bannerHeight * 2.345}]}>
                     <View style={styles.inspirationLine}/>
-                    <Text style={styles.inspirationLabel}>  Our History  </Text>
+                    <Text style={styles.inspirationLabel}>  Our Mission  </Text>
                     <View style={styles.inspirationLine}/>
                 </View>
 
                 // Render the member's inspiration block
                 <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
-                    {this.info.history}
-                </Text>
-
-                <View>
-                <Avatar
-                        avatarSize={'small'}
-                        name={this.info.leadershipAvatars.name}
-                        source={this.info.leadershipAvatars.avatarSource}/>
-                </View>
-                // Render the member's name, school, and graduation year
-                <Text style={[styles.textContainer, { top: bannerHeight * 1.5 }]}>
-                    <Text style={styles.nameLabel}>{this.info.leadershipAvatars.name}</Text>{'\n'}
-                    <Text style={styles.gradYearLabel}>Class of {this.info.leadershipAvatars.title}</Text>{'\n'}
+                    {this.state.info.history}
                 </Text>
             </View>
             </ScrollView>

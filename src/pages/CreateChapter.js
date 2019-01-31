@@ -10,6 +10,7 @@ export class CreateChapter extends React.Component {
 
         this.state = {
             chapterName: null,
+            chapterSubtext: null,
             description: null,
             mission: null
         }
@@ -46,8 +47,15 @@ export class CreateChapter extends React.Component {
                         placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
                         onChangeText={(text) => this.setState({chapterName: text})}
                         value={this.state.chapterName}/>
-                </View>
 
+                    <TextInput
+                        style={styles.textInputStyle}
+                        placeholder={'Chapter Subtext'}
+                        placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
+                        onChangeText={(text) => this.setState({chapterSubtext: text})}
+                        value={this.state.chapterSubtext}/>
+                </View>
+{/* 
                 // Chapter Description text input
                 <View style={[styles.subViewStyle, {marginTop: 5}]}>
                     <Text style={styles.inputLabelStyle}>Chapter Description</Text>
@@ -55,7 +63,7 @@ export class CreateChapter extends React.Component {
                                multiline={true}
                                onChangeText={(text) => this.setState({description: text})}
                                value={this.state.description}/>
-                </View>
+                </View> */}
 
                 // Chapter Mission text input
                 <View style={[styles.subViewStyle, {marginTop: 15}]}>
