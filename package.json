@@ -9,9 +9,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-navigation/core": "^3.0.2",
     "expo": "^31.0.2",
-    "react": "16.7.0-alpha.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31-with-hooks-dangerzone.tar.gz"
+    "react": "16.7.0-alpha.2",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31-with-hooks-dangerzone.tar.gz",
+    "react-navigation": "^3.0.9",
+    "react-navigation-hooks": "^1.0.0-alpha.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
