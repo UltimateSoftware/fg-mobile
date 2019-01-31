@@ -18,13 +18,18 @@ export class Chapter extends React.Component {
     }
     async loadChapter() {
         return DataManager.getItemWithKey(CHAPTER)
-            .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
+            .catch((error) => {return ("[ERROR - FgProfile > loadFgMember() ]: ", error.message)});
     }
     componentDidMount() {
         this.setState({ loading: 'true' });
         (async () => {
-            var chapter = await this.loadChapter();
-            this.setState({info: chapter})
+            try {
+                var chapter = await this.loadChapter();
+                console.log('in here')
+                this.setState({info: chapter, loading: false})
+            } catch(e) {
+                this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR, loading: false})
+            }
         }
         )();
     }

@@ -3,10 +3,12 @@ import {StyleSheet, View, Text, Image, TextInput, Picker, Button} from 'react-na
 import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {FgButton} from "../components/FgButton";
 import {CHAPTER, DataManager} from '../DataManager'
-import {createChapter} from '../services/ChapterService'
+import {ChapterService} from '../services/ChapterService'
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export class CreateChapter extends React.Component {
+    service = new ChapterService()
+
     constructor(props) {
         super(props)
 
@@ -92,7 +94,7 @@ export class CreateChapter extends React.Component {
     }
 
     async handleChapterCreate() {
-        var chapter = await createChapter(this.state)
+        var chapter = await this.service.createChapter(this.state)
         DataManager.setItemForKey(CHAPTER, chapter);
         const { navigate } = this.props.navigation;
         navigate("SignedIn")
