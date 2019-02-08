@@ -7,6 +7,8 @@ import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager
 import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import {TouchableHighlight} from 'react-native';
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -106,6 +108,13 @@ export class FgProfile extends React.Component {
                         {this.state.member.inspiration}
                     </Text>
                 </View>
+
+                //Icon
+                 <TouchableHighlight onPress={() => this.handleSignOut()}>
+                    <View style={styles.subViewStyle}>
+                        <Ionicons name="md-settings" size={25} color="black" />
+                    </View>
+                </TouchableHighlight>
 
                 //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
                 <View style={styles.subViewStyle}>
