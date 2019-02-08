@@ -2,17 +2,20 @@ import React from 'react';
 
 import {AppLoading, Font} from 'expo';
 import {createRootNavigator} from "./src/Router";
-import {isSignedIn, onSignOut} from "./src/Auth";
+import {isSignedIn} from "./src/Auth";
 
 export default class App extends React.Component {
-  state = {
-    isReady: false,
-  };
 
-    state = {
-        isReady: false,
-        signedIn: false
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isReady: false,
+            signedIn: false,
+            userId: null,
+            chapterId: null
+        }
+    }
 
     async componentWillMount() {
         await Font.loadAsync({
