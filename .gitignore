@@ -1,4 +1,6 @@
 node_modules/**/*
+yarn.*
+react-navigation/*
 .expo/*
 npm-debug.*
 *.jks
