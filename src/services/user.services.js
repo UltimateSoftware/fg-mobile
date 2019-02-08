@@ -1,4 +1,30 @@
-import { DataManager,  SIGNED_IN_MEMBER} from '../DataManager'
+import { DataManager,  SIGNED_IN_MEMBER, CHAPTER} from '../DataManager'
+
+const selectChapter = async(currentUser, chapterName) => {
+    return new Promise(async(resolve, reject) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ currentUser, chapterName })
+        };
+        try {
+            var request = await fetch(`http://localhost:5000/users/applytochapter`, requestOptions);
+            var response = await handleResponse(request)
+            DataManager.setItemForKey(CHAPTER, response)
+            resolve(response)
+        } catch(e) {
+            // Returning true for now
+            // DataManager.setItemForKey(SIGNED_IN_MEMBER, response) Model needs to be defined
+            console.log('user not in system? maybe?')
+            // Normally you would reject but until implemented will always resolve
+            var response = { currentUser, chapterName }
+            DataManager.setItemForKey(CHAPTER, response)
+            resolve(response)
+            // reject(e)
+        }
+    })
+} 
+
 
 /* function signiture to be replaced by a type */
 const login = async (username, password) => {
@@ -57,34 +83,36 @@ const register = async (username, email, password) => {
     /*
     TODO: Hook up service with FG-profile
     */
-   return new Promise(async (resolve, reject) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password })
-    };
-    try {
-        var request = await fetch(`http://localhost:5000/users/register`, requestOptions);
-        var response = await handleResponse(request)
-        DataManager.setItemForKey(SIGNED_IN_MEMBER, response)
-        resolve(response)
-    } catch(e) {
-        // Returning true for now
-        // DataManager.setItemForKey(SIGNED_IN_MEMBER, response) Model needs to be defined
-        console.log('user not in system? maybe?')
-        // Normally you would reject but until implemented will always resolve
-        var response = { username, email, password }
-        DataManager.setItemForKey(SIGNED_IN_MEMBER, response)
-        resolve(response)
-        // reject(e)
-    }
-})
+   return new Promise(
+    async (resolve, reject) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+        };
+        try {
+            var request = await fetch(`http://localhost:5000/users/register`, requestOptions);
+            var response = await handleResponse(request)
+            DataManager.setItemForKey(SIGNED_IN_MEMBER, response)
+            resolve(response)
+        } catch(e) {
+            // Returning true for now
+            // DataManager.setItemForKey(SIGNED_IN_MEMBER, response) Model needs to be defined
+            console.log('user not in system? maybe?')
+            // Normally you would reject but until implemented will always resolve
+            var response = { username, email, password }
+            DataManager.setItemForKey(SIGNED_IN_MEMBER, response)
+            resolve(response)
+            // reject(e)
+        }
+    })
 }
 
 export const userService = {
     login,
     logout,
     register,
+    selectChapter,
     // getAll,
     // getById,
     // update,
