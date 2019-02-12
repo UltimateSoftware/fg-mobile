@@ -74,6 +74,13 @@ export class FgProfile extends React.Component {
                     </View>
                 </View>
 
+                //Edit Button
+                <TouchableHighlight onPress={() => this.handleSignOut()}>
+                    <View style={{position: 'absolute', right: '5%', marginTop: (bannerHeight+10)}}>
+                        <Ionicons name="md-settings" size={35} color='#59828B'/>
+                    </View>
+                </TouchableHighlight>
+
                 //Avatar
                 <View style={styles.subViewStyle}>
                     <View style={{marginTop: (bannerHeight/2)}}>
@@ -108,13 +115,6 @@ export class FgProfile extends React.Component {
                         {this.state.member.inspiration}
                     </Text>
                 </View>
-
-                //Icon
-                 <TouchableHighlight onPress={() => this.handleSignOut()}>
-                    <View style={styles.subViewStyle}>
-                        <Ionicons name="md-settings" size={25} color="black" />
-                    </View>
-                </TouchableHighlight>
 
                 //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
                 <View style={styles.subViewStyle}>
