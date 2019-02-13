@@ -2,13 +2,12 @@ import React from 'react';
 import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
+import {EditButton} from "../components/EditButton";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
 import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import {TouchableHighlight} from 'react-native';
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -73,14 +72,7 @@ export class FgProfile extends React.Component {
                         <Banner source={this.state.member.bannerSource}/>
                     </View>
                 </View>
-
-                //Edit Button
-                <TouchableHighlight onPress={() => this.handleSignOut()}>
-                    <View style={{position: 'absolute', right: '5%', marginTop: (bannerHeight+10)}}>
-                        <Ionicons name="md-settings" size={35} color='#59828B'/>
-                    </View>
-                </TouchableHighlight>
-
+                
                 //Avatar
                 <View style={styles.subViewStyle}>
                     <View style={{marginTop: (bannerHeight/2)}}>
@@ -89,6 +81,12 @@ export class FgProfile extends React.Component {
                             name={this.state.member.fullName()}
                             source={this.state.member.avatarSource}/>
                     </View>
+                </View>
+
+                //Edit Button
+                <View style={{position: 'absolute', right: 10, marginTop: (bannerHeight+10)}}>
+                    <EditButton 
+                        onPress={() => this.handleSignOut()}/> 
                 </View>
 
                 //Name, School, and Grad Year
