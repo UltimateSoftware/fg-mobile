@@ -5,4 +5,5 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
-*lock
+yarn.lock
+package-lock.json
