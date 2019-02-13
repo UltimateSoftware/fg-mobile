@@ -27,4 +27,45 @@ export class ChapterService {
         })
     }
 
+    async joinChapter(chapter) {
+        return new Promise(async(resolve, reject) => {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chapter })
+            };
+            try {
+                var request = await fetch(`http://localhost:5000/chapters/joinChapter`, requestOptions);
+                var response = await handleResponse(request)
+                DataManager.setItemForKey(CHAPTER, response)
+                resolve(response)
+            } catch(e) {
+                // Returning true for now
+                // DataManager.setItemForKey(CHAPTER, response) Model needs to be defined
+                console.log('Chapter not in system? maybe?')
+                // Normally you would reject but until implemented will always resolve
+                var response = JSON.stringify({ 
+                    schoolName: "Cypress Bay",
+                    chapter: "",
+                    bannerSource: "",
+                    avatarSource: "",
+                    history: "",
+                    studentAvatars: "",
+                    leadershipAvatars: ""
+                })
+                response = await handleResponse(response)
+                DataManager.setItemForKey(CHAPTER, response)
+                resolve(response)
+                // reject(e)
+            }
+        })
+    }
+
+    async handleResponse(response) {
+        return new Promise(async (resolve, reject) => {
+            let {schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars} = JSON.parse(response)
+            resolve(new ChProfile(schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars))
+        });
+    }
+
 }
