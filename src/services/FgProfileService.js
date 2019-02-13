@@ -59,4 +59,42 @@ export class FgProfileService extends React.Component{
         
       }
 
+    async updateMember(member) {
+        return new Promise(async (accept, reject) => {
+            try {
+                let response = await fetch(`http://localhost:5000/profiles/${member.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        firstName: member.firstName ? member.firstName : null,
+                        lastName: member.lastName ? member.lastName : null,
+                        schoolName: member.schoolName ? member.schoolName : null,
+                        gradYear: member.gradYear ? member.gradYear : null,
+                        inspiration: member.inspiration ? member.inspiration : null,
+                        chapterId: member.chapterId ? member.chapterId : null
+                    })
+                });
+
+                
+                try {
+                    var data = await response.json();
+                    if (!data.id) {
+                        console.log("Error parsing data id from response")
+                        reject('NO ID MEMBER ON DATA');
+                    }
+                    accept(data.id);
+                } catch (error) {
+                    reject('JSON PARSE ERROR');
+                }
+
+            } catch (error) {
+                reject('HTTP REQUEST ERROR');
+            }     
+        })
+    }
+
+
 }

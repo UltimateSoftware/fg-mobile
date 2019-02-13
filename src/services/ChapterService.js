@@ -1,5 +1,6 @@
 import {ChProfile} from "../types/ChProfile";
-import {config} from "../config/index";
+import { DataManager, CHAPTER} from '../DataManager'
+import config from '../config';
 
 export class ChapterService {
 
@@ -7,8 +8,7 @@ export class ChapterService {
         return new Promise(async (resolve) => {
             try {
                 console.log(chapter)
-                var endpoint = `http://${config.default.api.host}:${config.default.api.port}/api/v1/profile`
-                var result = await fetch(endpoint, {
+                var result = await fetch(`http://${config.api.host}:${config.api.port}/api/v1/profile/`, {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -24,9 +24,55 @@ export class ChapterService {
                 resolve(result.json())
             } catch (e) {
                 console.log('resolving error')
-                resolve(new ChProfile(chapter.chapterName, chapter.chapterSubtext, 'https://en.wikipedia.org/wiki/School#/media/File:Larkmead_School,_Abingdon,_Oxfordshire.png', 'https://dw3jhbqsbya58.cloudfront.net/school-mascot/5/d/f/5df2a4f9-1148-4246-9bf0-1c085ebdc228.gif?version=636443555400000000', chapter.mission))
+                resolve(new ChProfile(chapter.chapterId, chapter.chapterName, chapter.chapterSubtext, 'https://en.wikipedia.org/wiki/School#/media/File:Larkmead_School,_Abingdon,_Oxfordshire.png', 'https://dw3jhbqsbya58.cloudfront.net/school-mascot/5/d/f/5df2a4f9-1148-4246-9bf0-1c085ebdc228.gif?version=636443555400000000', chapter.mission))
             }
         })
+    }
+
+    async joinChapter(chapterId) {
+        return new Promise(async(resolve, reject) => {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: chapterId })
+            };
+            try {
+                var request = await fetch(`http://${config.api.host}:${config.api.port}/chapters`, requestOptions);
+                var response = await this.handleJoinChapterResponse(request)
+                DataManager.setItemForKey(CHAPTER, response)
+                resolve(response)
+            } catch(e) {
+                if (process.env.NODE_ENV === "development") {
+                    console.log('Chapter not in system? maybe?')
+                    var response = JSON.stringify({ 
+                        chapterId: "cypressb",
+                        schoolName: "Cypress Bay",
+                        chapter: "",
+                        bannerSource: "",
+                        avatarSource: "",
+                        history: "",
+                        studentAvatars: "",
+                        leadershipAvatars: ""
+                    })
+                    response = await this.handleJoinChapterResponse(response)
+                    DataManager.setItemForKey(CHAPTER, response)
+                    resolve(response)
+                }
+                
+                reject(e)
+            }
+        })
+    }
+
+    async handleResponse(response) {
+        return new Promise(async (resolve, reject) => {
+            try {
+            let {chapterId, schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars} = JSON.parse(response)
+            resolve(new ChProfile(chapterId, schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars))
+            } catch (e) {
+                reject(e);
+            }
+        });
     }
 
 }

@@ -49,6 +49,7 @@ export const MOCKED_MEMBER_DARIA_no_AVATAR_no_BANNER = new FgMember(
 );
 
 export const MOCKED_CHAPTER_with_BANNER_and_AVATAR = new ChProfile(
+    'ultimate',
     'Ultimate Software',
     'FG Chapter',
     'https://en.wikipedia.org/wiki/School#/media/File:Larkmead_School,_Abingdon,_Oxfordshire.png',

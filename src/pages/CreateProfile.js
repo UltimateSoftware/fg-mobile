@@ -126,7 +126,7 @@ export class CreateProfile extends React.Component {
      handleSubmit() {
         // Create member object from form field values
         const fgMember = new FgMember(this.state.firstName, this.state.lastName,
-            this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
+            this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText, null);
         // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
         this.service.createMember(fgMember);
         this.props.navigation.navigate('Auth');
