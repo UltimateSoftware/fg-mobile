@@ -3,15 +3,41 @@ import Expo from 'expo';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, FlatList, Image, ListView, TouchableOpacity} from 'react-native';
-import { Header, Left, Button, Body, Right, Title, Card, H2, CardItem} from 'native-base';
+import { Tile } from 'react-native-elements';
+import { Header, Left, Button, Body, Right, Title, Card, H2, CardItem, Thumbnail} from 'native-base';
 
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 import {Banner} from "../components/Banner";
+import { black } from 'ansi-colors';
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
 //TODO: Status bar background should be white not translucent
+data = [
+    {key: '1', id: 'Pot Luck', date: 'January, 10, 2019'},
+    {key: '2', id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
+    {key: '3', id: 'James Albright Foundation', date: 'March 10, 2019'},
+    {key: '4', id: 'Starbucks MeetUp', date: 'April 10, 2019'},
+    {key: '5', id: 'JFK Library', date: 'May 10, 2019'},
+    {key: '6', id: 'Jillian Fitness', date: 'June 10, 2019'},
+    {key: '7', id: 'Jimmy Kimell Watch Party', date: 'July 10, 2019'},
+    {key: '8', id: 'Julie\'s Birhtday', date: 'August 10, 2019'},
+    {key: '9', id: 'Ronald McDonald Foundation', date: 'September 10, 2019'},
+    {key: '10', id: 'Pot Luck', date: 'January, 10, 2019'},
+    {key: '11', id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
+    {key: '12', id: 'James Albright Foundation', date: 'March 10, 2019'},
+    {key: '13', id: 'Starbucks MeetUp', date: 'April 10, 2019'},
+    {key: '14', id: 'JFK Library', date: 'May 10, 2019'},
+  ];
+
+function checkIsEven(n) {
+    if(n%2 == 0) {
+        return true;
+    }
+    return false;
+}
+
 const ListOfHangouts = () => {return (
 <ScrollView
                 style={styles.scrollViewStyle}
@@ -19,26 +45,13 @@ const ListOfHangouts = () => {return (
             >
  
             <View style={styles.container}>
-            <FlatList
-            data={[
-                {key: '1', id: 'Pot Luck', date: 'January, 10, 2019'},
-                {key: '2', id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
-                {key: '3', id: 'James Albright Foundation', date: 'March 10, 2019'},
-                {key: '4', id: 'Starbucks MeetUp', date: 'April 10, 2019'},
-                {key: '5', id: 'JFK Library', date: 'May 10, 2019'},
-                {key: '6', id: 'Jillian Fitness', date: 'June 10, 2019'},
-                {key: '7', id: 'Jimmy Kimell Watch Party', date: 'July 10, 2019'},
-                {key: '8', id: 'Julie\'s Birhtday', date: 'August 10, 2019'},
-                {key: '9', id: 'Ronald McDonald Foundation', date: 'September 10, 2019'},
-                {key: '10', id: 'Pot Luck', date: 'January, 10, 2019'},
-                {key: '11', id: 'Jackson Memorial', date: 'Feburary 10, 2019'},
-                {key: '12', id: 'James Albright Foundation', date: 'March 10, 2019'},
-                {key: '13', id: 'Starbucks MeetUp', date: 'April 10, 2019'},
-                {key: '14', id: 'JFK Library', date: 'May 10, 2019'},
-            ]}
-            renderItem={({item}) => <Card style={{width: SCREEN_WIDTH*.85, flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}><Text style={styles.item}>{item.id}</Text><Text style={[styles.item]}>{item.date}</Text></Card>}
-            />
-
+            {data.map((r, i) => 
+                        <View key={i} style = {[styles.item, {marginRight: checkIsEven(i) ? SCREEN_WIDTH*.05 : 0}]}>
+                             <Image style={{height:100, width:100, display: 'flex'}} source={{uri: 'http://via.placeholder.com/100'}}/>
+                             <Text>{r.id}</Text>
+                        </View>
+                )}
+        }
             </View>
             </ScrollView>
 );}
@@ -111,9 +124,12 @@ const styles = StyleSheet.create({
         paddingBottom: 5
     },
     container: {
+        display: 'flex',
         flex: 1,
-        alignItems: 'center',
-        position: 'relative'
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: SCREEN_WIDTH*.95,
+        justifyContent: 'center'
     },
     textContainer: {
         position: 'absolute',
@@ -127,8 +143,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     item: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: 10,
-        height: 44,
-        width: SCREEN_WIDTH*.40
+        height: SCREEN_WIDTH*.4,
+        width: SCREEN_WIDTH*.4,
+        borderColor: '#3A6A75',
+        borderWidth: 1,
+        marginBottom: SCREEN_HEIGHT*.03,
+        borderRadius: 20,
     },
 });
