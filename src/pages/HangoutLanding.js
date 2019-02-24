@@ -46,9 +46,11 @@ const ListOfHangouts = () => {return (
  
             <View style={styles.container}>
             {data.map((r, i) => 
-                        <View key={i} style = {[styles.item, {marginRight: checkIsEven(i) ? SCREEN_WIDTH*.05 : 0}]}>
+                        <View style={styles.shadowBox}>
+                        <View key={i} style = {[styles.item, {marginRight: checkIsEven(i) ? SCREEN_WIDTH*.025 : 0}]}>
                              <Image style={{height:100, width:100, display: 'flex'}} source={{uri: 'http://via.placeholder.com/100'}}/>
-                             <Text>{r.id}</Text>
+                             <Text style={{marginTop: 10, textAlign: 'center', color: 'rgba(0, 0, 0, 0.84)'}}>{r.id}</Text>
+                        </View>
                         </View>
                 )}
         }
@@ -128,8 +130,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        width: SCREEN_WIDTH*.95,
-        justifyContent: 'center'
+        width: SCREEN_WIDTH*.975,
+        justifyContent: 'center',
     },
     textContainer: {
         position: 'absolute',
@@ -143,15 +145,24 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     item: {
+        backgroundColor: 'white',
+        opacity: 1,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 10,
+        padding: 3,
         height: SCREEN_WIDTH*.4,
         width: SCREEN_WIDTH*.4,
-        borderColor: '#3A6A75',
+        borderColor: 'rgba(58, 106, 117, 0.18)',
         borderWidth: 1,
         marginBottom: SCREEN_HEIGHT*.03,
-        borderRadius: 20,
+        borderRadius : 20,
+    },
+    shadowBox: {
+		shadowColor: "#000", 
+		shadowOffset: { width: 1, height: 5 }, 
+		shadowOpacity: 0.08, 
+		shadowRadius: 10,
+        elevation: 10,
     },
 });
