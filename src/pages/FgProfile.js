@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Modal, Button, ScrollView, StyleSheet, Text, View, Alert, TouchableHighlight} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {EditButton} from "../components/EditButton";
@@ -8,6 +8,7 @@ import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager
 import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
+import {ProfileForm} from "../components/ProfileForm";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -20,7 +21,8 @@ export class FgProfile extends React.Component {
         super();
         this.state = {
             loading: 'initial',
-            member: null
+            member: null,
+            modalVisible: false
         };
         this.handleSignOut.bind(this);
         this.handleEdit.bind(this);
@@ -30,6 +32,9 @@ export class FgProfile extends React.Component {
     async loadFgMember() {
         return DataManager.getItemWithKey(SIGNED_IN_MEMBER)
             .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
+    }
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
     }
 
     componentDidMount() {
@@ -87,7 +92,7 @@ export class FgProfile extends React.Component {
                 //Edit Button
                 <View style={{position: 'absolute', right: 10, marginTop: (bannerHeight+10)}}>
                     <EditButton 
-                        onPress={() => this.handleEdit()}/> 
+                        onPress={() => {this.setModalVisible(true);}}/>
                 </View>
 
                 //Name, School, and Grad Year
@@ -119,6 +124,21 @@ export class FgProfile extends React.Component {
                 <View style={styles.subViewStyle}>
                     <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
                 </View>
+
+                <View style={{marginTop: 22}}>
+                    <Modal
+                        animationType="slide"
+                        transparent={false}
+                        visible={this.state.modalVisible}
+                        onRequestClose={() => {
+                            Alert.alert('Modal has been closed.');
+                        }}>
+
+                                <ProfileForm></ProfileForm>
+
+                    </Modal>
+                </View>
+
 
             </ScrollView>
         );

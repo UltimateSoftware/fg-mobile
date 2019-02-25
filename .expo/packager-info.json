@@ -1,9 +1,9 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19003,
+  "packagerPid": 5741,
   "devToolsPort": 19002,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://jd-75x.anonymous.fg-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.jd-75x.anonymous.fg-mobile.exp.direct",
+  "ngrokPid": 5766
 }

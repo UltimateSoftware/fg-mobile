@@ -4,7 +4,7 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {DataManager, CHAPTER} from "../DataManager";
-
+import {ChProfile} from "../types/ChProfile";
 import { MOCKED_CHAPTER_with_BANNER_and_AVATAR } from '../test/MockedTypes';
 
 export class Chapter extends React.Component {
@@ -22,16 +22,25 @@ export class Chapter extends React.Component {
     }
     componentDidMount() {
         this.setState({ loading: 'true' });
-        (async () => {
-            try {
-                var chapter = await this.loadChapter();
-                console.log('in here')
-                this.setState({info: chapter, loading: false})
-            } catch(e) {
-                this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR, loading: false})
-            }
-        }
-        )();
+        this.loadChapter()
+            .then( (data) => {
+              //TODO: data is currently null
+                const info = new ChProfile(
+                    data.schoolName,
+                    data.chapter,
+                    data.bannerSource,
+                    data.avatarSource,
+                    data.history,
+                    data.studentAvatars,
+                    data.leadershipAvatars
+                );
+                //this.setState({member: fgMember, loading: 'false'});
+                this.setState({info, loading: false});
+            })
+            .catch( (error) => {
+              console.log(error.message);
+              this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR, loading: false})
+            });
     }
 
     render() {
