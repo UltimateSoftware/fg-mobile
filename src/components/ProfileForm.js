@@ -6,7 +6,7 @@ import {FgMember} from "../types/FgMember";
 import {FgProfileService} from "../services/FgProfileService";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
-import {onSignIn} from "../Auth";
+import {onSignIn, isSignedIn} from "../Auth";
 
 export class ProfileForm extends Component {
 
@@ -27,11 +27,14 @@ export class ProfileForm extends Component {
             hasError: false,
             error: '',
         };
-        this.handleSubmit.bind(this);
+        // this.handleSubmit.bind(this);
         this.handleSignIn.bind(this);
     }
 
     render() {
+        
+        const { title, onPressFunction, state } = this.props;
+        
         return (
 
             <KeyboardAwareScrollView
@@ -52,7 +55,7 @@ export class ProfileForm extends Component {
                         fontSize: 22,
                         color: '#818282',
                         textAlign: 'center'
-                    }}>Create your profile.</Text>
+                    }}>{title}</Text>
                 </View>
 
                 // First name input
@@ -132,9 +135,13 @@ export class ProfileForm extends Component {
         const fgMember = new FgMember(this.state.firstName, this.state.lastName,
             this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
         // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
-        this.service.createMember(fgMember)
+        if(isSignedIn) {
+            this.service.updateMember(fgMember);
+        } else {
+            this.service.createMember(fgMember)
             .then( (id) => {
                 console.log("CreateProfile Id: ", id);
+
                 if(id) {
                     DataManager.setItemForKey(SIGNED_IN_MEMBER_ID, id)
                         .then( () => DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember)
@@ -150,6 +157,7 @@ export class ProfileForm extends Component {
                     );
                 }
             }).catch((error) => console.log("[ERROR - CreateProfile > handleSubmit()]: ", error.message));
+        }
     }
 
     handleSignIn() {

@@ -23,6 +23,7 @@ export class FgProfile extends React.Component {
             member: null
         };
         this.handleSignOut.bind(this);
+        this.handleEdit.bind(this);
     }
 
     // Load current signed in member from local storage.
@@ -86,7 +87,7 @@ export class FgProfile extends React.Component {
                 //Edit Button
                 <View style={{position: 'absolute', right: 10, marginTop: (bannerHeight+10)}}>
                     <EditButton 
-                        onPress={() => this.handleSignOut()}/> 
+                        onPress={() => this.handleEdit()}/> 
                 </View>
 
                 //Name, School, and Grad Year
@@ -131,6 +132,11 @@ export class FgProfile extends React.Component {
             .then(() => navigation.navigate("SignedOut"))
             .catch( (error) => console.log(error.message));
 
+    }
+
+    handleEdit() {
+        const { navigation } = this.props;
+        navigation.navigate("EditProfile");
     }
 
 }

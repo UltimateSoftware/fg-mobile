@@ -1,4 +1,5 @@
 import {FgMember} from "../types/FgMember";
+import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
 
 export class FgProfileService {
 
@@ -22,6 +23,10 @@ export class FgProfileService {
                 return data.id;
             })
             .catch( (error) => console.log(error.message));
+    }
+
+    updateMember(member) {
+        // TODO
     }
 
 }
