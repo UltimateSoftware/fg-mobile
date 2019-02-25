@@ -1,6 +1,6 @@
 import {createBottomTabNavigator, createStackNavigator, createSwitchNavigator} from "react-navigation";
 
-import {CreateProfile } from "./pages/CreateProfile";
+import {CreateProfile} from "./pages/CreateProfile";
 import {Login} from "./pages/Login";
 import {Menu} from "./pages/Menu";
 import {Chapter} from "./pages/Chapter";

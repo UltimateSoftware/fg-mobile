@@ -5,6 +5,7 @@ import SignIn from '../pages/Login'
 import SignUp from '../pages/SignUp'
 import AppView from '../views/AppView'
 import FgProfile from '../pages/FgProfile'
+import EditProfile from '../pages/CreateProfile'
 
 export const SignedOut = createNavigator(
     AppView,
