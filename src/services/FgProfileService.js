@@ -1,9 +1,10 @@
-import {FgMember} from "../types/FgMember";
+
+import {getCreateProfileUrl} from './FgServiceConfiguration'
 
 export class FgProfileService {
 
     createMember(member) {
-        return fetch('http://localhost:5000/api/v1/profile/', {
+        return fetch(getCreateProfileUrl(), {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -17,10 +18,8 @@ export class FgProfileService {
                 inspiration: member.inspiration ? member.inspiration : null
             })
         })
-            .then((response) => response.json())
-            .then((data) => {
-                return data.id;
-            })
+            .then((response) => { return response.json(); })
+            .then((data) => { return data.id; })
             .catch( (error) => console.log(error.message));
     }
 

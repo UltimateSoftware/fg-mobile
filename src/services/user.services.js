@@ -64,6 +64,7 @@ function logout() {
 const handleResponse = async(response) => {
     return new Promise(async (resolve, reject) => {
         const text = await response.text();
+        console.log(text)
         const data = text && JSON.parse(text);
 
         if (!response.ok) {
