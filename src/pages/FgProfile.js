@@ -66,6 +66,12 @@ export class FgProfile extends React.Component {
         return (
             //Wrap entire profile in a ScrollView
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
+                
+                <View style={styles.requestChapterAccess}>
+                    <Text style={{color: '#FFF'}}>
+                        Request access to a chapter
+                    </Text>
+                </View>
 
                 //Banner
                 <View style={styles.subViewStyle}>
@@ -180,6 +186,10 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         color: '#818282',
         margin: 20
+    },
+    requestChapterAccess: {
+        backgroundColor: '#F313B7',
+        height: '5%'
     }
 
 });
