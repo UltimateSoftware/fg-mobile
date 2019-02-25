@@ -42,7 +42,8 @@ export class FgProfile extends React.Component {
                     data.gradYear,
                     data.bannerSource,
                     data.avatarSource,
-                    data.inspiration
+                    data.inspiration,
+                    data.chapterId
                 );
                 //this.setState({member: fgMember, loading: 'false'});
                 this.setState({member: fgMember, loading: false});

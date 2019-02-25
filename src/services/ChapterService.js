@@ -27,12 +27,12 @@ export class ChapterService {
         })
     }
 
-    async joinChapter(chapter) {
+    async joinChapter(chapterId) {
         return new Promise(async(resolve, reject) => {
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chapter })
+                body: JSON.stringify({ chapterId })
             };
             try {
                 var request = await fetch(`http://localhost:5000/chapters/joinChapter`, requestOptions);

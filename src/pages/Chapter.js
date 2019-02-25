@@ -26,7 +26,7 @@ export class Chapter extends React.Component {
             try {
                 var chapter = await this.loadChapter();
                 console.log('in here')
-                this.setState({info: chapter, loading: false})
+                this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR, loading: false})
             } catch(e) {
                 this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR, loading: false})
             }
