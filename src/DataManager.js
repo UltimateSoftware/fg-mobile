@@ -7,8 +7,11 @@ import {AsyncStorage} from "react-native";
 
 // Storage Keys
 export const CHAPTER = "chapter"
+export const CHAPTER_PENDING_APPROVAL = "chapter-pending-approval"
+
 export const SIGNED_IN_MEMBER = "signed-in-member";
 export const SIGNED_IN_MEMBER_ID = "signed-in-member-id";
+export const MEMBER_PENDING_APPROVAL = "member-pending-approval"
 
 export class DataManager {
 

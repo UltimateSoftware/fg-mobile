@@ -1,4 +1,3 @@
-
 import {getCreateProfileUrl} from './FgServiceConfiguration'
 
 export class FgProfileService {
