@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
+import {FgModal} from "../components/Modal";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
 import {FgMember} from "../types/FgMember";
@@ -110,6 +111,8 @@ export class FgProfile extends React.Component {
                 //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
                 <View style={styles.subViewStyle}>
                     <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
+                    <Button title={"Join Chapter"} onPress={() => this.handleJoinChapter()}/>
+                    <FgModal size={"small"}/>
                 </View>
 
             </ScrollView>
@@ -123,6 +126,10 @@ export class FgProfile extends React.Component {
             .then(() => onSignOut())
             .then(() => navigation.navigate("SignedOut"))
             .catch( (error) => console.log(error.message));
+
+    }
+
+    handleJoinChapter() {
 
     }
 

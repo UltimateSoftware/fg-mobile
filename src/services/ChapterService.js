@@ -27,4 +27,10 @@ export class ChapterService {
         })
     }
 
+    async joinChapter(chapter) {
+        return new Promise(async (resolve) => {
+            resolve(null);
+        })
+    }
+
 }
