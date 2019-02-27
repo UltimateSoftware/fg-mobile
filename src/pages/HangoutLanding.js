@@ -12,8 +12,9 @@ import {Banner} from "../components/Banner";
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
 //TODO: Status bar background should be white not translucent
-const ListOfHangouts = () => {return (
-<ScrollView
+const ListOfHangouts = () => {
+    return (
+            <ScrollView
                 style={styles.scrollViewStyle}
                 bounces={false}
             >
