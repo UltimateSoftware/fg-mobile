@@ -5,34 +5,30 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import {EventService} from "../services/EventService";
 
-var fgEvents = [];
+const ListView = (props) => {
+    return (
+        <ScrollView
+                style={styles.scrollViewStyle}
+                bounces={false}
+            >
+            <View style={styles.container}>
+            <FlatList data={props.fgEvents} renderItem={({item, key}) => 
+                <Card key={key} style={{width: SCREEN_WIDTH*.85, flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}>
+                    <Text style={styles.item}>{item.title}</Text>
+                    <Text style={styles.item}>{item.time}</Text>
+                </Card>}
+                keyExtractor={(item, index) => index.toString()}
+            />
 
-const ListView = () => {
-    if(fgEvents.length === 0) {
-        return <View></View>
-    } else {
-        return (
-            <ScrollView
-                    style={styles.scrollViewStyle}
-                    bounces={false}
-                >
-                <View style={styles.container}>
-                <FlatList data={fgEvents} renderItem={({item, key}) => 
-                    <Card key={key} style={{width: SCREEN_WIDTH*.85, flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}>
-                        <Text style={styles.item}>{item.title}</Text>
-                        <Text style={styles.item}>{item.time}</Text>
-                    </Card>}
-                />
-    
-                </View>
-                </ScrollView>
-        )
-    }
+            </View>
+            </ScrollView>
+    )
 }
 
-const CalendarView = () => {
+const CalendarView = (props) => {
     return (
-        <Agenda 
+        <View>
+            <Agenda 
             style={{
                 width: SCREEN_WIDTH*.95,
                 marginTop: 5,
@@ -47,10 +43,12 @@ const CalendarView = () => {
             }}
             onDayPress={(day) => {
                 service = new EventService();
-                fgEvents = service.getEvents(day);
+                props.fgEvents = service.getEvents(day);
             }}
-            renderEmptyData={() => {return (<Text> No Events </Text>);}}
+            renderEmptyData={() => {return (<Text> No events </Text>);}}
         />
+        <ListView fgEvents={props.fgEvents}></ListView>
+        </View>
     )
 }
 
@@ -74,33 +72,36 @@ export class Events extends React.Component {
         super(props);
         this.state = {
             listMode: false,
-            selector: require('./Events-assets/list-view.png')
+            selector: require('./Events-assets/list-view.png'),
+            fgEvents: []
         };
     }
 
-    componentWillMount() {
-        console.log('loaded todays events only')
-        fgEvent = this.service.getEvents(this.d.getFullYear() + '-' + ("0" + (this.d.getMonth() + 1)).slice(-2) + '-' + ("0" + this.d.getDate()).slice(-2)) //current date formatted
+    async componentWillMount() {
+        loadedData = await this.service.getEvents(this.d.getFullYear() + '-' + ("0" + (this.d.getMonth() + 1)).slice(-2) + '-' + ("0" + this.d.getDate()).slice(-2)) //current date formatted
+        this.setState({
+            fgEvents: loadedData
+        });
     }
 
-    handleToggle() {
+    handleToggle = async () => {
         this.setState(() => ({ listMode: !this.state.listMode}));
         
-        if(this.state.listMode) {this.setState(() => (
-            {selector: require('./Events-assets/list-view.png')}
-            ))
-            console.log('loaded todays events only')
-            fgEvent = this.service.getEvents(this.d.getFullYear() + '-' + ("0" + (this.d.getMonth() + 1)).slice(-2) + '-' + ("0" + this.d.getDate()).slice(-2)) //current date formatted
+        if(this.state.listMode) {
+            loadedData = await this.service.getEvents(this.d.getFullYear() + '-' + ("0" + (this.d.getMonth() + 1)).slice(-2) + '-' + ("0" + this.d.getDate()).slice(-2)) //current date formatted
+            this.setState({
+                selector: require('./Events-assets/list-view.png'),
+                fgEvents: loadedData
+            });
         } 
-        else {this.setState(() => (
-            {selector: require('./Events-assets/grid-view.png')}
-            ))
-            fgEvent = this.service.getEvents();
+        else {
+            loadedData = await this.service.getEvents()
+            this.setState({
+                selector: require('./Events-assets/grid-view.png'),
+                fgEvents: loadedData
+            });
         }
-    }
-
-    handleEventInspec() {
-        return null
+        console.log(this.state.fgEvents)
     }
 
     render() {
@@ -122,7 +123,7 @@ export class Events extends React.Component {
                 </Button>
             </View>
             <View>
-                {(this.state.listMode) ? <ListView/> : <CalendarView/> }
+                {(this.state.listMode) ? <ListView fgEvents={this.state.fgEvents}/> : <CalendarView/> }
             </View>
             </View>
         )

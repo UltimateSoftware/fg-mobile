@@ -8,13 +8,8 @@ export class EventService {
       else              append = '?exactDate=' + date; //exact date
         return new Promise(async (resolve) => {
           try {
-              console.log(date1)
-              var result = await fetch('localhost:5000/hangouts?', {
-                  method: 'GET',
-                  headers: {
-                      Accept: 'application/json',
-                      'Content-Type': 'application/json',
-                  }
+              var result = await fetch('http://localhost:5000/hangouts' + append, {
+                  method: 'GET'
               })
               resolve(result.json())
           } catch (e) {
