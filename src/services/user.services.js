@@ -23,7 +23,36 @@ const selectChapter = async(currentUser, chapterName) => {
             // reject(e)
         }
     })
-} 
+}
+
+const getChapterById = async(id) => {
+  return new Promise(async (resolve) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    };
+
+    try {
+      const request = await fetch(`http://localhost:5000/chapters/${id}`, requestOptions);
+      const response = await handleResponse(request);
+      DataManager.setItemForKey(CHAPTER, response);
+      console.log(DataManager.getItemWithKey(CHAPTER));
+      resolve(response);
+    } catch(e) {
+      // Returning true for now
+      // DataManager.setItemForKey(SIGNED_IN_MEMBER, response) Model needs to be defined
+      console.log('user not in system? maybe?')
+      // Normally you would reject but until implemented will always resolve
+      var response = { currentUser, chapterName }
+      DataManager.setItemForKey(CHAPTER, response)
+      resolve(response)
+      // reject(e)
+    }
+  })
+}
 
 
 /* function signiture to be replaced by a type */
@@ -53,7 +82,7 @@ const login = async (username, password) => {
             // reject(e)
         }
     })
-    
+
 }
 
 function logout() {
@@ -113,6 +142,7 @@ export const userService = {
     logout,
     register,
     selectChapter,
+    getChapterById
     // getAll,
     // getById,
     // update,

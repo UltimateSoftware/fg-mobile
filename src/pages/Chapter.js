@@ -24,15 +24,17 @@ export class Chapter extends React.Component {
         this.setState({ loading: 'true' });
         this.loadChapter()
             .then( (data) => {
+              console.log(data);
+              console.log(typeof(data));
               //TODO: data is currently null
                 const info = new ChProfile(
-                    data.schoolName,
-                    data.chapter,
-                    data.bannerSource,
-                    data.avatarSource,
-                    data.history,
-                    data.studentAvatars,
-                    data.leadershipAvatars
+                    data.schoolName ? data.schoolName : null,
+                    data.chapter ? data.chapter : null,
+                    data.bannerSource ? data.bannerSource : null,
+                    data.avatarSource ? data.avatarSource : null,
+                    data.history ? data.history : null,
+                    data.studentAvatars ? data.studentAvatars : null,
+                    data.leadershipAvatars ? data.leadershipAvatars : null
                 );
                 //this.setState({member: fgMember, loading: 'false'});
                 this.setState({info, loading: false});
@@ -44,6 +46,7 @@ export class Chapter extends React.Component {
     }
 
     render() {
+      console.log(this.state.info);
         if( this.state.loading === 'initial' ) {
             return <Text>Initializing</Text>
         }

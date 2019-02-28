@@ -1,9 +1,11 @@
 import React from 'react';
 import {Alert, Button, Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import {FgButton} from "../components/FgButton";
+import {FgProfileService} from "../services/FgProfileService";
+import {userService} from '../services/user.services';
 import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {dummySignInAuthorization, onSignIn} from "../Auth";
-import {DataManager, SIGNED_IN_MEMBER} from "../DataManager";
+import {DataManager, SIGNED_IN_MEMBER, CHAPTER_ID} from "../DataManager";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 
 export class Login extends React.Component {
@@ -75,6 +77,10 @@ export class Login extends React.Component {
                 // .then(() => navigation.navigate("SignedIn"))
                 .then(() => navigation.navigate("SelectChapter"))
                 .catch( (error) => console.log("[ERROR - Login > handleSignIn()]:", error.message));
+           const member = await FgProfileService.getMemberById();
+           await DataManager.setItemForKey(CHAPTER_ID, member.chapterId)
+                .then(() => userService.getChapterById(member.chapterId))
+                .catch((e) => console.log("couldnt get chapter", e.message));
         }else {
             Alert.alert(
                 'Oops!',
@@ -117,4 +123,3 @@ const styles = StyleSheet.create({
         marginBottom: 40
     }
 });
-

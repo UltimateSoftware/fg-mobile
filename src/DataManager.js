@@ -6,7 +6,8 @@ import {AsyncStorage} from "react-native";
  */
 
 // Storage Keys
-export const CHAPTER = "chapter"
+export const CHAPTER = "chapter";
+export const CHAPTER_ID = "chapter-id";
 export const SIGNED_IN_MEMBER = "signed-in-member";
 export const SIGNED_IN_MEMBER_ID = "signed-in-member-id";
 

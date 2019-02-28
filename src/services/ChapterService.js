@@ -1,7 +1,6 @@
 import {ChProfile} from "../types/ChProfile";
 
 export class ChapterService {
-
     async createChapter(chapter) {
         return new Promise(async (resolve) => {
             try {
@@ -26,5 +25,4 @@ export class ChapterService {
             }
         })
     }
-
 }
