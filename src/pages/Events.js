@@ -14,7 +14,7 @@ const ListView = (props) => {
             >
             <View style={styles.container}>
             <FlatList data={props.fgEvents} renderItem={({item, key}) => 
-                <Card key={key} style={{width: SCREEN_WIDTH*.85, flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}>
+                <Card key={key} style={{flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}>
                     <Text style={styles.item}>{item.title}</Text>
                     <Text style={styles.item}>{item.time}</Text>
                 </Card>}
@@ -56,13 +56,15 @@ const CalendarView = (props) => {
 export class Events extends React.Component {
     service = new EventService();
     d = new Date();
-    monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    monthList = [{value: 'January'}, {value: 'February'}, {value: 'March'}, {value: 'April'}, {value: 'May'}, {value: 'June'},
+                 {value: 'July'}, {value: 'August'}, {value: 'September'}, {value: 'October'}, {value: 'November'}, {value: 'December'}]
+    //monthList = ['Jan', 'Feb', 'Mar', 'Apr']
 
     constructor(props) {
         super(props);
         this.state = {
             fgEvents: [],
-            currMonth: this.monthList[0][this.d.getMonth()],
+            currMonth: this.monthList[this.d.getMonth()].value,
             isLoading: true
         };
     }
@@ -80,7 +82,7 @@ export class Events extends React.Component {
 
         if(!this.state.isLoading) {
             return (
-                <View style={{height: SCREEN_HEIGHT*.93, width: SCREEN_WIDTH, justifyContent: 'space-between'}}>
+                <View style={{height: SCREEN_HEIGHT*.91, width: SCREEN_WIDTH, alignItems: 'stretch', justifyContent: 'flex-start', flexGrow: 1}}>
                 <Header style={{width:SCREEN_WIDTH, height: SCREEN_HEIGHT*.125, borderBottomWidth: 2}}> 
                     <Left>
                         <H2 style={{fontFamily: 'montserrat-bold', color: '#818282', paddingLeft: 20, fontSize: 24}}>Events</H2>
@@ -91,17 +93,19 @@ export class Events extends React.Component {
                         </Button>
                     </Right>
                 </Header>
-                <View style={{borderWidth: 1, minHeight: '5%', width: 400, marginTop: '1%'}}>
+                <View style={{margin: '2%', flexDirection: 'row'}}>
                     <Dropdown
-                        label={this.state.currMonth}
+                        containerStyle={{flex: 0.4, paddingLeft: 20, borderBottomColor: '#BDCDD1'}}
+                        baseColor='#BDCDD1'
+                        itemTextStyle={{textDecorationColor: '#BDCDD1'}}
+                        itemCount={4}
+                        selectedItemColor={'#F0166D'}
                         data={this.monthList}
+                        value={this.state.currMonth}
                     />
                 </View>
-                <View style={{borderWidth: 1, height: 200, width: 400}}>
-                    List current date
-                </View>
-                <View style={{borderWidth: 1, height: 200, width: 400}}>
-                    List events
+                <View style={{borderWidth: 1, margin: '2%', flex: 1}}>
+                    <ListView fgEvents={this.state.fgEvents}/>
                 </View>
                 </View>
             )
