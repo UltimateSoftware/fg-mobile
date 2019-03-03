@@ -1,13 +1,14 @@
 import React from 'react';
-import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Button, ScrollView, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
-import {FgModal} from "../components/Modal";
+import {FgModal} from "../components/FgModal";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
 import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
+import { SafeAreaView } from 'react-navigation';
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -67,11 +68,14 @@ export class FgProfile extends React.Component {
             //Wrap entire profile in a ScrollView
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
                 
-                <View style={styles.requestChapterAccess}>
-                    <Text style={{color: '#FFF'}}>
-                        Request access to a chapter
-                    </Text>
-                </View>
+                //Request Chapter Access Banner
+                <SafeAreaView style={styles.requestChapterAccess}>
+                    <TouchableHighlight
+                        onPress={() => {
+                        }}>
+                        <Text style= {styles.bannerText}>Request access to a chapter</Text>
+                    </TouchableHighlight>
+                </SafeAreaView>
 
                 //Banner
                 <View style={styles.subViewStyle}>
@@ -137,7 +141,7 @@ export class FgProfile extends React.Component {
     }
 
     handleJoinChapter() {
-
+        
     }
 
 }
@@ -188,8 +192,12 @@ const styles = StyleSheet.create({
         margin: 20
     },
     requestChapterAccess: {
-        backgroundColor: '#F313B7',
-        height: '5%'
+        flex: 1,
+        backgroundColor: '#F313B7'
+    },
+    bannerText: {
+        justifyContent: 'center',
+        textDecorationLine: 'underline',
+        color: '#FFFFFF'
     }
-
 });

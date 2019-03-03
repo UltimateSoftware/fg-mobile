@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import { FgButton } from "../components/FgButton";
+import { FgButton } from "./FgButton";
 
 export class FgModal extends Component {
   state = {
@@ -57,7 +57,7 @@ export class FgModal extends Component {
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>
-              <Text style= {styles.underline}>Skip for now</Text>
+              <Text style= {{textDecorationLine: 'underline'}}>Skip for now</Text>
               </TouchableHighlight>
             </View>
           </View>
