@@ -26,6 +26,7 @@
     "expo-file-system": "^1.0.2",
     "expo-font": "^1.0.0",
     "expo-react-native-adapter": "^1.1.1",
+    "fg-agenda-view": "^1.1.0",
     "native-base": "^2.8.1",
     "prop-types": "15.6.2",
     "react": "16.3.1",

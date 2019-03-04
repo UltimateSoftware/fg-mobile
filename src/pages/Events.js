@@ -1,62 +1,36 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, Image, FlatList, Picker} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, StatusBar, Animated, Image, FlatList, Picker} from 'react-native';
 import {Header, Left, Right, H2, Button, Card} from 'native-base'
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { Dropdown } from 'react-native-material-dropdown';
 import {EventService} from "../services/EventService";
+import {EventsList} from './EventsList';
 
-const ListView = (props) => {
-    return (
-        <ScrollView
-                style={styles.scrollViewStyle}
-                bounces={false}
-            >
-            <View style={styles.container}>
-            <FlatList data={props.fgEvents} renderItem={({item, key}) => 
-                <Card key={key} style={{flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}>
-                    <Text style={styles.item}>{item.title}</Text>
-                    <Text style={styles.item}>{item.time}</Text>
-                </Card>}
-                keyExtractor={(item, index) => index.toString()}
-            />
+// const ListView = (props) => {
+//     return (
+//         <ScrollView
+//                 style={styles.scrollViewStyle}
+//                 bounces={false}
+//             >
+//             <View style={styles.container}>
+//             <FlatList data={props.fgEvents} renderItem={({item, key}) => 
+//                 <Card key={key} style={{flexDirection: 'row', shadowOpacity: 10, paddingBottom: 5, paddingRight: 20 }}>
+//                     <Text style={styles.item}>{item.title}</Text>
+//                     <Text style={styles.item}>{item.time}</Text>
+//                 </Card>}
+//                 keyExtractor={(item, index) => index.toString()}
+//             />
 
-            </View>
-            </ScrollView>
-    )
-}
+//             </View>
+//             </ScrollView>
+//     )
+// }
 
-const CalendarView = (props) => {
-    return (
-        <View>
-            <Agenda 
-            style={{
-                width: SCREEN_WIDTH*.95,
-                marginTop: 5,
-            }}
-            theme={{
-                todayTextColor: 'tomato',
-                arrowColor: 'tomato',
-                dotColor: 'tomato',
-                selectedDayBackgroundColor: 'tomato',
-                textMonthFontSize: 20,
-                textDayFontSize: 18,
-            }}
-            onDayPress={(day) => {
-                service = new EventService();
-                props.fgEvents = service.getEvents();
-            }}
-            renderEmptyData={() => {return (<Text> No events </Text>);}}
-        />
-        <ListView fgEvents={props.fgEvents}></ListView>
-        </View>
-    )
-}
 
 export class Events extends React.Component {
     service = new EventService();
     d = new Date();
-    monthList = [{value: 'January'}, {value: 'February'}, {value: 'March'}, {value: 'April'}, {value: 'May'}, {value: 'June'},
+    monthList = [{value: 'January', key: '01'}, {value: 'February'}, {value: 'March'}, {value: 'April'}, {value: 'May'}, {value: 'June'},
                  {value: 'July'}, {value: 'August'}, {value: 'September'}, {value: 'October'}, {value: 'November'}, {value: 'December'}]
     //monthList = ['Jan', 'Feb', 'Mar', 'Apr']
 
@@ -105,7 +79,7 @@ export class Events extends React.Component {
                     />
                 </View>
                 <View style={{borderWidth: 1, margin: '2%', flex: 1}}>
-                    <ListView fgEvents={this.state.fgEvents}/>
+                    <EventsList fgEvents={this.state.fgEvents}/>
                 </View>
                 </View>
             )
