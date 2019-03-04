@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image, ScrollView, TextInput, Picker, Alert, Button} from 'react-native';
+import {StyleSheet, View, Text, Image, ScrollView, TextInput, Picker, Button} from 'react-native';
 import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {FgButton} from "../components/FgButton";
 import {FgMember} from "../types/FgMember";
@@ -16,24 +16,46 @@ export class ProfileForm extends Component {
     constructor() {
         super();
         this.state = {
-            firstName: '',
-            lastName: '',
-            userName: '',
-            password: '',
-            confirmPassword: '',
-            inspirationText: '',
-            schoolName: '',
-            gradYear: this.CURRENT_YEAR,
-            hasError: false,
-            error: '',
-        };
-        // this.handleSubmit.bind(this);
-        this.handleSignIn.bind(this);
+            loading: 'initial',
+            modalVisible: false,
+            member: {
+                firstName: '',
+                lastName: '',
+                userName: '',
+                password: '',
+                confirmPassword: '',
+                inspiration: '',
+                schoolName: '',
+                gradYear: this.CURRENT_YEAR,
+                hasError: false,
+                error: '',
+            }
+        }
     }
 
     render() {
         
-        const { title, onPressFunction, state } = this.props;
+        const { title, state, onPressSubmitFunction, onPressBackFunction } = this.props;
+
+        if(state === 'update') {
+            this.loadFgMember()
+                .then( (data) => {
+                    const fgMember = new FgMember(
+                        data.firstName,
+                        data.lastName,
+                        data.schoolName,
+                        data.gradYear,
+                        data.bannerSource,
+                        data.avatarSource,
+                        data.inspiration,
+                        data.userName,
+                        data.password,
+                        data.confirmPassword
+                    );
+                    this.setState({member: fgMember, loading: false});
+                })
+                .catch( (error) => console.log(error.message));
+        }
         
         return (
 
@@ -65,7 +87,7 @@ export class ProfileForm extends Component {
                         placeholder={'First Name'}
                         placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
                         onChangeText={(text) => this.setState({firstName: text})}
-                        value={this.state.firstName}/>
+                        value={this.state.member.firstName}/>
                 </View>
 
                 // Last name input
@@ -75,7 +97,7 @@ export class ProfileForm extends Component {
                         placeholder={'Last Name'}
                         placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
                         onChangeText={(text) => this.setState({lastName: text})}
-                        value={this.state.lastName}/>
+                        value={this.state.member.lastName}/>
                 </View>
 
                 // School name input
@@ -85,7 +107,7 @@ export class ProfileForm extends Component {
                         placeholder={'School Name'}
                         placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
                         onChangeText={(text) => this.setState({schoolName: text})}
-                        value={this.state.schoolName}/>
+                        value={this.state.member.schoolName}/>
                 </View>
 
                 // Inspiration text input
@@ -94,7 +116,7 @@ export class ProfileForm extends Component {
                     <TextInput style={[styles.textInputStyle, styles.inspirationInputStyle]}
                                multiline={true}
                                onChangeText={(text) => this.setState({inspirationText: text})}
-                               value={this.state.inspirationText}/>
+                               value={this.state.member.inspiration}/>
                 </View>
 
                 // Graduation year picker
@@ -102,7 +124,7 @@ export class ProfileForm extends Component {
                     <Text style={styles.inputLabelStyle}>When are you graduating?</Text>
                     <Picker
                         mode="dropdown"
-                        selectedValue={this.state.gradYear}
+                        selectedValue={this.state.member.gradYear}
                         style={styles.pickerStyle}
                         itemStyle={styles.pickerItemStyle}
                         onValueChange={(itemValue) => this.setState({gradYear: itemValue})}>
@@ -114,57 +136,37 @@ export class ProfileForm extends Component {
                     </Picker>
                 </View>
 
-                // Submit button
-                <View style={styles.subViewStyle}>
-                    <View style={styles.submitButtonStyle}>
-                        <FgButton onPress={() => this.handleSubmit()} title={"Submit"}/>
+                // Submit/Save buttons
+                {(state === 'create') &&
+                    <View style={styles.subViewStyle}>
+                        <View style={styles.submitButtonStyle}>
+                            <FgButton title={"Submit"} onPress={() => onPressSubmitFunction(this.state.member)} />
+                        </View>
+                        <View style={{marginBottom: 20}}>
+                            <Button title={"Back to Sign in"} onPress={() => onPressBackFunction()}/>
+                        </View>
                     </View>
-                    <View style={{marginBottom: 20}}>
-                        <Button title={"Back to Sign in"} onPress={() => this.handleSignIn()}/>
+                }
+                {(state === 'update') &&
+                    <View style={styles.subViewStyle}>
+                        <View style={styles.submitButtonStyle}>
+                            <FgButton title={"Save"} onPress={() => onPressSubmitFunction(this.state.member)} />
+                        </View>
+                        <View style={{marginBottom: 20}}>
+                            <Button title={"Back to Profile"} onPress={() => onPressBackFunction()}/>
+                        </View>
                     </View>
-                </View>
-
+                }
+                
             </KeyboardAwareScrollView>
         );
     }
 
-    async handleSubmit() {
-        // Grab the navigator
-        const { navigate } = this.props.navigation;
-        // Create member object from form field values
-        const fgMember = new FgMember(this.state.firstName, this.state.lastName,
-            this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
-        // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
-        if(isSignedIn) {
-            this.service.updateMember(fgMember);
-        } else {
-            this.service.createMember(fgMember)
-            .then( (id) => {
-                console.log("CreateProfile Id: ", id);
-
-                if(id) {
-                    DataManager.setItemForKey(SIGNED_IN_MEMBER_ID, id)
-                        .then( () => DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember)
-                            .then(() => onSignIn())
-                            .then(() => navigate("SignedIn")))
-                        .catch( (error) => console.log(error.message));
-                } else {
-                    Alert.alert(
-                        'Server Error',
-                        'Oops! Something went wrong with creating your profile. Please try again.',
-                        [{text: 'Ok', onPress: () => console.log('Cancel Pressed'), style: 'cancel'}],
-                        { cancelable: false }
-                    );
-                }
-            }).catch((error) => console.log("[ERROR - CreateProfile > handleSubmit()]: ", error.message));
-        }
+    // Load current signed in member from local storage.
+    async loadFgMember() {
+        return DataManager.getItemWithKey(SIGNED_IN_MEMBER)
+            .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
     }
-
-    handleSignIn() {
-        const { navigate } = this.props.navigation;
-        navigate("SignIn");
-    }
-
 
 }
 

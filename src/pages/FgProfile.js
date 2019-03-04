@@ -9,6 +9,7 @@ import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
 import {ProfileForm} from "../components/ProfileForm";
+import {FgProfileService} from "../services/FgProfileService";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -24,9 +25,11 @@ export class FgProfile extends React.Component {
             member: null,
             modalVisible: false
         };
+        this.handleSubmit.bind(this);
         this.handleSignOut.bind(this);
-        this.handleEdit.bind(this);
     }
+
+    service = new FgProfileService();
 
     // Load current signed in member from local storage.
     async loadFgMember() {
@@ -134,7 +137,12 @@ export class FgProfile extends React.Component {
                             Alert.alert('Modal has been closed.');
                         }}>
 
-                                <ProfileForm></ProfileForm>
+                        <ProfileForm 
+                            title="Update your profile"
+                            state="update"
+                            onPressSubmitFunction={this.handleSubmit}
+                            onPressBackFunction={() => {this.setModalVisible(false);}}
+                        />
 
                     </Modal>
                 </View>
@@ -142,6 +150,18 @@ export class FgProfile extends React.Component {
 
             </ScrollView>
         );
+    }
+
+    handleSubmit = (member) => {
+        console.log(member)
+        // Grab the navigator
+        const { navigate } = this.props.navigation;
+        // Create member object from form field values
+        const fgMember = new FgMember(member.firstName, member.lastName,
+            member.schoolName, member.gradYear, null, null, member.inspiration);
+        // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
+        this.service.updateMember(fgMember);
+        this.setModalVisible(false);
     }
 
     handleSignOut() {
@@ -152,11 +172,6 @@ export class FgProfile extends React.Component {
             .then(() => navigation.navigate("SignedOut"))
             .catch( (error) => console.log(error.message));
 
-    }
-
-    handleEdit() {
-        const { navigation } = this.props;
-        navigation.navigate("EditProfile");
     }
 
 }
