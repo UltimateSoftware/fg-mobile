@@ -23,9 +23,9 @@ export class Login extends React.Component {
             <View style={styles.mainViewStyle}>
 
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
-                    // FG Logo
+                    {/* FG Logo */}
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
-                    // Page Title
+                    {/* Page Title */}
                     <Text style={{
                         fontFamily: 'montserrat-light',
                         fontSize: 22,
@@ -34,9 +34,9 @@ export class Login extends React.Component {
                         marginTop: 5
                     }}>Sign in.</Text>
 
-                    // Login section
+                    {/* Login section */}
                     <View style={{marginTop: 30}}>
-                        //Username
+                        {/* Username */}
                         <TextInput
                             style={styles.textInputStyle}
                             placeholder={'Username'}
@@ -44,7 +44,7 @@ export class Login extends React.Component {
                             onChangeText={(text) => this.setState({username: text})}
                             value={this.state.username}/>
 
-                        //Password
+                        {/* Password */}
                         <TextInput
                             style={styles.textInputStyle}
                             placeholder={'Password'}
@@ -61,8 +61,6 @@ export class Login extends React.Component {
                     <Button title={"Sign up"} onPress={() => this.handleSignUp()}/>
 
                 </View>
-
-
 
             </View>
         );
