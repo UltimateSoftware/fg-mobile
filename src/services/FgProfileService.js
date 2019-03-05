@@ -1,9 +1,11 @@
 import {FgMember} from "../types/FgMember";
+import {config} from "../config/index";
 
 export class FgProfileService {
 
     createMember(member) {
-        return fetch('http://localhost:5000/api/v1/profile/', {
+        var endpoint = `http://${config.default.api.host}:${config.default.api.port}/api/v1/profile`
+        return fetch(endpoint, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

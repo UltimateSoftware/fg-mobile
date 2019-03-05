@@ -54,15 +54,15 @@ export class Chapter extends React.Component {
 
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
-            //Wrap entire profile in a ScrollView
+            /* Wrap entire profile in a ScrollView */
             <ScrollView
                 style={styles.scrollViewStyle}>
             <View style={styles.container}>
 
-                // Render the Banner
+                {/* Render the Banner */}
                 <Banner source={this.state.info.bannerSource}/>
 
-                // Render the Avatar
+                {/* Render the Avatar */}
                 <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
                     <Avatar
                         avatarSize={'large'}
@@ -76,14 +76,14 @@ export class Chapter extends React.Component {
                     <Text style={styles.gradYearLabel}>{this.state.info.chapter}</Text>{'\n'}
                 </Text>
 
-                // Render the 'Inspiration' title with horizontal dividers on each side
+                {/* Render the 'Inspiration' title with horizontal dividers on each side */}
                 <View style={[styles.inspirationTitle, {top: bannerHeight * 2.345}]}>
                     <View style={styles.inspirationLine}/>
                     <Text style={styles.inspirationLabel}>  Our Mission  </Text>
                     <View style={styles.inspirationLine}/>
                 </View>
 
-                // Render the member's inspiration block
+                {/* Render the member's inspiration block */}
                 <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
                     {this.state.info.history}
                 </Text>
