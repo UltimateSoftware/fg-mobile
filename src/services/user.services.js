@@ -1,4 +1,5 @@
 import { DataManager,  SIGNED_IN_MEMBER, CHAPTER} from '../DataManager'
+import {config} from "../config/index";
 
 const selectChapter = async(currentUser, chapterName) => {
     return new Promise(async(resolve, reject) => {
@@ -8,7 +9,8 @@ const selectChapter = async(currentUser, chapterName) => {
             body: JSON.stringify({ currentUser, chapterName })
         };
         try {
-            var request = await fetch(`http://localhost:5000/users/applytochapter`, requestOptions);
+            var endpoint = `http://${config.default.api.host}:${config.default.api.port}/users/applytochapter`
+            var request = await fetch(endpoint, requestOptions);
             var response = await handleResponse(request)
             DataManager.setItemForKey(CHAPTER, response)
             resolve(response)
