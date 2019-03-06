@@ -5,6 +5,7 @@ import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {DataManager, CHAPTER} from "../DataManager";
 import {ChProfile} from "../types/ChProfile";
+import {FgModal} from '../components/FgModal';
 import { MOCKED_CHAPTER_with_BANNER_and_AVATAR } from '../test/MockedTypes';
 
 export class Chapter extends React.Component {
@@ -37,7 +38,9 @@ export class Chapter extends React.Component {
         data.leadershipAvatars ? data.leadershipAvatars : null
       );
       //this.setState({member: fgMember, loading: 'false'});
+
       this.setState({info, loading: false});
+
     })
     .catch( (error) => {
       this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR, loading: false})
@@ -58,37 +61,41 @@ export class Chapter extends React.Component {
       //Wrap entire profile in a ScrollView
       <ScrollView
         style={styles.scrollViewStyle}>
-        <View style={styles.container}>
+        {this.state.info.chapter !== null ?
+          <View style={styles.container}>
 
-          // Render the Banner
-          <Banner source={this.state.info.bannerSource}/>
+            // Render the Banner
+            <Banner source={this.state.info.bannerSource}/>
 
-          // Render the Avatar
-          <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
-            <Avatar
-              avatarSize={'large'}
-              name={this.state.info.schoolName}
-              source={this.state.info.avatarSource}/>
-          </View>
-
-
-          <Text style={[styles.textContainer, { top: bannerHeight * 1.5 }]}>
-            <Text style={styles.nameLabel}>{this.state.info.schoolName}</Text>{'\n'}
-              <Text style={styles.gradYearLabel}>{this.state.info.chapter}</Text>{'\n'}
-              </Text>
-
-              // Render the 'Inspiration' title with horizontal dividers on each side
-              <View style={[styles.inspirationTitle, {top: bannerHeight * 2.345}]}>
-                <View style={styles.inspirationLine}/>
-                <Text style={styles.inspirationLabel}>  Our Mission  </Text>
-                <View style={styles.inspirationLine}/>
-              </View>
-
-              // Render the member's inspiration block
-              <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
-                {this.state.info.history}
-              </Text>
+            // Render the Avatar
+            <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
+              <Avatar
+                avatarSize={'large'}
+                name={this.state.info.schoolName}
+                source={this.state.info.avatarSource}/>
             </View>
+
+
+            <Text style={[styles.textContainer, { top: bannerHeight * 1.5 }]}>
+              <Text style={styles.nameLabel}>{this.state.info.schoolName}</Text>{'\n'}
+                <Text style={styles.gradYearLabel}>{this.state.info.chapter}</Text>{'\n'}
+                </Text>
+
+                // Render the 'Inspiration' title with horizontal dividers on each side
+                <View style={[styles.inspirationTitle, {top: bannerHeight * 2.345}]}>
+                  <View style={styles.inspirationLine}/>
+                  <Text style={styles.inspirationLabel}>  Our Mission  </Text>
+                  <View style={styles.inspirationLine}/>
+                </View>
+
+                // Render the member's inspiration block
+                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
+                  {this.state.info.history}
+                </Text>
+              </View>
+              :
+              <FgModal />
+          }
           </ScrollView>
         );
       }

@@ -50,7 +50,7 @@ export class FgProfileService {
           data.inspiration ? data.inspiration : null,
           data.bannerSource ? data.bannerSource : null,
           data.avatarSource ? data.avatarSource : null,
-          "974efaab-ceed-40b8-a307-9283adb55732" // chapterId
+          data.chapterId ? data.chapterId : null // chapterId
         )
       )
     } catch(e) {
