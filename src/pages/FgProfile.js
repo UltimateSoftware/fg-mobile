@@ -191,6 +191,6 @@ const styles = StyleSheet.create({
     requestChapterAccess: {
         flex: 1,
         backgroundColor: '#F313B7',
-        padding: 10
+        padding: 15
     }
 });

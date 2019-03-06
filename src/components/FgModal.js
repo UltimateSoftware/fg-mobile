@@ -30,7 +30,7 @@ export class FgModal extends Component {
 
     var {children} = this.props;
     return (
-      <View style={{marginTop: 22}}>
+      <View>
         <Modal
           animationType="slide"
           transparent={true}
