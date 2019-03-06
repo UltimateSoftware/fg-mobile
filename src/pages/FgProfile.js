@@ -21,9 +21,12 @@ export class FgProfile extends React.Component {
         super();
         this.state = {
             loading: 'initial',
+            modalFlag: false,
             member: null
         };
+
         this.handleSignOut.bind(this);
+        this.toggleModalFlag.bind(this);
     }
 
     // Load current signed in member from local storage.
@@ -52,6 +55,10 @@ export class FgProfile extends React.Component {
             .catch( (error) => console.log(error.message));
     }
 
+    toggleModalFlag(flagValue, componentState) {
+        componentState.setState({modalFlag: flagValue});
+    }
+
     render() {
 
         if( this.state.loading === 'initial' ) {
@@ -74,9 +81,19 @@ export class FgProfile extends React.Component {
                 >
                     
                     //Request Chapter Access Banner
+                    //If this member is not apart of a chapter
                     {!this.state.member.chapterId && 
                         <View style={styles.requestChapterAccess}>
-                            <FgModal/>
+                            <TouchableHighlight onPress={() => this.toggleModalFlag(true, this)}>
+                                <Text style= {styles.bannerText}>Request access to a chapter</Text>
+                            </TouchableHighlight>
+                            //If the modalFlag is true
+                            {this.state.modalFlag && 
+                            <FgModal 
+                                toggleMethod= {this.toggleModalFlag}
+                                componentState= {this}
+                            />
+                            }
                         </View>
                     }
                     
@@ -192,5 +209,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F313B7',
         padding: 15
-    }
+    },
+    bannerText: {
+        justifyContent: 'center',
+        fontSize: 18,
+        textDecorationLine: 'underline',
+        color: '#FFFFFF'
+      }
 });

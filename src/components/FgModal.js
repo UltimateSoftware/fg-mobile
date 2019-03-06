@@ -7,7 +7,7 @@ import { ChapterService } from '../services/ChapterService';
 
 export class FgModal extends Component {
   state = {
-    modalVisible: false,
+    modalVisible: true,
     transparent: true,
     schoolName: ''
   };
@@ -28,7 +28,7 @@ export class FgModal extends Component {
       backgroundColor: '#fff', padding: 20
     };
 
-    var {children} = this.props;
+    var {toggleMethod, componentState} = this.props;
     return (
       <View>
         <Modal
@@ -53,22 +53,19 @@ export class FgModal extends Component {
               <FgButton
                 title= "Request Access"
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  toggleMethod(false, componentState);
                 }}
               />
               </View>
               <TouchableHighlight
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
+                  toggleMethod(false, componentState);
                 }}>
               <Text style= {styles.skipText}>Skip for now</Text>
               </TouchableHighlight>
             </View>
           </View>
         </Modal>
-        <TouchableHighlight onPress={() => this.setModalVisible(true)}>
-          <Text style= {styles.bannerText}>Request access to a chapter</Text>
-        </TouchableHighlight>
       </View>
     );
   }
@@ -117,11 +114,5 @@ textInputStyle: {
   height: 35,
   lineHeight: 20,
   margin: 20
-},
-bannerText: {
-  justifyContent: 'center',
-  fontSize: 18,
-  textDecorationLine: 'underline',
-  color: '#FFFFFF'
 }
 });
