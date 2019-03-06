@@ -12,6 +12,7 @@ export class ProfileForm extends Component {
 
     CURRENT_YEAR = new Date().getFullYear();
     service = new FgProfileService();
+    memberIsLoaded = false;
 
     constructor() {
         super();
@@ -37,7 +38,8 @@ export class ProfileForm extends Component {
         
         const { title, state, onPressSubmitFunction, onPressBackFunction } = this.props;
 
-        if(state === 'update') {
+        if(!this.memberIsLoaded && state === 'update') {
+            this.memberIsLoaded = true;
             this.loadFgMember()
                 .then( (data) => {
                     const fgMember = new FgMember(
