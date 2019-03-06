@@ -66,67 +66,75 @@ export class FgProfile extends React.Component {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
             //Wrap entire profile in a ScrollView
-            <ScrollView style={styles.scrollViewStyle} bounces={false}>
-                
-                //Request Chapter Access Banner
-                <SafeAreaView style={styles.requestChapterAccess}>
-                    <TouchableHighlight
-                        onPress={() => {
-                        }}>
-                        <Text style= {styles.bannerText}>Request access to a chapter</Text>
-                    </TouchableHighlight>
-                </SafeAreaView>
-
-                //Banner
-                <View style={styles.subViewStyle}>
-                    <View style={{position: 'absolute'}}>
-                        <Banner source={this.state.member.bannerSource}/>
+            <SafeAreaView style={{flex: 1}} forceInset={{ bottom: 'never' }}>
+                <ScrollView 
+                    style={styles.scrollViewStyle} 
+                    bounces={false} 
+                    stickyHeaderIndices={!this.state.member.chapterId ? [1] : []}
+                >
+                    
+                    //Request Chapter Access Banner
+                    {!this.state.member.chapterId && 
+                        <View style={styles.requestChapterAccess}>
+                            <TouchableHighlight
+                                onPress={() => {
+                                }}>
+                                <Text style= {styles.bannerText}>Request access to a chapter</Text>
+                            </TouchableHighlight>
+                        </View>
+                    }
+                    
+                    //Banner
+                    <View style={styles.subViewStyle}>
+                        <View style={{position: 'absolute'}}>
+                            <Banner source={this.state.member.bannerSource}/>
+                        </View>
                     </View>
-                </View>
 
-                //Avatar
-                <View style={styles.subViewStyle}>
-                    <View style={{marginTop: (bannerHeight/2)}}>
-                        <Avatar
-                            avatarSize={'large'}
-                            name={this.state.member.fullName()}
-                            source={this.state.member.avatarSource}/>
+                    //Avatar
+                    <View style={styles.subViewStyle}>
+                        <View style={{marginTop: (bannerHeight/2)}}>
+                            <Avatar
+                                avatarSize={'large'}
+                                name={this.state.member.fullName()}
+                                source={this.state.member.avatarSource}/>
+                        </View>
                     </View>
-                </View>
 
-                //Name, School, and Grad Year
-                <View style={styles.subViewStyle}>
-                    <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
-                        <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.member.fullName()}</Text>{'\n'}
-                        <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.member.schoolName}</Text>{'\n'}
-                        <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.member.gradYear}</Text>{'\n'}
-                    </Text>
-                </View>
-
-                //Inspiration Title
-                <View style={styles.subViewStyle}>
-                    <View style={[styles.inspirationTitle, {marginTop: 60}]}>
-                        <View style={styles.inspirationLine}/>
-                        <Text style={styles.inspirationLabel}>  Inspiration  </Text>
-                        <View style={styles.inspirationLine}/>
+                    //Name, School, and Grad Year
+                    <View style={styles.subViewStyle}>
+                        <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
+                            <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.member.fullName()}</Text>{'\n'}
+                            <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.member.schoolName}</Text>{'\n'}
+                            <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.member.gradYear}</Text>{'\n'}
+                        </Text>
                     </View>
-                </View>
 
-                //Inspiration Block
-                <View style={styles.subViewStyle}>
-                    <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
-                        {this.state.member.inspiration}
-                    </Text>
-                </View>
+                    //Inspiration Title
+                    <View style={styles.subViewStyle}>
+                        <View style={[styles.inspirationTitle, {marginTop: 60}]}>
+                            <View style={styles.inspirationLine}/>
+                            <Text style={styles.inspirationLabel}>  Inspiration  </Text>
+                            <View style={styles.inspirationLine}/>
+                        </View>
+                    </View>
 
-                //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
-                <View style={styles.subViewStyle}>
-                    <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
-                    <Button title={"Join Chapter"} onPress={() => this.handleJoinChapter()}/>
-                    <FgModal size={"small"}/>
-                </View>
+                    //Inspiration Block
+                    <View style={styles.subViewStyle}>
+                        <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
+                            {this.state.member.inspiration}
+                        </Text>
+                    </View>
 
-            </ScrollView>
+                    //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
+                    <View style={styles.subViewStyle}>
+                        <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
+                        <Button title={"Join Chapter"} onPress={() => this.handleJoinChapter()}/>
+                        <FgModal size={"small"}/>
+                    </View>
+
+                </ScrollView>
+            </SafeAreaView>
         );
     }
 
@@ -193,7 +201,8 @@ const styles = StyleSheet.create({
     },
     requestChapterAccess: {
         flex: 1,
-        backgroundColor: '#F313B7'
+        backgroundColor: '#F313B7',
+        padding: 10
     },
     bannerText: {
         justifyContent: 'center',
