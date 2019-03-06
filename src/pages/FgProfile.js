@@ -1,12 +1,14 @@
 import React from 'react';
-import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Button, ScrollView, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
+import {FgModal} from "../components/FgModal";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
 import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
+import { SafeAreaView } from 'react-navigation';
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -41,7 +43,8 @@ export class FgProfile extends React.Component {
                     data.gradYear,
                     data.bannerSource,
                     data.avatarSource,
-                    data.inspiration
+                    data.inspiration,
+                    data.chapterId
                 );
                 //this.setState({member: fgMember, loading: 'false'});
                 this.setState({member: fgMember, loading: false});
@@ -64,6 +67,15 @@ export class FgProfile extends React.Component {
         return (
             //Wrap entire profile in a ScrollView
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
+                
+                //Request Chapter Access Banner
+                <SafeAreaView style={styles.requestChapterAccess}>
+                    <TouchableHighlight
+                        onPress={() => {
+                        }}>
+                        <Text style= {styles.bannerText}>Request access to a chapter</Text>
+                    </TouchableHighlight>
+                </SafeAreaView>
 
                 //Banner
                 <View style={styles.subViewStyle}>
@@ -110,6 +122,8 @@ export class FgProfile extends React.Component {
                 //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
                 <View style={styles.subViewStyle}>
                     <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
+                    <Button title={"Join Chapter"} onPress={() => this.handleJoinChapter()}/>
+                    <FgModal size={"small"}/>
                 </View>
 
             </ScrollView>
@@ -124,6 +138,10 @@ export class FgProfile extends React.Component {
             .then(() => navigation.navigate("SignedOut"))
             .catch( (error) => console.log(error.message));
 
+    }
+
+    handleJoinChapter() {
+        
     }
 
 }
@@ -172,6 +190,14 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         color: '#818282',
         margin: 20
+    },
+    requestChapterAccess: {
+        flex: 1,
+        backgroundColor: '#F313B7'
+    },
+    bannerText: {
+        justifyContent: 'center',
+        textDecorationLine: 'underline',
+        color: '#FFFFFF'
     }
-
 });
