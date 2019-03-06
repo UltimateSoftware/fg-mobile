@@ -11,7 +11,6 @@ import {onSignIn, isSignedIn} from "../Auth";
 export class ProfileForm extends Component {
 
     CURRENT_YEAR = new Date().getFullYear();
-    service = new FgProfileService();
     memberIsLoaded = false;
 
     constructor() {
