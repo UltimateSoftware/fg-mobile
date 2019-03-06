@@ -25,6 +25,8 @@ export class Chapter extends React.Component {
     this.loadChapter()
     .then( (data) => {
       //TODO: data is currently null
+      console.log(data);
+      console.log(typeof(data));
       const info = new ChProfile(
         data.schoolName ? data.schoolName : null,
         data.chapter ? data.chapter : null,

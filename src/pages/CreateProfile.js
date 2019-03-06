@@ -140,7 +140,7 @@ export class CreateProfile extends React.Component {
                         .then( () => DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember)
                         .then(() => onSignIn())
                         .then(() => navigate("SignedIn")))
-                        .catch( (error) => console.log(error.message));
+                        .catch( (error) => console.log("ERROR handleSubmit() ", error.message));
                 } else {
                     Alert.alert(
                         'Server Error',

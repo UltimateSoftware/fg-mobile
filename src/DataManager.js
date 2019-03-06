@@ -17,16 +17,17 @@ export class DataManager {
         try {
             return await AsyncStorage.setItem(key, JSON.stringify(item));
         } catch (error) {
-            console.log("[ERROR - DataManager]: ", error.message);
+            console.log("set[ERROR - DataManager]: ", error.message);
         }
     }
 
     static async getItemWithKey(key) {
         try {
             const retrievedItem =  await AsyncStorage.getItem(key, null);
+            console.log(retrievedItem);
             return JSON.parse(retrievedItem);
         } catch (error) {
-            console.log("[ERROR - DataManager]: ", error.message);
+            console.log("get [ERROR - DataManager]: ", error.message);
         }
     }
 

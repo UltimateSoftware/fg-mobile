@@ -4,7 +4,7 @@ import {SIGNED_IN_MEMBER_ID} from "./DataManager";
 export const USER_AUTH_KEY = "user-auth-key";
 
 export const onSignIn = () => {
-    AsyncStorage.setItem(SIGNED_IN_MEMBER_ID, "bfc7536d-d417-48e1-a414-6d7d22a1b90f");
+    AsyncStorage.setItem(SIGNED_IN_MEMBER_ID, '{"id": "919f174b-b6bb-4300-b897-d65bc1ae5dc9"}');
 };
 
 export const onSignOut = () => {
