@@ -76,11 +76,7 @@ export class FgProfile extends React.Component {
                     //Request Chapter Access Banner
                     {!this.state.member.chapterId && 
                         <View style={styles.requestChapterAccess}>
-                            <TouchableHighlight
-                                onPress={() => {
-                                }}>
-                                <Text style= {styles.bannerText}>Request access to a chapter</Text>
-                            </TouchableHighlight>
+                            <FgModal/>
                         </View>
                     }
                     
@@ -129,10 +125,7 @@ export class FgProfile extends React.Component {
                     //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
                     <View style={styles.subViewStyle}>
                         <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
-                        <Button title={"Join Chapter"} onPress={() => this.handleJoinChapter()}/>
-                        <FgModal size={"small"}/>
                     </View>
-
                 </ScrollView>
             </SafeAreaView>
         );
@@ -146,10 +139,6 @@ export class FgProfile extends React.Component {
             .then(() => navigation.navigate("SignedOut"))
             .catch( (error) => console.log(error.message));
 
-    }
-
-    handleJoinChapter() {
-        
     }
 
 }
@@ -203,10 +192,5 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F313B7',
         padding: 10
-    },
-    bannerText: {
-        justifyContent: 'center',
-        textDecorationLine: 'underline',
-        color: '#FFFFFF'
     }
 });

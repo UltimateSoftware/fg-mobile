@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
+import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import { TextInput } from 'react-native-gesture-handler';
-import { FgButton } from "./FgButton";
+import { FgButton } from "../components/FgButton";
+import { ChapterService } from '../services/ChapterService';
 
 export class FgModal extends Component {
   state = {
     modalVisible: false,
-    transparent: true
+    transparent: true,
+    schoolName: ''
   };
 
   requestAccess(){
@@ -24,7 +27,7 @@ export class FgModal extends Component {
     var innerContainerTransparentStyle = {
       backgroundColor: '#fff', padding: 20
     };
-    
+
     var {children} = this.props;
     return (
       <View style={{marginTop: 22}}>
@@ -40,11 +43,12 @@ export class FgModal extends Component {
               <Text style= {styles.titleText}>
                 Request Access To A Chapter
               </Text>
-              <View style={{marginTop:30}} />
               <TextInput
-                maxLength= {40}
-                placeholder= "School Name"
-              />
+                        style={styles.textInputStyle}
+                        placeholder={'School Name'}
+                        placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
+                        onChangeText={(text) => this.setState({schoolName: text})}
+                        value={this.state.schoolName}/>
               <View style = {styles.submitButtonStyle}>
               <FgButton
                 title= "Request Access"
@@ -57,16 +61,13 @@ export class FgModal extends Component {
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>
-              <Text style= {{textDecorationLine: 'underline'}}>Skip for now</Text>
+              <Text style= {styles.skipText}>Skip for now</Text>
               </TouchableHighlight>
             </View>
           </View>
         </Modal>
-        <TouchableHighlight
-          onPress={() => {
-            this.setModalVisible(true);
-          }}>
-          <Text>Show Modal</Text>
+        <TouchableHighlight onPress={() => this.setModalVisible(true)}>
+          <Text style= {styles.bannerText}>Request access to a chapter</Text>
         </TouchableHighlight>
       </View>
     );
@@ -84,8 +85,9 @@ var styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: 'center',
   },
-  underline: {
-    textDecorationLine: 'underline'
+  skipText: {
+    textDecorationLine: 'underline',
+    color: PLACEHOLDER_TEXT_COLOR
   },
   button: {
     borderRadius: 5,
@@ -105,5 +107,21 @@ var styles = StyleSheet.create({
     width: '80%',
     marginTop: 60,
     marginBottom: 20
+},
+textInputStyle: {
+  fontFamily: 'open-sans-regular',
+  fontSize: 16,
+  borderColor: '#BDCDD1',
+  borderBottomWidth: 1,
+  width: SCREEN_WIDTH * 0.65,
+  height: 35,
+  lineHeight: 20,
+  margin: 20
+},
+bannerText: {
+  justifyContent: 'center',
+  fontSize: 18,
+  textDecorationLine: 'underline',
+  color: '#FFFFFF'
 }
 });
