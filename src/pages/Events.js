@@ -11,14 +11,14 @@ export class Events extends React.Component {
     d = new Date();
     monthList = [{value: 'January', key: '01'}, {value: 'February'}, {value: 'March'}, {value: 'April'}, {value: 'May'}, {value: 'June'},
                  {value: 'July'}, {value: 'August'}, {value: 'September'}, {value: 'October'}, {value: 'November'}, {value: 'December'}]
-    //monthList = ['Jan', 'Feb', 'Mar', 'Apr']
 
     constructor(props) {
         super(props);
         this.state = {
             fgEvents: [],
             currMonth: this.monthList[this.d.getMonth()].value,
-            isLoading: true
+            isLoading: true,
+            creatingEvent: false,
         };
     }
 
@@ -58,7 +58,7 @@ export class Events extends React.Component {
                             {'2019-03-08': [{text: 'item 1 - any js object'}],
                             '2019-03-07': [{text: 'item 2 - any js object'}],
                             '2019-03-06': [],
-                            '2019-03-05': [{text: 'item 3 - any js object'},{text: 'any js object'}],
+                            '2019-03-11': [{text: 'item 3 - any js object'},{text: 'any js object'}],
                         }}
                         // callback that gets called when items for a certain month should be loaded (month became visible)
                         loadItemsForMonth={(month) => {console.log('trigger items loading')}}
@@ -70,13 +70,27 @@ export class Events extends React.Component {
                         onDayChange={(day)=>{console.log('day changed')}}
                         // initially selected day
                         selected={this.returnDate()}
-                        // Max amount of months allowed to scroll to the past. Default = 50
+                        // Max amount of months allowed to scroll in a direction. Default = 50
                         pastScrollRange={0}
                         futureScrollRange={11}
                         // specify how each item should be rendered in agenda
-                        renderItem={(item, firstItemInDay) => {return (<View />);}}
+                        // renderItem={(item, firstItemInDay) => {return (
+                        //     <Button style= {{borderWidth: 1, flex: 1}}>
+                        //         <Text>{item.text}</Text>
+                        //     </Button>
+                        // );}}
                         // specify how each date should be rendered. day can be undefined if the item is not first in that day.
-                        renderDay={(day, item) => {return (<View />);}}
+                        // renderDay={(day, item) => {
+                        //     if(typeof day === 'undefined') { return <View/>; }
+                        //     else {
+                        //         return (
+                        //         <Card style= {{borderWidth: 1, flex: 1/2}}>
+                        //             <Text>{day.day}</Text>
+                        //         </Card>);
+                        //     } 
+                        // }}
+                        renderItem={this.renderItem.bind(this)}
+                        renderEmptyDate={this.renderEmptyDate.bind(this)}
                         // specify how empty date content with no items should be rendered
                         renderEmptyDate={() => {return (<View />);}}
                         // specify how agenda knob should look like
@@ -87,9 +101,9 @@ export class Events extends React.Component {
                         rowHasChanged={(r1, r2) => {return r1.text !== r2.text}}
                         // agenda theme
                         theme={{
-                            agendaDayTextColor: 'yellow',
-                            agendaDayNumColor: 'green',
-                            agendaTodayColor: 'red',
+                            agendaDayTextColor: 'tomato',
+                            agendaDayNumColor: 'tomato',
+                            agendaTodayColor: 'tomato',
                             agendaKnobColor: 'tomato'
                         }}
                         // agenda container style
@@ -100,6 +114,18 @@ export class Events extends React.Component {
         } else {
             return <View></View>
         }
+    }
+
+    renderItem(item) {
+        return (
+          <View style={[styles.item, {height: item.height}]}><Text>{item.text}</Text></View>
+        );
+      }
+    
+      renderEmptyDate() {
+        return (
+          <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
+        );
     }
 }
 
@@ -126,10 +152,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     item: {
+        backgroundColor: 'white',
+        flex: 1,
+        borderRadius: 5,
         padding: 10,
-        height: 44,
-        width: SCREEN_WIDTH*.40
-    },
+        marginRight: '5%',
+        marginTop: '5%'
+      },
+      emptyDate: {
+        height: 15,
+        flex:1,
+        paddingTop: 30
+    }
 });
 
 {/* <Dropdown
