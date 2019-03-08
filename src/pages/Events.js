@@ -34,8 +34,19 @@ export class Events extends React.Component {
         return this.d.getFullYear() + '-' + ("0" + (this.d.getMonth() + 1)).slice(-2) + '-' + ("0" + this.d.getDate()).slice(-2)
     }
 
+    consumeableData() {
+        data = {}
+
+        for (i = 0; i < this.state.fgEvents.length; i++) {
+            data[this.state.fgEvents[i].date] = [{
+                'event': this.state.fgEvents[i].description, 
+                'location': this.state.fgEvents[i].location}]
+        }
+
+        return data
+    }
+
     render() {
-        console.log(this.state.currMonth)
 
         if(!this.state.isLoading) {
             return (
@@ -54,12 +65,7 @@ export class Events extends React.Component {
                         // the list of items that have to be displayed in agenda. If you want to render item as empty date
                         // the value of date key kas to be an empty array []. If there exists no value for date key it is
                         // considered that the date in question is not yet loaded
-                        items={
-                            {'2019-03-08': [{text: 'item 1 - any js object'}],
-                            '2019-03-07': [{text: 'item 2 - any js object'}],
-                            '2019-03-06': [],
-                            '2019-03-11': [{text: 'item 3 - any js object'},{text: 'any js object'}],
-                        }}
+                        items={this.consumeableData()}
                         // callback that gets called when items for a certain month should be loaded (month became visible)
                         loadItemsForMonth={(month) => {console.log('trigger items loading')}}
                         // callback that fires when the calendar is opened or closed
@@ -118,11 +124,11 @@ export class Events extends React.Component {
 
     renderItem(item) {
         return (
-          <View style={[styles.item, {height: item.height}]}><Text>{item.text}</Text></View>
+          <View style={[styles.item, {height: item.height}]}><Text>{item.event}</Text></View>
         );
       }
     
-      renderEmptyDate() {
+    renderEmptyDate() {
         return (
           <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
         );

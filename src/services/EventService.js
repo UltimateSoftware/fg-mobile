@@ -25,7 +25,7 @@ export class EventService {
         return (
             [
                 {
-                    "date": "2019-03-03",
+                    "date": "2019-03-10",
                     "chapterId": "17cbecac-dc59-46b1-93ad-faf89cda7268",
                     "description": "Description of the hangout and all its fun stuff.",
                     "location": "Phase 10",
@@ -36,7 +36,7 @@ export class EventService {
                         "Icebreaker Numero Uno"
                     ]
                 },{
-                    "date": "2019-03-03",
+                    "date": "2019-03-11",
                     "chapterId": "17cbecac-dc59-46b1-93ad-faf89cda7268",
                     "description": "Description of the hangout and all its fun stuff.",
                     "location": "Phase 10",
@@ -47,7 +47,7 @@ export class EventService {
                         "Icebreaker Numero Uno"
                     ]
                 },{
-                    "date": "2019-03-03",
+                    "date": "2019-03-14",
                     "chapterId": "17cbecac-dc59-46b1-93ad-faf89cda7268",
                     "description": "Description of the hangout and all its fun stuff.",
                     "location": "Phase 10",
@@ -58,7 +58,7 @@ export class EventService {
                         "Icebreaker Numero Uno"
                     ]
                 },{
-                    "date": "2019-03-03",
+                    "date": "2019-03-20",
                     "chapterId": "17cbecac-dc59-46b1-93ad-faf89cda7268",
                     "description": "Description of the hangout and all its fun stuff.",
                     "location": "Phase 10",
@@ -69,7 +69,7 @@ export class EventService {
                         "Icebreaker Numero Uno"
                     ]
                 },{
-                    "date": "2019-03-03",
+                    "date": "2019-03-20",
                     "chapterId": "17cbecac-dc59-46b1-93ad-faf89cda7268",
                     "description": "Description of the hangout and all its fun stuff.",
                     "location": "Phase 10",
