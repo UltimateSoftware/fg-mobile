@@ -56,8 +56,6 @@ export class Events extends React.Component {
 
     render() {
 
-        console.log(Object.keys(this.state.fgEvents).length)
-
         if(!this.state.isLoading) {
             return (
                 <View style={{height: SCREEN_HEIGHT*.91, width: SCREEN_WIDTH, alignItems: 'stretch', justifyContent: 'flex-start', flexGrow: 1}}>
@@ -77,13 +75,9 @@ export class Events extends React.Component {
                         // considered that the date in question is not yet loaded
                         items={this.state.fgEvents}
                         // callback that gets called when items for a certain month should be loaded (month became visible)
-                        loadItemsForMonth={(month) => {console.log(Object.keys(this.state.fgEvents).length)}}
                         // callback that fires when the calendar is opened or closed
-                        onCalendarToggled={(calendarOpened) => {console.log(calendarOpened)}}
                         // callback that gets called on day press
-                        onDayPress={(day)=>{console.log('day pressed')}}
                         // callback that gets called when day changes while scrolling agenda list
-                        onDayChange={(day)=>{console.log('day changed')}}
                         // initially selected day
                         selected={this.returnDate()}
                         // Max amount of months allowed to scroll in a direction. Default = 50
