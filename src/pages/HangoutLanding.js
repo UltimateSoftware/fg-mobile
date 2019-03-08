@@ -17,13 +17,6 @@ import {HangoutComponent } from '../components/HangoutComponent'
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
 //TODO: Status bar background should be white not translucent
-
-// const icons = {
-//     "book": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/book.png')}/>),
-//     "coffee": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/coffee.png')}/>),
-//     "food": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/food.png')}/>)
-// };
-
 export class HangoutLanding extends React.Component {
     constructor() {
         super();
@@ -127,6 +120,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         width: SCREEN_WIDTH*.975,
         justifyContent: 'center',
+        marginTop: SCREEN_HEIGHT*0.03,
     },
     textContainer: {
         position: 'absolute',
