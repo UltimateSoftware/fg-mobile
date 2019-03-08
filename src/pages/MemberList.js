@@ -1,59 +1,138 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Avatar } from '../components/Avatar';
-import { Banner } from '../components/Banner';
-import { BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH } from '../utils/sharedConstants';
-import { MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR } from '../test/MockedTypes';
+import React from "react";
+import { StyleSheet, View, FlatList, ActivityIndicator } from "react-native";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../utils/sharedConstants";
+import { CHAPTER } from "../DataManager";
+import { SearchBar } from "react-native-elements";
+import ProfileListComponent from "../components/ProfileListComponent";
 
-//TODO: Make Mock Data
 export class MemberList extends React.Component {
-  member = MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR; //stub member for now
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      renderedMembers: [],
+      page: 1,
+      seed: 1,
+      error: null,
+      refreshing: false
+    };
+  }
+
+  componentDidMount() {
+    this.handleRemoteRequest();
+  }
+
+  renderHeader = () => {
+    return (
+      <View>
+        <SearchBar
+          placeholder="Search for a chapter member ..."
+          lightTheme
+          round
+          onChangeText={text => this.searchFunction(text)}
+          autoCorrect={false}
+        />
+      </View>
+    );
+  };
+
+  renderFooter = () => {
+    if (!this.state.loading) {
+      return null;
+    }
+
+    return (
+      <View style={styles.footer}>
+        <ActivityIndicator animating size="large" />
+      </View>
+    );
+  };
 
   render() {
-    let renderMembers = [];
-    for (i = 0; i < 5; i++) {
-      renderMembers.push(
-        <View key={i}>
-          <Avatar avatarSize={'memberList'} name={this.member.fullName()} source={this.member.avatarSource} />
-          <Text style={[styles.textContainer, styles.nameLabel]}>{this.member.fullName()}</Text>
-        </View>
-      );
-    }
     return (
-      <ScrollView style={styles.scrollViewStyle}>
-        <View style={styles.container}>{renderMembers}</View>
-      </ScrollView>
+      <View
+        style={styles.viewStyle}
+        containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}
+      >
+        <FlatList
+          data={this.state.renderedMembers}
+          renderItem={({ item }) => (
+            <ProfileListComponent
+              fullName={`${item.name.first} ${item.name.last}`}
+              image={item.picture.large}
+            />
+          )}
+          keyExtractor={item => item.email}
+          numColumns={2}
+          ListHeaderComponent={this.renderHeader()}
+          ListFooterComponent={this.renderFooter()}
+          refreshing={this.state.refreshing}
+          onRefresh={this.handleRefresh}
+          onEndReached={this.handleLoadMore}
+          onEndReachedThreshhold={1}
+        />
+      </View>
     );
   }
+
+  handleRefresh = () => {
+    this.setState(
+      {
+        page: 1,
+        refreshing: true,
+        seed: this.state.seed + 1
+      },
+      () => {
+        this.handleRemoteRequest();
+      }
+    );
+  };
+
+  handleLoadMore = () => {
+    this.setState(
+      {
+        page: this.state.page + 1
+      },
+      () => {
+        this.handleRemoteRequest();
+      }
+    );
+  };
+
+  //Calls mocked users currently. Set up for easy transition to FG db. 
+  handleRemoteRequest = () => {
+    const { page, seed } = this.state;
+    const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=10`;
+    this.setState({ loading: true });
+    setTimeout(() => {
+      fetch(url)
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            renderedMembers: [...this.state.renderedMembers, ...res.results],
+            error: res.error || null,
+            loading: false,
+            refreshing: false
+          });
+        })
+        .catch(error => {
+          this.setState({ error, loading: false, refreshing: false });
+        });
+    }, 1500);
+  };
 }
+export default MemberList;
+
 const styles = StyleSheet.create({
-  scrollViewStyle: {
+  viewStyle: {
     height: SCREEN_HEIGHT,
     width: SCREEN_WIDTH,
     opacity: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: "whitesmoke"
   },
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    backgroundColor: '#ffffff',
-  },
-  textContainer: {
-    color: '#818282',
-    textAlign: 'center',
-  },
-  nameLabel: {
-    fontFamily: 'montserrat-light',
-    fontSize: 18,
-  },
-  schoolLabel: {
-    fontFamily: 'open-sans-regular',
-    fontSize: 16,
-  },
-  gradYearLabel: {
-    fontFamily: 'open-sans-regular',
-    fontSize: 14,
-  },
+  footer: {
+    paddingVertical: 20,
+    borderTopWidth: 1,
+    borderColor: "#CED0CE"
+  }
 });
