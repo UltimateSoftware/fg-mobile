@@ -1,8 +1,7 @@
-export function Hangout (title, location, description, icebreakers, state, icon) {
+export function Hangout (title, location, content, icebreakers, state) {
     this.title = title;
     this.location = location;
-    this.description = description;
+    this.content = content;
     this.icebreakers = icebreakers;
     this.state = state;
-    this.icon = icon;
 }

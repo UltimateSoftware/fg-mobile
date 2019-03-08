@@ -11,7 +11,8 @@ export class Banner extends Component {
     render() {
         const {
             source,
-            text
+            text,
+            color
         } = this.props;
 
         let inner = null;
@@ -30,7 +31,10 @@ export class Banner extends Component {
                     source={{ uri: source }}
                     style={styles.bannerStyle}/>
             }
-        }else {
+        }else if(color) {
+                inner = <View style={[styles.bannerStyleWithText,{ backgroundColor: color }]}><H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}>{this.props.text}</H1></View>
+            }
+        else {
             //if user does not supply a banner image, simply render a grey background
             inner =
                 <View

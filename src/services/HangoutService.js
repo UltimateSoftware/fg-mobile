@@ -5,7 +5,7 @@ export class HangoutService {
         return fetch("http://localhost:5000/hangouts")
         .then((response) => response.json())
         .then((responseJson) => {
-            var data = responseJson.map((response) => new Hangout(response.title, response.location, response.description, response.icebreakers, response.state, response.icon));
+            var data = responseJson.map((response) => new Hangout(response.title, response.location, response.content, response.icebreakers, response.state));
             return data;
         })
         .catch(console.error);
