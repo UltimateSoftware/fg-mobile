@@ -9,13 +9,13 @@ import { Agenda } from 'react-native-calendars';
 export class Events extends React.Component {
     service = new EventService();
     d = new Date();
-    monthList = [{value: 'January', key: '01'}, {value: 'February'}, {value: 'March'}, {value: 'April'}, {value: 'May'}, {value: 'June'},
+    monthList = [{value: 'January'}, {value: 'February'}, {value: 'March'}, {value: 'April'}, {value: 'May'}, {value: 'June'},
                  {value: 'July'}, {value: 'August'}, {value: 'September'}, {value: 'October'}, {value: 'November'}, {value: 'December'}]
 
     constructor(props) {
         super(props);
         this.state = {
-            fgEvents: [],
+            fgEvents: {},
             currMonth: this.monthList[this.d.getMonth()].value,
             isLoading: true,
             creatingEvent: false,
@@ -23,7 +23,7 @@ export class Events extends React.Component {
     }
 
     async componentWillMount() {
-        loadedData = await this.service.getEvents()
+        loadedData = this.consumeableData(await this.service.getEvents())
         this.setState({
             fgEvents: loadedData,
             isLoading: false
@@ -34,19 +34,29 @@ export class Events extends React.Component {
         return this.d.getFullYear() + '-' + ("0" + (this.d.getMonth() + 1)).slice(-2) + '-' + ("0" + this.d.getDate()).slice(-2)
     }
 
-    consumeableData() {
+    consumeableData(rawData) {
         data = {}
+        for (i = this.d.getFullYear(); i <= this.d.getFullYear() + 1; i++) {
+            for (j = 1; j <= 12; j++) {
+                for (k = 1; k <= 31; k++) {
+                    date = i + '-' + ("0" + (j + 1)).slice(-2) + '-' + ("0" + k).slice(-2)
+                    data[date] = []
+                }
+            }
+        }
 
-        for (i = 0; i < this.state.fgEvents.length; i++) {
-            data[this.state.fgEvents[i].date] = [{
-                'event': this.state.fgEvents[i].description, 
-                'location': this.state.fgEvents[i].location}]
+        for (i = 0; i < rawData.length; i++) {
+            data[rawData[i].date].push({
+                'event': rawData[i].description, 
+                'location': rawData[i].location})
         }
 
         return data
     }
 
     render() {
+
+        console.log(Object.keys(this.state.fgEvents).length)
 
         if(!this.state.isLoading) {
             return (
@@ -65,9 +75,9 @@ export class Events extends React.Component {
                         // the list of items that have to be displayed in agenda. If you want to render item as empty date
                         // the value of date key kas to be an empty array []. If there exists no value for date key it is
                         // considered that the date in question is not yet loaded
-                        items={this.consumeableData()}
+                        items={this.state.fgEvents}
                         // callback that gets called when items for a certain month should be loaded (month became visible)
-                        loadItemsForMonth={(month) => {console.log('trigger items loading')}}
+                        loadItemsForMonth={(month) => {console.log(Object.keys(this.state.fgEvents).length)}}
                         // callback that fires when the calendar is opened or closed
                         onCalendarToggled={(calendarOpened) => {console.log(calendarOpened)}}
                         // callback that gets called on day press
@@ -96,13 +106,19 @@ export class Events extends React.Component {
                         //     } 
                         // }}
                         renderItem={this.renderItem.bind(this)}
-                        renderEmptyDate={this.renderEmptyDate.bind(this)}
                         // specify how empty date content with no items should be rendered
-                        renderEmptyDate={() => {return (<View />);}}
+                        renderEmptyDate={this.renderEmptyDate.bind(this)}
                         // specify how agenda knob should look like
+                        // renderDay = {(day, item) => {
+                        //     if(typeof item !== 'undefined') {
+                        //         if(Object.keys(item) !== 0){
+                        //             return <Text>baka</Text>
+                        //         }
+                        //     }
+                        // }}
                         //renderKnob={() => {return (<View />);}}
                         // specify what should be rendered instead of ActivityIndicator
-                        renderEmptyData = {() => {return (<View />);}}
+                        renderEmptyData = {this.renderEmptyDate.bind(this)}
                         // specify your item comparison function for increased performance
                         rowHasChanged={(r1, r2) => {return r1.text !== r2.text}}
                         // agenda theme
@@ -124,13 +140,20 @@ export class Events extends React.Component {
 
     renderItem(item) {
         return (
-          <View style={[styles.item, {height: item.height}]}><Text>{item.event}</Text></View>
+          <View style={[styles.item, {height: item.height}]}>
+            <Text>
+                {item.event}
+            </Text>
+            <Text>
+                {item.location}
+            </Text>
+        </View>
         );
       }
     
     renderEmptyDate() {
         return (
-          <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
+          <View></View>
         );
     }
 }
