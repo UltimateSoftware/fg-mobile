@@ -11,16 +11,18 @@ import {Banner} from "../components/Banner";
 import {HangoutService} from '../services/HangoutService';
 import { black } from 'ansi-colors';
 
+import {HangoutComponent } from '../components/HangoutComponent'
+
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
 //TODO: Add ChapterSisters section below Inspiration Block
 //TODO: Status bar background should be white not translucent
 
-const icons = {
-    "book": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/book.png')}/>),
-    "coffee": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/coffee.png')}/>),
-    "food": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/food.png')}/>)
-};
+// const icons = {
+//     "book": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/book.png')}/>),
+//     "coffee": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/coffee.png')}/>),
+//     "food": (<Image style={{height:100, width:100, display: 'flex'}} source={require('../../assets/hangout_icons/food.png')}/>)
+// };
 
 export class HangoutLanding extends React.Component {
     constructor() {
@@ -35,13 +37,6 @@ export class HangoutLanding extends React.Component {
         this.HangoutService.getHangouts().then((data) => {
             this.setState({hangouts: data});
         });
-    }
-
-     checkIsEven(n) {
-        if(n%2 == 0) {
-            return true;
-        }
-        return false;
     }
 
     getImage(icon) {
@@ -85,22 +80,15 @@ export class HangoutLanding extends React.Component {
     }
 
     ListOfHangouts = () => {return (
-        <ScrollView
-                        style={styles.scrollViewStyle}
-                        bounces={false}
-                    >
-        
-                    <View style={styles.container}>
-                    {this.state.hangouts.map((r, i) => 
-                                <View key={i} style = {[styles.item, {marginRight: this.checkIsEven(i) ? SCREEN_WIDTH*.025 : i}, {marginTop: (i == 0 || i == 1) ? SCREEN_HEIGHT*0.03 : 0}]}>
-                                     {icons[r.icon]}
-                                     <Text style={{marginTop: 10, textAlign: 'center', color: 'rgba(0, 0, 0, 0.84)'}}>{r.title}</Text>
-                                </View>
-                        )}
-                }
-                    </View>
-                    </ScrollView>
-        );}
+            <ScrollView style={styles.scrollViewStyle} bounces={false}>
+                <View style={styles.container}>
+                {this.state.hangouts.map((r, i) => 
+                            <HangoutComponent key={i} title={r.title} index={i}></HangoutComponent>
+                )}
+                </View>
+            </ScrollView>
+        );
+    }
 
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
@@ -118,7 +106,7 @@ export class HangoutLanding extends React.Component {
                     </Button>
                 </Right>
             </Header>
-            <Banner text='Hangouts' source='https://d31l02nbp0owar.cloudfront.net/m/t/198/1977194/a-0120.jpg' />
+            <Banner text='Hangouts' color='#070745'/>
                 {<this.ListOfHangouts></this.ListOfHangouts>}
 
             </View>
@@ -150,24 +138,5 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center'
-    },
-    item: {
-        backgroundColor: 'white',
-        opacity: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 3,
-        height: SCREEN_WIDTH*.4,
-        width: SCREEN_WIDTH*.4,
-        borderColor: 'rgba(58, 106, 117, 0.18)',
-        borderWidth: 1,
-        marginBottom:SCREEN_HEIGHT*.04,
-        borderRadius : 20,
-        shadowColor: "#000", 
-		shadowOffset: { width: 1, height: 5 }, 
-		shadowOpacity: 0.15, 
-		shadowRadius: 10,
-        elevation: 10,
     },
 });
