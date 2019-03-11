@@ -11,26 +11,56 @@ export class MemberList extends React.Component {
     this.state = {
       loading: false,
       renderedMembers: [],
+      arrayholder: [],
       page: 1,
       seed: 1,
       error: null,
-      refreshing: false
+      refreshing: false,
+      isSearching: false
     };
   }
 
   componentDidMount() {
     this.handleRemoteRequest();
+    this.getAllChapterMembers();
   }
+  
+  //realtime Client side search function. Can be changed to implement server side searching instead. 
+  searchFunction = text => {
+    this.setState({
+      value: text,
+      isSearching: true
+    });
+    const newData = this.state.arrayholder.filter(item => {
+      const itemData = `${item.name.first.toUpperCase()} ${item.name.last.toUpperCase()}`;
+      const textData = text.toUpperCase();
+
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      renderedMembers: newData
+    });
+  };
+
+  onSearchBarCleared = () => {
+    if (this.state.isSearching) {
+      this.setState({ isSearching: false });
+    }
+  };
 
   renderHeader = () => {
     return (
       <View>
         <SearchBar
           placeholder="Search for a chapter member ..."
-          lightTheme
-          round
+          platform={"ios"}
+          searchIcon={false}
           onChangeText={text => this.searchFunction(text)}
           autoCorrect={false}
+          value={this.state.value}
+          clearIcon={true}
+          onClear={this.onSearchBarCleared}
+          onCancel={this.onSearchBarCleared}
         />
       </View>
     );
@@ -43,10 +73,12 @@ export class MemberList extends React.Component {
 
     return (
       <View style={styles.footer}>
-        <ActivityIndicator animating size="large" />
+        <ActivityIndicator animating size="large" color="#FFAACC" />
       </View>
     );
   };
+
+  
 
   render() {
     return (
@@ -69,7 +101,7 @@ export class MemberList extends React.Component {
           refreshing={this.state.refreshing}
           onRefresh={this.handleRefresh}
           onEndReached={this.handleLoadMore}
-          onEndReachedThreshhold={1}
+          onEndReachedThreshhold={0}
         />
       </View>
     );
@@ -83,7 +115,7 @@ export class MemberList extends React.Component {
         seed: this.state.seed + 1
       },
       () => {
-        this.handleRemoteRequest();
+        if (!this.state.isSearching) this.handleRemoteRequest();
       }
     );
   };
@@ -94,12 +126,11 @@ export class MemberList extends React.Component {
         page: this.state.page + 1
       },
       () => {
-        this.handleRemoteRequest();
+        if (!this.state.isSearching) this.handleRemoteRequest();
       }
     );
   };
 
-  //Calls mocked users currently. Set up for easy transition to FG db. 
   handleRemoteRequest = () => {
     const { page, seed } = this.state;
     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=10`;
@@ -120,6 +151,26 @@ export class MemberList extends React.Component {
         });
     }, 1500);
   };
+
+  //TODO: replace method with server side search function or cache result on client side.  
+  getAllChapterMembers = () => {
+    const url = `https://randomuser.me/api/?seed=${1}&results=100`;
+    this.setState({ loading: true });
+    setTimeout(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          arrayholder: res.results,
+          error: res.error || null,
+          loading: false
+        });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
+    }, 750);
+  };
 }
 export default MemberList;
 
@@ -133,6 +184,6 @@ const styles = StyleSheet.create({
   footer: {
     paddingVertical: 20,
     borderTopWidth: 1,
-    borderColor: "#CED0CE"
+    borderColor: "lightgray"
   }
 });
