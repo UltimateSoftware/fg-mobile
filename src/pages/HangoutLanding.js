@@ -68,12 +68,11 @@ export class HangoutLanding extends React.Component {
     
                 </View>
                 </ScrollView>
-            
         );
     }
 
     ListOfHangouts = () => {return (
-            <ScrollView style={styles.scrollViewStyle} bounces={false}>
+            <ScrollView style={styles.scrollViewStyle} contentContainerStyle={styles.contentContainerStyle} bounces={false}>
                 <View style={styles.container}>
                 {this.state.hangouts.map((r, i) => 
                             <HangoutComponent key={i} title={r.title} index={i}></HangoutComponent>
@@ -109,18 +108,25 @@ export class HangoutLanding extends React.Component {
 
 const styles = StyleSheet.create({
     scrollViewStyle: {
-        opacity: 1,
         flex: 1,
-        paddingBottom: 5
+        width: '100%',
+    },
+    contentContainerStyle: {
+        // flex: 1,
+        alignItems: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+        // width: '100%'
     },
     container: {
         display: 'flex',
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        width: SCREEN_WIDTH*.975,
-        justifyContent: 'center',
+        width: '100%',
+        justifyContent: 'flex-start',
         marginTop: SCREEN_HEIGHT*0.03,
+        alignItems: 'center',
     },
     textContainer: {
         position: 'absolute',

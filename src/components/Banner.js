@@ -42,15 +42,11 @@ export class Banner extends Component {
                         [styles.bannerStyle,
                         { backgroundColor: 'lightgray' }]}/>
         }
-
         return (
             <View>{ inner }</View>
             
         );
-
-
     }
-
 }
 
 const styles = StyleSheet.create({

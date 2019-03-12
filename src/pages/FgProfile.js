@@ -111,7 +111,6 @@ export class FgProfile extends React.Component {
                 <View style={styles.subViewStyle}>
                     <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
                 </View>
-
             </ScrollView>
         );
     }
