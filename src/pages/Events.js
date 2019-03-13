@@ -74,43 +74,15 @@ export class Events extends React.Component {
                         // the value of date key kas to be an empty array []. If there exists no value for date key it is
                         // considered that the date in question is not yet loaded
                         items={this.state.fgEvents}
-                        // callback that gets called when items for a certain month should be loaded (month became visible)
-                        // callback that fires when the calendar is opened or closed
-                        // callback that gets called on day press
-                        // callback that gets called when day changes while scrolling agenda list
                         // initially selected day
                         selected={this.returnDate()}
                         // Max amount of months allowed to scroll in a direction. Default = 50
                         pastScrollRange={0}
                         futureScrollRange={11}
                         // specify how each item should be rendered in agenda
-                        // renderItem={(item, firstItemInDay) => {return (
-                        //     <Button style= {{borderWidth: 1, flex: 1}}>
-                        //         <Text>{item.text}</Text>
-                        //     </Button>
-                        // );}}
-                        // specify how each date should be rendered. day can be undefined if the item is not first in that day.
-                        // renderDay={(day, item) => {
-                        //     if(typeof day === 'undefined') { return <View/>; }
-                        //     else {
-                        //         return (
-                        //         <Card style= {{borderWidth: 1, flex: 1/2}}>
-                        //             <Text>{day.day}</Text>
-                        //         </Card>);
-                        //     } 
-                        // }}
                         renderItem={this.renderItem.bind(this)}
                         // specify how empty date content with no items should be rendered
                         renderEmptyDate={this.renderEmptyDate.bind(this)}
-                        // specify how agenda knob should look like
-                        // renderDay = {(day, item) => {
-                        //     if(typeof item !== 'undefined') {
-                        //         if(Object.keys(item) !== 0){
-                        //             return <Text>baka</Text>
-                        //         }
-                        //     }
-                        // }}
-                        //renderKnob={() => {return (<View />);}}
                         // specify what should be rendered instead of ActivityIndicator
                         renderEmptyData = {this.renderEmptyDate.bind(this)}
                         // specify your item comparison function for increased performance
