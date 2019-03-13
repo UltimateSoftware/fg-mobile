@@ -24,6 +24,7 @@ export default class App extends React.Component {
             'montserrat-regular': require('./assets/fonts/Montserrat-Regular.otf'),
             'montserrat-bold': require('./assets/fonts/Montserrat-Bold.otf'),
             'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+            'anticon': require('./assets/fonts/AntDesign.ttf'),
             'Ionicons' : require("@expo/vector-icons/fonts/Ionicons.ttf")});
 
         await isSignedIn()

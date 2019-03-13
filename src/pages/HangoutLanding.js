@@ -2,7 +2,7 @@ import React from 'react';
 import Expo from 'expo';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
-import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, FlatList, Image, ListView, TouchableOpacity, Animated} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, FlatList, Image, ListView, TouchableOpacity, Animated, SafeAreaView} from 'react-native';
 import { Tile } from 'react-native-elements';
 import { Header, Left, Button, Body, Right, Title, Card, H2, CardItem, Thumbnail} from 'native-base';
 
@@ -12,6 +12,7 @@ import {HangoutService} from '../services/HangoutService';
 import { black } from 'ansi-colors';
 
 import {HangoutComponent } from '../components/HangoutComponent'
+import Icon from 'react-native-vector-icons/AntDesign';
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -87,26 +88,26 @@ export class HangoutLanding extends React.Component {
   var toValue = 0;
   this.state.bounceValue.setValue(-60);
 
-  this.setState({
-    isHidden: !this.state.isHidden
-  })
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
 
-  if (this.state.isHidden){
-    toValue = 33;
+    if (this.state.isHidden){
+      toValue = 0
+    }
+
+    Animated.spring(this.state.bounceValue,
+    {
+      toValue: toValue,
+      velocity: 2,
+      tension: 0,
+      friction: 8,
+    }).start();
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+
   }
-
-  Animated.spring(this.state.bounceValue,
-  {
-    toValue: toValue,
-    velocity: 2,
-    tension: 0,
-    friction: 8,
-  }).start();
-  this.setState({
-    isHidden: !this.state.isHidden
-  })
-
-}
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
@@ -146,14 +147,34 @@ export class HangoutLanding extends React.Component {
                 </Button>
 
                 <Button style = {{height:16, width: 16, backgroundColor: '#5F5F5F', borderRadius: 8, top: 8, left:8,position:'absolute'}}>
+                  <Icon style = {{top:4, position: 'absolute', left:2}} name = 'down' color = "#9A9A9A"/>
                 </Button>
 
                 <Image style = {{height: 60, width: 60, left: 8, top:40, position: 'absolute'}} source = {{uri:'https://d2s36jztkuk7aw.cloudfront.net/sites/default/files/tile/image/original_1.jpg'}}></Image>
                 <Text style = {{fontFamily: 'open-sans-bold',color: '#9A9A9A',fontSize: 12, height:17, width:160,left:31, top:8, position: 'absolute'}}>Fun. Fun. by fearlesslyGirl</Text>
+                <Text style = {{fontFamily: 'open-sans-bold',color: '#F1F1F1',fontSize: 14, height:19, width:160,left:77, top:52, position: 'absolute'}}>Come Together</Text>
+                <Text style = {{fontFamily: 'open-sans-regular',color: '#F1F1F1',fontSize: 12, height:17, width:160,left:77, top:71, position: 'absolute'}}>The Beatles</Text>
 
-              <Button>
+                <Button style = {{width:24,height:24,left: 24, top:116,backgroundColor: '#282828', position: 'absolute'}}>
+                    <Icon style = {{width:24,height:24, fontSize:24}} name = 'pluscircleo' color = "#F1F1F1"  />
+                </Button>
 
-              </Button>
+                <Button style = {{width:32,height:32,left: 192, top:112,backgroundColor: '#282828', position: 'absolute'}}>
+                  <Icon style = {{width:32,height:32,fontSize:32}} name = 'rightcircleo' color = "#F1F1F1"  />
+                </Button>
+
+                <Button style = {{width:18,height:18,left: 240, top:120, position: 'absolute',backgroundColor: '#282828'}}>
+                  <Icon style = {{width:18,height:18, fontSize:18}} name = 'stepforward' color = "#F1F1F1"  />
+                </Button>
+
+                <Button style = {{width:18,height:18,left: 160, top:120,backgroundColor: '#282828', position: 'absolute'}}>
+                  <Icon style = {{width:18,height:18, fontSize:18}} name = 'stepbackward' color = "#F1F1F1"  />
+                </Button>
+
+                <Button style = {{width: 20, height:20,right:8, top:40,position:'absolute',backgroundColor: '#282828'}}>
+                  <Icon style = {{width: 20, height:20, fontSize:20}} name = 'setting' color = "#9A9A9A" />
+                </Button>
+
             </Animated.View>
           }
                 {<this.ListOfHangouts></this.ListOfHangouts>}
