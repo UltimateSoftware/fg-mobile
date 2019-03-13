@@ -112,11 +112,9 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     contentContainerStyle: {
-        // flex: 1,
         alignItems: 'center',
         marginLeft: 'auto',
         marginRight: 'auto'
-        // width: '100%'
     },
     container: {
         display: 'flex',
@@ -126,6 +124,7 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'flex-start',
         marginTop: SCREEN_HEIGHT*0.03,
+        marginBottom: SCREEN_HEIGHT*0.03,
         alignItems: 'center',
     },
     textContainer: {
