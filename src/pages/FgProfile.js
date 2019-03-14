@@ -82,7 +82,7 @@ export class FgProfile extends React.Component {
                     </View>
                 </View>
                 
-                //Avatar
+                {/* Avatar */}
                 <View style={styles.subViewStyle}>
                     <View style={{marginTop: (bannerHeight/2)}}>
                         <Avatar
