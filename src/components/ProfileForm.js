@@ -137,7 +137,7 @@ export class ProfileForm extends Component {
                     </Picker>
                 </View>
 
-                // Submit/Save buttons
+                {*/ Submit/Save buttons /*}
                 {(state === 'create') &&
                     <View style={styles.subViewStyle}>
                         <View style={styles.submitButtonStyle}>
