@@ -81,7 +81,7 @@ export class ProfileForm extends Component {
                     }}>{title}</Text>
                 </View>
 
-                // First name input
+                {/* First name input */}
                 <View style={[styles.subViewStyle, {marginTop: 25}]}>
                     <TextInput
                         style={styles.textInputStyle}
