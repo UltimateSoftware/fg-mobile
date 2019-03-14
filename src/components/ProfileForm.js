@@ -91,7 +91,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.firstName}/>
                 </View>
 
-                // Last name input
+                {*/ Last name input */}
                 <View style={styles.subViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
