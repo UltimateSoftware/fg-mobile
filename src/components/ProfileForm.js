@@ -111,7 +111,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.schoolName}/>
                 </View>
 
-                // Inspiration text input
+                {*/ Inspiration text input */}
                 <View style={[styles.subViewStyle, {marginTop: 15}]}>
                     <Text style={styles.inputLabelStyle}>What inspires you?</Text>
                     <TextInput style={[styles.textInputStyle, styles.inspirationInputStyle]}
