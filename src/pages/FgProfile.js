@@ -147,7 +147,6 @@ export class FgProfile extends React.Component {
                     </Modal>
                 </View>
 
-
             </ScrollView>
         );
     }
