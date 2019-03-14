@@ -71,7 +71,7 @@ export class ProfileForm extends Component {
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
                 </View>
 
-                // Page title
+                 {/* Page title */}
                 <View style={styles.subViewStyle}>
                     <Text style={{
                         fontFamily: 'montserrat-light',
