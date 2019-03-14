@@ -120,7 +120,7 @@ export class ProfileForm extends Component {
                                value={this.state.member.inspiration}/>
                 </View>
 
-                // Graduation year picker
+                {*/ Graduation year picker */}
                 <View style={[styles.subViewStyle, { marginVertical: 15 }]}>
                     <Text style={styles.inputLabelStyle}>When are you graduating?</Text>
                     <Picker
