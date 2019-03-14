@@ -160,7 +160,7 @@ export class FgProfile extends React.Component {
         const fgMember = new FgMember(member.firstName, member.lastName,
             member.schoolName, member.gradYear, null, null, member.inspiration);
         // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
-        this.service.updateMember(fgMember, SIGNED_IN_MEMBER_ID);
+        this.service.updateMember(fgMember, '11fabf1e-b502-4b24-bf37-4b79a4f89a98');
         DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember)
             .then(() =>this.setModalVisible(false))
 
