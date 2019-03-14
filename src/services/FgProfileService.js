@@ -4,7 +4,8 @@ import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager
 export class FgProfileService {
 
     createMember(member) {
-        return fetch('http://localhost:5000/api/v1/profiles/', {
+        var endpoint = `http://${config.default.api.host}:${config.default.api.port}/profiles`
+        return fetch(endpoint, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -26,7 +27,8 @@ export class FgProfileService {
     }
 
     updateMember(member, id) {
-        return fetch('http://localhost:5000/api/v1/profiles/' + id, {
+        var endpoint = `http://${config.default.api.host}:${config.default.api.port}/profiles/${id}`
+        return fetch(endpoint, {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',
