@@ -66,7 +66,7 @@ export class ProfileForm extends Component {
                 scrollEnabled={true}
                 bounces={false}>
 
-                // FearlesslyGirl Logo
+                {/* FearlesslyGirl Logo*/}
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
                 </View>
