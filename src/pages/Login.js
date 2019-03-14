@@ -5,6 +5,7 @@ import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {dummySignInAuthorization, onSignIn} from "../Auth";
 import {DataManager, SIGNED_IN_MEMBER} from "../DataManager";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
+import {FgProfileService} from "../services/FgProfileService";
 
 export class Login extends React.Component {
 
@@ -17,7 +18,7 @@ export class Login extends React.Component {
         this.handleSignUp.bind(this);
         this.handleSignIn.bind(this);
     }
-
+    service = new FgProfileService();
     render() {
         return (
             <View style={styles.mainViewStyle}>
@@ -70,11 +71,16 @@ export class Login extends React.Component {
     async handleSignIn() {
         if(dummySignInAuthorization(this.state.username, this.state.password)) {
             const { navigation } = this.props;
-            await DataManager.setItemForKey(SIGNED_IN_MEMBER, MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR)
+            console.log("before getting member");
+            var member = await this.service.getMemberById('11fabf1e-b502-4b24-bf37-4b79a4f89a98');
+            console.log("after getting member");
+            console.log(member);
+            await DataManager.setItemForKey(SIGNED_IN_MEMBER, member)
                 .then(() => onSignIn())
                 // .then(() => navigation.navigate("SignedIn"))
                 .then(() => navigation.navigate("SelectChapter"))
                 .catch( (error) => console.log("[ERROR - Login > handleSignIn()]:", error.message));
+
         }else {
             Alert.alert(
                 'Oops!',
