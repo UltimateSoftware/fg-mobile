@@ -31,17 +31,14 @@ export class Banner extends Component {
                     source={{ uri: source }}
                     style={styles.bannerStyle}/>
             }
-        }else if(color) {
-                inner = <View style={[styles.bannerStyleWithText,{ backgroundColor: color }]}><H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}>{this.props.text}</H1></View>
-            }
-        else {
-            //if user does not supply a banner image, simply render a grey background
-            inner =
-                <View
-                    style={
-                        [styles.bannerStyle,
-                        { backgroundColor: 'lightgray' }]}/>
         }
+    
+        color ? inner = <View style={[styles.bannerStyleWithText,{ backgroundColor: color }]}>
+            <H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}> {this.props.text}</H1>
+            </View> 
+            : 
+            inner = <View style= {[styles.bannerStles, { backgroundColor: 'lightgray' }]}/>
+            
         return (
             <View>{ inner }</View>
             
@@ -53,7 +50,11 @@ const styles = StyleSheet.create({
     bannerStyle: {
         height: SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO,
         width: SCREEN_WIDTH,
-        position:'relative'
+        position:'relative',
+        shadowColor: '#292829', 
+		shadowOffset: { width: 1, height: 3 }, 
+		shadowOpacity: 1, 
+		shadowRadius: 3,
     },
     bannerStyleWithText: {
         height: SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO,
@@ -61,6 +62,5 @@ const styles = StyleSheet.create({
         position:'relative',
         alignItems:'center',
         justifyContent:'center'
-        
     }
 });
