@@ -65,7 +65,7 @@ export class FgProfile extends React.Component {
         console.log("LOADED member: ", this.state.member);
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
-            //Wrap entire profile in a ScrollView
+            /* Wrap entire profile in a ScrollView */
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
                 
                 //Request Chapter Access Banner
@@ -77,14 +77,14 @@ export class FgProfile extends React.Component {
                     </TouchableHighlight>
                 </SafeAreaView>
 
-                //Banner
+                {/* Banner */}
                 <View style={styles.subViewStyle}>
                     <View style={{position: 'absolute'}}>
                         <Banner source={this.state.member.bannerSource}/>
                     </View>
                 </View>
 
-                //Avatar
+                {/* Avatar */}
                 <View style={styles.subViewStyle}>
                     <View style={{marginTop: (bannerHeight/2)}}>
                         <Avatar
@@ -94,7 +94,7 @@ export class FgProfile extends React.Component {
                     </View>
                 </View>
 
-                //Name, School, and Grad Year
+                {/* Name, School, and Grad Year */}
                 <View style={styles.subViewStyle}>
                     <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
                         <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.member.fullName()}</Text>{'\n'}
@@ -103,7 +103,7 @@ export class FgProfile extends React.Component {
                     </Text>
                 </View>
 
-                //Inspiration Title
+                {/* Inspiration Title */}
                 <View style={styles.subViewStyle}>
                     <View style={[styles.inspirationTitle, {marginTop: 60}]}>
                         <View style={styles.inspirationLine}/>
@@ -112,20 +112,19 @@ export class FgProfile extends React.Component {
                     </View>
                 </View>
 
-                //Inspiration Block
+                {/* Inspiration Block */}
                 <View style={styles.subViewStyle}>
                     <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
                         {this.state.member.inspiration}
                     </Text>
                 </View>
 
-                //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
+                {/* Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow */}
                 <View style={styles.subViewStyle}>
                     <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
                     <Button title={"Join Chapter"} onPress={() => this.handleJoinChapter()}/>
                     <FgModal size={"small"}/>
                 </View>
-
             </ScrollView>
         );
     }

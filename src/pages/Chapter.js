@@ -81,14 +81,14 @@ export class Chapter extends React.Component {
                 <Text style={styles.gradYearLabel}>{this.state.info.chapter}</Text>{'\n'}
                 </Text>
 
-                // Render the 'Inspiration' title with horizontal dividers on each side
+                {/* Render the 'Inspiration' title with horizontal dividers on each side */}
                 <View style={[styles.inspirationTitle, {top: bannerHeight * 2.345}]}>
                   <View style={styles.inspirationLine}/>
                   <Text style={styles.inspirationLabel}>  Our Mission  </Text>
                   <View style={styles.inspirationLine}/>
                 </View>
 
-                // Render the member's inspiration block
+                {/* Render the member's inspiration block */}
                 <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
                   {this.state.info.history}
                 </Text>
