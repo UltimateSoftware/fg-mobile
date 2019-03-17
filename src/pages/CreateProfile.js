@@ -5,8 +5,6 @@ import {FgButton} from "../components/FgButton";
 import {FgMember} from "../types/FgMember";
 import {FgProfileService} from "../services/FgProfileService";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
-import {onSignIn} from "../Auth";
 
 export class CreateProfile extends React.Component {
 
@@ -40,12 +38,12 @@ export class CreateProfile extends React.Component {
                 scrollEnabled={true}
                 bounces={false}>
 
-                {/* FearlesslyGirl Logo */}
+                // FearlesslyGirl Logo
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
                 </View>
 
-                {/* Page title */}
+                // Page title
                 <View style={styles.subViewStyle}>
                     <Text style={{
                         fontFamily: 'montserrat-light',
@@ -55,7 +53,7 @@ export class CreateProfile extends React.Component {
                     }}>Create your profile.</Text>
                 </View>
 
-                {/* First name input */}
+                // First name input
                 <View style={[styles.subViewStyle, {marginTop: 25}]}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -65,7 +63,7 @@ export class CreateProfile extends React.Component {
                         value={this.state.firstName}/>
                 </View>
 
-                {/* Last name input */}
+                // Last name input
                 <View style={styles.subViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -75,7 +73,7 @@ export class CreateProfile extends React.Component {
                         value={this.state.lastName}/>
                 </View>
 
-                {/* School name input */}
+                // School name input
                 <View style={styles.subViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -85,7 +83,7 @@ export class CreateProfile extends React.Component {
                         value={this.state.schoolName}/>
                 </View>
 
-                {/* Inspiration text input */}
+                // Inspiration text input
                 <View style={[styles.subViewStyle, {marginTop: 15}]}>
                     <Text style={styles.inputLabelStyle}>What inspires you?</Text>
                     <TextInput style={[styles.textInputStyle, styles.inspirationInputStyle]}
@@ -94,7 +92,7 @@ export class CreateProfile extends React.Component {
                                value={this.state.inspirationText}/>
                 </View>
 
-                {/* Graduation year picker */}
+                // Graduation year picker
                 <View style={[styles.subViewStyle, { marginVertical: 15 }]}>
                     <Text style={styles.inputLabelStyle}>When are you graduating?</Text>
                     <Picker
@@ -111,7 +109,7 @@ export class CreateProfile extends React.Component {
                     </Picker>
                 </View>
 
-                {/* Submit button */}
+                // Submit button
                 <View style={styles.subViewStyle}>
                     <View style={styles.submitButtonStyle}>
                         <FgButton onPress={() => this.handleSubmit()} title={"Submit"}/>
@@ -125,38 +123,19 @@ export class CreateProfile extends React.Component {
         );
     }
 
-    async handleSubmit() {
-        // Grab the navigator
-        const { navigate } = this.props.navigation;
+     handleSubmit() {
         // Create member object from form field values
         const fgMember = new FgMember(this.state.firstName, this.state.lastName,
             this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
         // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
-        this.service.createMember(fgMember)
-            .then( (id) => {
-                console.log("CreateProfile Id: ", id);
-                if(id) {
-                    DataManager.setItemForKey(SIGNED_IN_MEMBER_ID, id)
-                        .then( () => DataManager.setItemForKey(SIGNED_IN_MEMBER, fgMember)
-                        .then(() => onSignIn())
-                        .then(() => navigate("SignedIn")))
-                        .catch( (error) => console.log(error.message));
-                } else {
-                    Alert.alert(
-                        'Server Error',
-                        'Oops! Something went wrong with creating your profile. Please try again.',
-                        [{text: 'Ok', onPress: () => console.log('Cancel Pressed'), style: 'cancel'}],
-                        { cancelable: false }
-                    );
-                }
-            }).catch((error) => console.log("[ERROR - CreateProfile > handleSubmit()]: ", error.message));
+        this.service.createMember(fgMember);
+        this.props.navigation.navigate('Auth');
     }
 
     handleSignIn() {
         const { navigate } = this.props.navigation;
         navigate("SignIn");
     }
-
 
 }
 
