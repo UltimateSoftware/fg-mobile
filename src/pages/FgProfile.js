@@ -4,8 +4,6 @@ import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
-import {FgMember} from "../types/FgMember";
-import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
 import {FgButton} from "../components/FgButton";
 import {AsyncStorage} from 'react-native';
@@ -68,7 +66,7 @@ export class FgProfile extends React.Component {
             //Wrap entire profile in a ScrollView
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
 
-                //Avatar
+                {/* Avatar */}
                 <View style={styles.subViewStyle}>
                     <View style={{marginTop: (bannerHeight/2)}}>
                         <Avatar
@@ -78,7 +76,7 @@ export class FgProfile extends React.Component {
                     </View>
                 </View>
 
-                //Name, School, and Grad Year
+                {/* Name, School, and Grad Year */}
                 <View style={styles.subViewStyle}>
                     <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
                         <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.firstName} {this.state.lastName}</Text>{'\n'}
@@ -87,7 +85,7 @@ export class FgProfile extends React.Component {
                     </Text>
                 </View>
 
-                //Inspiration Title
+                {/* Inspiration Title */}
                 <View style={styles.subViewStyle}>
                     <View style={[styles.inspirationTitle, {marginTop: 20}]}>
                         <View style={styles.inspirationLine}/>
@@ -96,14 +94,14 @@ export class FgProfile extends React.Component {
                     </View>
                 </View>
 
-                //Inspiration Block
+                {/* Inspiration Block */}
                 <View style={styles.subViewStyle}>
                     <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
                         {this.state.inspiration}
                     </Text>
                 </View>
 
-                //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
+                {/* Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow */}
                 <View >
                     <FgButton title={'Sign Out'} onPress={this._logout} />
                 </View>

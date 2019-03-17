@@ -91,9 +91,9 @@ export class Login extends React.Component {
             <View style={styles.mainViewStyle}>
 
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
-                    // FG Logo
+                    {/* FG Logo */}
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
-                    // Page Title
+                    {/* Page Title */}
                     <Text style={{
                         fontFamily: 'montserrat-light',
                         fontSize: 22,
@@ -102,7 +102,7 @@ export class Login extends React.Component {
                         marginTop: 5
                     }}>Sign in.</Text>
 
-                    // Login section
+                    {/* Login section */}
                     <View style={{width: SCREEN_WIDTH / 2, marginTop: 25, marginBottom: 15}}>
                     <FgButton 
                        onPress={this._loginWithInstagram} 
