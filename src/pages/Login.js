@@ -9,7 +9,6 @@ import {AuthSession} from 'expo'
 import jwtDecoder from 'jwt-decode';
 import {AsyncStorage} from 'react-native';
 import config from '../../constants/config'
-import {SignInService} from '../services/SignInService'
 
 
 
@@ -18,7 +17,6 @@ export class Login extends React.Component {
 
         constructor(props) {
           super(props);
-          service = new SignInService();
           this.state = {
           }
         }

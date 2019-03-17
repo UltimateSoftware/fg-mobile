@@ -5,8 +5,6 @@ import {FgButton} from "../components/FgButton";
 import {FgMember} from "../types/FgMember";
 import {FgProfileService} from "../services/FgProfileService";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
-import {onSignIn} from "../Auth";
 
 export class CreateProfile extends React.Component {
 
@@ -126,13 +124,12 @@ export class CreateProfile extends React.Component {
     }
 
      handleSubmit() {
-        // Grab the navigator
         // Create member object from form field values
         const fgMember = new FgMember(this.state.firstName, this.state.lastName,
             this.state.schoolName, this.state.gradYear, null, null, this.state.inspirationText);
         // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
-        this.service.createMember(fgMember)
-        this.props.navigation.navigate('LoadingProfile')
+        this.service.createMember(fgMember);
+        this.props.navigation.navigate('Auth');
     }
 
     handleSignIn() {

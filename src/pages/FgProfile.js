@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Button, ScrollView, StyleSheet, Text, View, Alert} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
@@ -9,8 +9,8 @@ import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
 import {FgButton} from "../components/FgButton";
 import {AsyncStorage} from 'react-native';
-import {AuthSession} from 'expo'
 import {GlobalContext} from '../services/GlobalProvider'
+import {FgProfileService} from "../services/FgProfileService";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -18,6 +18,8 @@ import {GlobalContext} from '../services/GlobalProvider'
 //TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
+
+    service = new FgProfileService();
 
     constructor(props) {
         super(props);
@@ -106,7 +108,7 @@ export class FgProfile extends React.Component {
                     <FgButton title={'Sign Out'} onPress={this._logout} />
                 </View>
                 <View style={styles.subViewStyle}>
-                    <Button title={'Delete Account'} color='red' onPress={this._logout}/>
+                    <Button title={'Delete Account'} color='red' onPress={this._deleteAccount}/>
                 </View>
 
             </ScrollView>
@@ -114,13 +116,31 @@ export class FgProfile extends React.Component {
           </GlobalContext.Consumer>
         );   
     }
+  
     
     _logout = async () => {
-        await AsyncStorage.clear();
-        AuthSession.dismiss();
+        this.service.logout(); 
         this.props.navigation.navigate('Auth');
-      };
-   
+    }
+
+    _deleteAccount = async () => {
+        Alert.alert(
+            'Are you sure?',
+            'You will lose all your data. This action cannot be undone.',
+            [
+              {
+                text: 'Cancel',
+                style: 'cancel',
+              },
+              {text: 'Delete Account', onPress: () => {
+                this.service.deleteMember();
+                this.props.navigation.navigate('Auth');
+              }},
+            ],
+            {cancelable: false},
+          );
+    }
+
     //currently unused
     handleSignOut() {
         const { navigation } = this.props;
