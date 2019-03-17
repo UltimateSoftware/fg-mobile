@@ -7,6 +7,10 @@ import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager
 import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
+import {FgButton} from "../components/FgButton";
+import {AsyncStorage} from 'react-native';
+import {AuthSession} from 'expo'
+import {GlobalContext} from '../services/GlobalProvider'
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -15,118 +19,129 @@ import {onSignIn, onSignOut} from "../Auth";
 
 export class FgProfile extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             loading: 'initial',
-            member: null
+            member: null,
+            firstName: null,
+            lastName: null,
+            schoolName: null,
+            gradYear: null,
+            inspiration: null,
         };
         this.handleSignOut.bind(this);
     }
 
-    // Load current signed in member from local storage.
-    async loadFgMember() {
-        return DataManager.getItemWithKey(SIGNED_IN_MEMBER)
-            .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
-    }
-
-    componentDidMount() {
-        this.setState({ loading: 'true' });
-        this.loadFgMember()
-            .then( (data) => {
-                const fgMember = new FgMember(
-                    data.firstName,
-                    data.lastName,
-                    data.schoolName,
-                    data.gradYear,
-                    data.bannerSource,
-                    data.avatarSource,
-                    data.inspiration
-                );
-                //this.setState({member: fgMember, loading: 'false'});
-                this.setState({member: fgMember, loading: false});
-            })
-            .catch( (error) => console.log(error.message));
+    async componentWillMount() {
+        this.setState({loading: 'true'});
+        const profileStr = await AsyncStorage.getItem('profile');
+        const profileObj = JSON.parse(profileStr);
+        this.setState({firstName:profileObj.firstName});
+        this.setState({lastName:profileObj.lastName});
+        this.setState({schoolName:profileObj.schoolName});
+        this.setState({gradYear:profileObj.gradYear});
+        this.setState({inspiration:profileObj.inspiration});
+        this.setState({loading: 'false'});
     }
 
     render() {
 
-        if( this.state.loading === 'initial' ) {
+        const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
+
+        if(this.state.loading === 'initial') {
             return <Text>Initializing</Text>
         }
 
-        if( this.state.loading === 'true' ) {
+        if(this.state.loading === 'true') {
             return <Text>Loading</Text>
         }
 
-        console.log("LOADED member: ", this.state.member);
-        const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
-            /* Wrap entire profile in a ScrollView */
+
+            //BANNER and AVATAR need to be integrated with backend//
+
+            <GlobalContext.Consumer>
+                {context => (
+            //Wrap entire profile in a ScrollView
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
 
-                {/* Banner */}
-                <View style={styles.subViewStyle}>
-                    <View style={{position: 'absolute'}}>
-                        <Banner source={this.state.member.bannerSource}/>
-                    </View>
-                </View>
-
-                {/* Avatar */}
+                //Avatar
                 <View style={styles.subViewStyle}>
                     <View style={{marginTop: (bannerHeight/2)}}>
                         <Avatar
                             avatarSize={'large'}
-                            name={this.state.member.fullName()}
-                            source={this.state.member.avatarSource}/>
+                            name={`${this.state.firstName} ${this.state.lastName}`}
+                            />
                     </View>
                 </View>
 
-                {/* Name, School, and Grad Year */}
+                //Name, School, and Grad Year
                 <View style={styles.subViewStyle}>
                     <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
-                        <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.member.fullName()}</Text>{'\n'}
-                        <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.member.schoolName}</Text>{'\n'}
-                        <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.member.gradYear}</Text>{'\n'}
+                        <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.firstName} {this.state.lastName}</Text>{'\n'}
+                        <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.schoolName}</Text>{'\n'}
+                        <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.gradYear}</Text>{'\n'}
                     </Text>
                 </View>
 
-                {/* Inspiration Title */}
+                //Inspiration Title
                 <View style={styles.subViewStyle}>
-                    <View style={[styles.inspirationTitle, {marginTop: 60}]}>
+                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
                         <View style={styles.inspirationLine}/>
                         <Text style={styles.inspirationLabel}>  Inspiration  </Text>
                         <View style={styles.inspirationLine}/>
                     </View>
                 </View>
 
-                {/* Inspiration Block */}
+                //Inspiration Block
                 <View style={styles.subViewStyle}>
                     <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
-                        {this.state.member.inspiration}
+                        {this.state.inspiration}
                     </Text>
                 </View>
 
-                {/* Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow */}
+                //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
+                <View >
+                    <FgButton title={'Sign Out'} onPress={this._logout} />
+                </View>
                 <View style={styles.subViewStyle}>
-                    <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
+                    <Button title={'Delete Account'} color='red' onPress={this._logout}/>
                 </View>
 
             </ScrollView>
-        );
+            )}
+          </GlobalContext.Consumer>
+        );   
     }
-
+    
+    _logout = async () => {
+        await AsyncStorage.clear();
+        AuthSession.dismiss();
+        this.props.navigation.navigate('Auth');
+      };
+   
+    //currently unused
     handleSignOut() {
         const { navigation } = this.props;
         DataManager.removeItemWithKey(SIGNED_IN_MEMBER_ID)
-            .then( () => DataManager.removeItemWithKey(SIGNED_IN_MEMBER))
+            .then(() => DataManager.removeItemWithKey(SIGNED_IN_MEMBER))
             .then(() => onSignOut())
             .then(() => navigation.navigate("SignedOut"))
-            .catch( (error) => console.log(error.message));
-
+            .catch( (e) => {
+                if(e.message === "SyntaxError: JSON Parse error: Unexpected EOF")
+                console.log("this is a new account")
+                else console.log("error: " + e);
+            });
     }
 
+    // Load current signed in member from local storage.
+    async loadFgMember() {
+        return DataManager.getItemWithKey(SIGNED_IN_MEMBER)
+            .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
+    }   
 }
+
 const styles = StyleSheet.create({
     scrollViewStyle: {
         flex: 1,
