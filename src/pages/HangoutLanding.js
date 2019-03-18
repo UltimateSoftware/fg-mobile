@@ -111,8 +111,9 @@ export class HangoutLanding extends React.Component {
     render() {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
+          <SafeAreaView style = {{backgroundColor: '#fffafa' }}>
             <View style={{height: SCREEN_HEIGHT*.93, width: SCREEN_WIDTH, alignItems: 'center'}}>
-            <Header style={{width:SCREEN_WIDTH, height: SCREEN_HEIGHT*.125}}>
+            <Header style={{width:SCREEN_WIDTH, height: SCREEN_HEIGHT*.125,backgroundColor: '#fffafa'}}>
                 <Left>
                     <Button transparent>
                         <H2 style={{fontFamily: 'montserrat-bold', color: '#818282', paddingLeft: 20}}>Hangouts</H2>
@@ -129,7 +130,6 @@ export class HangoutLanding extends React.Component {
             <Banner text='Hangouts' color='#070745'/>
               {!this.state.isHidden &&
             <Animated.View style = {[styles.spotifyHeader, {transform: [{translateY: this.state.bounceValue}]}]}>
-              <StatusBar hidden />
                 <TouchableOpacity style = {{width: 40, height:17,top:8,right:30,position:'absolute'}}>
                     <Text style = {{fontSize: 12,fontFamily: 'open-sans-regular', color: '#00D264'}}>GO TO</Text>
                 </TouchableOpacity>
@@ -179,7 +179,7 @@ export class HangoutLanding extends React.Component {
           }
                 {<this.ListOfHangouts></this.ListOfHangouts>}
 
-            </View>
+            </View></SafeAreaView>
         );
     }
 }
