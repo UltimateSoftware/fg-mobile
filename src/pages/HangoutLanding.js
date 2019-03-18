@@ -23,7 +23,7 @@ export class HangoutLanding extends React.Component {
         super();
         this.state = {
             hangouts: [],
-            bounceValue: new Animated.Value(-60),
+            bounceValue: new Animated.Value(-100),
             isHidden: true
         }
         this.HangoutService = new HangoutService();
@@ -86,7 +86,7 @@ export class HangoutLanding extends React.Component {
     }
  toggleHidden(){
   var toValue = 0;
-  this.state.bounceValue.setValue(-60);
+  this.state.bounceValue.setValue(-100);
 
     this.setState({
       isHidden: !this.state.isHidden
