@@ -28,12 +28,12 @@ export class CreateChapter extends React.Component {
                 scrollEnabled={true}
                 bounces={false}>
 
-                // FearlesslyGirl Logo
+                {/* FearlesslyGirl Logo */}
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
                 </View>
 
-                // Page title
+                {/* Page title */}
                 <View style={styles.subViewStyle}>
                     <Text style={{
                         fontFamily: 'montserrat-light',
@@ -43,7 +43,7 @@ export class CreateChapter extends React.Component {
                     }}>Create a Chapter</Text>
                 </View>
 
-                // Chapter Name input
+                {/* Chapter Name input */}
                 <View style={[styles.subViewStyle, {marginTop: 25}]}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -69,7 +69,7 @@ export class CreateChapter extends React.Component {
                                value={this.state.description}/>
                 </View> */}
 
-                // Chapter Mission text input
+                {/* Chapter Mission text input */}
                 <View style={[styles.subViewStyle, {marginTop: 15}]}>
                     <Text style={styles.inputLabelStyle}>Chapter Mission</Text>
                     <TextInput style={[styles.textInputStyle, styles.inspirationInputStyle]}
@@ -78,7 +78,7 @@ export class CreateChapter extends React.Component {
                                value={this.state.mission}/>
                 </View>
 
-                // Submit button
+                {/* Submit button */}
                 <View style={styles.subViewStyle}>
                     <Text style={{
                         textAlign: 'center'
