@@ -3,7 +3,7 @@ import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager
 
 export class FgProfileService {
 
-    createMember(member) {
+    createMember(meimber) {
         return fetch('http://localhost:5000/api/v1/profile/', {
             method: 'POST',
             headers: {
