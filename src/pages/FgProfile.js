@@ -59,6 +59,14 @@ export class FgProfile extends React.Component {
         componentState.setState({modalFlag: flagValue});
     }
 
+    updateMemberWithChapterId(chapterId) {
+        let member = this.state.member;
+        member.chapterId = chapterId;
+        this.setState({member})
+        DataManager.setItemForKey(SIGNED_IN_MEMBER, member);
+        // Does this get persisted to the backend? Update FgProfileService with the necessary methods
+    }
+
     render() {
 
         if( this.state.loading === 'initial' ) {
@@ -92,6 +100,7 @@ export class FgProfile extends React.Component {
                             <FgModal 
                                 toggleMethod= {this.toggleModalFlag}
                                 componentState= {this}
+                                updateMemberMethod={this.updateMemberWithChapterId.bind(this)}
                             />
                             }
                         </View>

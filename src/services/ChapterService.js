@@ -1,4 +1,6 @@
 import {ChProfile} from "../types/ChProfile";
+import { DataManager, CHAPTER} from '../DataManager'
+import config from '../config';
 
 export class ChapterService {
 
@@ -6,7 +8,7 @@ export class ChapterService {
         return new Promise(async (resolve) => {
             try {
                 console.log(chapter)
-                var result = await fetch('http://localhost:5000/api/v1/profile/', {
+                var result = await fetch(`http://${config.api.host}:${config.api.port}/api/v1/profile/`, {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -22,7 +24,7 @@ export class ChapterService {
                 resolve(result.json())
             } catch (e) {
                 console.log('resolving error')
-                resolve(new ChProfile(chapter.chapterName, chapter.chapterSubtext, 'https://en.wikipedia.org/wiki/School#/media/File:Larkmead_School,_Abingdon,_Oxfordshire.png', 'https://dw3jhbqsbya58.cloudfront.net/school-mascot/5/d/f/5df2a4f9-1148-4246-9bf0-1c085ebdc228.gif?version=636443555400000000', chapter.mission))
+                resolve(new ChProfile(chapter.chapterId, chapter.chapterName, chapter.chapterSubtext, 'https://en.wikipedia.org/wiki/School#/media/File:Larkmead_School,_Abingdon,_Oxfordshire.png', 'https://dw3jhbqsbya58.cloudfront.net/school-mascot/5/d/f/5df2a4f9-1148-4246-9bf0-1c085ebdc228.gif?version=636443555400000000', chapter.mission))
             }
         })
     }
@@ -32,11 +34,11 @@ export class ChapterService {
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chapterId })
+                body: JSON.stringify({ id: chapterId })
             };
             try {
-                var request = await fetch(`http://localhost:5000/chapters/joinChapter`, requestOptions);
-                var response = await handleResponse(request)
+                var request = await fetch(`http://${config.api.host}:${config.api.port}/chapters/`, requestOptions);
+                var response = await this.handleJoinChapterResponse(request)
                 DataManager.setItemForKey(CHAPTER, response)
                 resolve(response)
             } catch(e) {
@@ -45,6 +47,7 @@ export class ChapterService {
                 console.log('Chapter not in system? maybe?')
                 // Normally you would reject but until implemented will always resolve
                 var response = JSON.stringify({ 
+                    chapterId: "cypressb",
                     schoolName: "Cypress Bay",
                     chapter: "",
                     bannerSource: "",
@@ -53,7 +56,7 @@ export class ChapterService {
                     studentAvatars: "",
                     leadershipAvatars: ""
                 })
-                response = await handleJoinChapterResponse(response)
+                response = await this.handleJoinChapterResponse(response)
                 DataManager.setItemForKey(CHAPTER, response)
                 resolve(response)
                 // reject(e)
@@ -63,8 +66,8 @@ export class ChapterService {
 
     async handleJoinChapterResponse(response) {
         return new Promise(async (resolve, reject) => {
-            let {schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars} = JSON.parse(response)
-            resolve(new ChProfile(schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars))
+            let {chapterId, schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars} = JSON.parse(response)
+            resolve(new ChProfile(chapterId, schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars))
         });
     }
 

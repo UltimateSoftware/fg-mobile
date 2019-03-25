@@ -12,6 +12,11 @@ export class FgModal extends Component {
     schoolName: ''
   };
 
+  constructor(props) {
+    super(props);
+    this.chapterService = new ChapterService();
+  }
+
   requestAccess(){
     return
   }
@@ -28,7 +33,7 @@ export class FgModal extends Component {
       backgroundColor: '#fff', padding: 20
     };
 
-    var {toggleMethod, componentState} = this.props;
+    var {toggleMethod, componentState, updateMemberMethod} = this.props;
     return (
       <View>
         <Modal
@@ -53,6 +58,11 @@ export class FgModal extends Component {
               <FgButton
                 title= "Request Access"
                 onPress={() => {
+                  this.chapterService.joinChapter(this.state.schoolName).then(response => {
+                    updateMemberMethod(response.chapterId);
+                  }).catch(error => {
+                    console.log(error);
+                  });
                   toggleMethod(false, componentState);
                 }}
               />
