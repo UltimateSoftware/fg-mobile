@@ -20,12 +20,22 @@ export class LoadProfile extends React.Component {
   }
   
   _bootstrapProfile = async () => {
+    console.log('====== LOADING PROFILE ======')
+    var decoded = {
+      nickname: 'some name'
+    } // dummy state
 
-    const access_token = await AsyncStorage.getItem('token');
-    const id_token = await AsyncStorage.getItem('id_token');
-    const decoded = jwtDecoder(id_token);
+    try {
+      const access_token = await AsyncStorage.getItem('token');
+      const id_token = await AsyncStorage.getItem('id_token');
+      decoded = jwtDecoder(id_token);
+    } catch (e) {
+      console.log('couldn"t access stuff')
+    }
     
-    await fetch(`${config.apiUrl}/profiles/${decoded.sub}`,{
+    
+    try {
+      var profiles = await fetch(`${config.apiUrl}/profiles/${decoded.sub}`,{
         'async': true,
         headers: {
             Accept: 'application/json',
@@ -33,9 +43,15 @@ export class LoadProfile extends React.Component {
             'Authorization': 'Bearer ' + access_token,
                }
             })
-    .then(res => res.json())
-    .then(newSession => this.setState({session: newSession}))
-    .catch(err => console.log('we have an error matey ' + err));
+        var res = await profiles.json();
+        this.setState({session: newSession})
+    } catch(e) {
+      console.log('we have an error matey ')
+      this.setState({session: {
+        id : 'abcd'
+      }})
+    }
+    
 
     //this is a temporary solution before we use context API for managing session info
     console.log(decoded);

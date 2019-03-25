@@ -13,7 +13,7 @@ export class LoadAuth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      valid: false
+      valid: true
   };
     this._bootstrapSession();
   }
@@ -25,6 +25,7 @@ export class LoadAuth extends React.Component {
   };
 
   validate = async token => {
+    return 
     let decoded = jwtDecoder(token);
     let expiry = decoded.exp;
     let time = Math.round(Date.now()/1000);
