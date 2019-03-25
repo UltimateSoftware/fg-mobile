@@ -72,17 +72,17 @@ export class FgProfile extends React.Component {
         console.log("LOADED member: ", this.state.member);
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
-            //Wrap entire profile in a ScrollView
+            /* Wrap entire profile in a ScrollView */
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
 
-                //Banner
+                {/* Banner */}
                 <View style={styles.subViewStyle}>
                     <View style={{position: 'absolute'}}>
                         <Banner source={this.state.member.bannerSource}/>
                     </View>
                 </View>
                 
-                //Avatar
+                {/* Avatar */}
                 <View style={styles.subViewStyle}>
                     <View style={{marginTop: (bannerHeight/2)}}>
                         <Avatar
@@ -107,7 +107,7 @@ export class FgProfile extends React.Component {
                     </Text>
                 </View>
 
-                //Inspiration Title
+                {/* Inspiration Title */}
                 <View style={styles.subViewStyle}>
                     <View style={[styles.inspirationTitle, {marginTop: 60}]}>
                         <View style={styles.inspirationLine}/>
@@ -116,14 +116,14 @@ export class FgProfile extends React.Component {
                     </View>
                 </View>
 
-                //Inspiration Block
+                {/* Inspiration Block */}
                 <View style={styles.subViewStyle}>
                     <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
                         {this.state.member.inspiration}
                     </Text>
                 </View>
 
-                //Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow
+                {/* Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow */}
                 <View style={styles.subViewStyle}>
                     <Button title={"Sign Out"} onPress={() => this.handleSignOut()}/>
                 </View>
@@ -133,9 +133,7 @@ export class FgProfile extends React.Component {
                         animationType="slide"
                         transparent={false}
                         visible={this.state.modalVisible}
-                        onRequestClose={() => {
-                            Alert.alert('Modal has been closed.');
-                        }}>
+                        >
 
                         <ProfileForm 
                             title="Update your profile"
@@ -146,7 +144,6 @@ export class FgProfile extends React.Component {
 
                     </Modal>
                 </View>
-
 
             </ScrollView>
         );
@@ -160,7 +157,7 @@ export class FgProfile extends React.Component {
         const fgMember = new FgMember(member.firstName, member.lastName,
             member.schoolName, member.gradYear, null, null, member.inspiration);
         // Create member through backend service, store member to local storage, and proceed to SignedIn navigator
-        this.service.updateMember(fgMember);
+        this.service.updateMember(fgMember, SIGNED_IN_MEMBER_ID);
         this.setModalVisible(false);
     }
 

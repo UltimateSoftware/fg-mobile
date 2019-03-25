@@ -4,7 +4,10 @@
     "name": "Fearlessly Girl Demo",
     "slug": "fg-demo",
     "privacy": "unlisted",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "android": {
+	"package": "com.fearlesslygirl.mobile"
+    }
   },
   "ios":{
     "infoPlist": {

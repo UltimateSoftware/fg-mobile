@@ -11,7 +11,7 @@ import {onSignIn, isSignedIn} from "../Auth";
 export class ProfileForm extends Component {
 
     CURRENT_YEAR = new Date().getFullYear();
-    service = new FgProfileService();
+    memberIsLoaded = false;
 
     constructor() {
         super();
@@ -37,7 +37,8 @@ export class ProfileForm extends Component {
         
         const { title, state, onPressSubmitFunction, onPressBackFunction } = this.props;
 
-        if(state === 'update') {
+        if(!this.memberIsLoaded && state === 'update') {
+            this.memberIsLoaded = true;
             this.loadFgMember()
                 .then( (data) => {
                     const fgMember = new FgMember(
@@ -65,12 +66,12 @@ export class ProfileForm extends Component {
                 scrollEnabled={true}
                 bounces={false}>
 
-                // FearlesslyGirl Logo
+                {/* FearlesslyGirl Logo*/}
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
                 </View>
 
-                // Page title
+                 {/* Page title */}
                 <View style={styles.subViewStyle}>
                     <Text style={{
                         fontFamily: 'montserrat-light',
@@ -80,7 +81,7 @@ export class ProfileForm extends Component {
                     }}>{title}</Text>
                 </View>
 
-                // First name input
+                {/* First name input */}
                 <View style={[styles.subViewStyle, {marginTop: 25}]}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -90,7 +91,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.firstName}/>
                 </View>
 
-                // Last name input
+                {*/ Last name input */}
                 <View style={styles.subViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -100,7 +101,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.lastName}/>
                 </View>
 
-                // School name input
+                {*/ School name input */}
                 <View style={styles.subViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -110,7 +111,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.schoolName}/>
                 </View>
 
-                // Inspiration text input
+                {*/ Inspiration text input */}
                 <View style={[styles.subViewStyle, {marginTop: 15}]}>
                     <Text style={styles.inputLabelStyle}>What inspires you?</Text>
                     <TextInput style={[styles.textInputStyle, styles.inspirationInputStyle]}
@@ -119,7 +120,7 @@ export class ProfileForm extends Component {
                                value={this.state.member.inspiration}/>
                 </View>
 
-                // Graduation year picker
+                {*/ Graduation year picker */}
                 <View style={[styles.subViewStyle, { marginVertical: 15 }]}>
                     <Text style={styles.inputLabelStyle}>When are you graduating?</Text>
                     <Picker
@@ -136,7 +137,7 @@ export class ProfileForm extends Component {
                     </Picker>
                 </View>
 
-                // Submit/Save buttons
+                {*/ Submit/Save buttons /*}
                 {(state === 'create') &&
                     <View style={styles.subViewStyle}>
                         <View style={styles.submitButtonStyle}>

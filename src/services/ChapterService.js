@@ -1,4 +1,5 @@
 import {ChProfile} from "../types/ChProfile";
+import {config} from "../config/index";
 
 export class ChapterService {
 
@@ -6,7 +7,8 @@ export class ChapterService {
         return new Promise(async (resolve) => {
             try {
                 console.log(chapter)
-                var result = await fetch('http://localhost:5000/api/v1/profile/', {
+                var endpoint = `http://${config.default.api.host}:${config.default.api.port}/api/v1/profile`
+                var result = await fetch(endpoint, {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',

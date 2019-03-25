@@ -21,7 +21,7 @@ export class ChapterSelector extends React.Component {
         return(
             <View style={styles.mainViewStyle}>
                 <View style={[styles.subViewStyle, {paddingTop: 87}]}>
-                // FG Logo
+                    {/* FG Logo */}
                     <Image style={{width: SCREEN_WIDTH * 0.38, height: 35}} source={require('../../assets/images/fearlesslyGirl_logo.jpg')}/>
 
                     <Text style={{
@@ -32,7 +32,7 @@ export class ChapterSelector extends React.Component {
                         marginTop: 5
                     }}>Enter your Chapter code</Text>
 
-                    //Chapter Code
+                    {/* Chapter Code */}
                     <TextInput
                         style={styles.textInputStyle}
                         placeholder={'Chapter Code'}
