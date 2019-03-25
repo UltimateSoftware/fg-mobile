@@ -91,7 +91,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.firstName}/>
                 </View>
 
-                {*/ Last name input */}
+                {/* Last name input */}
                 <View style={styles.subViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -101,7 +101,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.lastName}/>
                 </View>
 
-                {*/ School name input */}
+                {/* School name input */}
                 <View style={styles.subViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -111,7 +111,7 @@ export class ProfileForm extends Component {
                         value={this.state.member.schoolName}/>
                 </View>
 
-                {*/ Inspiration text input */}
+                {/* Inspiration text input */}
                 <View style={[styles.subViewStyle, {marginTop: 15}]}>
                     <Text style={styles.inputLabelStyle}>What inspires you?</Text>
                     <TextInput style={[styles.textInputStyle, styles.inspirationInputStyle]}
@@ -120,7 +120,7 @@ export class ProfileForm extends Component {
                                value={this.state.member.inspiration}/>
                 </View>
 
-                {*/ Graduation year picker */}
+                {/* Graduation year picker */}
                 <View style={[styles.subViewStyle, { marginVertical: 15 }]}>
                     <Text style={styles.inputLabelStyle}>When are you graduating?</Text>
                     <Picker
@@ -137,7 +137,7 @@ export class ProfileForm extends Component {
                     </Picker>
                 </View>
 
-                {*/ Submit/Save buttons /*}
+                {/* Submit/Save buttons */}
                 {(state === 'create') &&
                     <View style={styles.subViewStyle}>
                         <View style={styles.submitButtonStyle}>
