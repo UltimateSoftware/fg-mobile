@@ -22,14 +22,25 @@ export class HangoutLanding extends React.Component {
         super();
         this.state = {
             hangouts: [],
+            loading: false
         }
         this.HangoutService = new HangoutService();
     }
 
     componentDidMount() {
-        this.HangoutService.getHangouts().then((data) => {
-            this.setState({hangouts: data});
-        });
+        (async () => {
+            try {
+                console.log("MOUNTING")
+                this.setState({loading: true})
+                var response = await this.HangoutService.getHangouts();
+                console.log("STUUCK")
+                this.setState({hangouts: response});
+            } catch(e) {
+                console.log("ERROR")
+            }
+            
+        }
+        )();
     }
 
     getImage(icon) {
@@ -38,12 +49,13 @@ export class HangoutLanding extends React.Component {
     
      IceBreakers= () =>{
         return (
+            
             <ScrollView
                     style={[styles.scrollViewStyle]}
                     bounces={false}
                     flexDirection='row'
                 >
-     
+                
                 <View style={styles.container}>
                 <FlatList
                 numColumns={2}
@@ -86,6 +98,8 @@ export class HangoutLanding extends React.Component {
         const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
             <View style={{height: SCREEN_HEIGHT*.93, width: SCREEN_WIDTH, alignItems: 'center'}}>
+            {this.state.loading && 
+                <View>LOADING</View>}
             <Header style={{width:SCREEN_WIDTH, height: SCREEN_HEIGHT*.125}}> 
                 <Left>
                     <Button transparent>
