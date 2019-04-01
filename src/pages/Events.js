@@ -5,6 +5,7 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/
 import { Dropdown } from 'react-native-material-dropdown';
 import {EventService} from "../services/EventService";
 import { Agenda } from 'react-native-calendars';
+import { EventsDetails } from './EventsDetails';
 
 export class Events extends React.Component {
     service = new EventService();
@@ -15,10 +16,16 @@ export class Events extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fgEvents: {},
+            fgEvents: [],
             currMonth: this.monthList[this.d.getMonth()].value,
             isLoading: true,
             creatingEvent: false,
+            eventDetailMode: false,
+            eventDetails: {
+                title: '',
+                location: '',
+                date: ''
+            }
         };
     }
 
@@ -26,7 +33,8 @@ export class Events extends React.Component {
         loadedData = this.consumeableData(await this.service.getEvents())
         this.setState({
             fgEvents: loadedData,
-            isLoading: false
+            isLoading: false,
+            eventDetailMode: false
         });
     }
 
@@ -36,6 +44,8 @@ export class Events extends React.Component {
 
     consumeableData(rawData) {
         data = {}
+
+        //This is for filling empty dates... it has to be done
         for (i = this.d.getFullYear(); i <= this.d.getFullYear() + 1; i++) {
             for (j = 1; j <= 12; j++) {
                 for (k = 1; k <= 31; k++) {
@@ -48,10 +58,29 @@ export class Events extends React.Component {
         for (i = 0; i < rawData.length; i++) {
             data[rawData[i].date].push({
                 'event': rawData[i].description, 
-                'location': rawData[i].location})
+                'location': rawData[i].location,
+                'date': rawData[i].date,})
         }
 
         return data
+    }
+
+    openView = (tit, loc, dat) => {
+        this.setState(() => ({
+            eventDetailMode: true,
+            eventDetails : {
+                title: tit,
+                location: loc,
+                date: dat
+            }
+        }))
+        
+    }
+
+    closeView = () => {
+        this.setState(() => ({
+            eventDetailMode: false
+        }))
     }
 
     render() {
@@ -69,6 +98,13 @@ export class Events extends React.Component {
                         </Button>
                     </Right>
                 </Header>
+                <EventsDetails
+                    isVisible={this.state.eventDetailMode}
+                    title={this.state.eventDetails.title}
+                    location={this.state.eventDetails.location}
+                    date={this.state.eventDetails.date}
+                    onClose={() => this.closeView()}
+                />
                     <Agenda
                         // the list of items that have to be displayed in agenda. If you want to render item as empty date
                         // the value of date key kas to be an empty array []. If there exists no value for date key it is
@@ -106,14 +142,17 @@ export class Events extends React.Component {
 
     renderItem(item) {
         return (
-          <View style={[styles.item, {height: item.height}]}>
-            <Text>
+          <Button 
+          style={[styles.item]}
+          onPress = {() => this.openView(item.event, item.location, item.date)}
+          >
+            <Text style = {{fontFamily: 'montserrat-bold', fontSize: 14}}>
                 {item.event}
             </Text>
             <Text>
                 {item.location}
             </Text>
-        </View>
+        </Button>
         );
       }
     
@@ -148,11 +187,15 @@ const styles = StyleSheet.create({
     },
     item: {
         backgroundColor: 'white',
-        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        width: '100%',
         borderRadius: 5,
         padding: 10,
+        marginTop: '5%',
         marginRight: '5%',
-        marginTop: '5%'
+        flexGrow: 1
       },
       emptyDate: {
         height: 15,
@@ -160,13 +203,3 @@ const styles = StyleSheet.create({
         paddingTop: 30
     }
 });
-
-{/* <Dropdown
-                        containerStyle={{flex: 0.4, paddingLeft: 20, borderBottomColor: '#BDCDD1'}}
-                        baseColor='#BDCDD1'
-                        itemTextStyle={{textDecorationColor: '#BDCDD1'}}
-                        itemCount={4}
-                        selectedItemColor={'#F0166D'}
-                        data={this.monthList}
-                        value={this.state.currMonth}
-                    /> */}
