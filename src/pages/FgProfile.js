@@ -26,7 +26,7 @@ export class FgProfile extends React.Component {
         this.state = {
             loading: 'initial',
             member: null,
-            modalVisible: false
+            modalVisible: false,
             firstName: null,
             lastName: null,
             schoolName: null,
@@ -80,13 +80,6 @@ export class FgProfile extends React.Component {
                 {context => (
             //Wrap entire profile in a ScrollView
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
-
-                {/* Banner */}
-                <View style={styles.subViewStyle}>
-                    <View style={{position: 'absolute'}}>
-                        <Banner source={this.state.member.bannerSource}/>
-                    </View>
-                </View>
           
                 {/* Avatar */}
                 <View style={styles.subViewStyle}>
@@ -101,7 +94,7 @@ export class FgProfile extends React.Component {
                         onPress={() => {this.setModalVisible(true);}}/>
                 </View>
 
-                //Name, School, and Grad Year
+                {/* Name, School, and Grad Year */}
                 <View style={styles.subViewStyle}>
                     <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
                         <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.firstName} {this.state.lastName}</Text>{'\n'}
