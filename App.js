@@ -1,8 +1,10 @@
 import React from 'react';
-
 import {AppLoading, Font} from 'expo';
-import {createRootNavigator} from "./src/Router";
-import {isSignedIn} from "./src/Auth";
+import {AppController} from "./src/Router";
+import {createAppContainer} from "react-navigation";
+import {GlobalProvider} from './src/services/GlobalProvider'
+
+const AppContainer = createAppContainer(AppController);
 
 export default class App extends React.Component {
 
@@ -11,10 +13,8 @@ export default class App extends React.Component {
 
         this.state = {
             isReady: false,
-            signedIn: false,
-            userId: null,
-            chapterId: null
         }
+
     }
 
     async componentWillMount() {
@@ -26,24 +26,20 @@ export default class App extends React.Component {
             'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
             'Ionicons' : require("@expo/vector-icons/fonts/Ionicons.ttf")});
 
-        await isSignedIn()
-            .then(res => this.setState({ signedIn: res }))
-            .catch(err => {
-                alert("Oops, an error occurred.");
-                console.log("App.js > isSignedIn() > ERROR: ", err);
-            });
+        //put everything we need to preload here
 
         this.setState({ isReady: true });
     }
 
     render() {
-        if (!this.state.isReady) {
+        if (!this.state.isReady) 
+            return <AppLoading/>
+              
             return (
-              <AppLoading/>
-            );
-        }
+                <GlobalProvider>
+                    <AppContainer/>
+                </GlobalProvider>
+            );    
 
-        const RootNavigator = createRootNavigator(this.state.signedIn);
-        return <RootNavigator />;
-    }
-}
+            }      
+        }
