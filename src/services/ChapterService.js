@@ -37,7 +37,7 @@ export class ChapterService {
                 body: JSON.stringify({ id: chapterId })
             };
             try {
-                var request = await fetch(`http://${config.api.host}:${config.api.port}/chapters/`, requestOptions);
+                var request = await fetch(`http://${config.api.host}:${config.api.port}/chapters`, requestOptions);
                 var response = await this.handleJoinChapterResponse(request)
                 DataManager.setItemForKey(CHAPTER, response)
                 resolve(response)
@@ -66,8 +66,12 @@ export class ChapterService {
 
     async handleJoinChapterResponse(response) {
         return new Promise(async (resolve, reject) => {
+            try {
             let {chapterId, schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars} = JSON.parse(response)
             resolve(new ChProfile(chapterId, schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars))
+            } catch (e) {
+                reject(e);
+            }
         });
     }
 

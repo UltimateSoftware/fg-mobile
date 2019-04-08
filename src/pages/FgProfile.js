@@ -9,6 +9,7 @@ import {FgMember} from "../types/FgMember";
 import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
 import {onSignIn, onSignOut} from "../Auth";
 import { SafeAreaView } from 'react-navigation';
+import { FgProfileService } from "../services/FgProfileService";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -16,6 +17,8 @@ import { SafeAreaView } from 'react-navigation';
 //TODO: Status bar background should be white not translucent
 
 export class FgProfile extends React.Component {
+
+    service = new FgProfileService();
 
     constructor() {
         super();
@@ -64,6 +67,8 @@ export class FgProfile extends React.Component {
         member.chapterId = chapterId;
         this.setState({member})
         DataManager.setItemForKey(SIGNED_IN_MEMBER, member);
+        console.log("Yo", member)
+        this.service.updateMember(member);
         // Does this get persisted to the backend? Update FgProfileService with the necessary methods
     }
 
