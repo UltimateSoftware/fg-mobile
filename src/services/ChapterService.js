@@ -42,24 +42,24 @@ export class ChapterService {
                 DataManager.setItemForKey(CHAPTER, response)
                 resolve(response)
             } catch(e) {
-                // Returning true for now
-                // DataManager.setItemForKey(CHAPTER, response) Model needs to be defined
-                console.log('Chapter not in system? maybe?')
-                // Normally you would reject but until implemented will always resolve
-                var response = JSON.stringify({ 
-                    chapterId: "cypressb",
-                    schoolName: "Cypress Bay",
-                    chapter: "",
-                    bannerSource: "",
-                    avatarSource: "",
-                    history: "",
-                    studentAvatars: "",
-                    leadershipAvatars: ""
-                })
-                response = await this.handleJoinChapterResponse(response)
-                DataManager.setItemForKey(CHAPTER, response)
-                resolve(response)
-                // reject(e)
+                if (process.env.NODE_ENV === "development") {
+                    console.log('Chapter not in system? maybe?')
+                    var response = JSON.stringify({ 
+                        chapterId: "cypressb",
+                        schoolName: "Cypress Bay",
+                        chapter: "",
+                        bannerSource: "",
+                        avatarSource: "",
+                        history: "",
+                        studentAvatars: "",
+                        leadershipAvatars: ""
+                    })
+                    response = await this.handleJoinChapterResponse(response)
+                    DataManager.setItemForKey(CHAPTER, response)
+                    resolve(response)
+                }
+                
+                reject(e)
             }
         })
     }

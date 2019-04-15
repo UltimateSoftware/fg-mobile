@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, ScrollView, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {ActivityIndicator, Button, ScrollView, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {FgModal} from "../components/FgModal";
@@ -18,14 +18,15 @@ import { FgProfileService } from "../services/FgProfileService";
 
 export class FgProfile extends React.Component {
 
-    service = new FgProfileService();
+    profileService = new FgProfileService();
 
     constructor() {
         super();
         this.state = {
             loading: 'initial',
             modalFlag: false,
-            member: null
+            member: null,
+            showActivityIndicator: false
         };
 
         this.handleSignOut.bind(this);
@@ -62,14 +63,21 @@ export class FgProfile extends React.Component {
         componentState.setState({modalFlag: flagValue});
     }
 
-    updateMemberWithChapterId(chapterId) {
+    async updateMemberWithChapterId(chapterId) {
+        this.setState({showActivityIndicator: true});
         let member = this.state.member;
         member.chapterId = chapterId;
-        this.setState({member})
-        DataManager.setItemForKey(SIGNED_IN_MEMBER, member);
-        console.log("Yo", member)
-        this.service.updateMember(member);
-        // Does this get persisted to the backend? Update FgProfileService with the necessary methods
+        try {
+            let signedInMemberID = await this.profileService.updateMember(member);
+            if (signedInMemberID) {
+                DataManager.setItemForKey(SIGNED_IN_MEMBER, member);
+                this.setState({member});
+            }
+        } catch (error) {
+            console.log("Error: ", error)
+            member.chapterId = undefined;
+        }
+        this.setState({showActivityIndicator: false})
     }
 
     render() {
@@ -80,6 +88,14 @@ export class FgProfile extends React.Component {
 
         if( this.state.loading === 'true' ) {
             return <Text>Loading</Text>
+        }
+
+        if(this.state.showActivityIndicator) {
+            return (
+                <View style={{flex: 1, justifyContent: 'center'}}>
+                  <ActivityIndicator size="large" color="#0000ff" />
+                </View>
+              )
         }
 
         console.log("LOADED member: ", this.state.member);
