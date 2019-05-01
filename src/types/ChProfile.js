@@ -1,12 +1,16 @@
-export function ChProfile (chapterId, schoolName, chapter, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars) {
-    this.chapterId = chapterId;
+export function ChProfile (chapterId, schoolName, chapterName, bannerSource, avatarSource, history, studentAvatars, leadershipAvatars, advisor, members, chapterNumber, officers) {
+    this.id = chapterId;
     this.schoolName = schoolName;
-    this.chapter = chapter;
+    this.name = chapterName;
     this.bannerSource = bannerSource;
     this.avatarSource = avatarSource;
     this.history = history;
     this.studentAvatars = studentAvatars;
     this.leadershipAvatars = leadershipAvatars;
+    this.advisor = advisor;
+    this.members = members;
+    this.chapterNumber = chapterNumber;
+    this.officers = officers;
 }
 
 export function ChLeadership (name, title, avatarSource) {

@@ -6,6 +6,7 @@ import {FgModal} from "../components/FgModal";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
 import {DataManager, SIGNED_IN_MEMBER, SIGNED_IN_MEMBER_ID} from "../DataManager";
 import {onSignIn, onSignOut} from "../Auth";
+import {FgMember} from '../types/FgMember'
 import {FgButton} from "../components/FgButton";
 import {AsyncStorage} from 'react-native';
 import {GlobalContext} from '../services/GlobalProvider'
@@ -19,7 +20,7 @@ import { SafeAreaView } from 'react-navigation';
 
 export class FgProfile extends React.Component {
 
-    service = new FgProfileService();
+    profileService = new FgProfileService();
 
     constructor(props) {
         super(props);
@@ -43,6 +44,7 @@ export class FgProfile extends React.Component {
         this.setState({loading: 'true'});
         const profileStr = await AsyncStorage.getItem('profile');
         const profileObj = JSON.parse(profileStr);
+        console.log("profileObj:", profileObj)
         this.setState({
             firstName: profileObj.firstName,
             lastName: profileObj.lastName,
@@ -52,8 +54,15 @@ export class FgProfile extends React.Component {
             bannerSource: profileObj.bannerSource,
             avatarSource: profileObj.avatarSource,
             chapterId: profileObj.chapterId,
-            loading: false
+            memberId: profileObj.id,
+            loading: false,
+            showActivityIndicator: false
         });
+    }
+
+    captureMemberObject() {
+        const { memberId, firstName, lastName, schoolName, gradYear, bannerSource, avatarSource, inspiration, chapterId } = this.state;
+        return new FgMember(memberId, firstName, lastName, schoolName, gradYear, bannerSource, avatarSource, inspiration, chapterId);
     }
 
     toggleModalFlag(flagValue, componentState) {
@@ -62,18 +71,16 @@ export class FgProfile extends React.Component {
 
     async updateMemberWithChapterId(chapterId) {
         this.setState({showActivityIndicator: true});
-        let member = this.state.member;
+        let member = this.captureMemberObject();
         member.chapterId = chapterId;
-        try {
-            let signedInMemberID = await this.profileService.updateMember(member);
-            if (signedInMemberID) {
-                DataManager.setItemForKey(SIGNED_IN_MEMBER, member);
-                this.setState({member});
-            }
-        } catch (error) {
-            console.log("Error: ", error)
-            member.chapterId = undefined;
-        }
+        // Didn't have to update the profile in here 
+        // b/c backend join chapter request takes care of that for you
+        // so we continue just saving the member locally
+        DataManager.setItemForKey(SIGNED_IN_MEMBER, member);
+        this.setState({
+            member,
+            chapterId
+        });
         this.setState({showActivityIndicator: false})
     }
 
@@ -97,8 +104,6 @@ export class FgProfile extends React.Component {
               )
         }
 
-        console.log("LOADED member: ", this.state.member);
-        const bannerHeight = SCREEN_WIDTH * BANNER_HEIGHT_WIDTH_RATIO;
         return (
             <GlobalContext.Consumer>
                 {context => (
@@ -123,6 +128,7 @@ export class FgProfile extends React.Component {
                                     toggleMethod= {this.toggleModalFlag}
                                     componentState= {this}
                                     updateMemberMethod={this.updateMemberWithChapterId.bind(this)}
+                                    currentMember={this.state.memberId}
                                 />
                                 }
                             </View>
@@ -186,7 +192,7 @@ export class FgProfile extends React.Component {
   
     
     _logout = async () => {
-        this.service.logout(); 
+        this.profileService.logout(); 
         this.props.navigation.navigate('Auth');
     }
 
@@ -200,7 +206,7 @@ export class FgProfile extends React.Component {
                 style: 'cancel',
               },
               {text: 'Delete Account', onPress: () => {
-                this.service.deleteMember();
+                this.profileService.deleteMember();
                 this.props.navigation.navigate('Auth');
               }},
             ],

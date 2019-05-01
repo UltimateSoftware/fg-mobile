@@ -1,4 +1,5 @@
-export function FgMember (firstName, lastName, schoolName, gradYear, bannerSource, avatarSource, inspiration, chapterId) {
+export function FgMember (id, firstName, lastName, schoolName, gradYear, bannerSource, avatarSource, inspiration, chapterId) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.schoolName = schoolName;

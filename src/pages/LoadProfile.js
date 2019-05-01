@@ -48,7 +48,9 @@ export class LoadProfile extends React.Component {
     } catch(e) {
       console.log('we have an error matey ')
       this.setState({session: {
-        id : 'abcd'
+        id : 'd11874c5-3c38-4b10-9e31-1e00b1fb2ecf',
+        firstName: 'John',
+        lastName: 'Doe'
       }})
     }
     

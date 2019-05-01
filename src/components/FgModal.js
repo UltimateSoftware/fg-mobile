@@ -9,7 +9,7 @@ export class FgModal extends Component {
   state = {
     modalVisible: true,
     transparent: true,
-    schoolName: ''
+    chapterId: ''
   };
 
   constructor(props) {
@@ -33,7 +33,7 @@ export class FgModal extends Component {
       backgroundColor: '#fff', padding: 20
     };
 
-    var {toggleMethod, componentState, updateMemberMethod} = this.props;
+    var {toggleMethod, componentState, updateMemberMethod, currentMember} = this.props;
     return (
       <View>
         <Modal
@@ -50,16 +50,16 @@ export class FgModal extends Component {
               </Text>
               <TextInput
                         style={styles.textInputStyle}
-                        placeholder={'School Name'}
+                        placeholder={'Chapter Id'}
                         placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
-                        onChangeText={(text) => this.setState({schoolName: text})}
-                        value={this.state.schoolName}/>
+                        onChangeText={(text) => this.setState({chapterId: text})}
+                        value={this.state.chapterId}/>
               <View style = {styles.submitButtonStyle}>
               <FgButton
                 title= "Request Access"
                 onPress={() => {
-                  this.chapterService.joinChapter(this.state.schoolName).then(response => {
-                    updateMemberMethod(response.chapterId);
+                  this.chapterService.joinChapter(this.state.chapterId, currentMember).then(chapterId => {
+                    updateMemberMethod(chapterId);
                   }).catch(error => {
                     console.log(error);
                   });

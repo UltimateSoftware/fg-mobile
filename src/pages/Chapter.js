@@ -26,13 +26,18 @@ export class Chapter extends React.Component {
             .then( (data) => {
               //TODO: data is currently null
                 const info = new ChProfile(
+                    data.chapterId,
                     data.schoolName,
                     data.chapter,
                     data.bannerSource,
                     data.avatarSource,
                     data.history,
                     data.studentAvatars,
-                    data.leadershipAvatars
+                    data.leadershipAvatars,
+                    data.advisor,
+                    data.members,
+                    data.chapterNumber,
+                    data.officers
                 );
                 //this.setState({member: fgMember, loading: 'false'});
                 this.setState({info, loading: false});

@@ -3,6 +3,7 @@ import React from 'react';
 import jwtDecoder from 'jwt-decode';
 import config from '../../constants/config';
 import {AuthSession} from 'expo';
+import { resolve } from 'url';
 
 export class FgProfileService extends React.Component{
 
@@ -27,11 +28,15 @@ export class FgProfileService extends React.Component{
                     lastName: member.lastName ? member.lastName : null,
                     schoolName: member.schoolName ? member.schoolName : null,
                     gradYear: member.gradYear ? member.gradYear : null,
-                    inspiration: member.inspiration ? member.inspiration : null
+                    inspiration: member.inspiration ? member.inspiration : null,
+                    bannerSource: member.bannerSource ? member.bannerSource : null,
+                    avatarSource: member.avatarSource ? member.avatarSource : null,
+                    chapterId: member.chapterId ? member.chapterId : null
                 })
             })
             .then(res => res.json())
             .catch(e => console.log('problem submitting profile: ' + e));
+        return decoded.sub;
       }
 
       logout = async () => {
@@ -74,6 +79,8 @@ export class FgProfileService extends React.Component{
                         schoolName: member.schoolName ? member.schoolName : null,
                         gradYear: member.gradYear ? member.gradYear : null,
                         inspiration: member.inspiration ? member.inspiration : null,
+                        bannerSource: member.bannerSource ? member.bannerSource : null,
+                        avatarSource: member.avatarSource ? member.avatarSource : null,
                         chapterId: member.chapterId ? member.chapterId : null
                     })
                 });
@@ -85,7 +92,7 @@ export class FgProfileService extends React.Component{
                         console.log("Error parsing data id from response")
                         reject('NO ID MEMBER ON DATA');
                     }
-                    accept(data.id);
+                    resolve(data.id);
                 } catch (error) {
                     reject('JSON PARSE ERROR');
                 }
