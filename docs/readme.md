@@ -16,7 +16,7 @@ The fearlessly girl mobile application seeks to enhance the fearless experience 
 
 ## Contribution Guidelines
 
-Check out our (domain)[./domain.md] page for more information on what the app does. This functionality is broken down in to github issues and are label with the subdomain they fall under.
+Check out our [domain](./domain.md) page for more information on what the app does. This functionality is broken down in to github issues and are label with the subdomain they fall under.
 
 ## About Fearlessly Girl
 
