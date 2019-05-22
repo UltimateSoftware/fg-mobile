@@ -17,13 +17,22 @@ export class Hangout extends React.Component {
 
     async componentWillMount() {
         let hangout = await DataManager.getItemWithKey("hangout")
+        console.log("HANGOUT CONTENT ", hangout.content.hangoutActivity)
         this.setState({hangout, loading: 'false'})
+    }
+
+    _renderHangoutDiscussion = ({item: discussion}) => {
+        return (
+            <Text style={styles.hangoutDescription}>{discussion}</Text>
+        )
     }
 
     _goToIcebreaker = async (icebreaker) => {
         await DataManager.setItemForKey("icebreaker", icebreaker)
         this.props.navigation.navigate("Icebreaker")
     }
+
+    _keyExtractor = (item, index) => index.toString()
 
     ListOfIcebreakers = () => {return (
         <ScrollView style={styles.scrollViewStyle} bounces={false}>
@@ -47,7 +56,7 @@ export class Hangout extends React.Component {
                 {context => (
                 //Wrap entire profile in a ScrollView
                 <ScrollView style={styles.scrollViewStyle} bounces={false}>
-                    <View style={{height: SCREEN_HEIGHT*.93, width: SCREEN_WIDTH, alignItems: 'center'}}>  
+                    <View style={{width: SCREEN_WIDTH, alignItems: 'center'}}>  
                         <Banner text={this.state.hangout.title} color='#070745' />
                         {/*Hangout title section with subheader of location - date*/}
                         <View style={[styles.subViewStyle, {marginTop:20}]}>
@@ -58,6 +67,31 @@ export class Hangout extends React.Component {
 
                             <Text style={styles.hangoutDescription}>{this.state.hangout.content.description}</Text>
                             <View style={[styles.subViewStyle, {marginTop: 20}]}>{<this.ListOfIcebreakers></this.ListOfIcebreakers>}</View>
+                        </View>
+
+                        <View style={[styles.inspirationBox, {marginTop: 20}]}>
+                            <View style={styles.horizontalLine}/>
+                            <Text style={[styles.hangoutDescription, {marginBottom: -10}]}>  Discussions  </Text>
+                            <View style={styles.horizontalLine}/>
+                        </View>
+
+                        <FlatList
+                            style={styles.discussionList}
+                            data={this.state.hangout.content.discussions}
+                            renderItem={this._renderHangoutDiscussion}
+                            keyExtractor={this._keyExtractor}
+                        />
+
+                        <View style={[styles.inspirationBox, {marginTop: 20}]}>
+                            <View style={styles.horizontalLine}/>
+                            <Text style={[styles.hangoutDescription, {marginBottom: -10}]}>  Activity  </Text>
+                            <View style={styles.horizontalLine}/>
+                        </View>
+
+                        <View style={[styles.subViewStyle, {marginTop: 20}]}>
+                            <Text style={styles.hangoutDescription}>Activity: {this.state.hangout.content.hangoutActivity.bonusActivity}</Text>
+                            <Text style={styles.hangoutDescription}>Content: {this.state.hangout.content.hangoutActivity.content}</Text>
+                            <Text style={styles.hangoutDescription}>Trip: {this.state.hangout.content.hangoutActivity.trip}</Text>
                         </View>
                     </View>
                 </ScrollView>
@@ -129,4 +163,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
     },
+    discussionList: {
+        marginTop: 20
+    }
 })
