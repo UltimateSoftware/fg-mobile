@@ -40,7 +40,7 @@ export const SignedIn =  createBottomTabNavigator(
     Profile: FgProfile,
 },
 {
-    initialRouteName: 'Hangouts',
+    initialRouteName: 'Profile',
     navigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, horizontal, tintColor }) => {
             const { routeName } = navigation.state;

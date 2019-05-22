@@ -72,6 +72,21 @@ export class FgProfileService extends React.Component{
         }
     }
 
+    getBannerPhoto = async (profileId) => {
+        try {
+            var request = fetch(`http://localhost:8080/profiles/${profileId}/banner`);
+            return await request.then(response => response.blob())
+                          .then(images => {
+                              // Then create a local URL for that image and print it 
+                              return URL.createObjectURL(images)
+                          })
+        } catch(ex) {
+            console.log("Exception getting banner photo for profileId: ", profileId)
+            console.log(ex)
+            return ex
+        }
+    }
+
     getProfile = async (profileId) => {
         return new Promise(async (resolve) => {
             try {

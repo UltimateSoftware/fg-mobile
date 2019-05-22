@@ -34,9 +34,12 @@ export class FgProfile extends React.Component {
         this.setState({loading: 'true'});
         let profile = await this.service.getProfile("372bb5ca-f7e1-4f5e-9157-411ee9890964")
             .then(async (profile) => {
-                console.log("PROFILE ", profile)
                 let photo = await this.service.getProfilePhoto(profile.id)
                 profile.photo = photo
+
+                let banner = await this.service.getBannerPhoto(profile.id)
+                profile.banner = banner
+
                 return profile
             })
         let chapterSisters = await this.chapterService.getChapter(profile.chapterId)
@@ -91,8 +94,9 @@ export class FgProfile extends React.Component {
             <ScrollView style={styles.scrollViewStyle} bounces={false}>
 
                 {/* Avatar */}
-                <View style={styles.subViewStyle}>
-                    <View style={{marginTop: (bannerHeight/2)}}>
+                <View style={styles.container}>
+                    <Banner source={this.state.profile.banner}/>
+                    <View style={{top: -(bannerHeight/2), flex: 1}}>
                         <Avatar
                             avatarSize={'large'}
                             source={this.state.profile.photo}
@@ -100,49 +104,50 @@ export class FgProfile extends React.Component {
                             />
                     </View>
                 </View>
-
-                {/* Name, School, and Grad Year */}
-                <View style={styles.subViewStyle}>
-                    <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
-                        <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.profile.firstName} {this.state.profile.lastName}</Text>{'\n'}
-                        <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.profile.schoolName}</Text>{'\n'}
-                        <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.profile.gradYear}</Text>{'\n'}
-                    </Text>
-                </View>
-
-                {/* Inspiration Title */}
-                <View style={styles.subViewStyle}>
-                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
-                        <View style={styles.inspirationLine}/>
-                        <Text style={styles.inspirationLabel}>  Inspiration  </Text>
-                        <View style={styles.inspirationLine}/>
+                <View style={{top:-50}}>
+                    {/* Name, School, and Grad Year */}
+                    <View style={styles.subViewStyle}>
+                        <Text style={{ textAlign: 'center', color: '#818282'}}>
+                            <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.profile.firstName} {this.state.profile.lastName}</Text>{'\n'}
+                            <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.profile.schoolName}</Text>{'\n'}
+                            <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.profile.gradYear}</Text>{'\n'}
+                        </Text>
                     </View>
-                </View>
 
-                {/* Inspiration Block */}
-                <View style={styles.subViewStyle}>
-                    <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
-                        {this.state.profile.inspiration}
-                    </Text>
-                </View>
-
-
-                {/* Chapter Sisters section */}
-                <View style={styles.subViewStyle}>
-                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
-                        <Text style={styles.inspirationLabel}>Chapter Sisters</Text>
+                    {/* Inspiration Title */}
+                    <View style={styles.subViewStyle}>
+                        <View style={[styles.inspirationTitle, {marginTop: 20}]}>
+                            <View style={styles.inspirationLine}/>
+                            <Text style={styles.inspirationLabel}>  Inspiration  </Text>
+                            <View style={styles.inspirationLine}/>
+                        </View>
                     </View>
-                        <FlatList
-                            style={styles.sisterList}
-                            data={this.state.sisters}
-                            renderItem={this.renderChapterSister}
-                            keyExtractor={this.memberKeyExtractor}
-                            numColumns={4}
-                        />
-                </View>
 
-                <View style={styles.subViewStyle}>
-                    <Button title={'View All'} color='blue' onPress={this.goToChapter}/>
+                    {/* Inspiration Block */}
+                    <View style={styles.subViewStyle}>
+                        <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
+                            {this.state.profile.inspiration}
+                        </Text>
+                    </View>
+
+
+                    {/* Chapter Sisters section */}
+                    <View style={styles.subViewStyle}>
+                        <View style={[styles.inspirationTitle, {marginTop: 20}]}>
+                            <Text style={styles.inspirationLabel}>Chapter Sisters</Text>
+                        </View>
+                            <FlatList
+                                style={styles.sisterList}
+                                data={this.state.sisters}
+                                renderItem={this.renderChapterSister}
+                                keyExtractor={this.memberKeyExtractor}
+                                numColumns={4}
+                            />
+                    </View>
+
+                    <View style={styles.subViewStyle}>
+                        <Button title={'View All'} color='blue' onPress={this.goToChapter}/>
+                    </View>
                 </View>
 
 
@@ -214,6 +219,11 @@ const styles = StyleSheet.create({
         flex: 1,
         opacity: 1,
         backgroundColor: 'white'
+    },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 50
     },
     subViewStyle: {
         flex: 1,

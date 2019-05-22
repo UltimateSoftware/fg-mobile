@@ -17,7 +17,6 @@ export class Hangout extends React.Component {
 
     async componentWillMount() {
         let hangout = await DataManager.getItemWithKey("hangout")
-        console.log("HANGOUT CONTENT ", hangout.content.hangoutActivity)
         this.setState({hangout, loading: 'false'})
     }
 
