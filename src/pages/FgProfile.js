@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, ScrollView, StyleSheet, Text, View, Alert} from 'react-native';
+import {Button, ScrollView, StyleSheet, Text, View, Alert, FlatList} from 'react-native';
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {BANNER_HEIGHT_WIDTH_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from "../utils/sharedConstants";
@@ -9,6 +9,7 @@ import {FgButton} from "../components/FgButton";
 import {AsyncStorage} from 'react-native';
 import {GlobalContext} from '../services/GlobalProvider'
 import {FgProfileService} from "../services/FgProfileService";
+import {ChapterService} from "../services/ChapterService";
 
 //TODO: Create AvatarGroup component to display chapter sisters.
 //TODO: Create FgButton to allow 'View All' click to see all chapter sisters.
@@ -20,9 +21,11 @@ export class FgProfile extends React.Component {
     constructor(props) {
         super(props);
         this.service = new FgProfileService();
+        this.chapterService = new ChapterService();
         this.state = {
             loading: 'initial',
-            profile: null
+            profile: null,
+            sisters: null
         };
         this.handleSignOut.bind(this);
     }
@@ -31,12 +34,40 @@ export class FgProfile extends React.Component {
         this.setState({loading: 'true'});
         let profile = await this.service.getProfile("372bb5ca-f7e1-4f5e-9157-411ee9890964")
             .then(async (profile) => {
-                    let photo = await this.service.getProfilePhoto(profile.id)
-                    profile.photo = photo
-                    return profile
+                console.log("PROFILE ", profile)
+                let photo = await this.service.getProfilePhoto(profile.id)
+                profile.photo = photo
+                return profile
             })
-        this.setState({profile, loading: 'false'})
+        let chapterSisters = await this.chapterService.getChapter(profile.chapterId)
+            .then(async (chapter) => {
+                let sisters = [];
+                for(var i = 0; (i < chapter.members.length && sisters.length < 4); i++) {
+                    let sister = chapter.members[i];
+                    if(sister.id == profile.id) {
+                        continue;
+                    }
+                    let photo = await this.service.getProfilePhoto(sister.id)
+                    sister.photo = photo
+                    sisters.push(sister)
+                }
+                return sisters
+            })
+        this.setState({profile: profile, sisters: chapterSisters, loading: 'false'})
     }
+
+    renderChapterSister = ({item: sister}) => {
+        return (
+            <View style={styles.sister}>
+                <Avatar
+                    avatarSize={'small'}
+                    source={sister.photo}/>
+                <Text>{sister.firstName} {sister.lastName}</Text>
+            </View>
+        );
+    }
+
+    memberKeyExtractor = (item, index) => item.id
 
     render() {
 
@@ -83,7 +114,7 @@ export class FgProfile extends React.Component {
                 <View style={styles.subViewStyle}>
                     <View style={[styles.inspirationTitle, {marginTop: 20}]}>
                         <View style={styles.inspirationLine}/>
-                        <Text style={styles.inspirationLabel}>{this.state.profile.inspiration}</Text>
+                        <Text style={styles.inspirationLabel}>  Inspiration  </Text>
                         <View style={styles.inspirationLine}/>
                     </View>
                 </View>
@@ -91,9 +122,29 @@ export class FgProfile extends React.Component {
                 {/* Inspiration Block */}
                 <View style={styles.subViewStyle}>
                     <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
-                        {this.state.inspiration}
+                        {this.state.profile.inspiration}
                     </Text>
                 </View>
+
+
+                {/* Chapter Sisters section */}
+                <View style={styles.subViewStyle}>
+                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
+                        <Text style={styles.inspirationLabel}>Chapter Sisters</Text>
+                    </View>
+                        <FlatList
+                            style={styles.sisterList}
+                            data={this.state.sisters}
+                            renderItem={this.renderChapterSister}
+                            keyExtractor={this.memberKeyExtractor}
+                            numColumns={4}
+                        />
+                </View>
+
+                <View style={styles.subViewStyle}>
+                    <Button title={'View All'} color='blue' onPress={this.goToChapter}/>
+                </View>
+
 
                 {/* Sign-Out button placed here temporarily to allow for testing of user sign-in/out flow */}
                 <View >
@@ -150,6 +201,11 @@ export class FgProfile extends React.Component {
     async loadFgMember() {
         return DataManager.getItemWithKey(SIGNED_IN_MEMBER)
             .catch((error) => console.log("[ERROR - FgProfile > loadFgMember() ]: ", error.message));
+    }
+
+    goToChapter = () => {
+        console.log("Navigating to chapter")
+        this.props.navigation.navigate('MyChapter')
     }   
 }
 
@@ -162,6 +218,13 @@ const styles = StyleSheet.create({
     subViewStyle: {
         flex: 1,
         alignItems: 'center'
+    },
+    sisterList: {
+        marginTop: 20,
+    },
+    sister: {
+        alignItems: 'center',
+        margin: 10
     },
     nameLabel: {
         fontFamily: 'montserrat-light',
