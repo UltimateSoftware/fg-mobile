@@ -3,6 +3,7 @@ import React from 'react';
 import jwtDecoder from 'jwt-decode';
 import config from '../../constants/config';
 import {AuthSession} from 'expo';
+import {Profile} from '../types/FgMember'
 
 export class FgProfileService extends React.Component{
 
@@ -32,15 +33,14 @@ export class FgProfileService extends React.Component{
             })
             .then(res => res.json())
             .catch(e => console.log('problem submitting profile: ' + e));
-      }
+    }
 
-      logout = async () => {
+    logout = async () => {
         await AsyncStorage.clear();
         AuthSession.dismiss();
-        
-      };
+    };
 
-      deleteMember = async () => {
+    deleteMember = async () => {
         console.log('deleting account..')
         const token = await AsyncStorage.getItem('token');
         const decoded = jwtDecoder(token);
@@ -55,8 +55,34 @@ export class FgProfileService extends React.Component{
             })
             .then(AsyncStorage.clear()).then(AuthSession.dismiss())
             .catch(e => console.log('problem deleting profile: ' + e));
- 
-        
-      }
+    }
 
+    getProfilePhoto = async (profileId) => {
+        try {
+            var request = fetch(`http://localhost:8080/profiles/${profileId}/photo`);
+            return await request.then(response => response.blob())
+                          .then(images => {
+                              // Then create a local URL for that image and print it 
+                              return URL.createObjectURL(images)
+                          })
+        } catch(ex) {
+            console.log("Exception getting photo for profileId: ", profileId)
+            console.log(ex)
+            return ex
+        }
+    }
+
+    getProfile = async (profileId) => {
+        return new Promise(async (resolve) => {
+            try {
+                var request = await fetch(`http://localhost:8080/profiles/${profileId}`);
+                var response = await request.json();
+                resolve(new Profile(response));
+            } catch(ex) {
+                console.log("Exception getting profile for id: ", profileId)
+                console.log(ex)
+                error(ex)
+            }
+        })
+    }
 }

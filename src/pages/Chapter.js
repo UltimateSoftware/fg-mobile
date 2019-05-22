@@ -1,48 +1,65 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, Image, FlatList} from 'react-native';
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 import {Avatar} from "../components/Avatar";
 import {Banner} from "../components/Banner";
 import {DataManager, CHAPTER} from "../DataManager";
-import {ChProfile} from "../types/ChProfile";
+import {ChProfile} from "../types/Chapter";
+import {ChapterService} from "../services/ChapterService"
+import {ProfileService} from "../services/ProfileService"
 import { MOCKED_CHAPTER_with_BANNER_and_AVATAR } from '../test/MockedTypes';
 
 export class Chapter extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
             loading: 'initial',
-            info: null
+            chapter: null,
+            members: null
         };
+        this.chapterService = new ChapterService()
+        this.profileService = new ProfileService()
+        this.images = null
     }
     async loadChapter() {
-        return DataManager.getItemWithKey(CHAPTER)
-            .catch((error) => {return ("[ERROR - FgProfile > loadFgMember() ]: ", error.message)});
+        return await this.chapterService.getChapter("c5dadd8e-293e-41bf-b18d-45dfa055e38f")
+        // return DataManager.getItemWithKey(CHAPTER)
+            // .catch((error) => {return ("[ERROR - FgProfile > loadFgMember() ]: ", error.message)});
     }
+
+    renderChapterMember = ({item: member}) => {
+        return (
+            <View style={styles.member}>
+                <Avatar
+                    avatarSize={'large'}
+                    source={member.profilePhoto}/>
+                <Text>{member.firstName} {member.lastName}</Text>
+            </View>
+        );
+    }
+
+    memberKeyExtractor = (item, index) => item.id
+
     componentDidMount() {
         this.setState({ loading: 'true' });
         this.loadChapter()
-            .then( (data) => {
-              //TODO: data is currently null
-                const info = new ChProfile(
-                    data.schoolName,
-                    data.chapter,
-                    data.bannerSource,
-                    data.avatarSource,
-                    data.history,
-                    data.studentAvatars,
-                    data.leadershipAvatars
-                );
-                //this.setState({member: fgMember, loading: 'false'});
-                this.setState({info, loading: false});
+            .then(async (chapter) =>  {
+                let members = []
+                for(var memberIndex = 0; memberIndex < chapter.members.length; memberIndex++) {
+                    let member = chapter.members[memberIndex];
+                    let photo = await this.profileService.getProfilePhoto(member.id)
+                    members.push({
+                        ...member,
+                        profilePhoto: photo
+                    })
+                }
+                this.setState({chapter: chapter, members: members, loading: false});
             })
             .catch( (error) => {
               console.log(error.message);
               this.setState({info: MOCKED_CHAPTER_with_BANNER_and_AVATAR, loading: false})
             });
     }
-
     render() {
         if( this.state.loading === 'initial' ) {
             return <Text>Initializing</Text>
@@ -58,35 +75,43 @@ export class Chapter extends React.Component {
             <ScrollView
                 style={styles.scrollViewStyle}>
             <View style={styles.container}>
-
                 {/* Render the Banner */}
-                <Banner source={this.state.info.bannerSource}/>
+                <Banner source={this.state.chapter.bannerSource}/>
 
                 {/* Render the Avatar */}
-                <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
+                <View style={{ top: -(bannerHeight / 2), flex: 1}}>
                     <Avatar
                         avatarSize={'large'}
-                        name={this.state.info.schoolName}
-                        source={this.state.info.avatarSource}/>
+                        name={this.state.chapter.schoolName}
+                        source={this.state.chapter.avatarSource}/>
                 </View>
 
-
-                <Text style={[styles.textContainer, { top: bannerHeight * 1.5 }]}>
-                    <Text style={styles.nameLabel}>{this.state.info.schoolName}</Text>{'\n'}
-                    <Text style={styles.gradYearLabel}>{this.state.info.chapter}</Text>{'\n'}
+                <Text style={styles.textContainer}>
+                    <Text style={styles.nameLabel}>
+                        {this.state.chapter.schoolName}{"\n"}
+                    </Text>
+                    <Text style={styles.schoolLabel}>
+                        {this.state.chapter.chapterNumber}{"\n"}
+                    </Text>
                 </Text>
 
                 {/* Render the 'Inspiration' title with horizontal dividers on each side */}
-                <View style={[styles.inspirationTitle, {top: bannerHeight * 2.345}]}>
+                <View style={styles.inspirationTitle}>
                     <View style={styles.inspirationLine}/>
-                    <Text style={styles.inspirationLabel}>  Our Mission  </Text>
+                    <Text style={styles.inspirationLabel}>{this.state.chapter.description}</Text>
                     <View style={styles.inspirationLine}/>
                 </View>
 
-                {/* Render the member's inspiration block */}
-                <Text style={[styles.inspirationBlock, {top: bannerHeight * 2.6, marginBottom: 150, paddingBottom: 350 }]}>
-                    {this.state.info.history}
-                </Text>
+                {/* Render the Chapter members */}
+                <View>
+                <FlatList
+                    style={styles.memberList}
+                    data={this.state.members}
+                    renderItem={this.renderChapterMember}
+                    keyExtractor={this.memberKeyExtractor}
+                    numColumns={2}
+                />
+                </View>
             </View>
             </ScrollView>
         );
@@ -95,6 +120,13 @@ export class Chapter extends React.Component {
 
 
 const styles = StyleSheet.create({
+    memberList: {
+        marginTop: 20,
+    },
+    member: {
+        alignItems: 'center',
+        margin: 10
+    },
     scrollViewStyle: {
         flex: 1,
         opacity: 1,
@@ -106,11 +138,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        marginTop: 50
     },
     textContainer: {
+        flex: 1,
         color: '#818282',
         textAlign: 'center',
-        marginTop: -180
+        marginTop: -50
     },
     nameLabel: {
         fontFamily: 'montserrat-light',
@@ -129,20 +163,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
-        marginTop: -100
     },
     inspirationLabel: {
         fontFamily: 'montserrat-regular',
         fontSize: 18,
-        color: '#818282'
+        color: '#818282',
+        marginRight: 5,
+        marginLeft: 5,
+        marginBottom: -10
     },
     inspirationLine: {
-        // position: 'relative',
-        borderBottomColor:'#818282',
+        borderColor:'#818282',
         borderBottomWidth:1,
-        flex: 1
-        // height:'60%',
-        // width:'32%'
+        flex: 1,
     },
     inspirationBlock: {
         flex:1,
@@ -150,6 +183,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textAlign: 'left',
         color: '#818282',
-        margin: 20
+        // margin: 20
     }
 });

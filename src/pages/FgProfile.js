@@ -17,32 +17,25 @@ import {FgProfileService} from "../services/FgProfileService";
 
 export class FgProfile extends React.Component {
 
-    service = new FgProfileService();
-
     constructor(props) {
         super(props);
+        this.service = new FgProfileService();
         this.state = {
             loading: 'initial',
-            member: null,
-            firstName: null,
-            lastName: null,
-            schoolName: null,
-            gradYear: null,
-            inspiration: null,
+            profile: null
         };
         this.handleSignOut.bind(this);
     }
 
     async componentWillMount() {
         this.setState({loading: 'true'});
-        const profileStr = await AsyncStorage.getItem('profile');
-        const profileObj = JSON.parse(profileStr);
-        this.setState({firstName:profileObj.firstName});
-        this.setState({lastName:profileObj.lastName});
-        this.setState({schoolName:profileObj.schoolName});
-        this.setState({gradYear:profileObj.gradYear});
-        this.setState({inspiration:profileObj.inspiration});
-        this.setState({loading: 'false'});
+        let profile = await this.service.getProfile("372bb5ca-f7e1-4f5e-9157-411ee9890964")
+            .then(async (profile) => {
+                    let photo = await this.service.getProfilePhoto(profile.id)
+                    profile.photo = photo
+                    return profile
+            })
+        this.setState({profile, loading: 'false'})
     }
 
     render() {
@@ -71,6 +64,7 @@ export class FgProfile extends React.Component {
                     <View style={{marginTop: (bannerHeight/2)}}>
                         <Avatar
                             avatarSize={'large'}
+                            source={this.state.profile.photo}
                             name={`${this.state.firstName} ${this.state.lastName}`}
                             />
                     </View>
@@ -79,9 +73,9 @@ export class FgProfile extends React.Component {
                 {/* Name, School, and Grad Year */}
                 <View style={styles.subViewStyle}>
                     <Text style={{marginTop: 20, textAlign: 'center', color: '#818282'}}>
-                        <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.firstName} {this.state.lastName}</Text>{'\n'}
-                        <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.schoolName}</Text>{'\n'}
-                        <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.gradYear}</Text>{'\n'}
+                        <Text style={[styles.nameLabel, {margin: 3}]}>{this.state.profile.firstName} {this.state.profile.lastName}</Text>{'\n'}
+                        <Text style={[styles.schoolLabel, {margin: 2}]}>{this.state.profile.schoolName}</Text>{'\n'}
+                        <Text style={[styles.gradYearLabel, {margin: 1}]}>Class of {this.state.profile.gradYear}</Text>{'\n'}
                     </Text>
                 </View>
 
@@ -89,7 +83,7 @@ export class FgProfile extends React.Component {
                 <View style={styles.subViewStyle}>
                     <View style={[styles.inspirationTitle, {marginTop: 20}]}>
                         <View style={styles.inspirationLine}/>
-                        <Text style={styles.inspirationLabel}>  Inspiration  </Text>
+                        <Text style={styles.inspirationLabel}>{this.state.profile.inspiration}</Text>
                         <View style={styles.inspirationLine}/>
                     </View>
                 </View>

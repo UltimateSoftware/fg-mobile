@@ -1,0 +1,82 @@
+Arguments: 
+  /Users/austinl/.nvm/versions/node/v10.13.0/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /Users/austinl/.nvm/versions/node/v10.13.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  10.13.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "fearlessly-girl",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+      "jest-expo": "~27.0.0",
+      "react-native-scripts": "1.14.0",
+      "react-test-renderer": "16.3.1"
+    },
+    "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+    "scripts": {
+      "start": "react-native-scripts start",
+      "eject": "react-native-scripts eject",
+      "android": "react-native-scripts android",
+      "ios": "react-native-scripts ios",
+      "test": "jest"
+    },
+    "jest": {
+      "preset": "jest-expo"
+    },
+    "dependencies": {
+      "@expo/vector-icons": "^8.0.0",
+      "expo": "^27.1.1",
+      "expo-asset": "^1.1.0",
+      "expo-constants": "^1.0.2",
+      "expo-file-system": "^1.0.2",
+      "expo-font": "^1.0.0",
+      "expo-react-native-adapter": "^1.1.1",
+      "fg-agenda-view": "^1.1.0",
+      "jwt-decode": "^2.2.0",
+      "native-base": "^2.8.1",
+      "prop-types": "15.6.2",
+      "react": "16.3.1",
+      "react-native": "~0.55.2",
+      "react-native-calendars": "^1.22.0",
+      "react-native-elements": "^0.19.1",
+      "react-native-keyboard-aware-scroll-view": "^0.7.4",
+      "react-native-material-dropdown": "^0.11.1",
+      "react-native-vector-icons": "^6.0.2",
+      "react-navigation": "^3.0.7"
+    },
+    "rnpm": {
+      "assets": [
+        "fonts"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-6.3.1.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:123716:19)
+      at Object.onceWrapper (events.js:273:13)
+      at ClientRequest.emit (events.js:182:13)
+      at TLSSocket.emitRequestTimeout (_http_client.js:661:40)
+      at Object.onceWrapper (events.js:273:13)
+      at TLSSocket.emit (events.js:182:13)
+      at TLSSocket.Socket._onTimeout (net.js:449:8)
+      at ontimeout (timers.js:436:11)
+      at tryOnTimeout (timers.js:300:5)
+      at listOnTimeout (timers.js:263:5)

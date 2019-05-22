@@ -20,6 +20,7 @@ export class Avatar extends Component {
     let inner = null;
 
     if (source) {
+      console.log("Source : ", source)
       inner = (
         <Image
           style={{

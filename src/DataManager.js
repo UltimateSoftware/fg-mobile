@@ -36,6 +36,4 @@ export class DataManager {
             console.log("[ERROR - DataManager]: ", error.message);
         }
     }
-
-
 }

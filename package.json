@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
+    "base-64": "^0.1.0",
     "expo": "^27.1.1",
     "expo-asset": "^1.1.0",
     "expo-constants": "^1.0.2",

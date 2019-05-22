@@ -5,8 +5,9 @@ export class HangoutService {
     async getHangouts() {
         
         return new Promise(async (resolve, error) => {
+            console.log("About to get hangouts")
             try {
-                var request = await fetch("http://10.55.14.51:5000/hangouts");
+                var request = await fetch("http://localhost:8080/hangouts");
                 var response = await request.json();
                 var data = response.map((response) => new Hangout(response.title, response.location, response.content, response.icebreakers, response.state));
                 resolve(data);

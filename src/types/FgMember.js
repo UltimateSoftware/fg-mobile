@@ -11,3 +11,13 @@ export function FgMember (firstName, lastName, schoolName, gradYear, bannerSourc
         return firstName + ' ' + lastName;
     }
 }
+
+export function Profile(profile) {
+    this.id = profile.id
+    this.chapterId = profile.chapterId
+    this.firstName = profile.firstName;
+    this.lastName = profile.lastName;
+    this.schoolName = profile.schoolName;
+    this.gradYear = profile.gradYear;
+    this.inspiration = profile.inspiration;
+}

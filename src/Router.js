@@ -35,7 +35,7 @@ export const SignedIn =  createBottomTabNavigator(
                 iconName = `md-calendar`
             } else if (routeName === 'Menu') {
                 iconName = `md-menu`
-            } else if (routeName === 'MyChapter') {
+            } else if (routeName === 'Chapter') {
                 iconName = `md-bonfire`
             }
 

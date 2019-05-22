@@ -33,11 +33,11 @@ export class Banner extends Component {
             }
         }
     
-        color ? inner = <View style={[styles.bannerStyleWithText,{ backgroundColor: color }]}>
-            <H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}> {this.props.text}</H1>
-            </View> 
-            : 
-            inner = <View style= {[styles.bannerStles, { backgroundColor: 'lightgray' }]}/>
+        // color ? inner = <View style={[styles.bannerStyleWithText,{ backgroundColor: color }]}>
+        //     <H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}> {this.props.text}</H1>
+        //     </View> 
+        //     : 
+        //     inner = <View style= {[styles.bannerStyle, { backgroundColor: 'lightgray' }]}/>
             
         return (
             <View>{ inner }</View>

@@ -34,6 +34,7 @@ export class HangoutLanding extends React.Component {
                 this.setState({loading: true})
                 var response = await this.HangoutService.getHangouts();
                 console.log("STUUCK")
+                console.log(response)
                 this.setState({hangouts: response});
             } catch(e) {
                 console.log("ERROR")
