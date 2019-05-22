@@ -85,7 +85,7 @@ export class FgProfile extends React.Component {
 
             //BANNER and AVATAR need to be integrated with backend//
 
-            <GlobalContext.Consumer>
+        <GlobalContext.Consumer>
                 {context => (
             //Wrap entire profile in a ScrollView
             <ScrollView style={styles.scrollViewStyle} bounces={false}>

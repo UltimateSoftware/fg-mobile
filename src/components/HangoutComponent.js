@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {StyleSheet, View, Text,Image} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import {DataManager} from '../DataManager'
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 
 const imageDict = {
@@ -14,7 +15,11 @@ const imageDict = {
     "the supergirl dilema": require('../../assets/hangout_icons/supergirl.png')
 }
 
-export class HangoutComponent extends Component {
+export class HangoutComponent extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     checkIsEven(n) {
         if(n%2 == 0) {
@@ -24,28 +29,30 @@ export class HangoutComponent extends Component {
     }
 
     pickImage(icon) {
-        image = imageDict[icon.toLowerCase()];
+        image = imageDict[icon.toString().toLowerCase()];
 
         if(image == undefined) {
             // default
             return require('../../assets/hangout_icons/girlfriends.png');
         }
         
-        return imageDict[icon.toLowerCase()];
+        return imageDict[icon.toString().toLowerCase()];
     }
 
     render() {
-        const {
-            title,
-            index
-        } = this.props;
-
+        let title = this.props.hangout.title
         return (
-            <View key={index} style = {styles.item}>
-            <Image style={{height:100, width:100, display: 'flex'}} source={this.pickImage(title)}/>
+            <View key={this.props.index} style = {styles.item}>
+            <Image style={{height:100, width:100, display: 'flex'}} source={this.pickImage(this.props.hangout.title)}/>
             <Text style={{marginTop: 10, textAlign: 'center', color: 'rgba(0, 0, 0, 0.84)'}}>{title}</Text>
             </View>
         );
+    }
+
+    _goToHangout = () => {
+        console.log("GO TO HANGOUT")
+        console.log(this.props.hangout)
+        this.props.navigation.navigate('MyChapter')
     }
 }
 

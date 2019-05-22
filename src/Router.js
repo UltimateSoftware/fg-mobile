@@ -8,21 +8,37 @@ import {Chapter} from "./pages/Chapter";
 import {HangoutLanding} from "./pages/HangoutLanding";
 import {Events} from "./pages/Events";
 import {FgProfile} from "./pages/FgProfile";
+import {Hangout} from './pages/Hangout'
 import {ChapterSelector} from "./pages/ChapterSelector"
 import {CreateChapter} from "./pages/CreateChapter"
 import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";
 
+export const HangoutSwitch = createStackNavigator(
+    {   
+        Hangouts: {
+            screen: HangoutLanding,
+            navigationOptions: {
+                header: null
+            }
+        },
+        Hangout: Hangout
+    },
+    {
+        initialRouteName: 'Hangouts',
+    }
+)
+
 export const SignedIn =  createBottomTabNavigator(
 {
     Menu: Menu,
     MyChapter: Chapter,
-    Hangouts: HangoutLanding,
+    Hangouts: HangoutSwitch,
     Events: Events,
     Profile: FgProfile,
 },
 {
-    initialRouteName: 'Profile',
+    initialRouteName: 'Hangouts',
     navigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, horizontal, tintColor }) => {
             const { routeName } = navigation.state;
@@ -67,7 +83,8 @@ export const ProfileController = createSwitchNavigator(
     {
       LoadingProfile: LoadProfile,
       SignUp: { screen: CreateProfile },
-      App: SignedIn
+      App: SignedIn,
+      // Hangout: Hangout
     },
     {
       initialRouteName: 'LoadingProfile',

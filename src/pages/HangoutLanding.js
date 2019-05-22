@@ -5,7 +5,7 @@ import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS, FlatList, Image, ListView, TouchableOpacity} from 'react-native';
 import { Tile } from 'react-native-elements';
 import { Header, Left, Button, Body, Right, Title, Card, H2, CardItem, Thumbnail} from 'native-base';
-
+import {DataManager} from '../DataManager'
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 import {Banner} from "../components/Banner";
 import {HangoutService} from '../services/HangoutService';
@@ -30,14 +30,11 @@ export class HangoutLanding extends React.Component {
     componentDidMount() {
         (async () => {
             try {
-                console.log("MOUNTING")
                 this.setState({loading: true})
                 var response = await this.HangoutService.getHangouts();
-                console.log("STUUCK")
-                console.log(response)
                 this.setState({hangouts: response});
             } catch(e) {
-                console.log("ERROR")
+                console.log("Error fetching hangouts ", e)
             }
             
         }
@@ -84,11 +81,18 @@ export class HangoutLanding extends React.Component {
         );
     }
 
+    _goToHangout = (hangout) => {
+        DataManager.setItemForKey('hangout', hangout)
+        this.props.navigation.navigate('Hangout')
+    }
+
     ListOfHangouts = () => {return (
             <ScrollView style={styles.scrollViewStyle} contentContainerStyle={styles.contentContainerStyle} bounces={false}>
                 <View style={styles.container}>
                 {this.state.hangouts.map((r, i) => 
-                            <HangoutComponent key={i} title={r.title} index={i}></HangoutComponent>
+                        <TouchableOpacity key={i} onPress={() => this._goToHangout(r)}>
+                            <HangoutComponent key={i} index={i} hangout={r}></HangoutComponent>
+                        </TouchableOpacity>
                 )}
                 </View>
             </ScrollView>
