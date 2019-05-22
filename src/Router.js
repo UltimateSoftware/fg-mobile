@@ -9,6 +9,7 @@ import {HangoutLanding} from "./pages/HangoutLanding";
 import {Events} from "./pages/Events";
 import {FgProfile} from "./pages/FgProfile";
 import {Hangout} from './pages/Hangout'
+import {Icebreaker} from './pages/Icebreaker'
 import {ChapterSelector} from "./pages/ChapterSelector"
 import {CreateChapter} from "./pages/CreateChapter"
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -22,7 +23,8 @@ export const HangoutSwitch = createStackNavigator(
                 header: null
             }
         },
-        Hangout: Hangout
+        Hangout: Hangout,
+        Icebreaker: Icebreaker
     },
     {
         initialRouteName: 'Hangouts',

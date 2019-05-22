@@ -6,36 +6,18 @@ import {GlobalContext} from '../services/GlobalProvider'
 import {IcebreakerComponent} from '../components/IcebreakerComponent';
 import {Banner} from "../components/Banner";
 
-export class Hangout extends React.Component {
+export class Icebreaker extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: 'true',
-            hangout: null
+            icebreaker: null
         }
     }
 
     async componentWillMount() {
-        let hangout = await DataManager.getItemWithKey("hangout")
-        this.setState({hangout, loading: 'false'})
-    }
-
-    _goToIcebreaker = async (icebreaker) => {
-        await DataManager.setItemForKey("icebreaker", icebreaker)
-        this.props.navigation.navigate("Icebreaker")
-    }
-
-    ListOfIcebreakers = () => {return (
-        <ScrollView style={styles.scrollViewStyle} bounces={false}>
-                <View style={styles.icebreakerContainer}>
-                {this.state.hangout.icebreakers.map((icebreaker, index) => 
-                        <TouchableOpacity key={index} onPress={() => this._goToIcebreaker(icebreaker)}>
-                            <IcebreakerComponent key={index} index={index} icebreaker={icebreaker}></IcebreakerComponent>
-                        </TouchableOpacity>
-                )}
-                </View>
-        </ScrollView>
-        );
+        let icebreaker = await DataManager.getItemWithKey("icebreaker")
+        this.setState({icebreaker, loading: 'false'})
     }
 
     render() {
@@ -47,18 +29,11 @@ export class Hangout extends React.Component {
                 {context => (
                 //Wrap entire profile in a ScrollView
                 <ScrollView style={styles.scrollViewStyle} bounces={false}>
-                    <View style={{height: SCREEN_HEIGHT*.93, width: SCREEN_WIDTH, alignItems: 'center'}}>  
-                        <Banner text={this.state.hangout.title} color='#070745' />
-                        {/*Hangout title section with subheader of location - date*/}
-                        <View style={[styles.subViewStyle, {marginTop:20}]}>
-                            <Text style={{textAlign:'center'}}>
-                                <Text style={styles.hangoutLocation}>Location: {this.state.hangout.location}</Text>{'\n'}
-                                <Text style={styles.hangoutLocation}>Date: {this.state.hangout.date}</Text>{'\n'}
-                            </Text>
-
-                            <Text style={styles.hangoutDescription}>{this.state.hangout.content.description}</Text>
-                            <View style={[styles.subViewStyle, {marginTop: 20}]}>{<this.ListOfIcebreakers></this.ListOfIcebreakers>}</View>
-                        </View>
+                    <View style={{width: SCREEN_WIDTH, alignItems: 'center'}}>  
+                        <Banner text={this.state.icebreaker.name} color='#070745'/>
+                    </View>
+                    <View style={[styles.subViewStyle, {marginTop: 10}]}>
+                    <Text>{this.state.icebreaker.description}</Text>
                     </View>
                 </ScrollView>
             )}
@@ -108,7 +83,7 @@ const styles = StyleSheet.create({
     },
     hangoutLocation: {
         fontFamily: 'open-sans-regular',
-        fontSize: 13
+        fontSize: 12
     },
     hangoutDescription: {
         fontFamily: 'open-sans-regular',

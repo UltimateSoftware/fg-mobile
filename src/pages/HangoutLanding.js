@@ -45,7 +45,7 @@ export class HangoutLanding extends React.Component {
         
     }
     
-     IceBreakers= () =>{
+    IceBreakers= () =>{
         return (
             
             <ScrollView

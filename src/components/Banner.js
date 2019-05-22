@@ -31,6 +31,11 @@ export class Banner extends Component {
                     source={{ uri: source }}
                     style={styles.bannerStyle}/>
             }
+        } else {
+            inner = 
+            <View style={[styles.bannerStyleWithText,{ backgroundColor: color }]}>
+                <H1 style={{fontFamily: 'open-sans-regular', color:'white', borderRadius: 1, borderColor:'black'}}> {this.props.text}</H1>
+            </View> 
         }
     
         // color ? inner = <View style={[styles.bannerStyleWithText,{ backgroundColor: color }]}>

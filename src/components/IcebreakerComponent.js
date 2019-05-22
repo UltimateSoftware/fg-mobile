@@ -15,7 +15,7 @@ const imageDict = {
     "the supergirl dilema": require('../../assets/hangout_icons/supergirl.png')
 }
 
-export class HangoutComponent extends React.Component {
+export class IcebreakerComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -33,18 +33,17 @@ export class HangoutComponent extends React.Component {
 
         if(image == undefined) {
             // default
-            return require('../../assets/hangout_icons/girlfriends.png');
+            return require('../../assets/hangout_icons/fearless.png');
         }
         
         return imageDict[icon.toString().toLowerCase()];
     }
 
     render() {
-        let title = this.props.hangout.title
         return (
             <View key={this.props.index} style = {styles.item}>
-            <Image style={{height:100, width:100, display: 'flex'}} source={this.pickImage(this.props.hangout.title)}/>
-            <Text style={{marginTop: 10, textAlign: 'center', color: 'rgba(0, 0, 0, 0.84)'}}>{title}</Text>
+            <Image style={{height:100, width:100, display: 'flex'}} source={this.pickImage(this.props.icebreaker.name)}/>
+            <Text style={{marginTop: 10, textAlign: 'center', color: 'rgba(0, 0, 0, 0.84)'}}>{this.props.icebreaker.name}</Text>
             </View>
         );
     }
