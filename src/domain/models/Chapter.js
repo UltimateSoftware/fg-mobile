@@ -1,59 +1,22 @@
-export class ChapterManager {
-    static _chProfile = {} // private variable
-    
+import React from 'react';
+import useGlobalHook from '../../hooks/useGlobalHook';
+import * as actions from '../services/ChapterService'
+import {status} from '../constants/Chapter';
 
-    static createChProfile = function (chProfile){
-        ChapterManager._chProfile = testDto(...chProfile)
-    }
 
-    static getChProfile = async function() {
-        return new Promise((resolve, reject) => {
-            try {
-                if (Object.keys(ChapterManager._chProfile).length != 0) {
-                    console.log('object already constructed')
-                    resolve(ChapterManager._chProfile); 
-                }
-                // load chapter information if it doesnt exist
-
-                console.log('calling ChProfile')
-                this.createChProfile('my text')
-                console.log(ChapterManager._chProfile)
-                resolve(this._chProfile);
-            } catch(e) {
-                console.log(e)
-                // load chapter information if it doesnt exist
-                resolve({thisField: "didn't work"})
-            }
-            
-            
-        });
-        
-    }
+const ChapterState = { // each of these define a state that can be pulled
+    Chapter: { // defines a chapter DTO
+        schoolName: "",
+        chapter: "",
+        bannerSource: "", // URIs to assests folder
+        avatarSource: "", // URIs to assests folder
+        history: "",
+        studentAvatars: "",
+        leadershipAvatars: ""
+    },
+    Status: status.init, // defines if the chapter is loaded
 }
 
-function testDto(oneField) {
-    return {
-        thisField: oneField,
-    }
-}
+const useChapter = useGlobalHook(React, ChapterState, actions);
 
-function ChProfile (schoolName, 
-    chapter, 
-    bannerSource, 
-    avatarSource, 
-    history, 
-    studentAvatars, 
-    leadershipAvatars)
-    {
-        //TODO: perform validation on the profile object
-        return {
-            schoolName : schoolName,
-            chapter : chapter,
-            bannerSource : bannerSource,
-            avatarSource : avatarSource,
-            history : history,
-            studentAvatars : studentAvatars,
-            leadershipAvatars : leadershipAvatars,
-        }
-        
-    }
+export default useChapter;
