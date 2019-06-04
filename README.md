@@ -7,8 +7,8 @@ Below you'll find information about installing and running this in your local en
 ## Table of Contents
 
 * [Installing](#install)
-  * [Dependencies] (#dependencies)
-  * [Installation] (#installation)
+  * [Dependencies](#dependencies)
+  * [Installation](#installation)
 * [Available Scripts](#available-scripts)
   * [npm start](#npm-start)
   * [npm test](#npm-test)
