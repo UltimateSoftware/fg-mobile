@@ -1,0 +1,1 @@
+This folder contains domain services, each file should general understand how to construct objects of its domain for use with the app. Each file should also uphold a contract with the API from the backend.
