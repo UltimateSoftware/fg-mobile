@@ -9,7 +9,7 @@ import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 
-const ButtomTabs = createDrawerNavigator(
+const BottomTabs = createDrawerNavigator(
     {
         Tabs: BottomNav,
     },
@@ -47,7 +47,7 @@ const ButtomTabs = createDrawerNavigator(
  const Stack = createStackNavigator(
     {
         Drawer: {
-            screen: ButtomTabs,
+            screen: BottomTabs,
             navigationOptions: {
                 header: null,
             },
@@ -62,7 +62,7 @@ const ButtomTabs = createDrawerNavigator(
         AuthLoading: AuthLoading,
     },
     {
-        initialRouteName: 'Drawer',
+        initialRouteName: 'Drawer', // needs to be changed to Auth, which navigates to AuthLoading
     }
  );
  

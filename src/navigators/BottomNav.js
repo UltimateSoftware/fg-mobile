@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import GreenScreen from "../pages/FgChapter";
-import RedScreen from "../pages/FgHangouts";
+import FgChapter from "../pages/FgChapter";
+import FgHangouts from "../pages/FgHangouts";
+import FgProfile from "../pages/FgProfile";
 
 /*
 Each Screen that is implemented to be part of the bottom navigator must use
@@ -24,16 +25,16 @@ const Icons = {
 }
 
 const ChapterTab = createStackNavigator({
-    Chapter: GreenScreen
+    Chapter: FgChapter
 });
 const HangoutTab = createStackNavigator({
-    Hangouts: RedScreen
+    Hangouts: FgHangouts
 })
 const EventsTab = createStackNavigator({
-    Events: RedScreen
+    Events: FgHangouts // events is delayed!
 });
 const ProfileTab = createStackNavigator({
-    Profiles: GreenScreen
+    Profiles: FgProfile
 })
 
 const Tabs = createBottomTabNavigator({
@@ -49,6 +50,7 @@ const Tabs = createBottomTabNavigator({
             tabName = Icons[routeName]
             return <Icon name={tabName} size={20} />
         },
-    })
+    }),
+    initialRouteName: 'Profiles',
 });
 export default createAppContainer(Tabs);

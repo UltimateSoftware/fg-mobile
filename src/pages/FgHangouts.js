@@ -1,24 +1,26 @@
 import React, {Component, useState} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
-import {Inspiration} from '../components/atoms/Inspiration';
-import {useIsLoading} from '../hooks/useIsLoading';
-import {Banner} from '../components/atoms/Banner';
-import {ProfileFrame} from '../components/primatives/ProfileFrame';
-import useChapter from '../domain/models/Chapter';
+import {Tiles} from '../components/molecules/Tiles';
+import useHangouts from '../domain/models/Hangout';
 
-
+/* 
+ * FgHangouts might require a router of its own to create Icebreakers/games/etc.
+*/
 
 function FgHangouts() {
-    const [chapter, chapterActions] = useChapter()
-    const {Chapter, Status} = chapter;
-
-    const imgUri = 'fearlesslyGirl_logo.jpg';
+    const [hangouts, hangoutActions] = useHangouts()
+    const {Hangout, Status} = hangouts;
     
     return (
         <View style={styles.container}>
-            <Inspiration title={"my title"} inspiration={"some text"}/>
-            {<Text >{Status}</Text> }
+            <Tiles 
+                onAction={(item) => console.log(item)}
+                tiles={[ // example use of tiles
+                    {'id':'i', 'source':'s', 'name': 'name'},
+                    {'id':'i1', 'source':'s1', 'name': 'name1'}
+                ]}
+            />
         </View>
     );
 }

@@ -4,18 +4,14 @@ import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {Banner} from '../components/atoms/Banner';
 import {ProfileFrame} from '../components/primatives/ProfileFrame';
-import useChapter from '../domain/models/Chapter';
+import useProfile from '../domain/models/Profile';
 
-function oneOff(){
+function FgProfile() {
 
-}
-
-function FgChapter() {
-
-    const [chapter, chapterActions] = useChapter()
-    // See Chapter definition in domain/models/Chapter
-    // any new information which the backend provides needs to be reflected in domain/models/Chapter
-    const {Chapter, Status} = chapter; // Use Chapter to object to populate page
+    const [profile, profileActions] = useProfile()
+    // See Profile definition in domain/models/Profile
+    // any new information which the backend provides needs to be reflected in domain/models/Profile
+    const {Profile, Status} = profile; // Use Profile to object to populate page
     
     const imgUri = 'fearlesslyGirl_logo.jpg';
     
@@ -33,13 +29,13 @@ function FgChapter() {
     );
 }
 
-FgChapter.navigationOptions = () => {
+FgProfile.navigationOptions = () => {
     return {
         headerRight: <HamburgerIcon/>
     };
 };
 
-export default FgChapter
+export default FgProfile
 
 const styles = StyleSheet.create({
     container: {
