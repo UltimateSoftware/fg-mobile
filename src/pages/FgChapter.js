@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList} from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {Banner} from '../components/atoms/Banner';
@@ -13,21 +13,23 @@ function oneOff(){
 function FgChapter() {
 
     const [chapter, chapterActions] = useChapter()
-    const {Chapter, Status} = chapter;
-    console.log(Status);
-    console.log(chapterActions)
+    // See Chapter definition in domain/models/Chapter
+    // any new information which the backend provides needs to be reflected in domain/models/Chapter
+    const {Chapter, Status} = chapter; // Use Chapter to object to populate page
     
     const imgUri = 'fearlesslyGirl_logo.jpg';
     
     return (
-        <View style={styles.container}>
-            <Banner color={"#6ED4C8"} source={imgUri}>
-                <ProfileFrame source={imgUri} size={'l'}/>
-            </Banner>
-            <Inspiration title={"my title"} inspiration={"some text"}/>
-            <Button title="something" onPress={() => {chapterActions.updateChapter()}}/>
-            {<Text >{Status == 'READY' ? Chapter.schoolName : 'loading'}</Text> }
-        </View>
+        <ScrollView>
+            <View style={styles.container}>
+                {/* REPLACE WITH ProfileBanner COMPONENT in components/molecules/ProfileBanner */}
+                <Banner color={"#6ED4C8"} source={imgUri}> 
+                    <ProfileFrame source={imgUri} size={'l'}/>
+                </Banner>
+                <Inspiration title={"my title"} inspiration={"some text"}/>
+                {/* NEED TO RENDER PHOTO OF CHAPTER MEMBER */}
+            </View>
+        </ScrollView>
     );
 }
 
