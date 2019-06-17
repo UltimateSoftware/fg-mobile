@@ -1,45 +1,82 @@
-import React from 'react';
-import {AppLoading, Font} from 'expo';
-import {AppController} from "./src/Router";
-import {createAppContainer} from "react-navigation";
-import {GlobalProvider} from './src/services/GlobalProvider'
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-const AppContainer = createAppContainer(AppController);
 
-export default class App extends React.Component {
+import {Platform, StyleSheet, Text, View} from 'react-native';
 
-    constructor(props) {
-        super(props);
+// const instructions = Platform.select({
+//   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+//   android:
+//     'Double tap R on your keyboard to reload,\n' +
+//     'Shake or press menu button for dev menu',
+// });
 
-        this.state = {
-            isReady: false,
-        }
+import React, {Component} from 'react';
+import MainApp from './src/Router'
+import Loader from "./src/pages/AnimationLoader";
+export default class App extends Component {
+  state = {
+    appReady: false,
+    rootKey: Math.random(),
+  };
+  componentDidMount() {
+    // console.disableYellowBox = true;
+    this.resetAnimation();
+  }
 
-    }
+  resetAnimation() {
+    this.setState({
+      appReady: false,
+      rootKey: Math.random(),
+    });
 
-    async componentWillMount() {
-        await Font.loadAsync({
-            'montserrat-light': require('./assets/fonts/Montserrat-Light.otf'),
-            'open-sans-regular': require('./assets/fonts/OpenSans-Regular.ttf'),
-            'montserrat-regular': require('./assets/fonts/Montserrat-Regular.otf'),
-            'montserrat-bold': require('./assets/fonts/Montserrat-Bold.otf'),
-            'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
-            'Ionicons' : require("@expo/vector-icons/fonts/Ionicons.ttf")});
+    setTimeout(() => {
+      console.log("appReady")
+      this.setState({
+        appReady: true,
+      });
+    }, 1000);
+  }
 
-        //put everything we need to preload here
+  constructor() {
+    super();
 
-        this.setState({ isReady: true });
-    }
+    this._image = require("./assets/Heart_SVG.png");
+  }
+ render() {
+   return (
+    <View key={this.state.rootKey} style={styles.root}>
+      <Loader
+          isLoaded={this.state.appReady}
+          imageSource={this._image}
+          backgroundStyle={styles.loadingBackgroundStyle}
+        >
+          <MainApp />
+        
+      </Loader>
+    </View>
+      
+   );
+ }
+}
 
-    render() {
-        if (!this.state.isReady) 
-            return <AppLoading/>
-              
-            return (
-                <GlobalProvider>
-                    <AppContainer/>
-                </GlobalProvider>
-            );    
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-            }      
-        }
+  loadingBackgroundStyle: {
+    backgroundColor: "rgba(179, 194, 255, 1)",
+  },
+});
