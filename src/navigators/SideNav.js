@@ -8,6 +8,23 @@ import {Platform, StyleSheet, Text, View, ScrollView, SafeAreaView} from 'react-
 import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
+import useProfile from '../domain/models/Profile';
+
+function ProfileBanner(){
+
+    const [profile, profileActions] = useProfile();
+    const {Profile, Status} = profile;
+    return (
+
+            <Text>
+                {Profile.firstName + " " + Profile.lastName + 
+                "\n" + Profile.schoolName}
+            </Text>
+        
+        
+    );
+}
+
 
 const BottomTabs = createDrawerNavigator(
     {
@@ -22,6 +39,9 @@ const BottomTabs = createDrawerNavigator(
                     <SafeAreaView
                     forceInset={{ top: 'always', horizontal: 'never' }}
                 >
+                    <Text>
+                        {ProfileBanner()}
+                    </Text>
                     <Text
                         onPress={() => {
                         props.navigation.navigate('Auth');
