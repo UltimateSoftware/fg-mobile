@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.0-rc.3",
+    "react-native-calendars": "^1.188.0",
     "react-native-gesture-handler": "^1.2.1",
     "react-native-grid-component": "^2.0.0",
     "react-native-image-picker": "^1.0.1",
