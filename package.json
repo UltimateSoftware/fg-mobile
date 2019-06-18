@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.0-rc.3",
+    "react-native-calendars": "^1.188.0",
     "react-native-gesture-handler": "^1.2.1",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.9.1"
