@@ -5,7 +5,11 @@ import {status} from '../constants/Event';
 
 
 const EventState = { // each of these define a state that can be pulled
+<<<<<<< HEAD
     Events: { // defines a chapter DTO
+=======
+    Event: { // defines a chapter DTO
+>>>>>>> a785f30b... working agenda components to events landing page
         // schoolName: "",
         // chapter: "",
         // bannerSource: "", // URIs to assests folder
@@ -20,7 +24,11 @@ const EventState = { // each of these define a state that can be pulled
         // location
         // creator info + guest list info + chapter(s) info?
         // description
+<<<<<<< HEAD
         Event: []
+=======
+
+>>>>>>> a785f30b... working agenda components to events landing page
 
 
     },
