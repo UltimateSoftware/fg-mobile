@@ -2,7 +2,7 @@ import React, {Component, useState, useEffect} from 'react';
 import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList} from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
-import {Banner} from '../components/atoms/Banner';
+import {ProfileBanner} from '../components/molecules/ProfileBanner';
 import {ProfileFrame} from '../components/primatives/ProfileFrame';
 import useProfile from '../domain/models/Profile';
 
@@ -18,11 +18,10 @@ function FgProfile() {
     return (
         <ScrollView>
             <View style={styles.container}>
-                {/* REPLACE WITH ProfileBanner COMPONENT in components/molecules/ProfileBanner */}
-                <Banner color={"#6ED4C8"} source={imgUri}> 
-                    <ProfileFrame source={imgUri} size={'l'}/>
-                </Banner>
-                <Inspiration title={"my title"} inspiration={"some text"}/>
+                <ProfileBanner backImgUri={imgUri} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
+                <Inspiration title={"Inspiration"} inspiration={"lorem ipsum test text messages"}/>
+                <Inspiration title={"Chapter Sisters"} inspiration={""}/>
+
                 {/* NEED TO RENDER PHOTO OF CHAPTER MEMBER */}
             </View>
         </ScrollView>
