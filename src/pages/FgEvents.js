@@ -5,7 +5,7 @@ import useEvents from '../domain/models/Event';
 
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from '../SharedConstants';
-import { CalendarItem } from '../components/atoms/CalendarItem';
+import { CalendarItemPopulated, CalendarItemEmpty } from '../components/atoms/CalendarItem';
 
 function FgEvents() {
     const [events, eventActions] = useEvents()
@@ -15,20 +15,24 @@ function FgEvents() {
         <View style={styles.container}>
         
         <Agenda 
+        // fmt for title, time, desc
+        // multi-day events
         items={{
             '2019-06-16': [],
-            '2019-06-17': [[{text: 'item 1 - any js object'}]],
-            '2019-06-18': [{text: 'item 1 - any js object'}],
+            '2019-06-17': [{text: 'item 17 - any js object'}],
+            '2019-06-18': [{text: 'item 18 - any js object'}],
             // '`${date.getFullYear()}`-`${date.getMonth()}`-`${date.getDate()}`': [{text: 'item 1 - any js object'}],
-            '2019-06-19': [{text: 'item 2 - any js object'}],// {text: 'another one'}],
-            '2019-06-20': [[{text: 'item 1 - any js object'}]],
+            '2019-06-19': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
+            '2019-06-20': [{text: 'item 20 - any js object'}],
             '2019-06-21': [],
+            '2019-06-22': [{text: 'item 22 - any js object'}]
         }}
+
         renderItem={(item, firstItemInDay) => {
-            <CalendarItem text={item.text}/>
+            return(<CalendarItemPopulated text={item.text}/>);
         }}
         renderEmptyDate={() => {
-            return(<View />);
+            return(<CalendarItemEmpty/>);
         }}
         rowHasChanged={(r1, r2) => {
             return r1.text !== r2.text
@@ -46,10 +50,11 @@ FgEvents.navigationOptions = () => {
 
 export default FgEvents
 
+// ??????? fix
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-        backgroundColor: 'black'
+        backgroundColor: 'pink'
         // flex: 2,
         // justifyContent: 'center',
         // alignItems: 'center',
