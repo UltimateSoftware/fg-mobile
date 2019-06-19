@@ -11,8 +11,9 @@ import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
 import { grey } from 'ansi-colors';
+import { Avatar } from '../components/atoms/Avatar';
 
-function ProfileBanner(){
+function MenuProfileBanner(){
 
     const [profile, profileActions] = useProfile();
     const {Profile, Status} = profile;
@@ -55,8 +56,17 @@ const BottomTabs = createDrawerNavigator(
                     <SafeAreaView
                     forceInset={{ top: 'always', horizontal: 'never' }}
                 >
+<<<<<<< HEAD
                     { ProfileBanner() }
                     
+=======
+                    <View>
+                        {Avatar({source:'../../assets/Heart_SVG.png', size:'xs'})}
+                    </View>
+                    <Text>
+                        {MenuProfileBanner()}
+                    </Text>
+>>>>>>> Added profile picture to men banner, and test values to profile
                     <Text
                         onPress={() => {
                         props.navigation.navigate('Auth');
