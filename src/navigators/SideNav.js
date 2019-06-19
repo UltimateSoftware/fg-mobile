@@ -9,8 +9,9 @@ import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
+import { Avatar } from '../components/atoms/Avatar';
 
-function ProfileBanner(){
+function MenuProfileBanner(){
 
     const [profile, profileActions] = useProfile();
     const {Profile, Status} = profile;
@@ -39,8 +40,11 @@ const BottomTabs = createDrawerNavigator(
                     <SafeAreaView
                     forceInset={{ top: 'always', horizontal: 'never' }}
                 >
+                    <View>
+                        {Avatar({source:'../../assets/Heart_SVG.png', size:'xs'})}
+                    </View>
                     <Text>
-                        {ProfileBanner()}
+                        {MenuProfileBanner()}
                     </Text>
                     <Text
                         onPress={() => {

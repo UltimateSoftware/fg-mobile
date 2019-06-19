@@ -23,7 +23,9 @@ export function ProfileFrame({source, avatarSize}) {
     );
 
     function styleValuesFromSize(size) {
-        if (size === 'small' || size === 's') {
+        if (size === 'extraSmall' || size === 'xs'){
+          return {size: 1, font: 24, padding: 4 };
+        } else if (size === 'small' || size === 's') {
           return { size: 78, font: 42, padding: 8 };
         } else if (size === 'large' || size === 'l') {
           return { size: 128, font: 72, padding: 32 };
