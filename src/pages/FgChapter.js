@@ -21,6 +21,8 @@ function FgChapter() {
     
     // const imgUri = 'fearlesslyGirl_logo.jpg';
     const imgUri = <ProfileBanner />;
+
+    const fillerBody = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
     
     return (
         <ScrollView>
@@ -37,17 +39,17 @@ function FgChapter() {
                             <Text style={styles.inspirationLabel}>  Our history  </Text>
                         <View style={styles.inspirationLine}/>
                     </View>
-                    <Text style={{padding: '5%'}}>Lorem Ipsum</Text>
+                    <ParagraphBlock inspiration={fillerBody} />
                 </View>
 
-                <View >
+                <View style={styles.paragraphs}>
                     <View style={[styles.inspirationTitle, {marginTop: 20}]}>
                         <View style={styles.inspirationLine}/>
                             <Text style={styles.inspirationLabel}>  Student leadership  </Text>
                         <View style={styles.inspirationLine}/>
                     </View>
                     <View>
-                    <Text style={{padding: '5%'}}>Lorem Ipsum</Text>
+                    <ParagraphBlock inspiration={fillerBody} />
                     </View>
                 </View>
 
@@ -57,7 +59,7 @@ function FgChapter() {
                             <Text style={styles.inspirationLabel}>  Our mission  </Text>
                         <View style={styles.inspirationLine}/>
                     </View>
-                    <Text style={{padding: '5%'}}>Lorem Ipsum</Text>
+                    <ParagraphBlock inspiration={fillerBody} />
                 </View>
 
                 <View style={styles.paragraphs}>
@@ -68,10 +70,15 @@ function FgChapter() {
                     </View>
                     <View>
                         <Text style={styles.textList}>I. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>II.Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>III. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>IV. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>V. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                     </View>
                 </View>
 
@@ -83,10 +90,15 @@ function FgChapter() {
                     </View>
                     <View >
                         <Text style={styles.textList}>I. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>II.Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>III. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>IV. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                         <Text style={styles.textList}>V. Lorem Ipsum</Text>
+                        <ParagraphBlock inspiration={fillerBody}/>
                     </View>
                 </View>
             </View>
@@ -108,40 +120,40 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        },
+    },
     title: {
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        },
-        inspirationTitle: {
-            flexDirection: 'row',
-            alignContent: 'center',
-            justifyContent: 'center'
-        },
-        inspirationLabel: {
-            fontFamily: 'montserrat-regular',
-            fontSize: 18,
-            color: '#818282'
-        },
-        inspirationLine: {
-            position: 'relative',
-            borderBottomColor:'#818282',
-            borderBottomWidth:1,
-            height:'60%',
-            width:'32%'
-        },
-        paragraphs: {
-            flex: 1,
-            // alignItems: "center",
-            justifyContent: "flex-start"
-        },
-        textList: {
-            fontWeight: "bold",
-            color: 'gray',
-            fontSize: 18,
-            padding: '3%',
-            marginLeft: '3%'
-        }
+    },
+    inspirationTitle: {
+        flexDirection: 'row',
+        alignContent: 'center',
+        justifyContent: 'center'
+    },
+    inspirationLabel: {
+        fontFamily: 'montserrat-regular',
+        fontSize: 18,
+        color: '#818282'
+    },
+    inspirationLine: {
+        position: 'relative',
+        borderBottomColor:'#818282',
+        borderBottomWidth:1,
+        height:'60%',
+        width:'32%'
+    },
+    paragraphs: {
+        flex: 1,
+        // alignItems: "center",
+        justifyContent: "flex-start"
+    },
+    textList: {
+        fontWeight: "bold",
+        color: 'gray',
+        fontSize: 18,
+        padding: '5%',
+        marginLeft: '5%'
+    }
 });
 
