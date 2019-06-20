@@ -24,6 +24,14 @@ function FgChapter() {
 
     const fillerBody = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
     
+    const bylaws = [
+        {id: 0, header: "I. Lorem Ipsum", body: fillerBody},
+        {id: 1, header: "II. Lorem Ipsum", body: fillerBody},
+        {id: 2, header: "III. Lorem Ipsum", body: fillerBody},
+        {id: 3, header: "IV. Lorem Ipsum", body: fillerBody},
+        {id: 4, header: "V. Lorem Ipsum", body: fillerBody},
+    ];
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -68,18 +76,15 @@ function FgChapter() {
                             <Text style={styles.inspirationLabel}>  FearlesslyGirl bylaws  </Text>
                         <View style={styles.inspirationLine}/>
                     </View>
-                    <View>
-                        <Text style={styles.textList}>I. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>II.Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>III. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>IV. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>V. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                    </View>
+                    <FlatList
+                        data={bylaws}
+                        scrollEnabled={false}
+                        renderItem={({item}) => 
+                        <React.Fragment>
+                            <Text style={styles.textList}>{item.header}</Text>
+                            <ParagraphBlock inspiration={item.body} />
+                        </React.Fragment>
+                    }/>
                 </View>
 
                 <View style={styles.paragraphs}>
@@ -88,18 +93,15 @@ function FgChapter() {
                             <Text style={styles.inspirationLabel}>  Chapter bylaws  </Text>
                         <View style={styles.inspirationLine}/>
                     </View>
-                    <View >
-                        <Text style={styles.textList}>I. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>II.Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>III. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>IV. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                        <Text style={styles.textList}>V. Lorem Ipsum</Text>
-                        <ParagraphBlock inspiration={fillerBody}/>
-                    </View>
+                    <FlatList
+                        data={bylaws}
+                        scrollEnabled={false}
+                        renderItem={({item}) => 
+                        <React.Fragment>
+                            <Text style={styles.textList}>{item.header}</Text>
+                            <ParagraphBlock inspiration={item.body} />
+                        </React.Fragment>
+                    }/>
                 </View>
             </View>
         </ScrollView>
@@ -145,15 +147,16 @@ const styles = StyleSheet.create({
     },
     paragraphs: {
         flex: 1,
-        // alignItems: "center",
-        justifyContent: "flex-start"
+        alignItems: "center",
     },
     textList: {
+        alignItems: "center",
         fontWeight: "bold",
         color: 'gray',
         fontSize: 18,
-        padding: '5%',
-        marginLeft: '5%'
+        marginLeft: 20,
+        marginTop: 40,
+        marginBottom: -30,
     }
 });
 
