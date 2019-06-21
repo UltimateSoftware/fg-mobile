@@ -3,6 +3,7 @@ import { withNavigation } from 'react-navigation';
 import { DrawerActions } from 'react-navigation';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
+
 class HamburgerIcon extends Component{
     render() {
     return (

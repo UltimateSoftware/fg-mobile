@@ -1,11 +1,15 @@
 import React, {Component, useState} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Modal, Platform, StyleSheet, Text, TouchableOpacity, TouchableHighlight, View} from 'react-native';
+import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import useEvents from '../domain/models/Event';
 
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from '../SharedConstants';
 import { CalendarItemPopulated, CalendarItemEmpty } from '../components/atoms/CalendarItem';
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import {CreateEvent} from '../domain/services/ModaleExample';
 
 function FgEvents() {
     const [events, eventActions] = useEvents()
@@ -38,13 +42,81 @@ function FgEvents() {
             return r1.text !== r2.text
         }}
         />
+
         </View>
     );
 }
 
+//Stylesheet for New Event button
+const otherStyles = StyleSheet.create({
+//Button text style
+    customBtnText: {
+        fontFamily: 'opensans-regular',
+        fontSize: 35,
+        fontWeight: '600',
+        color: "deepskyblue",
+    },
+
+ //Button background style
+    // customBtnBG: {
+    // backgroundColor: "deepskyblue",
+    // paddingHorizontal: 5,
+    // },
+
+    // container: {},
+
+    buttonStyle: {
+        marginLeft: 15,
+        borderRadius: 50,
+    }
+});
+
+//Modal popup stuff
+state = { modalVisible: false };
+FgEvents.setModalVisible = (visible) => {
+    this.setState({modalVisible: visible})
+}
+
 FgEvents.navigationOptions = () => {
     return {
-        headerRight: <HamburgerIcon/>
+        headerRight:
+        <HamburgerIcon/>,
+        headerLeft:
+        <View>
+            {/* <TouchableOpacity style={otherStyles.customBtnBG} style={otherStyles.buttonStyle}>
+                <Text style={otherStyles.customBtnText} title='Create new event'>+</Text>
+            </TouchableOpacity> */}
+            {/* Modal popup stuff */}
+            <View style={{marginTop: 22}}>
+                { <Modal
+                animationType="slide"
+                transparent={false}
+                visible={this.state.modalVisible}
+                onRequestClose={() => {
+                    Alert.alert('Modal has been closed.');
+                }}>
+                { <View style={{marginTop: 22}}>
+                    <View>
+                    <Text>Hello World!</Text>
+
+                    <TouchableHighlight
+                        onPress={() => {
+                            this.toggleModle(false);
+                        }}>
+                        <Text>Hide Modal</Text>
+                    </TouchableHighlight>
+                    </View>
+                </View> }
+                </Modal> }
+
+                <TouchableOpacity
+                onPress={() => {
+                    FgEvents.setModalVisible(true);
+                }}>
+                <Text>Show Modal</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
     };
 };
 
