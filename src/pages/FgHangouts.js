@@ -1,37 +1,48 @@
 import React, {Component, useState} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Tiles} from '../components/molecules/Tiles';
 import useHangouts from '../domain/models/Hangout';
-
+import HangoutDescription from '../pages/HangoutDescription'
+//import hangoutLanding from '../pages/HangoutLanding';
 /* 
  * FgHangouts might require a router of its own to create Icebreakers/games/etc.
 */
 
-function FgHangouts() {
-    const [hangouts, hangoutActions] = useHangouts()
-    const {Hangout, Status} = hangouts;
-    
+class FgHangouts extends React.Component{
+    constructor(props){
+        super(props);
+    };
+    render() {
+    const {navigation} = this.props
+    //const [hangouts, hangoutActions] = useHangouts()
+    //const {Hangout, Status} = hangouts;
     return (
         <View style={styles.container}>
             <Tiles 
-                onAction={(item) => console.log(item)}
+                onAction={(item) => {
+                        navigation.navigate('HangoutDescription');
+                        console.log(item)
+                    }
+                }
                 tiles={[ // example use of tiles
-                    {'id':'i', 'source':'s', 'name': 'name'},
+                    {'id':'i', 'source':"s", 'name': 'name'},
                     {'id':'i1', 'source':'s1', 'name': 'name1'}
                 ]}
             />
         </View>
     );
+    }
 }
 
 FgHangouts.navigationOptions = () => {
     return {
-        headerRight: <HamburgerIcon/>
+        headerRight: <HamburgerIcon/>,
     };
 };
 
-export default FgHangouts
+//export default FgHangouts
 
 const styles = StyleSheet.create({
     container: {
@@ -46,4 +57,18 @@ const styles = StyleSheet.create({
         margin: 10,
         }
 });
+
+const HangoutNavigator = createStackNavigator({
+    HangoutHome: {
+      screen: FgHangouts
+    },
+    HangoutDescription: {
+      screen: HangoutDescription,
+    },
+  }, {
+      initialRouteName: 'HangoutHome',
+  });
+  
+  export default createAppContainer(HangoutNavigator);
+  
 
