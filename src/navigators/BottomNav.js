@@ -28,8 +28,8 @@ const ChapterTab = createStackNavigator({
     Chapter: FgChapter
 });
 const HangoutTab = createStackNavigator({
-    Hangouts: FgHangouts
-})
+        Hangouts: {screen: FgHangouts},
+});
 const EventsTab = createStackNavigator({
     Events: FgHangouts // events is delayed!
 });
