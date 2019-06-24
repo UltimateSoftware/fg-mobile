@@ -9,12 +9,12 @@ export function Tiles({onAction, tiles}){
     return (
         <ScrollView style={styles.scrollViewStyle} contentContainerStyle={styles.contentContainerStyle} bounces={false}>
             <View style={styles.container}>
-            {tiles.map((item, index) => 
-                    <TouchableOpacity key={item.id} onPress={() => onAction(item.id)}>
-                        <Tile 
-                        key={item.id} 
-                        source={item.source} 
-                        name={item.name} />
+            {tiles.map((item, index) =>
+                    <TouchableOpacity key={item.id} onPress={() => onAction(item)}>
+                        <Tile
+                        key={item.id}
+                        source={item.location}
+                        name={item.title} />
                     </TouchableOpacity>
             )}
             </View>
