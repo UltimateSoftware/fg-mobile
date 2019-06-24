@@ -5,6 +5,7 @@ import {Inspiration} from '../components/atoms/Inspiration';
 import {ProfileBanner} from '../components/molecules/ProfileBanner';
 import {ProfileFrame} from '../components/primatives/ProfileFrame';
 import useProfile from '../domain/models/Profile';
+import { Avatar } from '../components/atoms/Avatar';
 
 function FgProfile() {
 
@@ -14,6 +15,7 @@ function FgProfile() {
     const {Profile, Status} = profile; // Use Profile to object to populate page
     
     const imgUri = 'fearlesslyGirl_logo.jpg';
+    var members = [{name: "test1", source: "fearlesslyGirl_logo.jpg"}, {name: "test2", source: "fearlesslyGirl_logo.jpg"}, {name: "test3", source: "fearlesslyGirl_logo.jpg"}, {name: "test4", source: "fearlesslyGirl_logo.jpg"}, {name: "test5", source: "fearlesslyGirl_logo.jpg"}, {name: "test6", source: "fearlesslyGirl_logo.jpg"}]
     
     return (
         <ScrollView>
@@ -22,7 +24,14 @@ function FgProfile() {
                 <Inspiration title={"Inspiration"} inspiration={"lorem ipsum test text messages"}/>
                 <Inspiration title={"Chapter Sisters"} inspiration={""}/>
 
-                {/* NEED TO RENDER PHOTO OF CHAPTER MEMBER */}
+                <View style={styles.chapterMembersRow}>
+                    {members.map((member) => {
+                        return (
+                            <Avatar source={member.source} avatarSize="small"/>
+                        )                        
+                    })}
+                </View>
+
             </View>
         </ScrollView>
     );
@@ -47,6 +56,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        }
+        },
+    chapterMembersRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start'
+    }
 });
 
