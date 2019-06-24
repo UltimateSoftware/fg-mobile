@@ -1,15 +1,22 @@
 import React, {Component, useState} from 'react';
+<<<<<<< HEAD
 import {Modal, Platform, StyleSheet, Text, TouchableOpacity, TouchableHighlight, View} from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
+=======
+import {Platform, StyleSheet, Text, View} from 'react-native';
+>>>>>>> 93c56a48110b268067b43c682adfcdf9c485d67d
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import useEvents from '../domain/models/Event';
 
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from '../SharedConstants';
 import { CalendarItemPopulated, CalendarItemEmpty } from '../components/atoms/CalendarItem';
+<<<<<<< HEAD
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {CreateEvent} from '../domain/services/ModaleExample';
+=======
+>>>>>>> 93c56a48110b268067b43c682adfcdf9c485d67d
 
 function FgEvents() {
     const [events, eventActions] = useEvents()
@@ -42,11 +49,15 @@ function FgEvents() {
             return r1.text !== r2.text
         }}
         />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93c56a48110b268067b43c682adfcdf9c485d67d
         </View>
     );
 }
 
+<<<<<<< HEAD
 //Stylesheet for New Event button
 const otherStyles = StyleSheet.create({
 //Button text style
@@ -117,6 +128,11 @@ FgEvents.navigationOptions = () => {
                 </TouchableOpacity>
             </View>
         </View>
+=======
+FgEvents.navigationOptions = () => {
+    return {
+        headerRight: <HamburgerIcon/>
+>>>>>>> 93c56a48110b268067b43c682adfcdf9c485d67d
     };
 };
 
