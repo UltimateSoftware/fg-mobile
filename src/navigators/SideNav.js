@@ -1,31 +1,47 @@
 import React from 'react'
+
 import {
     createAppContainer,
     createDrawerNavigator,
     createStackNavigator,
    } from 'react-navigation';
-import {Platform, StyleSheet, Text, View, ScrollView, SafeAreaView} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView, SafeAreaView, Image} from 'react-native';
 import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
+import { grey } from 'ansi-colors';
 
 function ProfileBanner(){
 
     const [profile, profileActions] = useProfile();
     const {Profile, Status} = profile;
     return (
+            <View style={styles.banner}>
+                <View style={styles.profilePhotoWrapper}>
+                    <Image style={styles.profilePhoto} 
+                    source={require('../../assets/Heart_SVG.png')}  //eventually change to pull from profile photo
+                    ></Image>
+                </View>
 
-            <Text>
-                {Profile.firstName + " " + Profile.lastName + 
-                "\n" + Profile.schoolName}
-            </Text>
+                <View style = {styles.textWrapper}>
+
+                    <Text style={styles.name}>
+                        {Profile.firstName + " " + Profile.lastName}
+                    </Text>
+
+                    <Text style={styles.subtitle}>
+                    {Profile.schoolName}
+                    </Text>
+                </View>
+            </View>
+            
         
         
     );
 }
 
-
+//#region not working on this rn
 const BottomTabs = createDrawerNavigator(
     {
         Tabs: BottomNav,
@@ -39,9 +55,8 @@ const BottomTabs = createDrawerNavigator(
                     <SafeAreaView
                     forceInset={{ top: 'always', horizontal: 'never' }}
                 >
-                    <Text>
-                        {ProfileBanner()}
-                    </Text>
+                    { ProfileBanner() }
+                    
                     <Text
                         onPress={() => {
                         props.navigation.navigate('Auth');
@@ -85,5 +100,46 @@ const BottomTabs = createDrawerNavigator(
         initialRouteName: 'Drawer', // needs to be changed to Auth, which navigates to AuthLoading
     }
  );
- 
 export default Stack;
+
+//#endregion
+
+const styles = StyleSheet.create({
+    banner:{
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'pink',
+        justifyContent: 'space-between',
+
+    },
+    textWrapper:{
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginBottom: 20,
+        marginTop: 20,
+    },
+    name: {
+        flex: 1,
+        fontSize: 22,
+        //fontWeight: 'bold',
+    },
+    subtitle: {
+        flex: 1,
+        color: '#404040',
+        fontSize: 14,
+    },
+    profilePhotoWrapper:{
+        flex: 0.5,
+        alignItems: 'center',
+    },
+    profilePhoto:{
+        flex: 1, 
+        width: 50,
+        height: 50,
+        borderWidth: 1,
+        borderRadius: 50/2,
+        marginTop: 15,
+        marginBottom: 15,
+    },
+});
