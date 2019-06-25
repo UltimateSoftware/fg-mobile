@@ -1,10 +1,5 @@
 import React from 'react'
-
-import {
-    createAppContainer,
-    createDrawerNavigator,
-    createStackNavigator,
-   } from 'react-navigation';
+import { createAppContainer, createDrawerNavigator, createStackNavigator, } from 'react-navigation';
 import {Platform, StyleSheet, Text, View, ScrollView, SafeAreaView, Image} from 'react-native';
 import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
@@ -42,7 +37,6 @@ function MenuProfileBanner(){
     );
 }
 
-//#region not working on this rn
 const BottomTabs = createDrawerNavigator(
     {
         Tabs: BottomNav,
@@ -107,12 +101,11 @@ const BottomTabs = createDrawerNavigator(
         AuthLoading: AuthLoading,
     },
     {
+
         initialRouteName: 'Drawer', // needs to be changed to Auth, which navigates to AuthLoading
     }
  );
 export default Stack;
-
-//#endregion
 
 const styles = StyleSheet.create({
     banner:{
@@ -126,6 +119,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
+        textAlign: 'center',
         marginBottom: 20,
         marginTop: 20,
     },
@@ -137,11 +131,12 @@ const styles = StyleSheet.create({
     subtitle: {
         flex: 1,
         color: '#404040',
-        fontSize: 14,
+        fontSize: 16,
     },
     profilePhotoWrapper:{
         flex: 0.5,
         alignItems: 'center',
+        height: 85,
     },
     profilePhoto:{
         flex: 1, 
