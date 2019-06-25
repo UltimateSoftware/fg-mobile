@@ -10,7 +10,6 @@ import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
-import { grey } from 'ansi-colors';
 
 function ProfileBanner(){
 
@@ -19,7 +18,7 @@ function ProfileBanner(){
     return (
             <View style={styles.banner}>
                 <View style={styles.profilePhotoWrapper}>
-                    <Image style={styles.profilePhoto} 
+                    <Image style={styles.profilePhoto}  
                     source={require('../../assets/Heart_SVG.png')}  //eventually change to pull from profile photo
                     ></Image>
                 </View>
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
     },
     name: {
         flex: 1,
-        fontSize: 22,
+        fontSize: 24,
         //fontWeight: 'bold',
     },
     subtitle: {
