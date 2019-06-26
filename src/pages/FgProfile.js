@@ -16,7 +16,15 @@ function FgProfile() {
     
     const imgUri = 'fearlesslyGirl_logo.jpg';
     var members = [{name: "test1", source: "fearlesslyGirl_logo.jpg"}, {name: "test2", source: "fearlesslyGirl_logo.jpg"}, {name: "test3", source: "fearlesslyGirl_logo.jpg"}, {name: "test4", source: "fearlesslyGirl_logo.jpg"}, {name: "test5", source: "fearlesslyGirl_logo.jpg"}, {name: "test6", source: "fearlesslyGirl_logo.jpg"}]
-    
+    let renderMembers = [];
+    for (i = 0; i < 4; i++) {
+      renderMembers.push(
+        <View key={i}>
+          <Avatar avatarSize='small' name={members[i].name} source={members[i].source} />
+          <Text style={[styles.textContainer, styles.nameLabel]}>{members[i].name}</Text>
+        </View>
+      );
+    }
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -24,13 +32,7 @@ function FgProfile() {
                 <Inspiration title={"Inspiration"} inspiration={"lorem ipsum test text messages"}/>
                 <Inspiration title={"Chapter Sisters"} inspiration={""}/>
 
-                <View style={styles.chapterMembersRow}>
-                    {members.map((member) => {
-                        return (
-                            <Avatar source={member.source} avatarSize="small"/>
-                        )                        
-                    })}
-                </View>
+                <View style={styles.chapterMembersRow}>{renderMembers}</View>
 
             </View>
         </ScrollView>
@@ -62,6 +64,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         alignItems: 'flex-start'
-    }
+        },
+    nameLabel: {
+        fontFamily: 'montserrat-light',
+        fontSize: 18,
+      },
+    textContainer: {
+        color: '#818282',
+        textAlign: 'center',
+      },
 });
 
