@@ -5,6 +5,7 @@ import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
+import LoginScreen from '../pages/LoginScreen';
 
 
 function ProfileBanner(){
@@ -67,6 +68,14 @@ const BottomTabs = createDrawerNavigator(
                     >
                         DefaultScreen
                     </Text>
+                    <Text
+                        onPress={() => {
+                        props.navigation.navigate('Login');
+                        props.navigation.closeDrawer();
+                        }}
+                    >
+                        LoginScreen
+                    </Text>
                     </SafeAreaView>
                 </ScrollView>
             )
@@ -88,6 +97,12 @@ const BottomTabs = createDrawerNavigator(
                 header: null,
             }
         },
+        Login:{
+            screen: LoginScreen,
+            navigationOptions:{
+                header: null,
+            }
+        }, 
         AuthLoading: AuthLoading,
     },
     {
@@ -115,8 +130,8 @@ const styles = StyleSheet.create({
     },
     name: {
         flex: 1,
-        fontSize: 24,
-        //fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'center',
     },
     subtitle: {
         flex: 1,
@@ -126,7 +141,7 @@ const styles = StyleSheet.create({
     profilePhotoWrapper:{
         flex: 0.5,
         alignItems: 'center',
-        height: 85,
+        height: 90,
     },
     profilePhoto:{
         flex: 1, 
@@ -134,7 +149,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 1,
         borderRadius: 50/2,
-        marginTop: 15,
-        marginBottom: 15,
+        marginTop: 20,
+        marginBottom: 20,
     },
 });
