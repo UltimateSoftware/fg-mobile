@@ -9,15 +9,15 @@ Inspiration renders a title with a slash accent and a block quote,
 the block quote is optional
 */
 
-export function Inspiration({title, inspiration}) {
+export function Inspiration({title, inspiration, insMar, parMar}) {
     return (
         <View style={styles.subViewStyle}>
-            <View style={[styles.inspirationTitle, {marginTop: 20}]}>
+            <View style={[styles.inspirationTitle, {marginTop: insMar || 20}]}>
                 <View style={styles.inspirationLine}/>
                 <Text style={styles.inspirationLabel}>  {title}  </Text>
                 <View style={styles.inspirationLine}/>
             </View>
-            <ParagraphBlock inspiration={inspiration}/>
+            <ParagraphBlock inspiration={inspiration} mar={parMar}/>
         </View>
     );
 }

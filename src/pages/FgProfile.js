@@ -4,6 +4,7 @@ import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {ProfileBanner} from '../components/molecules/ProfileBanner';
 import {ProfileFrame} from '../components/primatives/ProfileFrame';
+import Grid from 'react-native-grid-component'
 import useProfile from '../domain/models/Profile';
 import { Avatar } from '../components/atoms/Avatar';
 
@@ -16,21 +17,22 @@ function FgProfile() {
     
     const imgUri = 'fearlesslyGirl_logo.jpg';
     var members = [{name: "test1", source: "fearlesslyGirl_logo.jpg"}, {name: "test2", source: "fearlesslyGirl_logo.jpg"}, {name: "test3", source: "fearlesslyGirl_logo.jpg"}, {name: "test4", source: "fearlesslyGirl_logo.jpg"}, {name: "test5", source: "fearlesslyGirl_logo.jpg"}, {name: "test6", source: "fearlesslyGirl_logo.jpg"}]
+    var renderMembers = []
+
+    _renderMember = (member, i) => (
+        <View style = {styles.member} key={i}>
+            <Avatar avatarSize='small' name={member.name} source={member.source} />
+            <Text style={[styles.textContainer, styles.nameLabel]}>{member.name}</Text>
+        </View>
+    )
     
     return (
         <ScrollView>
             <View style={styles.container}>
                 <ProfileBanner backImgUri={imgUri} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
                 <Inspiration title={"Inspiration"} inspiration={"lorem ipsum test text messages"}/>
-                <Inspiration title={"Chapter Sisters"} inspiration={""}/>
-
-                <View style={styles.chapterMembersRow}>
-                    {members.map((member) => {
-                        return (
-                            <Avatar source={member.source} avatarSize="small"/>
-                        )                        
-                    })}
-                </View>
+                <Inspiration title={"Chapter Sisters"} inspiration={""} parMar={-40}/>
+                <Grid style={styles.list} renderItem={this._renderMember} keyExtractor={(item, index) => index.toString()} data={members} refreshing= {false} numColumns={4}/>
 
             </View>
         </ScrollView>
@@ -57,11 +59,22 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 10,
         },
-    chapterMembersRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        alignItems: 'flex-start'
-    }
+    member: {
+        // justifyContent: 'space-between',
+        // flexDirection: 'row',
+        // alignItems: 'flex-start',
+        margin: 7,
+    },
+    list: {
+        flex: 1,
+    },
+    nameLabel: {
+        fontFamily: 'montserrat-light',
+        fontSize: 18,
+      },
+    textContainer: {
+        color: '#818282',
+        textAlign: 'center',
+      },
 });
 
