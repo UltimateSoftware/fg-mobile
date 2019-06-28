@@ -51,14 +51,7 @@ export default class App extends Component {
  render() {
    return (
     <View key={this.state.rootKey} style={styles.root}>
-      <Loader
-          isLoaded={this.state.appReady}
-          imageSource={this._image}
-          backgroundStyle={styles.loadingBackgroundStyle}
-        >
-          <MainApp />
-        
-      </Loader>
+      <MainApp />
     </View>
       
    );
