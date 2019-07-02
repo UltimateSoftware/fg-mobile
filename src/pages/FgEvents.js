@@ -52,6 +52,10 @@ function FgEvents() {
             // insert graphic line or something
             return(<CalendarItemEmpty/>);
         }}
+	
+	renderEmptyData={() => {
+		return null;
+	}}
 
         rowHasChanged={(r1, r2) => {
             return r1.text !== r2.text
