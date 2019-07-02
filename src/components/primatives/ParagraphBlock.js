@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
 
 
-export function ParagraphBlock({inspiration}) { 
+export function ParagraphBlock({inspiration, mar}) { 
     return (
         <View style={styles.subViewStyle}>
-            <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
+            <Text style={[styles.inspirationBlock, {marginTop: mar || 40 }]}>
                 {inspiration}
             </Text>
         </View>
