@@ -37,7 +37,7 @@ const NewEventFormComponent = () => {
                 placeholder="Date"
                 underlineColorAndroid={'transparent'}
                 />
-            <Text
+            <TextInput
                 style={styles.textinput}
                 placeholder="State"
                 underlineColorAndroid={'transparent'}
