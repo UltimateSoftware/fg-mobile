@@ -4,7 +4,7 @@ import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {ProfileBanner} from '../components/molecules/ProfileBanner';
 import useProfile from '../domain/models/Profile';
-import {ChapterSisterGrid} from '../components/molecules/ChapterSisterGrid.js';
+import {MemberGrid} from '../components/molecules/MemberGrid';
 
 function FgProfile() {
 
@@ -37,7 +37,7 @@ function FgProfile() {
                     <Text style={styles.titleLabel}>Chapter Sisters</Text>
                     <View style={styles.titleLine}/>
                 </View>
-                <ChapterSisterGrid members={members}/>
+                <MemberGrid members={members}/>
                 {button}
 
             </View>
