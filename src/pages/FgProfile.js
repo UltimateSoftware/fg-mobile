@@ -3,10 +3,8 @@ import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList} from 're
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {ProfileBanner} from '../components/molecules/ProfileBanner';
-import {ProfileFrame} from '../components/primatives/ProfileFrame';
-import Grid from 'react-native-grid-component'
 import useProfile from '../domain/models/Profile';
-import { Avatar } from '../components/atoms/Avatar';
+import {MemberGrid} from '../components/molecules/MemberGrid';
 
 function FgProfile() {
 
@@ -18,16 +16,8 @@ function FgProfile() {
     const [viewAll, setViewAll] = useState(false);
 
     const imgUri = 'fearlesslyGirl_logo.jpg';
-    const allMembers = [{name: "test1", source: "fearlesslyGirl_logo.jpg"}, {name: "test2", source: "fearlesslyGirl_logo.jpg"}, {name: "test3", source: "fearlesslyGirl_logo.jpg"}, {name: "test4", source: "fearlesslyGirl_logo.jpg"}, {name: "test5", source: "fearlesslyGirl_logo.jpg"}, {name: "test6", source: "fearlesslyGirl_logo.jpg"}]
+    const allMembers = [{name: "test1", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test2", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test3", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test4", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test5", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test7", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test8", source: "fearlesslyGirl_logo.jpg", school: "test school"}]
     const [members, setMembers] = useState(allMembers.slice(0,4));
-    var renderMembers = []
-
-    _renderMember = (member, i) => (
-        <View style = {styles.member} key={i}>
-            <Avatar avatarSize='small' name={member.name} source={member.source} />
-            <Text style={[styles.textContainer, styles.nameLabel]}>{member.name}</Text>
-        </View>
-    )
 
     const handleButton = () => {
         setViewAll(true)
@@ -47,7 +37,7 @@ function FgProfile() {
                     <Text style={styles.titleLabel}>Chapter Sisters</Text>
                     <View style={styles.titleLine}/>
                 </View>
-                <Grid style={styles.list} renderItem={this._renderMember} keyExtractor={(item, index) => index.toString()} data={members} refreshing= {false} numColumns={4}/>
+                <MemberGrid members={members}/>
                 {button}
 
             </View>
@@ -75,12 +65,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 10,
         },
-    member: {
-        margin: 7,
-    },
-    list: {
-        flex: 1,
-    },
     nameLabel: {
         fontFamily: 'montserrat-light',
         fontSize: 18,
@@ -93,7 +77,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
-        paddingBottom: 15
+        paddingBottom: 20
     },
     titleLabel: {
         fontFamily: 'montserrat-regular',
