@@ -12,16 +12,13 @@ import {ChapterMissionComponent} from '../components/ChapterMissionComponent';
 import {ChapterFGBylawsComponent} from '../components/ChapterFGBylawsComponent';
 import {ChapterBylawsComponent} from '../components/ChapterBylawsComponent';
 
-function oneOff(){
-
-}
-
 function FgChapter() {
 
     const [chapter, chapterActions] = useChapter()
     // See Chapter definition in domain/models/Chapter
     // any new information which the backend provides needs to be reflected in domain/models/Chapter
     const {Chapter, Status} = chapter; // Use Chapter to object to populate page
+<<<<<<< HEAD
     
     // const imgUri = 'fearlesslyGirl_logo.jpg';
     const imgUri = <ProfileBanner />;
@@ -47,12 +44,16 @@ function FgChapter() {
         {id: 2, image: imgUri, name: "Name here"},
         {id: 3, image: imgUri, name: "Name here"},
     ]
+=======
+
+    const imgUri = 'fearlesslyGirl_logo.jpg';
+>>>>>>> ce6c998... added service
 
     return (
         <ScrollView>
             <View style={styles.container}>
                 {/* REPLACE WITH ProfileBanner COMPONENT in components/molecules/ProfileBanner */}
-                <Banner color={"#6ED4C8"} source={imgUri}> 
+                <Banner color={"#6ED4C8"} source={imgUri}>
                     <ProfileFrame source={imgUri} size={'l'}/>
                 </Banner>
                 <Inspiration title={"Chapter name"} inspiration={"Chapter number"}/>
