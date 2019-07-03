@@ -1,4 +1,4 @@
-import React, {Component, Navigation, useState} from 'react';
+import React, {Component, Navigation, useState, useReducer} from 'react';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, Alert, AppRegistry } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
@@ -6,18 +6,40 @@ import useEvent from '../domain/models/Event';
 import useChapter from '../domain/models/Chapter';
 
 const NewEventFormComponent = () => {
-    buttonClickListener = (event) => { eventActions.addSingleEvent(event) }
     const [event, eventActions] = useEvent();
     const [chapter, chapterActions] = useChapter();
     const {Chapter, Status} = chapter;
-    const [formState, updateFormState] = useState({
+    let formInitState = {
         title: '',
         description: '',
         date: '',
-        location: '',
         state: '',
+        location: '',
         icebreakers: '',
-    })
+    }
+
+    // 
+    function reduceForm(state, action){
+        switch(action.type){
+            case 'title':
+                return {...state, title: action.change}
+            case 'description':
+                return {...state, description: action.change}
+            case 'date':
+                return {...state, date: action.change}
+            case 'state':
+                return {...state, state: action.change}
+            case 'location':
+                return {...state, location: action.change}
+            case 'icebreakers':
+                return {...state, icebreakers: action.change}
+        }
+
+    }
+
+    const [formState, dispatch] = useReducer(reduceForm, formInitState)
+
+    buttonClickListener = (event) => { eventActions.addSingleEvent(formState) }
 
     return (
         <View style={{alignSelf:'stretch', margin:10}}> 
@@ -26,31 +48,37 @@ const NewEventFormComponent = () => {
                 style={styles.textinput}
                 placeholder="Title" 
                 underlineColorAndroid={'transparent'}
+                onChangeText={(textChange) => {dispatch({type: 'title', change: textChange})}}
                 />
             <TextInput
                 style={styles.textinput}
                 placeholder="Description"
                 underlineColorAndroid={'transparent'}
+                onChangeText={(textChange) => {dispatch({type: 'description', change: textChange})}}
                 />
             <TextInput
                 style={styles.textinput}
                 placeholder="Date"
                 underlineColorAndroid={'transparent'}
+                onChangeText={(textChange) => {dispatch({type: 'date', change: textChange})}}
                 />
             <TextInput
                 style={styles.textinput}
                 placeholder="State"
                 underlineColorAndroid={'transparent'}
+                onChangeText={(textChange) => {dispatch({type: 'state', change: textChange})}}
                 />
             <TextInput
                 style={styles.textinput}
                 placeholder="Location"
                 underlineColorAndroid={'transparent'}
+                onChangeText={(textChange) => {dispatch({type: 'location', change: textChange})}}
                 />
             <TextInput
                 style={styles.textinput}
                 placeholder="Icebreakers"
                 underlineColorAndroid={'transparent'}
+                onChangeText={(textChange) => {dispatch({type: 'icebreakers', change: textChange})}}
                 />
             <TouchableOpacity onPress={this.buttonClickListener} style={{ margin: 10, alignItems: 'center'}}>
                 <Text style={{
@@ -60,7 +88,7 @@ const NewEventFormComponent = () => {
             </TouchableOpacity>
         </View>
     )
-    }
+}
 //{style={{flex: 1, flexDirection: 'column', margin: 40, justifyContent: 'flex-start', }}>}
 
 const styles = StyleSheet.create({
