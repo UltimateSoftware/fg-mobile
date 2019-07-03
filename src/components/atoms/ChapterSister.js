@@ -34,5 +34,8 @@ const styles = StyleSheet.create({
         fontFamily: 'montserrat-regular',
         fontSize: 13,
         textAlign: 'center'
+    },
+    item: {
+        marginBottom:13
     }
 });
