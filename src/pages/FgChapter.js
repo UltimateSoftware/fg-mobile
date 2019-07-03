@@ -12,10 +12,6 @@ import {ChapterMissionComponent} from '../components/ChapterMissionComponent';
 import {ChapterFGBylawsComponent} from '../components/ChapterFGBylawsComponent';
 import {ChapterBylawsComponent} from '../components/ChapterBylawsComponent';
 
-function oneOff(){
-
-}
-
 function FgChapter() {
 
     const [chapter, chapterActions] = useChapter()
