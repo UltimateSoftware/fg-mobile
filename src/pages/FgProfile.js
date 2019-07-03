@@ -3,11 +3,8 @@ import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList} from 're
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {ProfileBanner} from '../components/molecules/ProfileBanner';
-import {ProfileFrame} from '../components/primatives/ProfileFrame';
-import Grid from 'react-native-grid-component'
 import useProfile from '../domain/models/Profile';
-import { Avatar } from '../components/atoms/Avatar';
-import { ChapterSister } from '../components/atoms/ChapterSister';
+import {ChapterSisterGrid} from '../components/molecules/ChapterSisterGrid.js';
 
 function FgProfile() {
 
@@ -21,14 +18,6 @@ function FgProfile() {
     const imgUri = 'fearlesslyGirl_logo.jpg';
     const allMembers = [{name: "test1", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test2", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test3", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test4", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test5", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test7", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test8", source: "fearlesslyGirl_logo.jpg", school: "test school"}]
     const [members, setMembers] = useState(allMembers.slice(0,4));
-    var renderMembers = []
-
-    _renderMember = (member, i) => (
-        <ChapterSister imgSrc={member.source} name={member.name} school={member.school}/>
-    )
-    _renderPlaceHolder = () => {
-        <ChapterSister></ChapterSister>
-    }
 
     const handleButton = () => {
         setViewAll(true)
@@ -48,7 +37,7 @@ function FgProfile() {
                     <Text style={styles.titleLabel}>Chapter Sisters</Text>
                     <View style={styles.titleLine}/>
                 </View>
-                <Grid style={styles.list} renderItem={this._renderMember} renderPlaceholder={this._renderPlaceHolder} keyExtractor={(item, index) => index.toString()} data={members} refreshing= {false} numColumns={4}/>
+                <ChapterSisterGrid members={members}/>
                 {button}
 
             </View>
@@ -78,9 +67,6 @@ const styles = StyleSheet.create({
         },
     member: {
         margin: 7,
-    },
-    list: {
-        flex: 1
     },
     nameLabel: {
         fontFamily: 'montserrat-light',
