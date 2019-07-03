@@ -65,9 +65,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 10,
         },
-    member: {
-        margin: 7,
-    },
     nameLabel: {
         fontFamily: 'montserrat-light',
         fontSize: 18,
@@ -80,7 +77,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
-        paddingBottom: 15
+        paddingBottom: 20
     },
     titleLabel: {
         fontFamily: 'montserrat-regular',
