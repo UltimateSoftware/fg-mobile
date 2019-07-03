@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import { Avatar } from './Avatar';
 /* 
-This component represents a chapter sister to be rendered
-on the profile screen in a grid.
+This component represents a member to be rendered in a list/grid view.
 
 Renders an Avatar with the name and school of the chapter sister.
 */
 
-export function ChapterSister({imgSrc, name, school}) {
+export function Member({imgSrc, name, school}) {
     return (
         <View style={styles.item}>
             <Avatar avatarSize='small' name={name} source={imgSrc}/>
