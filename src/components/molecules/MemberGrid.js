@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Grid from 'react-native-grid-component';
-import { ChapterSister } from '../atoms/ChapterSister';
+import { Member } from '../atoms/Member';
 
-export function ChapterSisterGrid({members}) {
+export function MemberGrid({members}) {
 
     _renderMember = (member, i) => (
-        <ChapterSister imgSrc={member.source} name={member.name} school={member.school}/>
+        <Member imgSrc={member.source} name={member.name} school={member.school}/>
     )
     _renderPlaceHolder = () => {
-        <ChapterSister></ChapterSister>
+        <Member />
     }
 
     return (
