@@ -6,7 +6,11 @@ import {Banner} from '../components/atoms/Banner';
 import {ProfileFrame} from '../components/primatives/ProfileFrame';
 import useChapter from '../domain/models/Chapter';
 import {ProfileBanner} from '../components/molecules/ProfileBanner';
-import {ParagraphBlock} from '../components/primatives/ParagraphBlock';
+import {ChapterHistoryComponent} from '../components/ChapterHistoryComponent';
+import {ChapterLeadershipComponent} from '../components/ChapterLeadershipComponent';
+import {ChapterMissionComponent} from '../components/ChapterMissionComponent';
+import {ChapterFGBylawsComponent} from '../components/ChapterFGBylawsComponent';
+import {ChapterBylawsComponent} from '../components/ChapterBylawsComponent';
 
 function oneOff(){
 
@@ -32,6 +36,18 @@ function FgChapter() {
         {id: 4, header: "V. Lorem Ipsum", body: fillerBody},
     ];
 
+    const founders = [
+        {id: 0, image: imgUri, name: "Name here", position: "Position here"},
+        {id: 1, image: imgUri, name: "Name here", position: "Position here"},
+    ];
+
+    const leaders = [
+        {id: 0, image: imgUri, name: "Name here"},
+        {id: 1, image: imgUri, name: "Name here"},
+        {id: 2, image: imgUri, name: "Name here"},
+        {id: 3, image: imgUri, name: "Name here"},
+    ]
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -41,68 +57,11 @@ function FgChapter() {
                 </Banner>
                 <Inspiration title={"Chapter name"} inspiration={"Chapter number"}/>
 
-                <View style={styles.paragraphs}>
-                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
-                        <View style={styles.inspirationLine}/>
-                            <Text style={styles.inspirationLabel}>  Our history  </Text>
-                        <View style={styles.inspirationLine}/>
-                    </View>
-                    <ParagraphBlock inspiration={fillerBody} />
-                </View>
-
-                <View style={styles.paragraphs}>
-                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
-                        <View style={styles.inspirationLine}/>
-                            <Text style={styles.inspirationLabel}>  Student leadership  </Text>
-                        <View style={styles.inspirationLine}/>
-                    </View>
-                    <View>
-                    <ParagraphBlock inspiration={fillerBody} />
-                    </View>
-                </View>
-
-                <View style={styles.paragraphs}>
-                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
-                        <View style={styles.inspirationLine}/>
-                            <Text style={styles.inspirationLabel}>  Our mission  </Text>
-                        <View style={styles.inspirationLine}/>
-                    </View>
-                    <ParagraphBlock inspiration={fillerBody} />
-                </View>
-
-                <View style={styles.paragraphs}>
-                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
-                        <View style={styles.inspirationLine}/>
-                            <Text style={styles.inspirationLabel}>  FearlesslyGirl bylaws  </Text>
-                        <View style={styles.inspirationLine}/>
-                    </View>
-                    <FlatList
-                        data={bylaws}
-                        scrollEnabled={false}
-                        renderItem={({item}) => 
-                        <React.Fragment>
-                            <Text style={styles.textList}>{item.header}</Text>
-                            <ParagraphBlock inspiration={item.body} />
-                        </React.Fragment>
-                    }/>
-                </View>
-
-                <View style={styles.paragraphs}>
-                    <View style={[styles.inspirationTitle, {marginTop: 20}]}>
-                        <View style={styles.inspirationLine}/>
-                            <Text style={styles.inspirationLabel}>  Chapter bylaws  </Text>
-                        <View style={styles.inspirationLine}/>
-                    </View>
-                    <FlatList
-                        data={bylaws}
-                        scrollEnabled={false}
-                        renderItem={({item}) => 
-                        <React.Fragment>
-                            <Text style={styles.textList}>{item.header}</Text>
-                            <ParagraphBlock inspiration={item.body} />
-                        </React.Fragment>
-                    }/>
-                </View>
+                <ChapterHistoryComponent body={fillerBody} profiles={founders} />
+                <ChapterLeadershipComponent body={fillerBody} profiles={leaders} />
+                <ChapterMissionComponent body={fillerBody} />
+                <ChapterFGBylawsComponent bylaws={bylaws} />
+                <ChapterBylawsComponent bylaws={bylaws} />
             </View>
         </ScrollView>
     );
@@ -123,40 +82,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
     },
-    title: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    inspirationTitle: {
-        flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent: 'center'
-    },
-    inspirationLabel: {
-        fontFamily: 'montserrat-regular',
-        fontSize: 18,
-        color: '#818282'
-    },
-    inspirationLine: {
-        position: 'relative',
-        borderBottomColor:'#818282',
-        borderBottomWidth:1,
-        height:'60%',
-        width:'32%'
-    },
-    paragraphs: {
-        flex: 1,
-        alignItems: "center",
-    },
-    textList: {
-        alignItems: "center",
-        fontWeight: "bold",
-        color: 'gray',
-        fontSize: 18,
-        marginLeft: 20,
-        marginTop: 40,
-        marginBottom: -30,
-    }
 });
-
