@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { Image, Text, View, StyleSheet, Button } from 'react-native';
-// import {Modal} from 'react-native';
+// import React, { Component } from 'react';
+// import { Image, Text, View, StyleSheet, Button } from 'react-native';
+// // import {Modal} from 'react-native';
 
-export function Modal() {
-    state = {
-        isVisible: false
-    };
+// export function Modal() {
+//     state = {
+//         isVisible: false
+//     };
 
-    toggleModal = () => {
-        this.setState({ isVisible: !this.state.isVisible});
-    };
+//     toggleModal = () => {
+//         this.setState({ isVisible: !this.state.isVisible});
+//     };
 
-    return(
-        <View style={{ flex: 1 }}>
-            <Button title="Show modal" onPress={this.toggleModal} />
-            <Modal isVisible={this.state.isModalVisible}>
-                <View style={{ flex: 1 }}>
-                    <Text>Hello!</Text>
-                    <Button title="Hide modal" onPress={this.toggleModal} />
-                </View>
-            </Modal>
-        </View>
-    )
-}
+//     return(
+//         <View style={{ flex: 1 }}>
+//             <Button title="Show modal" onPress={this.toggleModal} />
+//             <Modal isVisible={this.state.isModalVisible}>
+//                 <View style={{ flex: 1 }}>
+//                     <Text>Hello!</Text>
+//                     <Button title="Hide modal" onPress={this.toggleModal} />
+//                 </View>
+//             </Modal>
+//         </View>
+//     )
+// }
 
 
 

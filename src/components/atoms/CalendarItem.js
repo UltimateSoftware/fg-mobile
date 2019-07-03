@@ -1,13 +1,10 @@
 
-import React, { Component } from 'react';
-import {StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
-import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../SharedConstants";
-import { useState, useEffect } from 'react';
+import React from 'react';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-
 export function CalendarItemPopulated({text}) {
-    // init state=false bc not expanded
     const [isExpanded, expandItem] = useState(false);
     return (
         <View style={styles.container}>
