@@ -8,8 +8,10 @@ export function CalendarItemPopulated({text}) {
     const [isExpanded, expandItem] = useState(false);
     return (
         <View style={styles.container}>
-            <View style={styles.flex}>
+            <View>
                 <Text style={styles.titletxt}>{text}</Text>
+            </View>
+            <View style={styles.btnbox}>
                 <TouchableOpacity
                     style={styles.asdf}
                     onPress={() => {
@@ -27,9 +29,6 @@ export function CalendarItemPopulated({text}) {
                     
                         {/* time */}
                         <Text>Start time: 00:00; End time: null</Text>
-                        {/* // h5 fo titles; paragraph for body
-                        // address = link - anchor
-                        // open sans for body; monserrat for titles */}
                         <Text/>
                         {/* location */}
                         <Text>location: xyz</Text>
@@ -87,12 +86,6 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         // paddingBottom: 10,
         paddingLeft: 5
-    },
-    asdf: {
-        flex: 1,
-        paddingTop: 10,
-        paddingLeft: 5,
-        alignItems: 'flex-end',
     },
     detailtitle: {
 
