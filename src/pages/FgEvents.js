@@ -29,12 +29,20 @@ function FgEvents() {
             '2019-07-08': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
             '2019-07-09': [{text: 'item 20 - any js object'}],
             '2019-07-10': [],
-            '2019-07-11': [{text: 'item 22 - any js object'}]
+            '2019-07-11': [{text: 'item 22 - any js object'}],
+            '2019-07-12': [{text: 'item 20'}],
+            '2019-07-13': [],
+            '2019-07-14': [{text: 'item 22 - any js object'}],
+            '2019-07-15': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
+            '2019-07-16': [{text: 'item 20 - any js object'}],
+            '2019-07-17': [],
+            '2019-07-18': [{text: 'item 22 - any js object'}]
         }}
 
         renderItem={(item, firstItemInDay) => {
-            console.log("test 2");
-            return(<CalendarItemPopulated text={item.text} />);
+            return(
+                <CalendarItemPopulated text={item.text} style={styles.eventtitle}/>
+            );
         }}
 
         renderEmptyDate={() => {
@@ -65,6 +73,6 @@ export default FgEvents
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-        },
+    },
 });
 
