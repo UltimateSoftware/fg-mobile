@@ -37,6 +37,9 @@ function FgEvents() {
         renderEmptyDate={() => {
             return(<CalendarItemEmpty/>);
         }}
+        renderEmptyData={() => {
+            return(<CalendarItemEmpty/>);
+        }}
         rowHasChanged={(r1, r2) => {
             return r1.text !== r2.text
         }}
