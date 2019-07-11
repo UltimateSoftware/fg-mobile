@@ -3,13 +3,17 @@ import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react
 
 
 export function ParagraphBlock({inspiration, mar}) { 
-    return (
-        <View style={styles.subViewStyle}>
-            <Text style={[styles.inspirationBlock, {marginTop: mar || 40 }]}>
-                {inspiration}
-            </Text>
-        </View>
-    );
+    if (inspiration) {
+        return (
+            <View style={styles.subViewStyle}>
+                <Text style={[styles.inspirationBlock, {marginTop: mar || 40 }]}>
+                    {inspiration}
+                </Text>
+            </View>
+        );
+    } else {
+        return (<View />);
+    }
 }
 
 const styles = StyleSheet.create({
