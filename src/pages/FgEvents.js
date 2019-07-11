@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import useEvents from '../domain/models/Event';
@@ -14,23 +14,22 @@ function FgEvents() {
     const [events, eventActions] = useEvents()
     const {Event, Status} = events;
     let date = new Date();
+
+    useEffect(() => {
+        (
+            async () => {
+                await eventActions.loadEvents();
+            }
+        )();
+    }, []);
+    console.log(Event);
     return (
         <View style={styles.container}>
         
         <Agenda 
         // fmt for title, time, desc
         // multi-day events
-        items={{
-            '2019-06-16': [],
-            '2019-06-17': [{text: 'item 17 - any js object'}],
-            '2019-06-18': [{text: 'item 18 - any js object'}],
-            // '`${date.getFullYear()}`-`${date.getMonth()}`-`${date.getDate()}`': [{text: 'item 1 - any js object'}],
-            '2019-06-19': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
-            '2019-06-20': [{text: 'item 20 - any js object'}],
-            '2019-06-21': [],
-            '2019-06-22': [{text: 'item 22 - any js object'}]
-        }}
-
+        items={Event}
         renderItem={(item, firstItemInDay) => {
             return(<CalendarItemPopulated text={item.text}/>);
         }}
