@@ -76,6 +76,14 @@ const BottomTabs = createDrawerNavigator(
                     >
                         LoginScreen
                     </Text>
+                    <Text
+                        onPress={() => {
+                            props.navigation.navigate('Login');
+                            props.navigation.closeDrawer();
+                        }}
+                    >
+                        Logout
+                    </Text>
                     </SafeAreaView>
                 </ScrollView>
             )
