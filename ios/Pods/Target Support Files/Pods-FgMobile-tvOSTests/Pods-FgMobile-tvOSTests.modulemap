@@ -1,0 +1,6 @@
+framework module Pods_FgMobile_tvOSTests {
+  umbrella header "Pods-FgMobile-tvOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

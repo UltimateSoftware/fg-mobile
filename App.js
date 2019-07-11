@@ -19,6 +19,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import React, {Component} from 'react';
 import MainApp from './src/Router'
 import Loader from "./src/pages/AnimationLoader";
+import AppAuth from 'react-native-app-auth';
 export default class App extends Component {
   state = {
     appReady: false,

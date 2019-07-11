@@ -7,8 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.0-rc.3",
+    "react": "16.8.6",
+    "react-native": "0.60.3",
+    "react-native-app-auth": "^4.4.0",
     "react-native-gesture-handler": "^1.2.1",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.9.1"
@@ -23,10 +24,5 @@
   },
   "jest": {
     "preset": "react-native"
-  },
-  "rnpm": {
-    "assets": [
-      "./assets/fonts"
-    ]
   }
 }

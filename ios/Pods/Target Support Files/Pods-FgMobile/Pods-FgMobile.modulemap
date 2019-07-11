@@ -1,0 +1,6 @@
+framework module Pods_FgMobile {
+  umbrella header "Pods-FgMobile-umbrella.h"
+
+  export *
+  module * { export * }
+}
