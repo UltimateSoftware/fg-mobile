@@ -30,7 +30,7 @@ const ChapterTab = createStackNavigator({
 const HangoutTab = createStackNavigator({
         Hangouts: FgHangouts,
 }, {
-  headerMode: 'none'
+    headerMode: 'None'
 });
 const EventsTab = createStackNavigator({
     Events: FgHangouts // events is delayed!

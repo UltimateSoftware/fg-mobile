@@ -1,27 +1,27 @@
 import React, {Component, useState,useEffect} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {Tiles} from '../components/molecules/Tiles';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
-import {useNavigation, useNavigationParam} from 'react-navigation-hooks';
+import {useNavigation} from 'react-navigation-hooks';
 import useHangouts from '../domain/models/Hangout';
 import FgHangouts from '../pages/FgHangouts';
+//import hangoutIcons from '../assets/hangout_icons'
 //import hangoutLanding from '../pages/HangoutLanding';
 /*
  * FgHangouts might require a router of its own to create Icebreakers/games/etc.
 */
 
 
+handleDeleteClick = (hangoutId) => {
+
+}
+
 function HangoutDescription() {
   const [hangout, hangoutActions] = useHangouts();
   const {Hangouts, Status} = hangout; // Use Hangout to object to populate page
   const { navigate } = useNavigation();
-  const item = useNavigationParam('item');
 
-  handleDeleteClick = (hangoutId) => {
-    hangoutActions.deleteHangout(hangoutId);
-    navigate("HangoutHome");
-  }
-  
 
   useEffect(() => {
     //componentDidMount
@@ -43,24 +43,32 @@ function HangoutDescription() {
         <View style={{flex: 1}}>
             <View style={{...styles.title, flex: 3}} >
                 <Text style={{...styles.title, color: 'white'}}>
-                    {item.title}
+                    {"Create Hangout From Template"}
                 </Text>
             </View>
-            <View style={{...styles.body, flex: 5}} >
-                <Text> Date: {item.date.split(" ")[0]} </Text>
-                <Text> Time: {item.date.split(" ")[1]} </Text>
-                <Text> Location: {item.location} </Text>
-                <Text> Description: {item.content.description} </Text>
+            <View style={{...styles.container, flex: 5}} >
+                <Tiles
+                        onAction={(item) => {
+                            }
+                        }
+                        tiles={[ 
+                            {'id':'i', 'source':require('../../assets/hangout_icons/supergirl.png'), 'title': 'The Supergirl Dilemma'},
+                            {'id':'i1', 'source':require('../../assets/hangout_icons/drama.png'), 'title': 'Girl Drama'},
+                            {'id':'i2', 'source':require('../../assets/hangout_icons/self-love.png'), 'title': 'Self Love and Self Esteem'},
+                            {'id':'i3', 'source':require('../../assets/hangout_icons/girlboss.png'), 'title': '#GirlBoss'},
+                            {'id':'i4', 'source':require('../../assets/hangout_icons/girlfriends.png'), 'title': 'Girl Friends'},
+                            {'id':'i5', 'source':require('../../assets/hangout_icons/zen.png'), 'title': 'Zen Girl'},
+                            {'id':'i6', 'source':require('../../assets/hangout_icons/fearless.png'), 'title': 'Fearlessness'},
+                            {'id':'i7', 'source':require('../../assets/hangout_icons/heart.png'), 'title': 'Dating and Relationships'},
+                            {'id':'i8', 'source':require('../../assets/hangout_icons/dream.png'), 'title': 'Dream on Baby'}
+                        ]}
+                        
+                    />
             </View>
             <View style={{...styles.buttonContainer}}>
-              <View style={{...styles.editButton}}>
+              <View style={{...styles.selectButton}}>
                 <TouchableHighlight>
-                  <Text style={{...styles.text}}>Edit</Text>
-                </TouchableHighlight>
-              </View>
-              <View style={{...styles.deleteButton}}>
-                <TouchableHighlight onPress={() => this.handleDeleteClick(item.id)}>
-                  <Text style={{...styles.text}}>Delete</Text>
+                  <Text style={{...styles.text}}>Select</Text>
                 </TouchableHighlight>
               </View>
             </View>
@@ -86,23 +94,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
 
         },
-    body: {
-        fontSize: 30,
-        textAlign: 'left',
-        fontFamily: 'montserrat-bold',
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: 'white',
-        color: 'white',
-        margin: 20,
-        lineHeight: 70,
-    },
-    editButton: {
-      backgroundColor: "#3FB7D9",
-      flex: 1,
-      marginLeft: 20,
-      marginRight: 20,
-      borderRadius: 10,
-    },
-    deleteButton: {
+        fontFamily: 'montserrat-bold',
+        fontSize: 12
+        },
+    selectButton: {
       backgroundColor: "#F313B7",
       flex: 1,
       marginLeft: 20,
