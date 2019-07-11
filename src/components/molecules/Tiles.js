@@ -13,7 +13,7 @@ export function Tiles({onAction, tiles}){
                     <TouchableOpacity key={item.id} onPress={() => onAction(item)}>
                         <Tile
                         key={item.id}
-                        source={item.location}
+                        source={item.source}
                         name={item.title} />
                     </TouchableOpacity>
             )}

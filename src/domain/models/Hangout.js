@@ -12,6 +12,7 @@ const HangoutState = { // each of these define a state that can be pulled
         content: undefined,
         icebreakers: [], // List of objects to be displayed
         date: "",
+        id: ""
     }]
   },
     Status: status.init, // defines if the hangouts are loaded
