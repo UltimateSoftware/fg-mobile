@@ -18,7 +18,6 @@ function FgChapter() {
     // See Chapter definition in domain/models/Chapter
     // any new information which the backend provides needs to be reflected in domain/models/Chapter
     const {Chapter, Status} = chapter; // Use Chapter to object to populate page
-<<<<<<< HEAD
     
     // const imgUri = 'fearlesslyGirl_logo.jpg';
     const imgUri = <ProfileBanner />;
@@ -44,11 +43,6 @@ function FgChapter() {
         {id: 2, image: imgUri, name: "Name here"},
         {id: 3, image: imgUri, name: "Name here"},
     ]
-=======
-
-    const imgUri = 'fearlesslyGirl_logo.jpg';
->>>>>>> ce6c998... added service
-
     return (
         <ScrollView>
             <View style={styles.container}>
