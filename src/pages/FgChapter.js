@@ -43,7 +43,6 @@ function FgChapter() {
         {id: 2, image: imgUri, name: "Name here"},
         {id: 3, image: imgUri, name: "Name here"},
     ]
-
     return (
         <ScrollView>
             <View style={styles.container}>
