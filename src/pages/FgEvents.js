@@ -37,6 +37,9 @@ function FgEvents() {
         renderEmptyDate={() => {
             return(<CalendarItemEmpty/>);
         }}
+        renderEmptyData={() => {
+            return(<CalendarItemEmpty/>);
+        }}
         rowHasChanged={(r1, r2) => {
             return r1.text !== r2.text
         }}
@@ -58,9 +61,8 @@ function NewEvent(){
     const navigate = useNavigation();
     return (
         <View>
-        <Button color='cornflowerblue' title='Create Event' type="clear" onPress={() => {
-            navigate.navigate('EventForm') }}>
-        
+        <Button color='#F313B7' height='48' width='166' textAlign='center' borderRadius='25' fontSize='12' fontFamily='opensans-bold'
+        title='Create Event' onPress={() => { navigate.navigate('EventForm') }}>
         </Button>
         </View>
     );
