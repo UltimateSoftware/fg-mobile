@@ -6,6 +6,7 @@ import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {useNavigation} from 'react-navigation-hooks';
 import useHangouts from '../domain/models/Hangout';
 import FgHangouts from '../pages/FgHangouts';
+import HangoutTemplateDescription from '../pages/HangoutTemplateDescription';
 //import hangoutIcons from '../assets/hangout_icons'
 //import hangoutLanding from '../pages/HangoutLanding';
 /*
@@ -17,7 +18,7 @@ handleDeleteClick = (hangoutId) => {
 
 }
 
-function HangoutDescription() {
+function CreateHangoutFromTemplate() {
   const [hangout, hangoutActions] = useHangouts();
   const {Hangouts, Status} = hangout; // Use Hangout to object to populate page
   const { navigate } = useNavigation();
@@ -43,16 +44,21 @@ function HangoutDescription() {
         <View style={{flex: 1}}>
             <View style={{...styles.title, flex: 3}} >
                 <Text style={{...styles.title, color: 'white'}}>
-                    {"Create Hangout From Template"}
+                    {"Choose a hangout"}
+                </Text>
+                <Text style={{...styles.text, color: 'white'}}>
+                    {"Hangouts are the heart of your chapter, bringing girls together each month to talk, connect, share, and break down barriers. A typical hangout consists of an intro, icebreaker activity, topic discussion, group Q&A, and a wrap up. Each hangout is designed to fit into a 60 minute period, but feel free to adjust it to best fit your needs."}
                 </Text>
             </View>
             <View style={{...styles.container, flex: 5}} >
                 <Tiles
                         onAction={(item) => {
+                              console.log(item);
+                              navigate('HangoutTemplateDescription', {item: item});
                             }
                         }
-                        tiles={[ 
-                            {'id':'i', 'source':require('../../assets/hangout_icons/supergirl.png'), 'title': 'The Supergirl Dilemma'},
+                        tiles={[
+                            {'id':'i0', 'source':require('../../assets/hangout_icons/supergirl.png'), 'title': 'The Supergirl Dilemma'},
                             {'id':'i1', 'source':require('../../assets/hangout_icons/drama.png'), 'title': 'Girl Drama'},
                             {'id':'i2', 'source':require('../../assets/hangout_icons/self-love.png'), 'title': 'Self Love and Self Esteem'},
                             {'id':'i3', 'source':require('../../assets/hangout_icons/girlboss.png'), 'title': '#GirlBoss'},
@@ -62,37 +68,31 @@ function HangoutDescription() {
                             {'id':'i7', 'source':require('../../assets/hangout_icons/heart.png'), 'title': 'Dating and Relationships'},
                             {'id':'i8', 'source':require('../../assets/hangout_icons/dream.png'), 'title': 'Dream on Baby'}
                         ]}
-                        
+
                     />
-            </View>
-            <View style={{...styles.buttonContainer}}>
-              <View style={{...styles.selectButton}}>
-                <TouchableHighlight>
-                  <Text style={{...styles.text}}>Select</Text>
-                </TouchableHighlight>
-              </View>
             </View>
         </View>
       );
 };
 
-HangoutDescription.navigationOptions = () => {
+CreateHangoutFromTemplate.navigationOptions = () => {
     return {
         headerRight: <HamburgerIcon/>
     };
 };
 
-export default HangoutDescription;
+export default CreateHangoutFromTemplate;
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: 40,
+        fontSize: 28,
         textAlign: 'center',
         fontFamily: 'montserrat-bold',
         backgroundColor: '#070745',
         justifyContent: 'center',
         alignItems: 'center',
-
+        paddingLeft: 10,
+        paddingRight: 10
         },
     container: {
         flex: 1,
@@ -117,10 +117,10 @@ const styles = StyleSheet.create({
         paddingBottom: 10
     },
     text: {
-      fontSize: 20,
+      fontSize: 15,
       color: 'white',
       textAlign: 'center',
-      fontFamily: 'montserrat-bold',
+      fontFamily: 'opensans',
       padding: 10,
     }
 });

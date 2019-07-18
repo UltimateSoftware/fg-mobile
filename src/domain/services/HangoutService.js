@@ -22,7 +22,7 @@ export const loadHangouts = async store => {
             Authorization: AUTH_TOKEN
           },
           method: 'GET',
-        })
+        });
         console.log(response);
         const json = await response.json();
         console.log(json);
@@ -30,7 +30,7 @@ export const loadHangouts = async store => {
         console.log(store);
         resolve();
       } catch(error) {
-        console.log(error)
+        console.log(error);
         reject();
       }
     })
@@ -52,11 +52,11 @@ export const deleteHangout = async (store,id) => {
       console.log(response);
       let status = response.status;
       if (status == 204){
-        await loadHangouts(store)
+        await loadHangouts(store);
       }
       resolve();
     } catch(error) {
-      console.log(error)
+      console.log(error);
       reject();
     }
   })
