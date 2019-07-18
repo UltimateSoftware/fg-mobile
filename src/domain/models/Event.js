@@ -5,7 +5,7 @@ import {status} from '../constants/Event';
 
 
 const EventState = { // each of these define a state that can be pulled
-    Event: { // defines a chapter DTO
+    Events: { // defines a chapter DTO
         // schoolName: "",
         // chapter: "",
         // bannerSource: "", // URIs to assests folder
@@ -20,7 +20,7 @@ const EventState = { // each of these define a state that can be pulled
         // location
         // creator info + guest list info + chapter(s) info?
         // description
-
+        Event: []
 
 
     },
