@@ -7,36 +7,6 @@ import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
 import LoginScreen from '../pages/LoginScreen';
 
-
-function ProfileBanner(){
-
-    const [profile, profileActions] = useProfile();
-    const {Profile, Status} = profile;
-    return (
-            <View style={styles.banner}>
-                <View style={styles.profilePhotoWrapper}>
-                    <Image style={styles.profilePhoto}  
-                    source={require('../../assets/Heart_SVG.png')}  //eventually change to pull from profile photo
-                    ></Image>
-                </View>
-
-                <View style = {styles.textWrapper}>
-
-                    <Text style={styles.name}>
-                        {Profile.firstName + " " + Profile.lastName}
-                    </Text>
-
-                    <Text style={styles.subtitle}>
-                    {Profile.schoolName}
-                    </Text>
-                </View>
-            </View>
-            
-        
-        
-    );
-}
-
 const BottomTabs = createDrawerNavigator(
     {
         Tabs: BottomNav,
@@ -49,41 +19,60 @@ const BottomTabs = createDrawerNavigator(
                 <ScrollView>
                     <SafeAreaView
                     forceInset={{ top: 'always', horizontal: 'never' }}
+                    style={styles.menu}
                 >
-                    { ProfileBanner() }
-                    
-                    <Text
-                        onPress={() => {
-                        props.navigation.navigate('Auth');
-                        props.navigation.closeDrawer();
-                        }}
-                    >
-                        BlueScreen
-                    </Text>
-                    <Text
-                        onPress={() => {
-                        props.navigation.navigate('DefaultScreen');
-                        props.navigation.closeDrawer();
-                        }}
-                    >
-                        DefaultScreen
-                    </Text>
-                    <Text
-                        onPress={() => {
-                        props.navigation.navigate('Login');
-                        props.navigation.closeDrawer();
-                        }}
-                    >
-                        LoginScreen
-                    </Text>
-                    <Text
-                        onPress={() => {
-                            props.navigation.navigate('Login');
-                            props.navigation.closeDrawer();
-                        }}
-                    >
-                        Logout
-                    </Text>
+                        <View style={styles.container}>
+                            <View style={styles.myButton}>
+                                <Text
+                                    style={styles.buttonText}
+                                    onPress={() => {
+                                    props.navigation.navigate('Auth');
+                                    props.navigation.closeDrawer();
+                                    }}
+                                >
+                                    BlueScreen
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.container}>
+                            <View style={styles.myButton}>
+                                <Text
+                                    style={styles.buttonText}
+                                    onPress={() => {
+                                    props.navigation.navigate('DefaultScreen');
+                                    props.navigation.closeDrawer();
+                                    }}
+                                >
+                                    DefaultScreen
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.container}>
+                            <View style={styles.myButton}>
+                                <Text
+                                    style={styles.buttonText}
+                                    onPress={() => {
+                                    props.navigation.navigate('Login');
+                                    props.navigation.closeDrawer();
+                                    }}
+                                >
+                                    LoginScreen
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.container}>
+                            <View style={styles.myButton}>
+                                <Text
+                                    style={styles.buttonText}
+                                    onPress={() => {
+                                        props.navigation.navigate('Login');
+                                        props.navigation.closeDrawer();
+                                    }}
+                                >
+                                    Logout
+                                </Text>
+                            </View>
+                        </View>
                     </SafeAreaView>
                 </ScrollView>
             )
@@ -121,6 +110,9 @@ const BottomTabs = createDrawerNavigator(
 export default Stack;
 
 const styles = StyleSheet.create({
+    menu:{
+        backgroundColor: 'transparent'
+    },
     banner:{
         flex: 1,
         flexDirection: 'row',
@@ -160,4 +152,27 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
     },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        marginBottom: 10,
+        marginTop: 10
+    },
+    myButton: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+        width: 100,  //The Width must be the same as the height
+        borderRadius: 200, //Then Make the Border Radius twice the size of width or Height   
+        backgroundColor: 'rgb(195, 125, 198)',
+
+    },
+    buttonText: {
+        textAlign: 'center', 
+        fontWeight: 'bold',
+        fontSize: 14
+    }
 });
