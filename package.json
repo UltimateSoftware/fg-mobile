@@ -12,7 +12,8 @@
     "react-native-gesture-handler": "^1.2.1",
     "react-native-grid-component": "^2.0.0",
     "react-native-vector-icons": "^6.4.2",
-    "react-navigation": "^3.9.1"
+    "react-navigation": "^3.9.1",
+    "react-navigation-hooks": "^1.0.0-alpha.2"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
