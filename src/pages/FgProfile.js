@@ -9,6 +9,7 @@ import {EditableParagraphBlock} from '../components/primatives/EditableParagraph
 import useProfile from '../domain/models/Profile';
 import {MemberGrid} from '../components/molecules/MemberGrid';
 
+
 function FgProfile() {
 
     const [profile, profileActions] = useProfile()
@@ -17,6 +18,8 @@ function FgProfile() {
     const {Profile, Status} = profile; // Use Profile to object to populate page
 
     const [viewAll, setViewAll] = useState(false);
+
+    const editableParagraphBlock = React.createRef();
 
     const imgUri = 'fearlesslyGirl_logo.jpg';
     const allMembers = [{name: "test1", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test2", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test3", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test4", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test5", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test7", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test8", source: "fearlesslyGirl_logo.jpg", school: "test school"}]
