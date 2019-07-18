@@ -12,10 +12,6 @@ import {ChapterMissionComponent} from '../components/ChapterMissionComponent';
 import {ChapterFGBylawsComponent} from '../components/ChapterFGBylawsComponent';
 import {ChapterBylawsComponent} from '../components/ChapterBylawsComponent';
 
-function oneOff(){
-
-}
-
 function FgChapter() {
 
     const [chapter, chapterActions] = useChapter()
@@ -47,12 +43,11 @@ function FgChapter() {
         {id: 2, image: imgUri, name: "Name here"},
         {id: 3, image: imgUri, name: "Name here"},
     ]
-
     return (
         <ScrollView>
             <View style={styles.container}>
                 {/* REPLACE WITH ProfileBanner COMPONENT in components/molecules/ProfileBanner */}
-                <Banner color={"#6ED4C8"} source={imgUri}> 
+                <Banner color={"#6ED4C8"} source={imgUri}>
                     <ProfileFrame source={imgUri} size={'l'}/>
                 </Banner>
                 <Inspiration title={"Chapter name"} inspiration={"Chapter number"}/>
