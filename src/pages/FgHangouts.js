@@ -71,8 +71,6 @@ FgHangouts.navigationOptions = () => {
     };
 };
 
-//export default FgHangouts
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
