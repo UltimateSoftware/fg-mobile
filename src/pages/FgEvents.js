@@ -15,14 +15,9 @@ function FgEvents() {
     const {Event, Status} = events;
     let date = new Date();
 
-    useEffect(() => {
-        (
-            async () => {
-                await eventActions.loadEvents();
-            }
-        )();
-    }, []);
-    console.log(Event);
+    let data = eventActions.loadEvents().then(console.log(data));
+
+    //console.log("data: ", data);
     return (
         <View style={styles.container}>
         
