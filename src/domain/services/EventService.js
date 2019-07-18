@@ -18,14 +18,23 @@ let authToken = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlJUazROVE15
 
 export const loadEvents = async store => {
     store.setState({ Status: status.loading });
-    return fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/events', {
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: authToken
-        },
-        method: 'GET',
-    }).then(response => response.json())
+    return new Promise(async (resolve, reject) => {
+        let request = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/events', {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: authToken
+            },
+            method: 'GET',
+        });
+
+        let json = await request.json()
+        store.setState({ Events: json, Status: status.ready });
+
+
+        resolve();
+    });
+    
     // return new Promise(async (resolve, reject) => {
     //     // var event = {EventName: 'BBQ', EventCoordinator: 'JaNae', DateTime: 'June', Location: 'Cafeteria',
     //     //     Description: 'Food'};

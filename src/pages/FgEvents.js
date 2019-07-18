@@ -12,10 +12,21 @@ import NewEventFormComponent from './NewEventFormComponent';
 
 function FgEvents() {
     const [events, eventActions] = useEvents()
-    const {Event, Status} = events;
+    const {Events, Status} = events;
     let date = new Date();
 
-    let data = eventActions.loadEvents().then(console.log(data));
+    useEffect(() => {
+        // component did mount
+        (
+            async () => {
+                await eventActions.loadEvents();
+            }
+        )();
+        // return (
+        //     //component did unmount
+        // )
+    }, [])
+    console.log("events ", Events);
 
     //console.log("data: ", data);
     return (
@@ -24,7 +35,7 @@ function FgEvents() {
         <Agenda 
         // fmt for title, time, desc
         // multi-day events
-        items={Event}
+        items={Events}
         renderItem={(item, firstItemInDay) => {
             return(<CalendarItemPopulated text={item.text}/>);
         }}
