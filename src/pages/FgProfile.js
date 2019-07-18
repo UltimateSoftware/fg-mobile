@@ -1,10 +1,8 @@
-import React, {Component, useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList, TextInput} from 'react-native';
+import React, { useState} from 'react';
+import {StyleSheet, Text, View, Button, ScrollView} from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
-import {ProfileBanner} from '../components/molecules/ProfileBanner';
-import {ProfileFrame} from '../components/primatives/ProfileFrame';
-import Grid from 'react-native-grid-component'
+import {EditableProfileBanner} from '../components/molecules/ProfileBanner';
 import {EditableParagraphBlock} from '../components/primatives/EditableParagraphBlock';
 import useProfile from '../domain/models/Profile';
 import {MemberGrid} from '../components/molecules/MemberGrid';
@@ -45,7 +43,7 @@ function FgProfile() {
                 <View style={styles.editButton}>
                     <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
                 </View>
-                <ProfileBanner editMode={editMode} backImgUri={imgUri} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
+                <EditableProfileBanner editMode={editMode} backImgUri={imgUri} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
                 <Inspiration title={"Inspiration"}>
                     <EditableParagraphBlock ref={editableParagraphBlock} inspiration={"lorem ipsum test text messages"}/>
                 </Inspiration>
