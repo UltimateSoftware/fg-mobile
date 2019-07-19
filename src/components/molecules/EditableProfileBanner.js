@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TextInput} from 'react-native';
 import {Banner} from '../atoms/Banner';
 import {ProfileFrame} from '../primatives/ProfileFrame';
-import { TextInput } from 'react-native-gesture-handler';
 
-export function ProfileBanner(props) {
+export function EditableProfileBanner(props) {
 
     return (
         <View style={styles.container}>
@@ -20,7 +19,6 @@ export function ProfileBanner(props) {
             <TextInput editable={props.editMode} style={styles.footnoteText}>
               {props.lineThreeText}
             </TextInput>
-
         </View>
     )
 }
