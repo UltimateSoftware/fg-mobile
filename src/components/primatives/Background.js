@@ -8,10 +8,12 @@ import {
     SafeAreaView
 } from 'react-native';
 
+import defaultImage from '../../../assets/fearlesslyGirl_logo.jpg'
+
 export default function Background(props){
     const {img, color} = props;
-    
-    var image = img ? require('../../../assets/fearlesslyGirl_logo.jpg') : img;
+
+    var image = img
 
     return (
         <SafeAreaView style={styles.container}>

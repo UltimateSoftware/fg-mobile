@@ -18,6 +18,13 @@ export class EditableProfileBanner extends Component {
 
     }
 
+    handleEditAvatar = (newSource) => {
+        this.setState((prev) => ({
+            imgUri: newSource
+        }))
+
+    }
+
     handleToggleEditMode = () => {
         this.setState((prev) => ({
             editMode: !prev.editMode
