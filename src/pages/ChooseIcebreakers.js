@@ -27,7 +27,6 @@ function ChooseIcebreakers() {
       }
     )*/
   }, []);
-  //const item = navigate.getParam(item)
 
   toTiles = ((icebreakers) => {
     let tileArray = [];
@@ -42,18 +41,22 @@ function ChooseIcebreakers() {
 
   return(
         <View style={{flex: 1}}>
-            <View style={{...styles.title, flex: 3}} >
-                <Text style={{...styles.title, color: 'white'}}>
+            <View style={{...styles.title, flex: 2}} >
+                <Text style={{...styles.title}}>
                     {"Choose an Icebreaker"}
                 </Text>
-                <Text style={{...styles.text, color: 'white'}}>
+                <Text style={{...styles.text}}>
                     {"Once the girls arrive and get settled in, start your workshop off with a fun ice breaker! (We’ve included a few to get you started!) The point is to get the girls talking and having fun, and hopefully getting to know each other a little better."}
                 </Text>
             </View>
             <View style={{...styles.container, flex: 5}} >
-            <Tiles
+                <Tiles
+                    onAction={(item) => {
+                            navigate('IcebreakerDescription', {item: item, icebreaker: Icebreakers.find(x => x.id==item.id)});
+                        }
+                    }
                     tiles={toTiles(Icebreakers)}
-                />
+                    />
             </View>
         </View>
       );
@@ -69,14 +72,14 @@ export default ChooseIcebreakers;
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: 28,
+        fontSize: 24,
         textAlign: 'center',
-        fontFamily: 'montserrat-bold',
-        backgroundColor: '#070745',
+        fontFamily: 'montserrat-light',
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        color: '#818282'
         },
     container: {
         flex: 1,
@@ -86,23 +89,9 @@ const styles = StyleSheet.create({
         fontFamily: 'montserrat-bold',
         fontSize: 12
         },
-    selectButton: {
-      backgroundColor: "#F313B7",
-      flex: 1,
-      marginLeft: 20,
-      marginRight: 20,
-      borderRadius: 10,
-    },
-    buttonContainer: {
-      flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingBottom: 10
-    },
     text: {
-      fontSize: 15,
-      color: 'white',
+      fontSize: 14,
+      color: '#59828B',
       textAlign: 'center',
       fontFamily: 'opensans',
       padding: 10,

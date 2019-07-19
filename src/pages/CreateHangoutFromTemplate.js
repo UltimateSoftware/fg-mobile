@@ -29,10 +29,10 @@ function CreateHangoutFromTemplate() {
   return(
         <View style={{flex: 1}}>
             <View style={{...styles.title, flex: 3}} >
-                <Text style={{...styles.title, color: 'white'}}>
+                <Text style={{...styles.title}}>
                     {"Choose a hangout"}
                 </Text>
-                <Text style={{...styles.text, color: 'white'}}>
+                <Text style={{...styles.text}}>
                     {"Hangouts are the heart of your chapter, bringing girls together each month to talk, connect, share, and break down barriers. A typical hangout consists of an intro, icebreaker activity, topic discussion, group Q&A, and a wrap up. Each hangout is designed to fit into a 60 minute period, but feel free to adjust it to best fit your needs."}
                 </Text>
             </View>
@@ -70,14 +70,14 @@ export default CreateHangoutFromTemplate;
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: 28,
+        fontSize: 24,
         textAlign: 'center',
-        fontFamily: 'montserrat-bold',
-        backgroundColor: '#070745',
+        fontFamily: 'montserrat-light',
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        color: '#818282'
         },
     container: {
         flex: 1,
@@ -87,23 +87,9 @@ const styles = StyleSheet.create({
         fontFamily: 'montserrat-bold',
         fontSize: 12
         },
-    selectButton: {
-      backgroundColor: "#F313B7",
-      flex: 1,
-      marginLeft: 20,
-      marginRight: 20,
-      borderRadius: 10,
-    },
-    buttonContainer: {
-      flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingBottom: 10
-    },
     text: {
-      fontSize: 15,
-      color: 'white',
+      fontSize: 14,
+      color: '#59828B',
       textAlign: 'center',
       fontFamily: 'opensans',
       padding: 10,

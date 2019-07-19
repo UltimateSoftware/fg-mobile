@@ -8,11 +8,8 @@ import HangoutDescription from '../pages/HangoutDescription';
 import CreateHangoutFromTemplate from '../pages/CreateHangoutFromTemplate';
 import HangoutTemplateDescription from '../pages/HangoutTemplateDescription';
 import ChooseIcebreakers from '../pages/ChooseIcebreakers';
+import IcebreakerDescription from '../pages/IcebreakerDescription';
 import {useNavigation} from 'react-navigation-hooks';
-//import hangoutLanding from '../pages/HangoutLanding';
-/*
- * FgHangouts might require a router of its own to create Icebreakers/games/etc.
-*/
 
 function FgHangouts() {
 
@@ -129,6 +126,9 @@ const HangoutNavigator = createStackNavigator({
     },
     ChooseIcebreakers: {
         screen: ChooseIcebreakers
+      },
+    IcebreakerDescription: {
+        screen: IcebreakerDescription
       },
   }, {
       initialRouteName: 'HangoutHome',
