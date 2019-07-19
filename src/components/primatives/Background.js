@@ -12,6 +12,7 @@ export default function Background(props){
     const {img, color} = props;
     
     var image = img ? require('../../../assets/fearlesslyGirl_logo.jpg') : img;
+
     return (
         <SafeAreaView style={styles.container}>
             {img && <ImageBackground

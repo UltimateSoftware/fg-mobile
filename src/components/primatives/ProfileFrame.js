@@ -4,6 +4,7 @@ import { Image, Text, View, StyleSheet } from 'react-native'
 export function ProfileFrame({source, avatarSize}) {
     const size = styleValuesFromSize(avatarSize).size;
     const image = source ? require('../../../assets/Heart_SVG.png') : source
+
     return (
         <View style={[{flex: 1, alignItems: "center"}, styles.elevation]}>
             <Image

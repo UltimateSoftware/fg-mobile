@@ -8,7 +8,7 @@ import Grid from 'react-native-grid-component'
 import {EditableParagraphBlock} from '../components/primatives/EditableParagraphBlock';
 import useProfile from '../domain/models/Profile';
 import {MemberGrid} from '../components/molecules/MemberGrid';
-
+import ImagePicker from 'react-native-image-picker'
 
 function FgProfile() {
 
@@ -20,8 +20,9 @@ function FgProfile() {
     const [viewAll, setViewAll] = useState(false);
 
     const editableParagraphBlock = React.createRef();
+    const editableProfileBanner = React.createRef()
 
-    const imgUri = 'fearlesslyGirl_logo.jpg';
+    const [imgUri, setImgUri] = useState('fearlesslyGirl_logo.jpg');
     const allMembers = [{name: "test1", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test2", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test3", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test4", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test5", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test7", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test6", source: "fearlesslyGirl_logo.jpg", school: "test school"}, {name: "test8", source: "fearlesslyGirl_logo.jpg", school: "test school"}]
     const [members, setMembers] = useState(allMembers.slice(0,4));
     const [editMode, toggleEditMode] = useState(false)
@@ -34,6 +35,33 @@ function FgProfile() {
     const handleEditableToggle = () => {
         toggleEditMode(!editMode)
         editableParagraphBlock.current.handleToggleEditMode();
+        editableProfileBanner.current.handleToggleEditMode()
+    }
+
+    chooseFile = () => {
+        var options = {
+            title: 'Select Image',
+            customButtons: [{name: 'customOptionKey', title: 'Choose Photo from Custom Option'}],
+            storageOptions: {
+                skipBackup: true,
+                path: 'images'
+            }
+        }
+    
+        ImagePicker.showImagePicker(options, response => {
+            if(response.didCancel) {
+                console.log("user canncelled image picker")
+            } else if (response.error){
+                console.log('image picker error: ', response.error)
+            } else if (response.customButton) {
+                alert(response.customButton)
+            } else {
+                console.log((response))
+                editableProfileBanner.current.handleEditBanner(response.uri)
+            }
+
+        })
+
     }
 
     button = !viewAll ?
@@ -44,8 +72,9 @@ function FgProfile() {
             <View style={styles.container}>
                 <View style={styles.editButton}>
                     <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
+                    <Button title="choose file" onPress={event => chooseFile()} textStyle={{fontSize: 14}}/>
                 </View>
-                <EditableProfileBanner editMode={editMode} backImgUri={imgUri} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
+                <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={imgUri} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
                 <Inspiration title={"Inspiration"}>
                     <EditableParagraphBlock ref={editableParagraphBlock} inspiration={"lorem ipsum test text messages"}/>
                 </Inspiration>
