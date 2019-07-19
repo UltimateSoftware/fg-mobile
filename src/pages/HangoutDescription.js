@@ -4,11 +4,6 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {useNavigation, useNavigationParam} from 'react-navigation-hooks';
 import useHangouts from '../domain/models/Hangout';
-import FgHangouts from '../pages/FgHangouts';
-//import hangoutLanding from '../pages/HangoutLanding';
-/*
- * FgHangouts might require a router of its own to create Icebreakers/games/etc.
-*/
 
 
 function HangoutDescription() {

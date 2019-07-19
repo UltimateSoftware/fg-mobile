@@ -61,3 +61,29 @@ export const deleteHangout = async (store,id) => {
     }
   })
 }
+
+export const loadIcebreakers = async store => {
+  store.setState({ Status: status.loading });
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/icebreakers', {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: auth
+        },
+        method: 'GET',
+      });
+      console.log("response!",response);
+      const icebreakers = await response.json();
+      console.log("icebreakers!",icebreakers);
+      store.setState({ Icebreakers: icebreakers, Status: status.ready });
+      console.log(store);
+      resolve();
+    } catch(error) {
+      console.log(error);
+      reject();
+    }
+  })
+}

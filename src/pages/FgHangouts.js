@@ -7,6 +7,7 @@ import useHangouts from '../domain/models/Hangout';
 import HangoutDescription from '../pages/HangoutDescription';
 import CreateHangoutFromTemplate from '../pages/CreateHangoutFromTemplate';
 import HangoutTemplateDescription from '../pages/HangoutTemplateDescription';
+import ChooseIcebreakers from '../pages/ChooseIcebreakers';
 import {useNavigation} from 'react-navigation-hooks';
 //import hangoutLanding from '../pages/HangoutLanding';
 /*
@@ -126,6 +127,9 @@ const HangoutNavigator = createStackNavigator({
     HangoutTemplateDescription: {
       screen: HangoutTemplateDescription
     },
+    ChooseIcebreakers: {
+        screen: ChooseIcebreakers
+      },
   }, {
       initialRouteName: 'HangoutHome',
   });

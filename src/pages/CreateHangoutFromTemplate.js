@@ -1,22 +1,9 @@
 import React, {Component, useState,useEffect} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {Tiles} from '../components/molecules/Tiles';
-import { createAppContainer, createStackNavigator } from 'react-navigation';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {useNavigation} from 'react-navigation-hooks';
 import useHangouts from '../domain/models/Hangout';
-import FgHangouts from '../pages/FgHangouts';
-import HangoutTemplateDescription from '../pages/HangoutTemplateDescription';
-//import hangoutIcons from '../assets/hangout_icons'
-//import hangoutLanding from '../pages/HangoutLanding';
-/*
- * FgHangouts might require a router of its own to create Icebreakers/games/etc.
-*/
-
-
-handleDeleteClick = (hangoutId) => {
-
-}
 
 function CreateHangoutFromTemplate() {
   const [hangout, hangoutActions] = useHangouts();
@@ -39,7 +26,6 @@ function CreateHangoutFromTemplate() {
     )*/
   }, []);
 
-  //const item = navigate.getParam(item)
   return(
         <View style={{flex: 1}}>
             <View style={{...styles.title, flex: 3}} >
@@ -53,20 +39,19 @@ function CreateHangoutFromTemplate() {
             <View style={{...styles.container, flex: 5}} >
                 <Tiles
                         onAction={(item) => {
-                              console.log(item);
                               navigate('HangoutTemplateDescription', {item: item});
                             }
                         }
                         tiles={[
-                            {'id':'i0', 'source':require('../../assets/hangout_icons/supergirl.png'), 'title': 'The Supergirl Dilemma'},
-                            {'id':'i1', 'source':require('../../assets/hangout_icons/drama.png'), 'title': 'Girl Drama'},
-                            {'id':'i2', 'source':require('../../assets/hangout_icons/self-love.png'), 'title': 'Self Love and Self Esteem'},
-                            {'id':'i3', 'source':require('../../assets/hangout_icons/girlboss.png'), 'title': '#GirlBoss'},
-                            {'id':'i4', 'source':require('../../assets/hangout_icons/girlfriends.png'), 'title': 'Girl Friends'},
-                            {'id':'i5', 'source':require('../../assets/hangout_icons/zen.png'), 'title': 'Zen Girl'},
-                            {'id':'i6', 'source':require('../../assets/hangout_icons/fearless.png'), 'title': 'Fearlessness'},
-                            {'id':'i7', 'source':require('../../assets/hangout_icons/heart.png'), 'title': 'Dating and Relationships'},
-                            {'id':'i8', 'source':require('../../assets/hangout_icons/dream.png'), 'title': 'Dream on Baby'}
+                            {'id':'i0', 'source':require('../../assets/hangout_icons/strong-woman.svg'), 'title': 'The Supergirl Dilemma'},
+                            {'id':'i1', 'source':require('../../assets/hangout_icons/bossgirl.svg'), 'title': 'Girl Drama'},
+                            {'id':'i2', 'source':require('../../assets/hangout_icons/self-love.svg'), 'title': 'Self Love and Self Esteem'},
+                            {'id':'i3', 'source':require('../../assets/hangout_icons/leadership.svg'), 'title': '#GirlBoss'},
+                            {'id':'i4', 'source':require('../../assets/hangout_icons/girlfirnds.svg'), 'title': 'Girl Friends'},
+                            {'id':'i5', 'source':require('../../assets/hangout_icons/spiritual.svg'), 'title': 'Zen Girl'},
+                            {'id':'i6', 'source':require('../../assets/hangout_icons/woman.svg'), 'title': 'Fearlessness'},
+                            {'id':'i7', 'source':require('../../assets/hangout_icons/relationships-n-dating.svg'), 'title': 'Dating and Relationships'},
+                            {'id':'i8', 'source':require('../../assets/hangout_icons/dream.svg'), 'title': 'Dream on Baby'}
                         ]}
 
                     />

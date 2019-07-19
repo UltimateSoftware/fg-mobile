@@ -51,7 +51,7 @@ function HangoutTemplateDescription() {
             </View>
             <View style={{...styles.buttonContainer}}>
               <View style={{...styles.selectButton}}>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={() => {navigate('ChooseIcebreakers')}}>
                   <Text style={{...styles.buttonText}}>Choose this hangout</Text>
                 </TouchableHighlight>
               </View>

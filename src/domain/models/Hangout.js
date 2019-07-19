@@ -15,7 +15,13 @@ const HangoutState = { // each of these define a state that can be pulled
         id: ""
     }]
   },
-    Status: status.init, // defines if the hangouts are loaded
+  Icebreakers: [{ // defines an Icebreaker DTO
+    name: "",
+    descriptions: "",
+    id: ""
+  }], //list of icebreakers
+  Status: status.init, // defines if the hangouts are loaded
+  
 }
 
 const useHangouts = useGlobalHook(React, HangoutState, actions);
