@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import {View, StyleSheet, TextInput, Text} from 'react-native';
 import {Banner} from '../atoms/Banner';
 import {ProfileFrame} from '../primatives/ProfileFrame';
 
@@ -18,6 +18,13 @@ export class EditableProfileBanner extends Component {
 
     }
 
+    handleEditAvatar = (newSource) => {
+        this.setState((prev) => ({
+            imgUri: newSource
+        }))
+
+    }
+
     handleToggleEditMode = () => {
         this.setState((prev) => ({
             editMode: !prev.editMode
@@ -28,17 +35,17 @@ export class EditableProfileBanner extends Component {
         return (
             <View style={styles.container}>
                 <Banner color={styles.color} source={this.state.backImgUri}>
-                    <ProfileFrame source={this.state.imgUri} size={'m'}/>
+                    <ProfileFrame source={this.state.imgUri} avatarSize={'l'}/>
                 </Banner>
                 <TextInput editable={this.state.editMode} style={styles.headerText}>
                   {this.state.headerText}
                 </TextInput>
-                <TextInput editable={this.state.editMode} style={styles.subheadingText}>
+                <Text style={styles.subheadingText}>
                   {this.state.subheadingText}
-                </TextInput>
-                <TextInput editable={this.state.editMode} style={styles.footnoteText}>
+                </Text>
+                <Text style={styles.footnoteText}>
                   {this.state.footerText}
-                </TextInput>
+                </Text>
             </View>
         )
     }
