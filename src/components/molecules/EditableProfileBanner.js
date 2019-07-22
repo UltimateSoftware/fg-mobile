@@ -35,7 +35,7 @@ export class EditableProfileBanner extends Component {
         return (
             <View style={styles.container}>
                 <Banner color={styles.color} source={this.state.backImgUri}>
-                    <ProfileFrame source={this.state.imgUri} size={'m'}/>
+                    <ProfileFrame source={this.state.imgUri} avatarSize={'l'}/>
                 </Banner>
                 <TextInput editable={this.state.editMode} style={styles.headerText}>
                   {this.state.headerText}
