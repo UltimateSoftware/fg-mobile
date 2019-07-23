@@ -6,11 +6,6 @@ import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {useNavigation, useNavigationParam} from 'react-navigation-hooks';
 import useHangouts from '../domain/models/Hangout';
 import FgHangouts from '../pages/FgHangouts';
-//import hangoutLanding from '../pages/HangoutLanding';
-/*
- * FgHangouts might require a router of its own to create Icebreakers/games/etc.
-*/
-
 
 function HangoutTemplateDescription() {
   const [hangout, hangoutActions] = useHangouts();
@@ -18,21 +13,18 @@ function HangoutTemplateDescription() {
   const { navigate } = useNavigation();
   const item = useNavigationParam('item');
 
-
-  useEffect(() => {
-    //componentDidMount
-    (
-      async () => {
-        await hangoutActions.loadHangouts();
-      }
-    )();
-
-    /*return (
-      () => {
-        //componentDidUnmount
-      }
-    )*/
-  }, []);
+  //Hangout object to start populating as they go thru the creation process
+  let newHangout =
+  {
+    title: item["title"],
+    location: "",
+    attendees: [],
+    date: "",
+    chapterId: "",
+    icebreakers: [],
+    description: "",
+    state: "Unpublished"
+  }
 
   return(
         <View style={{flex: 1}}>

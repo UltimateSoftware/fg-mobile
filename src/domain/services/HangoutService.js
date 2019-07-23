@@ -75,10 +75,35 @@ export const loadIcebreakers = async store => {
         },
         method: 'GET',
       });
-      console.log("response!",response);
+      console.log(response);
       const icebreakers = await response.json();
-      console.log("icebreakers!",icebreakers);
+      console.log(icebreakers);
       store.setState({ Icebreakers: icebreakers, Status: status.ready });
+      console.log(store);
+      resolve();
+    } catch(error) {
+      console.log(error);
+      reject();
+    }
+  })
+}
+
+export const createHangoutFromTemplate = async (store, newHangout) => {
+  store.setState({ Status: status.loading });
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/hangouts/template', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: auth
+        },
+        method: 'POST',
+        body: JSON.stringify(newHangout)
+      });
+      console.log(response);
+      const json = await response.json();
+      await loadHangouts(store);
       console.log(store);
       resolve();
     } catch(error) {

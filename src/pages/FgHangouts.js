@@ -32,7 +32,6 @@ function FgHangouts() {
       )*/
     }, []);
 
-    console.log(Hangouts.Hangout);
     let availableHangouts;
 
     (Hangouts.Hangout.length == 0 || Hangouts.Hangout.length == 1 && Hangouts.Hangout[0]["content"] === undefined) ? availableHangouts = false : availableHangouts = true;
@@ -55,7 +54,9 @@ function FgHangouts() {
             </View>
             <View style={{...styles.buttonContainer}}>
                 <View style={{...styles.createButton}}>
-                    <TouchableHighlight onPress={() => {navigate('CreateHangoutFromTemplate')}}>
+                    <TouchableHighlight onPress={() => {
+                            navigate('CreateHangoutFromTemplate');
+                        }}>
                         <Text style={{...styles.buttonText}}>Create</Text>
                     </TouchableHighlight>
                 </View>
