@@ -21,7 +21,11 @@ export class EditableParagraphBlock extends Component{
     {
         return (
             <View style={styles.subViewStyle}>
-                <TextInput editable = {this.state.editable} style={[styles.inspirationBlock, {marginTop: this.state.mar || 40 }]}>
+                <TextInput
+                    editable = {this.state.editable}
+                    style={[styles.inspirationBlock, {marginTop: this.state.mar || 40 }]}
+                    maxLength = {500}
+                >
                     {this.state.inspiration}
                 </TextInput>
             </View>

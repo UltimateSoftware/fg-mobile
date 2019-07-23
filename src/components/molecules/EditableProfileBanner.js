@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import {View, StyleSheet, TextInput, Text} from 'react-native';
 import {Banner} from '../atoms/Banner';
 import {ProfileFrame} from '../primatives/ProfileFrame';
 
@@ -40,12 +40,12 @@ export class EditableProfileBanner extends Component {
                 <TextInput editable={this.state.editMode} style={styles.headerText}>
                   {this.state.headerText}
                 </TextInput>
-                <TextInput editable={this.state.editMode} style={styles.subheadingText}>
+                <Text style={styles.subheadingText}>
                   {this.state.subheadingText}
-                </TextInput>
-                <TextInput editable={this.state.editMode} style={styles.footnoteText}>
+                </Text>
+                <Text style={styles.footnoteText}>
                   {this.state.footerText}
-                </TextInput>
+                </Text>
             </View>
         )
     }
