@@ -6,10 +6,10 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../../Sha
 
 export function Tile({id, source, name}) {
     return (
-        
-        <View key={id} style={styles.item}> 
+
+        <View key={id} style={styles.item}>
             {/* React components that are rendered in Lists require a key */}
-            <Image style={{height:100, width:100, display: 'flex'}} source={source}/>
+            <Image source={source} style={{height: 50, width: 50}} resizeMode="contain"/>
             <Text style={{marginTop: 10, textAlign: 'center', color: 'rgba(0, 0, 0, 0.84)'}}>{name}</Text>
         </View>
     );
@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
         marginBottom:10,
         marginRight: 10,
         borderRadius : 20,
-        shadowColor: '#292829', 
-		shadowOffset: { width: 1, height: 3 }, 
-		shadowOpacity: 0.16, 
+        shadowColor: '#292829',
+		shadowOffset: { width: 1, height: 3 },
+		shadowOpacity: 0.16,
 		shadowRadius: 3,
         elevation: 3,
     },

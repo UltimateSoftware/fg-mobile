@@ -1,5 +1,5 @@
 import React, {Component, useState,useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableHighlight, ScrollView} from 'react-native';
 import {Tiles} from '../components/molecules/Tiles';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {useNavigation} from 'react-navigation-hooks';
@@ -27,8 +27,8 @@ function CreateHangoutFromTemplate() {
   }, []);
 
   return(
-        <View style={{flex: 1}}>
-            <View style={{...styles.title, flex: 3}} >
+        <ScrollView style={{flex: 1}}>
+            <View style={{...styles.title, flex: 2}} >
                 <Text style={{...styles.title}}>
                     {"Choose a hangout"}
                 </Text>
@@ -56,7 +56,7 @@ function CreateHangoutFromTemplate() {
 
                     />
             </View>
-        </View>
+        </ScrollView>
       );
 };
 
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingLeft: 10,
         paddingRight: 10,
+        paddingTop: 10,
         color: '#818282'
         },
     container: {

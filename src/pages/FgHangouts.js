@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View,TouchableHighlight} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Tiles} from '../components/molecules/Tiles';

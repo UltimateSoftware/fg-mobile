@@ -29,7 +29,7 @@ function HangoutTemplateDescription() {
   return(
         <View style={{flex: 1}}>
             <View style={{...styles.title, flex: 3}} >
-              <Tiles tiles={[item]} />
+              <Tiles onAction={() => {}} tiles={[item]} />
             </View>
             <View style={{flex: 5}}>
               <Text style={{...styles.headingText}}>{item["title"]}</Text>

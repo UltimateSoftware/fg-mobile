@@ -1,5 +1,5 @@
 import React, {Component, useState,useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableHighlight, ScrollView} from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import {Tiles} from '../components/molecules/Tiles';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
@@ -34,7 +34,7 @@ function IcebreakerDescription() {
   return(
         <View style={{flex: 1}}>
             <View style={{...styles.title, flex: 3}} >
-              <Tiles tiles={[item]} />
+              <Tiles onAction={() => {}} tiles={[item]} />
             </View>
             <View style={{flex: 5}}>
               <Text style={{...styles.headingText}}>{icebreaker["name"]}</Text>
