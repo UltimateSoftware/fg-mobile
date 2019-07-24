@@ -7,6 +7,7 @@ import {ProfileFrame} from '../components/primatives/ProfileFrame';
 import Grid from 'react-native-grid-component'
 import {EditableParagraphBlock} from '../components/primatives/EditableParagraphBlock';
 import useProfile from '../domain/models/Profile';
+import useChapter from '../domain/models/Chapter'
 import {MemberGrid} from '../components/molecules/MemberGrid';
 import ImagePicker from 'react-native-image-picker'
 
@@ -36,10 +37,27 @@ function FgProfile() {
         setMembers(allMembers);
     };
 
+    useEffect(() => {
+        //componentDidMount
+        (
+          async () => {
+            await profileActions.loadProfile("99999999-ffff-4a96-b827-fa80954d9cff");
+          }
+        )();
+    
+        /*return (
+          () => {
+            //componentDidUnmount
+          }
+        )*/
+      }, []);
+
+
     const handleEditableToggle = () => {
         toggleEditMode(!editMode)
         editableParagraphBlock.current.handleToggleEditMode();
         editableProfileBanner.current.handleToggleEditMode()
+        console.log(profile)
     }
 
     chooseBannerFile = () => {
@@ -95,7 +113,7 @@ function FgProfile() {
     button = !viewAll ?
     <Button onPress={event => handleButton()} title="View All"></Button> : null;
 
-    return (
+    return profile.Status == "READY" ? (
         <ScrollView>
             <View style={styles.container}>
                 <View style={styles.editButton}>
@@ -103,9 +121,9 @@ function FgProfile() {
                     <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
                     <Button title="choose avatar file" onPress={event => chooseAvatarFile()} textStyle={{fontSize: 14}}/>
                 </View>
-                <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={defaultImage2} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
+                <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={defaultImage2} imgUri={imgUri} lineOneText={profile.Profile.Profile.firstName + " " + profile.Profile.Profile.lastName} lineTwoText={profile.Profile.Profile.schoolName} lineThreeText={"Class of " + profile.Profile.Profile.gradYear}/>
                 <Inspiration title={"Inspiration"}>
-                    <EditableParagraphBlock ref={editableParagraphBlock} inspiration={"lorem ipsum test text messages"}/>
+                    <EditableParagraphBlock ref={editableParagraphBlock} inspiration={profile.Profile.Profile.inspiration}/>
                 </Inspiration>
                 <View style={[styles.titleView, {marginTop: 20}]}>
                     <View style={styles.titleLine}/>
@@ -117,7 +135,10 @@ function FgProfile() {
 
             </View>
         </ScrollView>
-    );
+    ) : (
+        <View>
+        </View>
+    )
 }
 
 FgProfile.navigationOptions = () => {
