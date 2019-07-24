@@ -10,6 +10,7 @@ import {BANNER_HEIGHT_RATIO, SCREEN_HEIGHT, SCREEN_WIDTH} from '../../SharedCons
 
 export function Banner(props){
     const {source, color} = props;
+
     return (
         <View style={styles.area}>
             <Background img={source} color={color}>
