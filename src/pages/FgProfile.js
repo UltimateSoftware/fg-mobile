@@ -109,17 +109,21 @@ function FgProfile() {
         })
 
     }
-
-    button = !viewAll ?
+    
+    editButtons = !editMode ? <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/> :
+    <View>
+        <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
+        <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
+        <Button title="choose avatar file" onPress={event => chooseAvatarFile()} textStyle={{fontSize: 14}}/>
+    </View>;
+    viewAllButton = !viewAll ?
     <Button onPress={event => handleButton()} title="View All"></Button> : null;
 
     return profile.Status == "READY" ? (
         <ScrollView>
             <View style={styles.container}>
                 <View style={styles.editButton}>
-                    <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
-                    <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
-                    <Button title="choose avatar file" onPress={event => chooseAvatarFile()} textStyle={{fontSize: 14}}/>
+                    {editButtons}
                 </View>
                 <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={defaultImage2} imgUri={imgUri} lineOneText={profile.Profile.Profile.firstName + " " + profile.Profile.Profile.lastName} lineTwoText={profile.Profile.Profile.schoolName} lineThreeText={"Class of " + profile.Profile.Profile.gradYear}/>
                 <Inspiration title={"Inspiration"}>
@@ -131,7 +135,7 @@ function FgProfile() {
                     <View style={styles.titleLine}/>
                 </View>
                 <MemberGrid members={members}/>
-                {button}
+                {viewAllButton}
 
             </View>
         </ScrollView>
