@@ -54,7 +54,7 @@ function FgHangouts() {
             </View>
             <View style={{...styles.buttonContainer}}>
                 <View style={{...styles.createButton}}>
-                    <TouchableHighlight onPress={() => {
+                    <TouchableHighlight underlayColor="transparent" onPress={() => {
                             navigate('CreateHangoutFromTemplate');
                         }}>
                         <Text style={{...styles.buttonText}}>Create</Text>

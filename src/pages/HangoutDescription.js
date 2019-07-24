@@ -16,7 +16,7 @@ function HangoutDescription() {
     hangoutActions.deleteHangout(hangoutId);
     navigate("HangoutHome");
   }
-  
+
 
   useEffect(() => {
     //componentDidMount
@@ -41,19 +41,19 @@ function HangoutDescription() {
                 </Text>
             </View>
             <View style={{...styles.body, flex: 5}} >
-                <Text> Date: {item.date.split(" ")[0]} </Text>
-                <Text> Time: {item.date.split(" ")[1]} </Text>
-                <Text> Location: {item.location} </Text>
-                <Text> Description: {item.content.description} </Text>
+                <Text>Date: {item.date.split(" ")[0]} </Text>
+                <Text>Time: {item.date.split(" ")[1]} </Text>
+                <Text>Location: {item.location} </Text>
+                <Text>Description: {item.content.description} </Text>
             </View>
             <View style={{...styles.buttonContainer}}>
               <View style={{...styles.editButton}}>
-                <TouchableHighlight>
+                <TouchableHighlight underlayColor="transparent">
                   <Text style={{...styles.text}}>Edit</Text>
                 </TouchableHighlight>
               </View>
               <View style={{...styles.deleteButton}}>
-                <TouchableHighlight onPress={() => this.handleDeleteClick(item.id)}>
+                <TouchableHighlight underlayColor="transparent" onPress={() => this.handleDeleteClick(item.id)}>
                   <Text style={{...styles.text}}>Delete</Text>
                 </TouchableHighlight>
               </View>

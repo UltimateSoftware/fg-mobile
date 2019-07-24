@@ -42,7 +42,7 @@ function IcebreakerDescription() {
             </View>
             <View style={{...styles.buttonContainer}}>
               <View style={{...styles.selectButton}}>
-                <TouchableHighlight onPress={() => {}}>
+                <TouchableHighlight underlayColor="transparent" onPress={() => {}}>
                   <Text style={{...styles.buttonText}}>Select</Text>
                 </TouchableHighlight>
               </View>
