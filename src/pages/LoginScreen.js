@@ -14,7 +14,7 @@ type State = {
 };
 
 const config = {
-  issuer: 'https://{yourOktaDomain}/oauth2/default',
+  issuer: '',//'https://{yourOktaDomain}/oauth2/default',
   clientId: '{clientId}',
   redirectUrl: '{yourOktaScheme}:/callback',
   additionalParameters: {},

@@ -4,9 +4,12 @@
 target 'FgMobile' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'AppAuth', '>= 0.94'
   # Pods for FgMobile
+  pod 'AppAuth', '>= 0.94'
+  pod 'RNGestureHandler', :podspec => '../node_modules/react-native-gesture-handler/RNGestureHandler.podspec'
 
+
+  
 
   target 'FgMobileTests' do
     inherit! :search_paths

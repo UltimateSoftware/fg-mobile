@@ -7,92 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02C29597F3B1FFE9843850801B76A84C /* OIDAuthorizationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A0EADC91B27292E4F190C64F0044CD4F /* OIDAuthorizationRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C7CEDD43FAC6B2DD1DE90CCBB312DA6 /* OIDAuthorizationService+IOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2605650ADE59FBB7735733034E54F0 /* OIDAuthorizationService+IOS.m */; };
-		0DB1F446CAD4AEAF4C178F0094DC811F /* OIDURLQueryComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D7BCE2F7E7F25C0A9126B200A00DA4 /* OIDURLQueryComponent.m */; };
-		1573A40B494BF8EFE93A47A0221ADD93 /* OIDURLSessionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DFB90FE1A1D90B4DE2CE736E75025239 /* OIDURLSessionProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		16CE2F9750C6439164A2DD6391B731BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF797C97B93A53941C1308BDC275766 /* Foundation.framework */; };
-		1B9FE079DBE68DCA7C221350CFE942FE /* OIDError.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FB7F1AA4CD05D30C653445B0665546 /* OIDError.m */; };
-		1C3EF9DE885C84E40A78130A62413DE4 /* OIDExternalUserAgentSession.h in Headers */ = {isa = PBXBuildFile; fileRef = FF55722EB25B489D5C051502DB7024FA /* OIDExternalUserAgentSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1ED0DE911FC0A52C50C9D1D08089962D /* OIDExternalUserAgentIOSCustomBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93DF01B99DB671D911E4187CFFCBD555 /* OIDExternalUserAgentIOSCustomBrowser.m */; };
-		2597D3380B812D8B87A626C3F59F9801 /* OIDAuthState+IOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F0D62A01064EF7EE3759969FDAFAD2 /* OIDAuthState+IOS.m */; };
-		278A88D0D889CF3AAA1ABDDDD42BE9F6 /* OIDTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D4EEF01A86135D43C5A498738C71AE2F /* OIDTokenRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		29000FEEE37975CAD55070F2B971506F /* OIDRegistrationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ACC131093E80761EF996A91D61F7F09 /* OIDRegistrationResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2A259286B603521D2D9EF014565354CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0411839220E45EC154A9AC5BCC457F /* Foundation.framework */; };
-		2E969E67C51A56CB197DB3E4C593A7B6 /* OIDClientMetadataParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 366207485575BAB69E14B27EAC97A124 /* OIDClientMetadataParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F9C00002D8C023D7173BF107E8135B8 /* AppAuth-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A72857463FF1CB4A561CD53396C34AC0 /* AppAuth-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3009756F0345FC0F083E5445C41E54C2 /* OIDIDToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D936E41D8F1AEB7B370E1B42A5359FB3 /* OIDIDToken.m */; };
-		33587E6D334F0116619105BFABD92615 /* Pods-FgMobile-tvOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3084A323D460A885AF98443147550625 /* Pods-FgMobile-tvOSTests-dummy.m */; };
-		3E882CC6068C49CBE7A58D2D7C2A548D /* OIDAuthStateErrorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 07938AC81D538BFA546B4C758005B8B3 /* OIDAuthStateErrorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F15AEF65F18817CED6A4A7E936924A2 /* OIDScopeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0ADEE0C82A496CEB513AA1DBCFB674 /* OIDScopeUtilities.m */; };
-		456BFE3B5C50E7319148E2940A57CB8C /* OIDAuthorizationService+IOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 660C200DB08F12E14B2A1F2337E75066 /* OIDAuthorizationService+IOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D175AFE9836DE8DD808367B15C7EA78 /* OIDTokenResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A76594C54311190A9AE41A064F10F2 /* OIDTokenResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		507E70F51023AAE1A886713C66D83D3E /* OIDRegistrationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CA52D6CFB6B8C2D5BA2BC64823F136 /* OIDRegistrationRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		524A5F5A2F7695E4149CB67EF5458239 /* OIDAuthorizationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 90BC476E34864220CD47A26803274ABE /* OIDAuthorizationResponse.m */; };
-		55FEE19BAFD870DD2B8F1A7E09D7FF77 /* OIDExternalUserAgentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AA764D164249479578B5C8ED23FC9970 /* OIDExternalUserAgentRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		589793E9C2957C6A722D5C6BBED9FE3D /* Pods-FgMobileTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53266D06537877A3ADDEBA7ED2E89EE7 /* Pods-FgMobileTests-dummy.m */; };
-		5CA45F27781DA8A732F2C4C75124C658 /* OIDErrorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F6166809D2D5C672B9A849355EF1280F /* OIDErrorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D1A06D90B142105022ABDEF5190ECC9 /* OIDAuthorizationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99669168721A0CB3EC49CE969E99E8 /* OIDAuthorizationService.m */; };
-		5DFF7CD14DFDEFD3FB9D59B910A78285 /* OIDResponseTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C1C9D3F80EA82B83062FE2DA27A5A6 /* OIDResponseTypes.m */; };
-		607A00D5FFCC27784222B78C47500FEA /* OIDServiceDiscovery.h in Headers */ = {isa = PBXBuildFile; fileRef = 916A15DA09B989129ECA5D72BBB97203 /* OIDServiceDiscovery.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6161B76650130EAEAAFF81094716062A /* AppAuthCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AD64654EF6D85CF2080ACADBDC1FD8 /* AppAuthCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		66C178BBE475AA5D53FED2B6D70808D8 /* OIDIDToken.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06330718EB73F4AE9ECDAB006825D7 /* OIDIDToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		69100A2A706D76240D1DF183C43B9DF4 /* OIDAuthorizationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D19917BD96787B9DA559F7B8C5FC01C /* OIDAuthorizationResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6CE74F8B9BFC073194EEEA705B8506C3 /* OIDServiceConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D1637CF44C3E464AAC9F2D62E0B69970 /* OIDServiceConfiguration.m */; };
-		71A387262D457799862CC5709BD6CFFB /* OIDAuthState+IOS.h in Headers */ = {isa = PBXBuildFile; fileRef = AEEAE3D255DCAF64735FCE0C3CCF9E7B /* OIDAuthState+IOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		734D0D19AC48E45FC52B1021FC368D9C /* AppAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = A1450B433245EC8BEB865C767E2649B8 /* AppAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		736FBDA79557EA63CE3963727D19E68B /* OIDURLSessionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E6E120BA38239CEEB960F87E2E1E11 /* OIDURLSessionProvider.m */; };
-		73A3FD7D93A2E238FB9B0BA56B347B08 /* OIDFieldMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = D1CDA74577318F70A241A73F121A8C76 /* OIDFieldMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79CE498DC169D0D704947BED09C00C80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0411839220E45EC154A9AC5BCC457F /* Foundation.framework */; };
-		7B54277BF787CF977854FAEB680FE46E /* OIDServiceConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = C425518E4BDE08E1B3DEB0A826D27627 /* OIDServiceConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E56AEF2519F1FDC8779D872A9E43257 /* OIDScopes.m in Sources */ = {isa = PBXBuildFile; fileRef = 813A35A16347060D6594A62AC69D95EC /* OIDScopes.m */; };
-		8116E3800C66F339C88D2A9A05FB4808 /* OIDRegistrationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1CC7F38368EA92E70A727767952485 /* OIDRegistrationResponse.m */; };
-		836650FC7E024AE6B8BD4ADE0B630688 /* OIDTokenUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A85CB48A17FBC397113E96D747F5CD9F /* OIDTokenUtilities.m */; };
-		847C24CA1EDE3A89E20872C949D21666 /* OIDTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1104A8CBF3237C8D944A32F634F0F38B /* OIDTokenResponse.m */; };
-		856C1292515F36586081EDF52AF6C491 /* OIDScopes.h in Headers */ = {isa = PBXBuildFile; fileRef = 015BBBFAC4C98E968BB2F97CDFF565F2 /* OIDScopes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8986CF29EB23A291425549F0C42DB7F0 /* OIDResponseTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C9F90AC7C63F32AA3FF325F828E249F3 /* OIDResponseTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B599990023C760A2EBF2F45D6B67B61 /* OIDScopeUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DF4521904153BB3965FCCDABE027482 /* OIDScopeUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8D83E4AC8847F789F38FCCB3052F27D9 /* OIDExternalUserAgentIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34B50B7830A6CFDB2883B05F2E64E /* OIDExternalUserAgentIOS.m */; };
-		8E6B9D211304654DCBC1861679B89F03 /* OIDAuthState.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CD09A5663601D276CA7B978A6AF4E8 /* OIDAuthState.m */; };
-		8E789EE22685AFD33428EE66678B5D10 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0527A8BF9002F2B0B8038D1CA64A2D /* SafariServices.framework */; };
-		95A9A547164A1CA3B3837A83D60CF7C6 /* OIDGrantTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A514DE35F251D12C5887EC60CE424C60 /* OIDGrantTypes.m */; };
-		97AF845B98C6CDD263357E3C750B1DD0 /* OIDGrantTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DA1468D3EE6761590CA8A01302D7AB3 /* OIDGrantTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E6D47228955F3C533B272F2F3F2AB34 /* OIDExternalUserAgentIOSCustomBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = 67CA8DBBEDC6F5E6C7A6F7F158BD62FF /* OIDExternalUserAgentIOSCustomBrowser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A791D97F0BD3C01627011FC1896C9888 /* OIDExternalUserAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 72FD18392620C8D61B023DD0B8366469 /* OIDExternalUserAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFEE5EEE3696158C919105BB9BB7BD4B /* OIDTokenUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 81AF484FF808ABA48FE27F62640C31DE /* OIDTokenUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2FA16F16227D074859BA2C4ACEDA111 /* Pods-FgMobile-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE665686C4A01CA100879B9AD294F12 /* Pods-FgMobile-tvOS-dummy.m */; };
-		B3C6CF8FAAA7CB0D8A9633E722EA2D5F /* AppAuth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD3B6DB5DAA78CEC0FF9E8917934AA0 /* AppAuth-dummy.m */; };
-		BA2C78EB644C7AEE6E0A07A97BD8401E /* OIDDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 44428B4F96008CBAC883E7CEDD1801BC /* OIDDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BB1DD25FBF81424C0B3FF37DD0908A29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0411839220E45EC154A9AC5BCC457F /* Foundation.framework */; };
-		BB89DEFDB70A30FFB495ED70BFAE4921 /* OIDClientMetadataParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A12A9B27562A0A7A412128A06C3D8 /* OIDClientMetadataParameters.m */; };
-		BEA40146FD14E04F4C28BF31832540CA /* OIDAuthorizationService.h in Headers */ = {isa = PBXBuildFile; fileRef = CD9BCED93120DEC2D7D3DC3DEC486CB1 /* OIDAuthorizationService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C00A24C7B4E372263DEB6ED338F37186 /* OIDExternalUserAgentIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ACA427D80C4B7CA819EC65E61B973AF /* OIDExternalUserAgentIOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1113423DA6843BC7B25C02A453F0A26 /* OIDURLQueryComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = AE1934C3E2591D28468845C289512E7E /* OIDURLQueryComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D08317997E8392352E43394EBDD45259 /* OIDRegistrationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AFF3A302FE608CA7263FF4AB819E2D /* OIDRegistrationRequest.m */; };
-		D4B04F498322218518394DC7A581E827 /* OIDTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 400A170922F4DE4B9CD04F0A6E789484 /* OIDTokenRequest.m */; };
-		D592A01C772497A466397D06040A17A9 /* OIDAuthState.h in Headers */ = {isa = PBXBuildFile; fileRef = 9699325C555F4B1CF60B9F5AC1B83DFF /* OIDAuthState.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D89484E57ACB6D8E1DB165C210AB14FA /* Pods-FgMobileTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC2C3FF3F44E2F36443885B6D7DC82C6 /* Pods-FgMobileTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DA208BD501BCFFD0A3EB018E943CDDAC /* OIDErrorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A74F5B419F852D6EBCC37D5FC1DDC5CB /* OIDErrorUtilities.m */; };
-		DD6640ADE2DD5316A59C1462F27FDABA /* OIDAuthorizationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C50BC0210E6EF06D3BDDB485F89B4B5 /* OIDAuthorizationRequest.m */; };
-		DDEE99A58A3E4FE82EDA1FA849BC4950 /* Pods-FgMobile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E597537DD6CB439D05998B77344E59 /* Pods-FgMobile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DEEA5B72D459FFB3A126B9689F9CC114 /* Pods-FgMobile-tvOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 103C04C3E627A4669FE818C318096C75 /* Pods-FgMobile-tvOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2038657E7F7F6CF239030363F01071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF797C97B93A53941C1308BDC275766 /* Foundation.framework */; };
-		E95E74415FB4B52B40E236B8ECF7DE8A /* OIDAuthStateChangeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A2EAED4DDBDAB0EB26F93813C7145B2B /* OIDAuthStateChangeDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E98CF4E9F82ED4D2053FC2104E88A08C /* OIDError.h in Headers */ = {isa = PBXBuildFile; fileRef = 12F1AA5D569855706DEEBA0AB056062F /* OIDError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F00556DCB7FDC537153EE60D9ED3E8B0 /* Pods-FgMobile-tvOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3850A08FD0C75F78E0011208787184 /* Pods-FgMobile-tvOSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD8FA5C77EF932F8A3B11431584DE769 /* OIDServiceDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 5040E0BEDD991A87EE8AB79DEF539F21 /* OIDServiceDiscovery.m */; };
-		FEC8B49009DDDA6D7FE2594F9025626B /* OIDFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1378F856494E8BFFB9C27C15064335F9 /* OIDFieldMapping.m */; };
-		FFD33472C60F390ED0012E798A29344D /* Pods-FgMobile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 703BA8D420786EBD651833D3841351E4 /* Pods-FgMobile-dummy.m */; };
+		010211B8D58A10840548D221919592C9 /* Pods-FgMobile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7A5942D23A9F01121690F7AF9021D46 /* Pods-FgMobile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09A22CFD979859EA66F2A35A2F9611DA /* Pods-FgMobile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CADDBB3AB73A08A4642F2B790B0B352 /* Pods-FgMobile-dummy.m */; };
+		16CE2F9750C6439164A2DD6391B731BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */; };
+		33587E6D334F0116619105BFABD92615 /* Pods-FgMobile-tvOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D21E905C5E19EA72DB7AD276DCA8FE /* Pods-FgMobile-tvOSTests-dummy.m */; };
+		589793E9C2957C6A722D5C6BBED9FE3D /* Pods-FgMobileTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4829E9987B68ABB8F0FC4D48989E1D10 /* Pods-FgMobileTests-dummy.m */; };
+		B2FA16F16227D074859BA2C4ACEDA111 /* Pods-FgMobile-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEB295177035BF1566B4BDBD51305EE /* Pods-FgMobile-tvOS-dummy.m */; };
+		BB1DD25FBF81424C0B3FF37DD0908A29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */; };
+		C2C28C50A1E1B4346989CA83D992188B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */; };
+		D89484E57ACB6D8E1DB165C210AB14FA /* Pods-FgMobileTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 156D9F63564D57939929919955AAE031 /* Pods-FgMobileTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DEEA5B72D459FFB3A126B9689F9CC114 /* Pods-FgMobile-tvOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1D43E07E623D6059D00B446F0EC7AB5 /* Pods-FgMobile-tvOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2038657E7F7F6CF239030363F01071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */; };
+		F00556DCB7FDC537153EE60D9ED3E8B0 /* Pods-FgMobile-tvOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6284F0E096F35EC8AB51F3A0FC494737 /* Pods-FgMobile-tvOSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1E38D6CAD7D1E7CC090289F15E8DAE02 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C642AA10FB29936669CC269F42079C6;
-			remoteInfo = AppAuth;
-		};
 		273FF6F703125476AED67C47A8177B73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -111,116 +40,55 @@
 
 /* Begin PBXFileReference section */
 		00486D1413AE908BEB9AA10F8671CFB2 /* Pods_FgMobile_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FgMobile_tvOSTests.framework; path = "Pods-FgMobile-tvOSTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		015BBBFAC4C98E968BB2F97CDFF565F2 /* OIDScopes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDScopes.h; path = Source/OIDScopes.h; sourceTree = "<group>"; };
 		01AF88D4275BD7DC8E8303F86540128E /* Pods_FgMobile_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FgMobile_tvOS.framework; path = "Pods-FgMobile-tvOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07938AC81D538BFA546B4C758005B8B3 /* OIDAuthStateErrorDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthStateErrorDelegate.h; path = Source/OIDAuthStateErrorDelegate.h; sourceTree = "<group>"; };
-		0AD3B6DB5DAA78CEC0FF9E8917934AA0 /* AppAuth-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AppAuth-dummy.m"; sourceTree = "<group>"; };
-		0D19917BD96787B9DA559F7B8C5FC01C /* OIDAuthorizationResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationResponse.h; path = Source/OIDAuthorizationResponse.h; sourceTree = "<group>"; };
-		103C04C3E627A4669FE818C318096C75 /* Pods-FgMobile-tvOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobile-tvOS-umbrella.h"; sourceTree = "<group>"; };
-		1104A8CBF3237C8D944A32F634F0F38B /* OIDTokenResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDTokenResponse.m; path = Source/OIDTokenResponse.m; sourceTree = "<group>"; };
-		1284E7B5ECCC5D89552A4F29B8C98E67 /* Pods-FgMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile.debug.xcconfig"; sourceTree = "<group>"; };
-		12F1AA5D569855706DEEBA0AB056062F /* OIDError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDError.h; path = Source/OIDError.h; sourceTree = "<group>"; };
-		1378F856494E8BFFB9C27C15064335F9 /* OIDFieldMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDFieldMapping.m; path = Source/OIDFieldMapping.m; sourceTree = "<group>"; };
-		1EED1D32889EA3BAE34CF7318823AF2B /* Pods-FgMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		1F2605650ADE59FBB7735733034E54F0 /* OIDAuthorizationService+IOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OIDAuthorizationService+IOS.m"; path = "Source/iOS/OIDAuthorizationService+IOS.m"; sourceTree = "<group>"; };
-		215E74E92C17F9865EF121E87D2CC4F8 /* Pods-FgMobile-tvOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobile-tvOS.modulemap"; sourceTree = "<group>"; };
-		24E597537DD6CB439D05998B77344E59 /* Pods-FgMobile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobile-umbrella.h"; sourceTree = "<group>"; };
-		27AD64654EF6D85CF2080ACADBDC1FD8 /* AppAuthCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AppAuthCore.h; path = Source/AppAuthCore.h; sourceTree = "<group>"; };
-		283ECA3F0696A33E1343970ABF041D6A /* Pods-FgMobile-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FgMobile-frameworks.sh"; sourceTree = "<group>"; };
-		286994656B03141BD73681A78F33EDD6 /* Pods-FgMobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-acknowledgements.plist"; sourceTree = "<group>"; };
-		2F2A12A9B27562A0A7A412128A06C3D8 /* OIDClientMetadataParameters.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDClientMetadataParameters.m; path = Source/OIDClientMetadataParameters.m; sourceTree = "<group>"; };
-		3084A323D460A885AF98443147550625 /* Pods-FgMobile-tvOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobile-tvOSTests-dummy.m"; sourceTree = "<group>"; };
-		33365EA8184D33A9B603C791A174D25F /* Pods-FgMobile-tvOSTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOSTests-Info.plist"; sourceTree = "<group>"; };
-		366207485575BAB69E14B27EAC97A124 /* OIDClientMetadataParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDClientMetadataParameters.h; path = Source/OIDClientMetadataParameters.h; sourceTree = "<group>"; };
-		3CD3BBD721A47074F26C0EB20BEB5EC1 /* Pods-FgMobile-tvOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOS-Info.plist"; sourceTree = "<group>"; };
-		3DF4521904153BB3965FCCDABE027482 /* OIDScopeUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDScopeUtilities.h; path = Source/OIDScopeUtilities.h; sourceTree = "<group>"; };
-		3FD1B4C1246D643E9476438C28048FA8 /* AppAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AppAuth.framework; path = AppAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		400A170922F4DE4B9CD04F0A6E789484 /* OIDTokenRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDTokenRequest.m; path = Source/OIDTokenRequest.m; sourceTree = "<group>"; };
-		43DFAE729B5E722DD3405A836740E8C0 /* Pods-FgMobile-tvOSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobile-tvOSTests.modulemap"; sourceTree = "<group>"; };
-		44428B4F96008CBAC883E7CEDD1801BC /* OIDDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDDefines.h; path = Source/OIDDefines.h; sourceTree = "<group>"; };
-		4AA10674E2AE678CC6A2150B2DFFFC0F /* Pods-FgMobileTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobileTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		4ACA427D80C4B7CA819EC65E61B973AF /* OIDExternalUserAgentIOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDExternalUserAgentIOS.h; path = Source/iOS/OIDExternalUserAgentIOS.h; sourceTree = "<group>"; };
-		4C0527A8BF9002F2B0B8038D1CA64A2D /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
+		131F5001720EB2DD11CBE419EA83C627 /* Pods-FgMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		156D9F63564D57939929919955AAE031 /* Pods-FgMobileTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobileTests-umbrella.h"; sourceTree = "<group>"; };
+		21AF86436449E9460643430DD81DCC3B /* Pods-FgMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		39FA9F27AAAF67393DC4228C17C4E4F7 /* Pods-FgMobile-tvOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOS-Info.plist"; sourceTree = "<group>"; };
+		3FA98C5881B974557B010FED253F784C /* Pods-FgMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		472B77937B31E309FF5D958EEDCDF7B1 /* Pods-FgMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		4829E9987B68ABB8F0FC4D48989E1D10 /* Pods-FgMobileTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobileTests-dummy.m"; sourceTree = "<group>"; };
+		4A4226364780EE983F361B66AF6F563E /* Pods-FgMobileTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobileTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		4C4EB36FA9F1C73E580A17EEAACE0971 /* Pods_FgMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FgMobile.framework; path = "Pods-FgMobile.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5040E0BEDD991A87EE8AB79DEF539F21 /* OIDServiceDiscovery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDServiceDiscovery.m; path = Source/OIDServiceDiscovery.m; sourceTree = "<group>"; };
-		53266D06537877A3ADDEBA7ED2E89EE7 /* Pods-FgMobileTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobileTests-dummy.m"; sourceTree = "<group>"; };
-		5B5D3508E0510285F60AA8272107A38B /* Pods-FgMobile-tvOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobile-tvOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		660C200DB08F12E14B2A1F2337E75066 /* OIDAuthorizationService+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthorizationService+IOS.h"; path = "Source/iOS/OIDAuthorizationService+IOS.h"; sourceTree = "<group>"; };
-		67CA8DBBEDC6F5E6C7A6F7F158BD62FF /* OIDExternalUserAgentIOSCustomBrowser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDExternalUserAgentIOSCustomBrowser.h; path = Source/iOS/OIDExternalUserAgentIOSCustomBrowser.h; sourceTree = "<group>"; };
-		6883438226CD2DE6C367D4320EB2351F /* Pods-FgMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile.release.xcconfig"; sourceTree = "<group>"; };
-		69C1C9D3F80EA82B83062FE2DA27A5A6 /* OIDResponseTypes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDResponseTypes.m; path = Source/OIDResponseTypes.m; sourceTree = "<group>"; };
-		6D0BB90CD3C35BE46BA45F671C132424 /* Pods-FgMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobileTests.release.xcconfig"; sourceTree = "<group>"; };
-		6DE665686C4A01CA100879B9AD294F12 /* Pods-FgMobile-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobile-tvOS-dummy.m"; sourceTree = "<group>"; };
-		703BA8D420786EBD651833D3841351E4 /* Pods-FgMobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobile-dummy.m"; sourceTree = "<group>"; };
-		72FD18392620C8D61B023DD0B8366469 /* OIDExternalUserAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDExternalUserAgent.h; path = Source/OIDExternalUserAgent.h; sourceTree = "<group>"; };
-		74D34B50B7830A6CFDB2883B05F2E64E /* OIDExternalUserAgentIOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDExternalUserAgentIOS.m; path = Source/iOS/OIDExternalUserAgentIOS.m; sourceTree = "<group>"; };
-		7540D5DBF40E39A66B4438B9341FFDC8 /* AppAuth.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppAuth.xcconfig; sourceTree = "<group>"; };
-		76415245FEAB0AD250B5C8786F1540A4 /* AppAuth.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AppAuth.modulemap; sourceTree = "<group>"; };
-		79AFF3A302FE608CA7263FF4AB819E2D /* OIDRegistrationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDRegistrationRequest.m; path = Source/OIDRegistrationRequest.m; sourceTree = "<group>"; };
-		7C50BC0210E6EF06D3BDDB485F89B4B5 /* OIDAuthorizationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthorizationRequest.m; path = Source/OIDAuthorizationRequest.m; sourceTree = "<group>"; };
-		7E71B5E93599BD80DE3ED0E1502A9541 /* Pods-FgMobileTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobileTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7E8C490AB99E5815C088C5392725272B /* Pods-FgMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7F1C01A559062693C6DF32991B495838 /* Pods-FgMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
-		80F0D62A01064EF7EE3759969FDAFAD2 /* OIDAuthState+IOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OIDAuthState+IOS.m"; path = "Source/iOS/OIDAuthState+IOS.m"; sourceTree = "<group>"; };
-		813A35A16347060D6594A62AC69D95EC /* OIDScopes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDScopes.m; path = Source/OIDScopes.m; sourceTree = "<group>"; };
-		81AF484FF808ABA48FE27F62640C31DE /* OIDTokenUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenUtilities.h; path = Source/OIDTokenUtilities.h; sourceTree = "<group>"; };
-		82A76594C54311190A9AE41A064F10F2 /* OIDTokenResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenResponse.h; path = Source/OIDTokenResponse.h; sourceTree = "<group>"; };
-		845B3895CC695389F4036D0D87D375A2 /* Pods-FgMobile-tvOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		89A900A7EF18671CF4D7283F209CB162 /* Pods-FgMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		89DAC68235CF0AC14224E5529532F4BA /* Pods-FgMobileTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobileTests.modulemap"; sourceTree = "<group>"; };
-		8DA1468D3EE6761590CA8A01302D7AB3 /* OIDGrantTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDGrantTypes.h; path = Source/OIDGrantTypes.h; sourceTree = "<group>"; };
-		9062296A6E87F9313B4B42686C80076D /* Pods-FgMobileTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobileTests-Info.plist"; sourceTree = "<group>"; };
-		90BC476E34864220CD47A26803274ABE /* OIDAuthorizationResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthorizationResponse.m; path = Source/OIDAuthorizationResponse.m; sourceTree = "<group>"; };
-		916A15DA09B989129ECA5D72BBB97203 /* OIDServiceDiscovery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDServiceDiscovery.h; path = Source/OIDServiceDiscovery.h; sourceTree = "<group>"; };
-		93DF01B99DB671D911E4187CFFCBD555 /* OIDExternalUserAgentIOSCustomBrowser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDExternalUserAgentIOSCustomBrowser.m; path = Source/iOS/OIDExternalUserAgentIOSCustomBrowser.m; sourceTree = "<group>"; };
-		9699325C555F4B1CF60B9F5AC1B83DFF /* OIDAuthState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthState.h; path = Source/OIDAuthState.h; sourceTree = "<group>"; };
-		9ACC131093E80761EF996A91D61F7F09 /* OIDRegistrationResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDRegistrationResponse.h; path = Source/OIDRegistrationResponse.h; sourceTree = "<group>"; };
-		9B8B955658614FD3C18E0C05BED305B3 /* Pods-FgMobile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobile.modulemap"; sourceTree = "<group>"; };
+		57F56D395698BD7A6F28566884D41753 /* Pods-FgMobile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobile.modulemap"; sourceTree = "<group>"; };
+		588465F5C75DF4CC4D63706EB1BD8F30 /* Pods-FgMobile-tvOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobile-tvOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5975CC6B76CC6E5CAEFFE5DDDA673684 /* Pods-FgMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		6284F0E096F35EC8AB51F3A0FC494737 /* Pods-FgMobile-tvOSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobile-tvOSTests-umbrella.h"; sourceTree = "<group>"; };
+		63820DBE0EC0E31CC4779D4F358B045A /* Pods-FgMobile-tvOSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobile-tvOSTests.modulemap"; sourceTree = "<group>"; };
+		6CADDBB3AB73A08A4642F2B790B0B352 /* Pods-FgMobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobile-dummy.m"; sourceTree = "<group>"; };
+		7489C3376AE1E76FD047FE7826EEE204 /* Pods-FgMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		7903F7403A2A2E1023FBD5B05BB5F568 /* Pods-FgMobileTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobileTests.modulemap"; sourceTree = "<group>"; };
+		80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		86D2C68FFCBEB01B288C61803AFCE4E8 /* Pods-FgMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A8889BABAE43D20E06F0F808420C98D /* Pods-FgMobileTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobileTests-Info.plist"; sourceTree = "<group>"; };
+		8CD01F2C8B694B58E28A31049CC14FAA /* Pods-FgMobile-tvOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FgMobile-tvOS.modulemap"; sourceTree = "<group>"; };
+		94A5240BB9AFB85C18D2421E4E801ABF /* Pods-FgMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile.release.xcconfig"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0EADC91B27292E4F190C64F0044CD4F /* OIDAuthorizationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationRequest.h; path = Source/OIDAuthorizationRequest.h; sourceTree = "<group>"; };
-		A1450B433245EC8BEB865C767E2649B8 /* AppAuth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AppAuth.h; path = Source/AppAuth.h; sourceTree = "<group>"; };
-		A22962E617A136547882661442FDEAA2 /* Pods-FgMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FgMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		A2EAED4DDBDAB0EB26F93813C7145B2B /* OIDAuthStateChangeDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthStateChangeDelegate.h; path = Source/OIDAuthStateChangeDelegate.h; sourceTree = "<group>"; };
-		A4CD09A5663601D276CA7B978A6AF4E8 /* OIDAuthState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthState.m; path = Source/OIDAuthState.m; sourceTree = "<group>"; };
-		A514DE35F251D12C5887EC60CE424C60 /* OIDGrantTypes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDGrantTypes.m; path = Source/OIDGrantTypes.m; sourceTree = "<group>"; };
-		A72857463FF1CB4A561CD53396C34AC0 /* AppAuth-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AppAuth-umbrella.h"; sourceTree = "<group>"; };
-		A74F5B419F852D6EBCC37D5FC1DDC5CB /* OIDErrorUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDErrorUtilities.m; path = Source/OIDErrorUtilities.m; sourceTree = "<group>"; };
-		A8593B6B5C32B04FE9DE2C4B1637AC0F /* Pods-FgMobile-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-Info.plist"; sourceTree = "<group>"; };
-		A85CB48A17FBC397113E96D747F5CD9F /* OIDTokenUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDTokenUtilities.m; path = Source/OIDTokenUtilities.m; sourceTree = "<group>"; };
-		AA06330718EB73F4AE9ECDAB006825D7 /* OIDIDToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDIDToken.h; path = Source/OIDIDToken.h; sourceTree = "<group>"; };
-		AA764D164249479578B5C8ED23FC9970 /* OIDExternalUserAgentRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDExternalUserAgentRequest.h; path = Source/OIDExternalUserAgentRequest.h; sourceTree = "<group>"; };
-		AC0ADEE0C82A496CEB513AA1DBCFB674 /* OIDScopeUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDScopeUtilities.m; path = Source/OIDScopeUtilities.m; sourceTree = "<group>"; };
-		AE1934C3E2591D28468845C289512E7E /* OIDURLQueryComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDURLQueryComponent.h; path = Source/OIDURLQueryComponent.h; sourceTree = "<group>"; };
-		AEEAE3D255DCAF64735FCE0C3CCF9E7B /* OIDAuthState+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthState+IOS.h"; path = "Source/iOS/OIDAuthState+IOS.h"; sourceTree = "<group>"; };
-		AF99669168721A0CB3EC49CE969E99E8 /* OIDAuthorizationService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthorizationService.m; path = Source/OIDAuthorizationService.m; sourceTree = "<group>"; };
-		B238DD3608AAB453071D1DA75C54BDE3 /* Pods-FgMobile-tvOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobile-tvOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B4CA864C4F95D855CAB5B9E1863527E1 /* AppAuth-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AppAuth-prefix.pch"; sourceTree = "<group>"; };
-		BB3850A08FD0C75F78E0011208787184 /* Pods-FgMobile-tvOSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobile-tvOSTests-umbrella.h"; sourceTree = "<group>"; };
-		C425518E4BDE08E1B3DEB0A826D27627 /* OIDServiceConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDServiceConfiguration.h; path = Source/OIDServiceConfiguration.h; sourceTree = "<group>"; };
-		C9F90AC7C63F32AA3FF325F828E249F3 /* OIDResponseTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDResponseTypes.h; path = Source/OIDResponseTypes.h; sourceTree = "<group>"; };
-		CB0411839220E45EC154A9AC5BCC457F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CD9BCED93120DEC2D7D3DC3DEC486CB1 /* OIDAuthorizationService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationService.h; path = Source/OIDAuthorizationService.h; sourceTree = "<group>"; };
-		D07D987455F6AF6301E31E50DD1BD538 /* Pods-FgMobile-tvOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		D1637CF44C3E464AAC9F2D62E0B69970 /* OIDServiceConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDServiceConfiguration.m; path = Source/OIDServiceConfiguration.m; sourceTree = "<group>"; };
-		D1CDA74577318F70A241A73F121A8C76 /* OIDFieldMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDFieldMapping.h; path = Source/OIDFieldMapping.h; sourceTree = "<group>"; };
-		D4EEF01A86135D43C5A498738C71AE2F /* OIDTokenRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenRequest.h; path = Source/OIDTokenRequest.h; sourceTree = "<group>"; };
-		D936E41D8F1AEB7B370E1B42A5359FB3 /* OIDIDToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDIDToken.m; path = Source/OIDIDToken.m; sourceTree = "<group>"; };
-		DC2C3FF3F44E2F36443885B6D7DC82C6 /* Pods-FgMobileTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobileTests-umbrella.h"; sourceTree = "<group>"; };
-		DD1CC7F38368EA92E70A727767952485 /* OIDRegistrationResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDRegistrationResponse.m; path = Source/OIDRegistrationResponse.m; sourceTree = "<group>"; };
-		DFB90FE1A1D90B4DE2CE736E75025239 /* OIDURLSessionProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDURLSessionProvider.h; path = Source/OIDURLSessionProvider.h; sourceTree = "<group>"; };
-		E0E6E120BA38239CEEB960F87E2E1E11 /* OIDURLSessionProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDURLSessionProvider.m; path = Source/OIDURLSessionProvider.m; sourceTree = "<group>"; };
-		E6C086029E0347AB02BDE13E5688241A /* Pods-FgMobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobile-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E7CA52D6CFB6B8C2D5BA2BC64823F136 /* OIDRegistrationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDRegistrationRequest.h; path = Source/OIDRegistrationRequest.h; sourceTree = "<group>"; };
-		EBF797C97B93A53941C1308BDC275766 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9DA67802C980BB9BAAD6FFDF7B2D2FDC /* Pods-FgMobile-tvOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		ABF6BA1A12A2FC0705EC3545838D7D43 /* Pods-FgMobile-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-Info.plist"; sourceTree = "<group>"; };
+		B1D43E07E623D6059D00B446F0EC7AB5 /* Pods-FgMobile-tvOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobile-tvOS-umbrella.h"; sourceTree = "<group>"; };
+		B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B7A5942D23A9F01121690F7AF9021D46 /* Pods-FgMobile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FgMobile-umbrella.h"; sourceTree = "<group>"; };
+		C6D492922BAD68C54E3CCDDDBB9EE32A /* Pods-FgMobile-tvOSTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOSTests-Info.plist"; sourceTree = "<group>"; };
+		D0301D95B002640FEED7A593CC22161B /* Pods-FgMobile-tvOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-tvOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		D1EE1AC117F6F1A5A0BD09D080FD92CF /* Pods-FgMobileTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobileTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DFEB295177035BF1566B4BDBD51305EE /* Pods-FgMobile-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobile-tvOS-dummy.m"; sourceTree = "<group>"; };
+		E4D21E905C5E19EA72DB7AD276DCA8FE /* Pods-FgMobile-tvOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FgMobile-tvOSTests-dummy.m"; sourceTree = "<group>"; };
+		EF6054C23E9633414C6CEA1F869F85A3 /* Pods-FgMobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FgMobile-acknowledgements.plist"; sourceTree = "<group>"; };
+		F01E4BD54942F706368C9CD9389CFBC4 /* Pods-FgMobile-tvOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobile-tvOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F2D6F82E5B94C565127F903401E18E93 /* Pods_FgMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FgMobileTests.framework; path = "Pods-FgMobileTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4674B1716932FC1E832E578E9A4E562 /* AppAuth-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AppAuth-Info.plist"; sourceTree = "<group>"; };
-		F6166809D2D5C672B9A849355EF1280F /* OIDErrorUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDErrorUtilities.h; path = Source/OIDErrorUtilities.h; sourceTree = "<group>"; };
-		F6D7BCE2F7E7F25C0A9126B200A00DA4 /* OIDURLQueryComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDURLQueryComponent.m; path = Source/OIDURLQueryComponent.m; sourceTree = "<group>"; };
-		F8FB7F1AA4CD05D30C653445B0665546 /* OIDError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDError.m; path = Source/OIDError.m; sourceTree = "<group>"; };
-		FF55722EB25B489D5C051502DB7024FA /* OIDExternalUserAgentSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDExternalUserAgentSession.h; path = Source/OIDExternalUserAgentSession.h; sourceTree = "<group>"; };
+		FB728917D01D860C15725E1B6916CF0E /* Pods-FgMobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FgMobile-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		31A61715F10B75914E85C5C43AEA5C16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2C28C50A1E1B4346989CA83D992188B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3D848B96DAFA509CE9516086ABCE361D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,28 +97,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B1BD89CCF06D5533D7DE04405E37AC6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				79CE498DC169D0D704947BED09C00C80 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AE4CB4476375576F832E05E19CB20A04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E2038657E7F7F6CF239030363F01071B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1D667AA0D2D4A9E2D1305A7D6DD99DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2A259286B603521D2D9EF014565354CB /* Foundation.framework in Frameworks */,
-				8E789EE22685AFD33428EE66678B5D10 /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +116,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F081E3B9420B812EF9A5E6CAEDF7C93 /* Products */ = {
+		07E514FFEBDC6012D1908B08E9A1B39D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3FD1B4C1246D643E9476438C28048FA8 /* AppAuth.framework */,
 				4C4EB36FA9F1C73E580A17EEAACE0971 /* Pods_FgMobile.framework */,
 				01AF88D4275BD7DC8E8303F86540128E /* Pods_FgMobile_tvOS.framework */,
 				00486D1413AE908BEB9AA10F8671CFB2 /* Pods_FgMobile_tvOSTests.framework */,
@@ -277,224 +127,114 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		46E67EC8F539017583D5E56A2DE6A6DB /* Support Files */ = {
+		145A744B2E72A7AA054F19A54EADAA9F /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				76415245FEAB0AD250B5C8786F1540A4 /* AppAuth.modulemap */,
-				7540D5DBF40E39A66B4438B9341FFDC8 /* AppAuth.xcconfig */,
-				0AD3B6DB5DAA78CEC0FF9E8917934AA0 /* AppAuth-dummy.m */,
-				F4674B1716932FC1E832E578E9A4E562 /* AppAuth-Info.plist */,
-				B4CA864C4F95D855CAB5B9E1863527E1 /* AppAuth-prefix.pch */,
-				A72857463FF1CB4A561CD53396C34AC0 /* AppAuth-umbrella.h */,
+				D4B8C4EF464E163EB636FB8F228E1C89 /* Pods-FgMobile */,
+				5E8C709D9382DFD91A3686789D4263F8 /* Pods-FgMobile-tvOS */,
+				F9FAD7A81838F9D836146C8F93089634 /* Pods-FgMobile-tvOSTests */,
+				D1C240332F12AE231E3E13AD685911BE /* Pods-FgMobileTests */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/AppAuth";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		54D17D2D30D62C86689F200DED359C77 /* iOS */ = {
+		5E8C709D9382DFD91A3686789D4263F8 /* Pods-FgMobile-tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				CB0411839220E45EC154A9AC5BCC457F /* Foundation.framework */,
-				4C0527A8BF9002F2B0B8038D1CA64A2D /* SafariServices.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		58C03BCAA6B2F085A8EAA705162DC9E7 /* Pods-FgMobileTests */ = {
-			isa = PBXGroup;
-			children = (
-				89DAC68235CF0AC14224E5529532F4BA /* Pods-FgMobileTests.modulemap */,
-				7E71B5E93599BD80DE3ED0E1502A9541 /* Pods-FgMobileTests-acknowledgements.markdown */,
-				4AA10674E2AE678CC6A2150B2DFFFC0F /* Pods-FgMobileTests-acknowledgements.plist */,
-				53266D06537877A3ADDEBA7ED2E89EE7 /* Pods-FgMobileTests-dummy.m */,
-				9062296A6E87F9313B4B42686C80076D /* Pods-FgMobileTests-Info.plist */,
-				DC2C3FF3F44E2F36443885B6D7DC82C6 /* Pods-FgMobileTests-umbrella.h */,
-				7F1C01A559062693C6DF32991B495838 /* Pods-FgMobileTests.debug.xcconfig */,
-				6D0BB90CD3C35BE46BA45F671C132424 /* Pods-FgMobileTests.release.xcconfig */,
-			);
-			name = "Pods-FgMobileTests";
-			path = "Target Support Files/Pods-FgMobileTests";
-			sourceTree = "<group>";
-		};
-		5B16F2E290267706160CE602FAE8A0BD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AD2350B0E68D564EABC34BE40D0CA0EC /* AppAuth */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		5FC8C3E37FDC74507F5B63C8D9D2083B /* Pods-FgMobile */ = {
-			isa = PBXGroup;
-			children = (
-				9B8B955658614FD3C18E0C05BED305B3 /* Pods-FgMobile.modulemap */,
-				E6C086029E0347AB02BDE13E5688241A /* Pods-FgMobile-acknowledgements.markdown */,
-				286994656B03141BD73681A78F33EDD6 /* Pods-FgMobile-acknowledgements.plist */,
-				703BA8D420786EBD651833D3841351E4 /* Pods-FgMobile-dummy.m */,
-				283ECA3F0696A33E1343970ABF041D6A /* Pods-FgMobile-frameworks.sh */,
-				A8593B6B5C32B04FE9DE2C4B1637AC0F /* Pods-FgMobile-Info.plist */,
-				24E597537DD6CB439D05998B77344E59 /* Pods-FgMobile-umbrella.h */,
-				1284E7B5ECCC5D89552A4F29B8C98E67 /* Pods-FgMobile.debug.xcconfig */,
-				6883438226CD2DE6C367D4320EB2351F /* Pods-FgMobile.release.xcconfig */,
-			);
-			name = "Pods-FgMobile";
-			path = "Target Support Files/Pods-FgMobile";
-			sourceTree = "<group>";
-		};
-		7480BBD5F8C4D0707F7AD3D8AEF58606 /* Pods-FgMobile-tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				215E74E92C17F9865EF121E87D2CC4F8 /* Pods-FgMobile-tvOS.modulemap */,
-				B238DD3608AAB453071D1DA75C54BDE3 /* Pods-FgMobile-tvOS-acknowledgements.markdown */,
-				D07D987455F6AF6301E31E50DD1BD538 /* Pods-FgMobile-tvOS-acknowledgements.plist */,
-				6DE665686C4A01CA100879B9AD294F12 /* Pods-FgMobile-tvOS-dummy.m */,
-				3CD3BBD721A47074F26C0EB20BEB5EC1 /* Pods-FgMobile-tvOS-Info.plist */,
-				103C04C3E627A4669FE818C318096C75 /* Pods-FgMobile-tvOS-umbrella.h */,
-				1EED1D32889EA3BAE34CF7318823AF2B /* Pods-FgMobile-tvOS.debug.xcconfig */,
-				89A900A7EF18671CF4D7283F209CB162 /* Pods-FgMobile-tvOS.release.xcconfig */,
+				8CD01F2C8B694B58E28A31049CC14FAA /* Pods-FgMobile-tvOS.modulemap */,
+				F01E4BD54942F706368C9CD9389CFBC4 /* Pods-FgMobile-tvOS-acknowledgements.markdown */,
+				D0301D95B002640FEED7A593CC22161B /* Pods-FgMobile-tvOS-acknowledgements.plist */,
+				DFEB295177035BF1566B4BDBD51305EE /* Pods-FgMobile-tvOS-dummy.m */,
+				39FA9F27AAAF67393DC4228C17C4E4F7 /* Pods-FgMobile-tvOS-Info.plist */,
+				B1D43E07E623D6059D00B446F0EC7AB5 /* Pods-FgMobile-tvOS-umbrella.h */,
+				21AF86436449E9460643430DD81DCC3B /* Pods-FgMobile-tvOS.debug.xcconfig */,
+				131F5001720EB2DD11CBE419EA83C627 /* Pods-FgMobile-tvOS.release.xcconfig */,
 			);
 			name = "Pods-FgMobile-tvOS";
 			path = "Target Support Files/Pods-FgMobile-tvOS";
 			sourceTree = "<group>";
 		};
-		77CDF31708BEF089483F0D3DDAE2F2A2 /* Core */ = {
+		71BF10D9671F60B91D333968CED34958 /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				27AD64654EF6D85CF2080ACADBDC1FD8 /* AppAuthCore.h */,
-				A0EADC91B27292E4F190C64F0044CD4F /* OIDAuthorizationRequest.h */,
-				7C50BC0210E6EF06D3BDDB485F89B4B5 /* OIDAuthorizationRequest.m */,
-				0D19917BD96787B9DA559F7B8C5FC01C /* OIDAuthorizationResponse.h */,
-				90BC476E34864220CD47A26803274ABE /* OIDAuthorizationResponse.m */,
-				CD9BCED93120DEC2D7D3DC3DEC486CB1 /* OIDAuthorizationService.h */,
-				AF99669168721A0CB3EC49CE969E99E8 /* OIDAuthorizationService.m */,
-				9699325C555F4B1CF60B9F5AC1B83DFF /* OIDAuthState.h */,
-				A4CD09A5663601D276CA7B978A6AF4E8 /* OIDAuthState.m */,
-				A2EAED4DDBDAB0EB26F93813C7145B2B /* OIDAuthStateChangeDelegate.h */,
-				07938AC81D538BFA546B4C758005B8B3 /* OIDAuthStateErrorDelegate.h */,
-				366207485575BAB69E14B27EAC97A124 /* OIDClientMetadataParameters.h */,
-				2F2A12A9B27562A0A7A412128A06C3D8 /* OIDClientMetadataParameters.m */,
-				44428B4F96008CBAC883E7CEDD1801BC /* OIDDefines.h */,
-				12F1AA5D569855706DEEBA0AB056062F /* OIDError.h */,
-				F8FB7F1AA4CD05D30C653445B0665546 /* OIDError.m */,
-				F6166809D2D5C672B9A849355EF1280F /* OIDErrorUtilities.h */,
-				A74F5B419F852D6EBCC37D5FC1DDC5CB /* OIDErrorUtilities.m */,
-				72FD18392620C8D61B023DD0B8366469 /* OIDExternalUserAgent.h */,
-				AA764D164249479578B5C8ED23FC9970 /* OIDExternalUserAgentRequest.h */,
-				FF55722EB25B489D5C051502DB7024FA /* OIDExternalUserAgentSession.h */,
-				D1CDA74577318F70A241A73F121A8C76 /* OIDFieldMapping.h */,
-				1378F856494E8BFFB9C27C15064335F9 /* OIDFieldMapping.m */,
-				8DA1468D3EE6761590CA8A01302D7AB3 /* OIDGrantTypes.h */,
-				A514DE35F251D12C5887EC60CE424C60 /* OIDGrantTypes.m */,
-				AA06330718EB73F4AE9ECDAB006825D7 /* OIDIDToken.h */,
-				D936E41D8F1AEB7B370E1B42A5359FB3 /* OIDIDToken.m */,
-				E7CA52D6CFB6B8C2D5BA2BC64823F136 /* OIDRegistrationRequest.h */,
-				79AFF3A302FE608CA7263FF4AB819E2D /* OIDRegistrationRequest.m */,
-				9ACC131093E80761EF996A91D61F7F09 /* OIDRegistrationResponse.h */,
-				DD1CC7F38368EA92E70A727767952485 /* OIDRegistrationResponse.m */,
-				C9F90AC7C63F32AA3FF325F828E249F3 /* OIDResponseTypes.h */,
-				69C1C9D3F80EA82B83062FE2DA27A5A6 /* OIDResponseTypes.m */,
-				015BBBFAC4C98E968BB2F97CDFF565F2 /* OIDScopes.h */,
-				813A35A16347060D6594A62AC69D95EC /* OIDScopes.m */,
-				3DF4521904153BB3965FCCDABE027482 /* OIDScopeUtilities.h */,
-				AC0ADEE0C82A496CEB513AA1DBCFB674 /* OIDScopeUtilities.m */,
-				C425518E4BDE08E1B3DEB0A826D27627 /* OIDServiceConfiguration.h */,
-				D1637CF44C3E464AAC9F2D62E0B69970 /* OIDServiceConfiguration.m */,
-				916A15DA09B989129ECA5D72BBB97203 /* OIDServiceDiscovery.h */,
-				5040E0BEDD991A87EE8AB79DEF539F21 /* OIDServiceDiscovery.m */,
-				D4EEF01A86135D43C5A498738C71AE2F /* OIDTokenRequest.h */,
-				400A170922F4DE4B9CD04F0A6E789484 /* OIDTokenRequest.m */,
-				82A76594C54311190A9AE41A064F10F2 /* OIDTokenResponse.h */,
-				1104A8CBF3237C8D944A32F634F0F38B /* OIDTokenResponse.m */,
-				81AF484FF808ABA48FE27F62640C31DE /* OIDTokenUtilities.h */,
-				A85CB48A17FBC397113E96D747F5CD9F /* OIDTokenUtilities.m */,
-				AE1934C3E2591D28468845C289512E7E /* OIDURLQueryComponent.h */,
-				F6D7BCE2F7E7F25C0A9126B200A00DA4 /* OIDURLQueryComponent.m */,
-				DFB90FE1A1D90B4DE2CE736E75025239 /* OIDURLSessionProvider.h */,
-				E0E6E120BA38239CEEB960F87E2E1E11 /* OIDURLSessionProvider.m */,
+				B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */,
 			);
-			name = Core;
+			name = tvOS;
 			sourceTree = "<group>";
 		};
-		7ABDB15A669CDE08777FF945E034A0FA /* Targets Support Files */ = {
+		8910DE18F4068EE7F2F8E36E5101A369 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5FC8C3E37FDC74507F5B63C8D9D2083B /* Pods-FgMobile */,
-				7480BBD5F8C4D0707F7AD3D8AEF58606 /* Pods-FgMobile-tvOS */,
-				A6E207F218C37B96B891CD05FF6A57F7 /* Pods-FgMobile-tvOSTests */,
-				58C03BCAA6B2F085A8EAA705162DC9E7 /* Pods-FgMobileTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		975EABADD71713D82CB0127F8721215A /* ExternalUserAgent */ = {
-			isa = PBXGroup;
-			children = (
-				A1450B433245EC8BEB865C767E2649B8 /* AppAuth.h */,
-				660C200DB08F12E14B2A1F2337E75066 /* OIDAuthorizationService+IOS.h */,
-				1F2605650ADE59FBB7735733034E54F0 /* OIDAuthorizationService+IOS.m */,
-				AEEAE3D255DCAF64735FCE0C3CCF9E7B /* OIDAuthState+IOS.h */,
-				80F0D62A01064EF7EE3759969FDAFAD2 /* OIDAuthState+IOS.m */,
-				4ACA427D80C4B7CA819EC65E61B973AF /* OIDExternalUserAgentIOS.h */,
-				74D34B50B7830A6CFDB2883B05F2E64E /* OIDExternalUserAgentIOS.m */,
-				67CA8DBBEDC6F5E6C7A6F7F158BD62FF /* OIDExternalUserAgentIOSCustomBrowser.h */,
-				93DF01B99DB671D911E4187CFFCBD555 /* OIDExternalUserAgentIOSCustomBrowser.m */,
-			);
-			name = ExternalUserAgent;
-			sourceTree = "<group>";
-		};
-		A689D4F57117C20956C0E4E9C44F42DA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				54D17D2D30D62C86689F200DED359C77 /* iOS */,
-				B068BE12C349A33D1F8612FFCC2CBCF9 /* tvOS */,
+				9A88CC71D6E55F0202A23277A509BCA0 /* iOS */,
+				71BF10D9671F60B91D333968CED34958 /* tvOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A6E207F218C37B96B891CD05FF6A57F7 /* Pods-FgMobile-tvOSTests */ = {
+		9A88CC71D6E55F0202A23277A509BCA0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				43DFAE729B5E722DD3405A836740E8C0 /* Pods-FgMobile-tvOSTests.modulemap */,
-				5B5D3508E0510285F60AA8272107A38B /* Pods-FgMobile-tvOSTests-acknowledgements.markdown */,
-				845B3895CC695389F4036D0D87D375A2 /* Pods-FgMobile-tvOSTests-acknowledgements.plist */,
-				3084A323D460A885AF98443147550625 /* Pods-FgMobile-tvOSTests-dummy.m */,
-				33365EA8184D33A9B603C791A174D25F /* Pods-FgMobile-tvOSTests-Info.plist */,
-				BB3850A08FD0C75F78E0011208787184 /* Pods-FgMobile-tvOSTests-umbrella.h */,
-				7E8C490AB99E5815C088C5392725272B /* Pods-FgMobile-tvOSTests.debug.xcconfig */,
-				A22962E617A136547882661442FDEAA2 /* Pods-FgMobile-tvOSTests.release.xcconfig */,
+				80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */,
 			);
-			name = "Pods-FgMobile-tvOSTests";
-			path = "Target Support Files/Pods-FgMobile-tvOSTests";
-			sourceTree = "<group>";
-		};
-		AD2350B0E68D564EABC34BE40D0CA0EC /* AppAuth */ = {
-			isa = PBXGroup;
-			children = (
-				77CDF31708BEF089483F0D3DDAE2F2A2 /* Core */,
-				975EABADD71713D82CB0127F8721215A /* ExternalUserAgent */,
-				46E67EC8F539017583D5E56A2DE6A6DB /* Support Files */,
-			);
-			name = AppAuth;
-			path = AppAuth;
-			sourceTree = "<group>";
-		};
-		B068BE12C349A33D1F8612FFCC2CBCF9 /* tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				EBF797C97B93A53941C1308BDC275766 /* Foundation.framework */,
-			);
-			name = tvOS;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				A689D4F57117C20956C0E4E9C44F42DA /* Frameworks */,
-				5B16F2E290267706160CE602FAE8A0BD /* Pods */,
-				3F081E3B9420B812EF9A5E6CAEDF7C93 /* Products */,
-				7ABDB15A669CDE08777FF945E034A0FA /* Targets Support Files */,
+				8910DE18F4068EE7F2F8E36E5101A369 /* Frameworks */,
+				07E514FFEBDC6012D1908B08E9A1B39D /* Products */,
+				145A744B2E72A7AA054F19A54EADAA9F /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D1C240332F12AE231E3E13AD685911BE /* Pods-FgMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				7903F7403A2A2E1023FBD5B05BB5F568 /* Pods-FgMobileTests.modulemap */,
+				D1EE1AC117F6F1A5A0BD09D080FD92CF /* Pods-FgMobileTests-acknowledgements.markdown */,
+				4A4226364780EE983F361B66AF6F563E /* Pods-FgMobileTests-acknowledgements.plist */,
+				4829E9987B68ABB8F0FC4D48989E1D10 /* Pods-FgMobileTests-dummy.m */,
+				8A8889BABAE43D20E06F0F808420C98D /* Pods-FgMobileTests-Info.plist */,
+				156D9F63564D57939929919955AAE031 /* Pods-FgMobileTests-umbrella.h */,
+				86D2C68FFCBEB01B288C61803AFCE4E8 /* Pods-FgMobileTests.debug.xcconfig */,
+				472B77937B31E309FF5D958EEDCDF7B1 /* Pods-FgMobileTests.release.xcconfig */,
+			);
+			name = "Pods-FgMobileTests";
+			path = "Target Support Files/Pods-FgMobileTests";
+			sourceTree = "<group>";
+		};
+		D4B8C4EF464E163EB636FB8F228E1C89 /* Pods-FgMobile */ = {
+			isa = PBXGroup;
+			children = (
+				57F56D395698BD7A6F28566884D41753 /* Pods-FgMobile.modulemap */,
+				FB728917D01D860C15725E1B6916CF0E /* Pods-FgMobile-acknowledgements.markdown */,
+				EF6054C23E9633414C6CEA1F869F85A3 /* Pods-FgMobile-acknowledgements.plist */,
+				6CADDBB3AB73A08A4642F2B790B0B352 /* Pods-FgMobile-dummy.m */,
+				ABF6BA1A12A2FC0705EC3545838D7D43 /* Pods-FgMobile-Info.plist */,
+				B7A5942D23A9F01121690F7AF9021D46 /* Pods-FgMobile-umbrella.h */,
+				7489C3376AE1E76FD047FE7826EEE204 /* Pods-FgMobile.debug.xcconfig */,
+				94A5240BB9AFB85C18D2421E4E801ABF /* Pods-FgMobile.release.xcconfig */,
+			);
+			name = "Pods-FgMobile";
+			path = "Target Support Files/Pods-FgMobile";
+			sourceTree = "<group>";
+		};
+		F9FAD7A81838F9D836146C8F93089634 /* Pods-FgMobile-tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				63820DBE0EC0E31CC4779D4F358B045A /* Pods-FgMobile-tvOSTests.modulemap */,
+				588465F5C75DF4CC4D63706EB1BD8F30 /* Pods-FgMobile-tvOSTests-acknowledgements.markdown */,
+				9DA67802C980BB9BAAD6FFDF7B2D2FDC /* Pods-FgMobile-tvOSTests-acknowledgements.plist */,
+				E4D21E905C5E19EA72DB7AD276DCA8FE /* Pods-FgMobile-tvOSTests-dummy.m */,
+				C6D492922BAD68C54E3CCDDDBB9EE32A /* Pods-FgMobile-tvOSTests-Info.plist */,
+				6284F0E096F35EC8AB51F3A0FC494737 /* Pods-FgMobile-tvOSTests-umbrella.h */,
+				3FA98C5881B974557B010FED253F784C /* Pods-FgMobile-tvOSTests.debug.xcconfig */,
+				5975CC6B76CC6E5CAEFFE5DDDA673684 /* Pods-FgMobile-tvOSTests.release.xcconfig */,
+			);
+			name = "Pods-FgMobile-tvOSTests";
+			path = "Target Support Files/Pods-FgMobile-tvOSTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,61 +248,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		700BABCA487E62B4C2403C9828556B06 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DDEE99A58A3E4FE82EDA1FA849BC4950 /* Pods-FgMobile-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		744DC41CB757EE2C45026663E8BB5578 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2F9C00002D8C023D7173BF107E8135B8 /* AppAuth-umbrella.h in Headers */,
-				734D0D19AC48E45FC52B1021FC368D9C /* AppAuth.h in Headers */,
-				6161B76650130EAEAAFF81094716062A /* AppAuthCore.h in Headers */,
-				02C29597F3B1FFE9843850801B76A84C /* OIDAuthorizationRequest.h in Headers */,
-				69100A2A706D76240D1DF183C43B9DF4 /* OIDAuthorizationResponse.h in Headers */,
-				456BFE3B5C50E7319148E2940A57CB8C /* OIDAuthorizationService+IOS.h in Headers */,
-				BEA40146FD14E04F4C28BF31832540CA /* OIDAuthorizationService.h in Headers */,
-				71A387262D457799862CC5709BD6CFFB /* OIDAuthState+IOS.h in Headers */,
-				D592A01C772497A466397D06040A17A9 /* OIDAuthState.h in Headers */,
-				E95E74415FB4B52B40E236B8ECF7DE8A /* OIDAuthStateChangeDelegate.h in Headers */,
-				3E882CC6068C49CBE7A58D2D7C2A548D /* OIDAuthStateErrorDelegate.h in Headers */,
-				2E969E67C51A56CB197DB3E4C593A7B6 /* OIDClientMetadataParameters.h in Headers */,
-				BA2C78EB644C7AEE6E0A07A97BD8401E /* OIDDefines.h in Headers */,
-				E98CF4E9F82ED4D2053FC2104E88A08C /* OIDError.h in Headers */,
-				5CA45F27781DA8A732F2C4C75124C658 /* OIDErrorUtilities.h in Headers */,
-				A791D97F0BD3C01627011FC1896C9888 /* OIDExternalUserAgent.h in Headers */,
-				C00A24C7B4E372263DEB6ED338F37186 /* OIDExternalUserAgentIOS.h in Headers */,
-				9E6D47228955F3C533B272F2F3F2AB34 /* OIDExternalUserAgentIOSCustomBrowser.h in Headers */,
-				55FEE19BAFD870DD2B8F1A7E09D7FF77 /* OIDExternalUserAgentRequest.h in Headers */,
-				1C3EF9DE885C84E40A78130A62413DE4 /* OIDExternalUserAgentSession.h in Headers */,
-				73A3FD7D93A2E238FB9B0BA56B347B08 /* OIDFieldMapping.h in Headers */,
-				97AF845B98C6CDD263357E3C750B1DD0 /* OIDGrantTypes.h in Headers */,
-				66C178BBE475AA5D53FED2B6D70808D8 /* OIDIDToken.h in Headers */,
-				507E70F51023AAE1A886713C66D83D3E /* OIDRegistrationRequest.h in Headers */,
-				29000FEEE37975CAD55070F2B971506F /* OIDRegistrationResponse.h in Headers */,
-				8986CF29EB23A291425549F0C42DB7F0 /* OIDResponseTypes.h in Headers */,
-				856C1292515F36586081EDF52AF6C491 /* OIDScopes.h in Headers */,
-				8B599990023C760A2EBF2F45D6B67B61 /* OIDScopeUtilities.h in Headers */,
-				7B54277BF787CF977854FAEB680FE46E /* OIDServiceConfiguration.h in Headers */,
-				607A00D5FFCC27784222B78C47500FEA /* OIDServiceDiscovery.h in Headers */,
-				278A88D0D889CF3AAA1ABDDDD42BE9F6 /* OIDTokenRequest.h in Headers */,
-				4D175AFE9836DE8DD808367B15C7EA78 /* OIDTokenResponse.h in Headers */,
-				AFEE5EEE3696158C919105BB9BB7BD4B /* OIDTokenUtilities.h in Headers */,
-				C1113423DA6843BC7B25C02A453F0A26 /* OIDURLQueryComponent.h in Headers */,
-				1573A40B494BF8EFE93A47A0221ADD93 /* OIDURLSessionProvider.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DD39802A3FC66C1887E75B1840DE414 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F00556DCB7FDC537153EE60D9ED3E8B0 /* Pods-FgMobile-tvOSTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFF6DE2869E24CF9E71FC5B8974C1534 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010211B8D58A10840548D221919592C9 /* Pods-FgMobile-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,24 +291,6 @@
 			name = "Pods-FgMobile-tvOS";
 			productName = "Pods-FgMobile-tvOS";
 			productReference = 01AF88D4275BD7DC8E8303F86540128E /* Pods_FgMobile_tvOS.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		5C642AA10FB29936669CC269F42079C6 /* AppAuth */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 26AF85A55FBEA17321B748F87FF9CAC7 /* Build configuration list for PBXNativeTarget "AppAuth" */;
-			buildPhases = (
-				744DC41CB757EE2C45026663E8BB5578 /* Headers */,
-				37CCC10AFBD50AB01516FD61B1C2050B /* Sources */,
-				F1D667AA0D2D4A9E2D1305A7D6DD99DF /* Frameworks */,
-				E0E003FFB022AB33E163036183236441 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AppAuth;
-			productName = AppAuth;
-			productReference = 3FD1B4C1246D643E9476438C28048FA8 /* AppAuth.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		633C3B3923EBAAD84630863DA397F9F3 /* Pods-FgMobile-tvOSTests */ = {
@@ -653,17 +333,16 @@
 		};
 		FAE305123A5C198FFFB931751B347530 /* Pods-FgMobile */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C52159FADDCAB90C21E537651B917BB /* Build configuration list for PBXNativeTarget "Pods-FgMobile" */;
+			buildConfigurationList = 8C0640CEC84D93F189F05125C2B8E5E8 /* Build configuration list for PBXNativeTarget "Pods-FgMobile" */;
 			buildPhases = (
-				700BABCA487E62B4C2403C9828556B06 /* Headers */,
-				CA17206B194F5055D21C5896D9E9F3F8 /* Sources */,
-				6B1BD89CCF06D5533D7DE04405E37AC6 /* Frameworks */,
-				BC60D5087E5553AEFE102A19F7B0D9D2 /* Resources */,
+				AFF6DE2869E24CF9E71FC5B8974C1534 /* Headers */,
+				D681D684BE3294964AF4357D9A4579CC /* Sources */,
+				31A61715F10B75914E85C5C43AEA5C16 /* Frameworks */,
+				7A34D5EB10A482DEAC0AF733EACF018E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BFE61F559E3582156BADBD9510E02AAB /* PBXTargetDependency */,
 			);
 			name = "Pods-FgMobile";
 			productName = "Pods-FgMobile";
@@ -687,11 +366,10 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 3F081E3B9420B812EF9A5E6CAEDF7C93 /* Products */;
+			productRefGroup = 07E514FFEBDC6012D1908B08E9A1B39D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C642AA10FB29936669CC269F42079C6 /* AppAuth */,
 				FAE305123A5C198FFFB931751B347530 /* Pods-FgMobile */,
 				13BB9C7B5CAB85520CE1C76932AC08C9 /* Pods-FgMobile-tvOS */,
 				633C3B3923EBAAD84630863DA397F9F3 /* Pods-FgMobile-tvOSTests */,
@@ -701,6 +379,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7A34D5EB10A482DEAC0AF733EACF018E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A2614D453DAE81DB2EC3DE17D2EFD2A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -715,21 +400,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC60D5087E5553AEFE102A19F7B0D9D2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C26E906421FD83D13D27E6B66617B7E2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E0E003FFB022AB33E163036183236441 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -744,40 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				589793E9C2957C6A722D5C6BBED9FE3D /* Pods-FgMobileTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		37CCC10AFBD50AB01516FD61B1C2050B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3C6CF8FAAA7CB0D8A9633E722EA2D5F /* AppAuth-dummy.m in Sources */,
-				DD6640ADE2DD5316A59C1462F27FDABA /* OIDAuthorizationRequest.m in Sources */,
-				524A5F5A2F7695E4149CB67EF5458239 /* OIDAuthorizationResponse.m in Sources */,
-				0C7CEDD43FAC6B2DD1DE90CCBB312DA6 /* OIDAuthorizationService+IOS.m in Sources */,
-				5D1A06D90B142105022ABDEF5190ECC9 /* OIDAuthorizationService.m in Sources */,
-				2597D3380B812D8B87A626C3F59F9801 /* OIDAuthState+IOS.m in Sources */,
-				8E6B9D211304654DCBC1861679B89F03 /* OIDAuthState.m in Sources */,
-				BB89DEFDB70A30FFB495ED70BFAE4921 /* OIDClientMetadataParameters.m in Sources */,
-				1B9FE079DBE68DCA7C221350CFE942FE /* OIDError.m in Sources */,
-				DA208BD501BCFFD0A3EB018E943CDDAC /* OIDErrorUtilities.m in Sources */,
-				8D83E4AC8847F789F38FCCB3052F27D9 /* OIDExternalUserAgentIOS.m in Sources */,
-				1ED0DE911FC0A52C50C9D1D08089962D /* OIDExternalUserAgentIOSCustomBrowser.m in Sources */,
-				FEC8B49009DDDA6D7FE2594F9025626B /* OIDFieldMapping.m in Sources */,
-				95A9A547164A1CA3B3837A83D60CF7C6 /* OIDGrantTypes.m in Sources */,
-				3009756F0345FC0F083E5445C41E54C2 /* OIDIDToken.m in Sources */,
-				D08317997E8392352E43394EBDD45259 /* OIDRegistrationRequest.m in Sources */,
-				8116E3800C66F339C88D2A9A05FB4808 /* OIDRegistrationResponse.m in Sources */,
-				5DFF7CD14DFDEFD3FB9D59B910A78285 /* OIDResponseTypes.m in Sources */,
-				7E56AEF2519F1FDC8779D872A9E43257 /* OIDScopes.m in Sources */,
-				3F15AEF65F18817CED6A4A7E936924A2 /* OIDScopeUtilities.m in Sources */,
-				6CE74F8B9BFC073194EEEA705B8506C3 /* OIDServiceConfiguration.m in Sources */,
-				FD8FA5C77EF932F8A3B11431584DE769 /* OIDServiceDiscovery.m in Sources */,
-				D4B04F498322218518394DC7A581E827 /* OIDTokenRequest.m in Sources */,
-				847C24CA1EDE3A89E20872C949D21666 /* OIDTokenResponse.m in Sources */,
-				836650FC7E024AE6B8BD4ADE0B630688 /* OIDTokenUtilities.m in Sources */,
-				0DB1F446CAD4AEAF4C178F0094DC811F /* OIDURLQueryComponent.m in Sources */,
-				736FBDA79557EA63CE3963727D19E68B /* OIDURLSessionProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,11 +434,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA17206B194F5055D21C5896D9E9F3F8 /* Sources */ = {
+		D681D684BE3294964AF4357D9A4579CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD33472C60F390ED0012E798A29344D /* Pods-FgMobile-dummy.m in Sources */,
+				09A22CFD979859EA66F2A35A2F9611DA /* Pods-FgMobile-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,12 +451,6 @@
 			target = FAE305123A5C198FFFB931751B347530 /* Pods-FgMobile */;
 			targetProxy = 783E23FF6553B6ADD2DCC1609FB08740 /* PBXContainerItemProxy */;
 		};
-		BFE61F559E3582156BADBD9510E02AAB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AppAuth;
-			target = 5C642AA10FB29936669CC269F42079C6 /* AppAuth */;
-			targetProxy = 1E38D6CAD7D1E7CC090289F15E8DAE02 /* PBXContainerItemProxy */;
-		};
 		D0708DAE86E321479EDEB11F3E352337 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-FgMobile-tvOS";
@@ -831,7 +462,7 @@
 /* Begin XCBuildConfiguration section */
 		0E90CB410F9691C3914785E96C33E70B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D0BB90CD3C35BE46BA45F671C132424 /* Pods-FgMobileTests.release.xcconfig */;
+			baseConfigurationReference = 472B77937B31E309FF5D958EEDCDF7B1 /* Pods-FgMobileTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -865,7 +496,7 @@
 		};
 		3071AA55A47576067794174343019C83 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A22962E617A136547882661442FDEAA2 /* Pods-FgMobile-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 5975CC6B76CC6E5CAEFFE5DDDA673684 /* Pods-FgMobile-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -891,37 +522,6 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5A02DFACC7A4E6BB483E97F3D9B47A91 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7540D5DBF40E39A66B4438B9341FFDC8 /* AppAuth.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AppAuth/AppAuth-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AppAuth/AppAuth-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AppAuth/AppAuth.modulemap";
-				PRODUCT_MODULE_NAME = AppAuth;
-				PRODUCT_NAME = AppAuth;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -991,7 +591,7 @@
 		};
 		6E6900CC92983E361A3751C3281CF349 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89A900A7EF18671CF4D7283F209CB162 /* Pods-FgMobile-tvOS.release.xcconfig */;
+			baseConfigurationReference = 131F5001720EB2DD11CBE419EA83C627 /* Pods-FgMobile-tvOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1022,74 +622,10 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		754DE59C92431A057DD2280FBD32E50E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6883438226CD2DE6C367D4320EB2351F /* Pods-FgMobile.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FgMobile/Pods-FgMobile-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FgMobile/Pods-FgMobile.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8A06B7D98018AD6C639E7CAF211E9C55 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7540D5DBF40E39A66B4438B9341FFDC8 /* AppAuth.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AppAuth/AppAuth-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AppAuth/AppAuth-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AppAuth/AppAuth.modulemap";
-				PRODUCT_MODULE_NAME = AppAuth;
-				PRODUCT_NAME = AppAuth;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		8A5839B87FEA825C41114FBA2E64B444 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EED1D32889EA3BAE34CF7318823AF2B /* Pods-FgMobile-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 21AF86436449E9460643430DD81DCC3B /* Pods-FgMobile-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1120,9 +656,9 @@
 			};
 			name = Debug;
 		};
-		C6D27EA6C8E60FC71C728A68CD2EC769 /* Debug */ = {
+		BAD2AB18BE0DF7BCF09BED9B16FFFE61 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1284E7B5ECCC5D89552A4F29B8C98E67 /* Pods-FgMobile.debug.xcconfig */;
+			baseConfigurationReference = 7489C3376AE1E76FD047FE7826EEE204 /* Pods-FgMobile.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1155,7 +691,7 @@
 		};
 		DFAD089AD4F0121E3E4BFE246F4D0B88 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F1C01A559062693C6DF32991B495838 /* Pods-FgMobileTests.debug.xcconfig */;
+			baseConfigurationReference = 86D2C68FFCBEB01B288C61803AFCE4E8 /* Pods-FgMobileTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1253,7 +789,7 @@
 		};
 		F54BD3B904CB876405D191F070825DA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E8C490AB99E5815C088C5392725272B /* Pods-FgMobile-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 3FA98C5881B974557B010FED253F784C /* Pods-FgMobile-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1284,6 +820,40 @@
 			};
 			name = Debug;
 		};
+		F702E169F2A0E7C0149FF15285701803 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94A5240BB9AFB85C18D2421E4E801ABF /* Pods-FgMobile.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FgMobile/Pods-FgMobile-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FgMobile/Pods-FgMobile.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1292,15 +862,6 @@
 			buildConfigurations = (
 				DFAD089AD4F0121E3E4BFE246F4D0B88 /* Debug */,
 				0E90CB410F9691C3914785E96C33E70B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		26AF85A55FBEA17321B748F87FF9CAC7 /* Build configuration list for PBXNativeTarget "AppAuth" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8A06B7D98018AD6C639E7CAF211E9C55 /* Debug */,
-				5A02DFACC7A4E6BB483E97F3D9B47A91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1323,11 +884,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C52159FADDCAB90C21E537651B917BB /* Build configuration list for PBXNativeTarget "Pods-FgMobile" */ = {
+		8C0640CEC84D93F189F05125C2B8E5E8 /* Build configuration list for PBXNativeTarget "Pods-FgMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C6D27EA6C8E60FC71C728A68CD2EC769 /* Debug */,
-				754DE59C92431A057DD2280FBD32E50E /* Release */,
+				BAD2AB18BE0DF7BCF09BED9B16FFFE61 /* Debug */,
+				F702E169F2A0E7C0149FF15285701803 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
