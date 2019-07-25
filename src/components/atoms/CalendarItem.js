@@ -24,25 +24,18 @@ export function CalendarItemPopulated({text}) {
                 {
                     isExpanded && 
                     <View style={styles.panel}>
-                    
-                        {/* time */}
-                        <Text>Start time: 00:00; End time: null</Text>
-                        {/* // h5 fo titles; paragraph for body
-                        // address = link - anchor
-                        // open sans for body; monserrat for titles */}
-                        <Text/>
-                        {/* location */}
-                        <Text>location: xyz</Text>
-                        <Text/>
-                        {/* description */}
-                        <Text>
-                        Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
-                        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-                        officia deserunt mollit anim id est laborum.
-                        </Text>
+                        <Text h5 style={styles.detailtitle}>Time</Text>
+                            <Text p style={styles.detailtxt}>00:00 pm</Text>
+                        <Text h5 style={styles.detailtitle}>location</Text>
+                            <Text p style={styles.detailtxt}>123 asdf lol</Text>
+                        <Text h5 style={styles.detailtitle}>Description</Text>
+                            <Text p style={styles.detailtxt}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
+                            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
+                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+                            officia deserunt mollit anim id est laborum.
+                            </Text> 
 
                     </View>
                 }
@@ -95,9 +88,13 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
     },
     detailtitle: {
-
+        fontFamily: 'montserrat-regular',
+        fontSize: 20,
+        color: 'blue'
     },
     detailtxt: {
-
+        fontFamily: 'open-sans',
+        fontSize: 16,
+        paddingLeft: 5
     }
 });
