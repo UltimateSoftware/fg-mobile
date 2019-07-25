@@ -6,4 +6,4 @@ npm-debug.*
 *.key
 *.mobileprovision
 yarn.lock
-package-lock.json
+.idea/
