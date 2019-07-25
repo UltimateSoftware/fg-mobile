@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         padding: 15,
         paddingHorizontal: 70,
-        backgroundColor: 'pink',
+        backgroundColor: '#fd17b5',
         borderRadius: 25
     },
     buttonText: {
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
         padding: 10,
         width: 45,
         height: 45,
-        backgroundColor: 'pink',
+        backgroundColor: '#fd17b5',
         borderRadius: 25
     },
     fabView: {
