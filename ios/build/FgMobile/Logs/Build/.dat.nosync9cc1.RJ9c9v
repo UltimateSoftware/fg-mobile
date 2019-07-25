@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>4D4B63F2-9C6C-4DCE-B4DA-14D3C4AB126B</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>4D4B63F2-9C6C-4DCE-B4DA-14D3C4AB126B.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FgMobile project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FgMobile</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project FgMobile with scheme FgMobile and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>583785497.51365399</real>
+			<key>timeStoppedRecording</key>
+			<real>583785498.53452098</real>
+			<key>title</key>
+			<string>Building project FgMobile with scheme FgMobile and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>4D4B63F2-9C6C-4DCE-B4DA-14D3C4AB126B</string>
+		</dict>
+		<key>89F1004A-A8E2-40E1-BC5A-E51CD4CB1792</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>89F1004A-A8E2-40E1-BC5A-E51CD4CB1792.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FgMobile project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FgMobile</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project FgMobile with scheme FgMobile and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>583783296.05799997</real>
+			<key>timeStoppedRecording</key>
+			<real>583783297.23323298</real>
+			<key>title</key>
+			<string>Building project FgMobile with scheme FgMobile and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>89F1004A-A8E2-40E1-BC5A-E51CD4CB1792</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
