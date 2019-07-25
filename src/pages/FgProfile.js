@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList, TextInput} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, ScrollView, TouchableOpacity, Image} from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {EditableProfileBanner} from '../components/molecules/EditableProfileBanner';
@@ -32,7 +32,7 @@ function FgProfile() {
     const [members, setMembers] = useState(allMembers.slice(0,4));
     const [editMode, toggleEditMode] = useState(false)
 
-    const handleButton = () => {
+    const handlerViewAllButton = () => {
         setViewAll(true)
         setMembers(allMembers);
     };
@@ -58,6 +58,11 @@ function FgProfile() {
         editableParagraphBlock.current.handleToggleEditMode();
         editableProfileBanner.current.handleToggleEditMode()
         console.log(profile)
+    }
+
+    const handlerSaveButton = () => {
+        handleEditableToggle();
+        // send new info to backend
     }
 
     chooseBannerFile = () => {
@@ -109,36 +114,52 @@ function FgProfile() {
         })
 
     }
+
+    const settingsSVG = '<svg id="gear" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><defs><style>.cls-1 {fill: #9a9a9a;}</style></defs><g id="Group_685" data-name="Group 685" transform="translate(0 0)"><path id="Path_776" data-name="Path 776" class="cls-1" d="M15.645,6.608l-1.835-.451a6.058,6.058,0,0,0-.423-1.008l.855-1.424a.469.469,0,0,0-.071-.573L12.845,1.826a.467.467,0,0,0-.573-.07l-1.426.855a6.039,6.039,0,0,0-1-.42L9.392.355A.469.469,0,0,0,8.938,0H7.063a.468.468,0,0,0-.455.355S6.3,1.636,6.157,2.19a6.018,6.018,0,0,0-1.064.453L3.614,1.756a.47.47,0,0,0-.573.07L1.716,3.152a.469.469,0,0,0-.071.573L2.56,5.252a6.04,6.04,0,0,0-.369.9L.355,6.608A.469.469,0,0,0,0,7.063V8.938a.468.468,0,0,0,.355.455l1.836.451a6.046,6.046,0,0,0,.431,1.025L1.8,12.232a.469.469,0,0,0,.07.573L3.2,14.131a.471.471,0,0,0,.573.07l1.367-.819a6.039,6.039,0,0,0,1.017.428l.451,1.835A.468.468,0,0,0,7.063,16H8.938a.469.469,0,0,0,.455-.355l.451-1.835a5.954,5.954,0,0,0,1.04-.442l1.389.833a.469.469,0,0,0,.573-.07l1.326-1.326a.469.469,0,0,0,.071-.573l-.843-1.4a6,6,0,0,0,.412-.985l1.835-.451A.469.469,0,0,0,16,8.938V7.063A.469.469,0,0,0,15.645,6.608ZM8,11.281A3.281,3.281,0,1,1,11.281,8,3.285,3.285,0,0,1,8,11.281Z" transform="translate(0 0)"/></g></svg>';
     
-    editButtons = !editMode ? <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/> :
+    editButtons = !editMode ? 
+    <TouchableOpacity style={styles.fabButton} onPress={event => handleEditableToggle()}> 
+        <Image 
+            source={require('../../assets/settings-gear.png')}
+        />
+    </TouchableOpacity> :
     <View>
-        <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
         <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
         <Button title="choose avatar file" onPress={event => chooseAvatarFile()} textStyle={{fontSize: 14}}/>
     </View>;
+    saveButton = editMode ? 
+    <TouchableOpacity style={styles.buttonStyle} textStyle={{fontSize: 14}} onPress={event => handlerSaveButton()}>
+        <Text style={styles.buttonText}>Save</Text>
+    </TouchableOpacity> : null;
     viewAllButton = !viewAll ?
-    <Button onPress={event => handleButton()} title="View All"></Button> : null;
+    <TouchableOpacity style={styles.buttonStyle} textStyle={{fontSize: 14}} onPress={event => handlerViewAllButton()}>
+        <Text style={[styles.buttonText, fontSize=16]}>View All</Text>
+    </TouchableOpacity> : null;
 
     return profile.Status == "READY" ? (
-        <ScrollView>
-            <View style={styles.container}>
-                <View style={styles.editButton}>
-                    {editButtons}
-                </View>
-                <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={defaultImage2} imgUri={imgUri} lineOneText={profile.Profile.Profile.firstName + " " + profile.Profile.Profile.lastName} lineTwoText={profile.Profile.Profile.schoolName} lineThreeText={"Class of " + profile.Profile.Profile.gradYear}/>
-                <Inspiration title={"Inspiration"}>
-                    <EditableParagraphBlock ref={editableParagraphBlock} inspiration={profile.Profile.Profile.inspiration}/>
-                </Inspiration>
-                <View style={[styles.titleView, {marginTop: 20}]}>
-                    <View style={styles.titleLine}/>
-                    <Text style={styles.titleLabel}>Chapter Sisters</Text>
-                    <View style={styles.titleLine}/>
-                </View>
-                <MemberGrid members={members}/>
-                {viewAllButton}
+        <View>
+            <ScrollView>
+                <View style={styles.container}>
+                    <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={defaultImage2} imgUri={imgUri} lineOneText={profile.Profile.Profile.firstName + " " + profile.Profile.Profile.lastName} lineTwoText={profile.Profile.Profile.schoolName} lineThreeText={"Class of " + profile.Profile.Profile.gradYear}/>
+                    {saveButton}
+                    <Inspiration title={"Inspiration"}>
+                        <EditableParagraphBlock ref={editableParagraphBlock} inspiration={profile.Profile.Profile.inspiration}/>
+                    </Inspiration>
+                    <View style={[styles.titleView, {marginTop: 20}]}>
+                        <View style={styles.titleLine}/>
+                        <Text style={styles.titleLabel}>Chapter Sisters</Text>
+                        <View style={styles.titleLine}/>
+                    </View>
+                    <MemberGrid members={members}/>
+                    {viewAllButton}
 
+                </View>
+                
+            </ScrollView>
+            <View style={styles.fabView}>
+                {editButtons} 
             </View>
-        </ScrollView>
+        </View>
     ) : (
         <View>
         </View>
@@ -159,9 +180,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-    },
-    editButton: {
-        alignSelf: 'flex-end',
     },
     title: {
         fontSize: 20,
@@ -193,6 +211,32 @@ const styles = StyleSheet.create({
         borderBottomWidth:1,
         height:'60%',
         width:'32%'
+    },
+    buttonStyle: {
+        marginTop: 10,
+        padding: 15,
+        paddingHorizontal: 70,
+        backgroundColor: 'pink',
+        borderRadius: 25
+    },
+    buttonText: {
+        fontFamily: 'montserrat-regular',
+        fontSize: 15,
+        color: 'white',
+        fontWeight : '500'
+    },
+    fabButton: {
+        margin: 5,
+        padding: 10,
+        width: 45,
+        height: 45,
+        backgroundColor: 'pink',
+        borderRadius: 25
+    },
+    fabView: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
     }
 });
 

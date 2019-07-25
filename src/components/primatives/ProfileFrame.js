@@ -7,7 +7,7 @@ export function ProfileFrame({source, avatarSize}) {
     var image = source
 
     return (
-        <View style={[{flex: 1, alignItems: "center"}, styles.elevation]}>
+        <View style={[{flex: 1, alignItems: 'center'}, styles.elevation]}>
             <Image
           style={[{
             width: size,
@@ -16,7 +16,6 @@ export function ProfileFrame({source, avatarSize}) {
             borderColor: 'white',
             borderWidth: 4,
             flex: 1,
-            
           }, ]}
           source={image}
         />

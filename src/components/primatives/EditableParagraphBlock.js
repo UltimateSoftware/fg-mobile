@@ -8,23 +8,33 @@ export class EditableParagraphBlock extends Component{
     constructor(props)
     {
         super(props)
-        this.state = {inspiration: this.props.inspiration, mar: this.props.mar, editable: false}
+        this.state = {inspiration: this.props.inspiration, mar: this.props.mar, editable: false, viewStyle: styles.subViewStyle}
     }
 
     handleToggleEditMode = () => {
         this.setState((prev) => ({
             editable: !prev.editable
         }))
+        if (this.state.viewStyle === styles.subViewStyle) {
+            this.setState(() => ({
+                viewStyle: styles.editSubViewStyle
+            }))
+        } else {
+            this.setState(() => ({
+                viewStyle: styles.subViewStyle
+            }))
+        }
     }
 
     render()
     {
         return (
-            <View style={styles.subViewStyle}>
+            <View style={this.state.viewStyle}>
                 <TextInput
                     editable = {this.state.editable}
-                    style={[styles.inspirationBlock, {marginTop: this.state.mar || 40 }]}
+                    style={styles.inspirationBlock}
                     maxLength = {500}
+                    multiline = {true}
                 >
                     {this.state.inspiration}
                 </TextInput>
@@ -36,13 +46,25 @@ export class EditableParagraphBlock extends Component{
 const styles = StyleSheet.create({
     subViewStyle: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 15
+    },
+    editSubViewStyle: {
+        flex: 1,
+        alignItems: 'center',
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: 'pink',
+        borderRadius: 25
     },
     inspirationBlock: {
         fontFamily: 'opensans-regular',
         fontSize: 14,
         textAlign: 'left',
         color: '#818282',
-        margin: 20
+        marginTop: 5,
+        marginHorizontal: 10,
+        marginBottom: 20
+        // marginHorizontal: 30
     }
 });

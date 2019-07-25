@@ -8,7 +8,8 @@ export class EditableProfileBanner extends Component {
     constructor(props)
     {
         super(props)
-        this.state = {backImgUri: props.backImgUri, imgUri: props.imgUri, editMode: props.editMode, headerText: props.lineOneText, subheadingText: props.lineTwoText, footerText: props.lineThreeText}
+        this.state = {backImgUri: props.backImgUri, imgUri: props.imgUri, editMode: props.editMode, headerText: props.lineOneText, subheadingText: props.lineTwoText, footerText: props.lineThreeText,
+        viewStyle: null}
     }
 
     handleEditBanner = (newSource) => {
@@ -29,17 +30,28 @@ export class EditableProfileBanner extends Component {
         this.setState((prev) => ({
             editMode: !prev.editMode
         }))
+        if (this.state.viewStyle === null) {
+            this.setState(() => ({
+                viewStyle: styles.editSubViewStyle
+            }))
+        } else {
+            this.setState(() => ({
+                viewStyle: null
+            }))
+        }
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <Banner color={styles.color} source={this.state.backImgUri}>
-                    <ProfileFrame source={this.state.imgUri} avatarSize={'l'}/>
                 </Banner>
-                <TextInput editable={this.state.editMode} style={styles.headerText}>
-                  {this.state.headerText}
-                </TextInput>
+                <ProfileFrame style={styles.frame}source={this.state.imgUri} avatarSize={'l'}/>
+                <View style={[this.state.viewStyle, {marginTop: 15}]}>
+                    <TextInput editable={this.state.editMode} style={styles.headerText}>
+                    {this.state.headerText}
+                    </TextInput>
+                </View>
                 <Text style={styles.subheadingText}>
                   {this.state.subheadingText}
                 </Text>
@@ -66,7 +78,7 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 20,
         fontFamily: 'opensans-light',
-        marginTop: 15
+        marginTop: 0
     },
     subheadingText: {
         fontSize: 16,
@@ -77,5 +89,16 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'opensans-light',
         marginTop: 0
+    },
+    editSubViewStyle: {
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: 'pink',
+        borderRadius: 25,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+    },
+    frame: {
+        marginTop: -64
     }
 });
