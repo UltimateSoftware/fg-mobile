@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderWidth: 2,
         borderStyle: 'solid',
-        borderColor: 'pink',
+        borderColor: '#fd17b5',
         borderRadius: 25
     },
     inspirationBlock: {
