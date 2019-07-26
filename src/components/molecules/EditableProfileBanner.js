@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     editSubViewStyle: {
         borderWidth: 2,
         borderStyle: 'solid',
-        borderColor: 'pink',
+        borderColor: '#fd17b5',
         borderRadius: 25,
         paddingHorizontal: 10,
         paddingVertical: 5,

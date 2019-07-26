@@ -120,7 +120,7 @@ function FgProfile() {
     editButtons = !editMode ? 
     <TouchableOpacity style={styles.fabButton} onPress={event => handleEditableToggle()}> 
         <Image 
-            source={require('../../assets/settings-gear.png')}
+            source={require('../../assets/fg-edit.png')}
         />
     </TouchableOpacity> :
     <View>
