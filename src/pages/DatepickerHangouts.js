@@ -81,7 +81,11 @@ function DatepickerHangouts() {
               </View>
             <View style={{...styles.buttonContainer}}>
               <View style={{...styles.selectButton}}>
-                <TouchableHighlight underlayColor="transparent" onPress={() => {console.log(newhangout)}}>
+                <TouchableHighlight underlayColor="transparent" onPress={() => {
+                  newhangout["location"] = currentLocation;
+                  newhangout["date"] = currentDate + " " + currentTime;
+                  console.log(newhangout);
+                }}>
                   <Text style={{...styles.buttonText}}>Finish</Text>
                 </TouchableHighlight>
               </View>
