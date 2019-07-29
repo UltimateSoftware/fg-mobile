@@ -11,7 +11,7 @@ export function CalendarItemPopulated({text}) {
             <View style={styles.flex}>
                 <Text style={styles.titletxt}>{text}</Text>
                 <TouchableOpacity
-                    style={styles.asdf}
+                    style={styles.iconpos}
                     onPress={() => {
                         return expandItem(!isExpanded);
                     }}
@@ -23,10 +23,11 @@ export function CalendarItemPopulated({text}) {
                 
                 {
                     isExpanded && 
+                    // need to get details from backend
                     <View style={styles.panel}>
                         <Text h5 style={styles.detailtitle}>Time</Text>
                             <Text p style={styles.detailtxt}>00:00 pm</Text>
-                        <Text h5 style={styles.detailtitle}>location</Text>
+                        <Text h5 style={styles.detailtitle}>Location</Text>
                             <Text p style={styles.detailtxt}>123 asdf lol</Text>
                         <Text h5 style={styles.detailtitle}>Description</Text>
                             <Text p style={styles.detailtxt}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
@@ -71,30 +72,31 @@ const styles = StyleSheet.create({
         textAlign: 'right'
     },
     panel: {
-        paddingTop: 15
+        paddingTop: 10
     },
     titletxt: {
-        // fontWeight: 'bold',
         fontFamily: 'montserrat-regular',
-        fontSize: 18,
+        color: '#59828B',
+        fontSize: 22,
         paddingTop: 10,
-        // paddingBottom: 10,
         paddingLeft: 5
     },
-    asdf: {
+    iconpos: {
         flex: 1,
         paddingTop: 10,
         paddingLeft: 5,
         alignItems: 'flex-end',
     },
     detailtitle: {
+        paddingTop: 5,
         fontFamily: 'montserrat-regular',
-        fontSize: 20,
-        color: 'blue'
+        fontSize: 18,
+        color: '#59828B'
     },
     detailtxt: {
         fontFamily: 'open-sans',
         fontSize: 16,
-        paddingLeft: 5
+        paddingLeft: 6,
+        color: '#818282'
     }
 });
