@@ -6,7 +6,7 @@ import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {useNavigation, useNavigationParam} from 'react-navigation-hooks';
 import useHangouts from '../domain/models/Hangout';
 import FgHangouts from '../pages/FgHangouts';
-
+import DatepickerHangouts from '../pages/DatepickerHangouts';
 
 function IcebreakerDescription() {
   const [hangout, hangoutActions] = useHangouts();
@@ -14,7 +14,7 @@ function IcebreakerDescription() {
   const { navigate } = useNavigation();
   const item = useNavigationParam('item');
   const icebreaker = useNavigationParam('icebreaker');
-
+  let newhangout = useNavigationParam('newhangout')
 
   useEffect(() => {
     //componentDidMount
@@ -42,7 +42,10 @@ function IcebreakerDescription() {
             </View>
             <View style={{...styles.buttonContainer}}>
               <View style={{...styles.selectButton}}>
-                <TouchableHighlight underlayColor="transparent" onPress={() => {}}>
+                <TouchableHighlight underlayColor="transparent" onPress={(icebreaker) => {
+                  newhangout["icebreakers"].push(icebreaker);
+                  navigate("DatepickerHangouts", {newhangout: newhangout});
+                }}>
                   <Text style={{...styles.buttonText}}>Select</Text>
                 </TouchableHighlight>
               </View>
@@ -83,7 +86,7 @@ const styles = StyleSheet.create({
       color: '#818282',
     },
     bodyText: {
-      fontSize: 16,
+      fontSize: 14,
       fontFamily: 'opensans',
       textAlign: 'center',
       padding: 20,

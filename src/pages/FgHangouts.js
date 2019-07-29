@@ -9,6 +9,7 @@ import CreateHangoutFromTemplate from '../pages/CreateHangoutFromTemplate';
 import HangoutTemplateDescription from '../pages/HangoutTemplateDescription';
 import ChooseIcebreakers from '../pages/ChooseIcebreakers';
 import IcebreakerDescription from '../pages/IcebreakerDescription';
+import DatepickerHangouts from '../pages/DatepickerHangouts';
 import {useNavigation} from 'react-navigation-hooks';
 
 function FgHangouts() {
@@ -130,6 +131,9 @@ const HangoutNavigator = createStackNavigator({
       },
     IcebreakerDescription: {
         screen: IcebreakerDescription
+      },
+    DatepickerHangouts: {
+        screen: DatepickerHangouts
       },
   }, {
       initialRouteName: 'HangoutHome',
