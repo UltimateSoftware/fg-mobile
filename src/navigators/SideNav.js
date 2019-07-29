@@ -1,76 +1,82 @@
 import React from 'react'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, } from 'react-navigation';
-import {Platform, StyleSheet, Text, View, ScrollView, SafeAreaView, Image} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView, SafeAreaView, Image, Button} from 'react-native';
 import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
 import LoginScreen from '../pages/LoginScreen';
 
-const BottomTabs = createDrawerNavigator(
+const SideTabs = createDrawerNavigator(
     {
         Tabs: BottomNav,
     },
     {
         initialRouteName: 'Tabs',
         drawerPosition: 'right',
+        drawerBackgroundColor: 'transparent',
         contentComponent: props => {
             return (
                 <ScrollView>
                     <SafeAreaView
                     forceInset={{ top: 'always', horizontal: 'never' }}
-                    style={styles.menu}
-                >
+                    style={{...styles.menu}}>
                         <View style={styles.container}>
                             <View style={styles.myButton}>
-                                <Text
+                                <Button
                                     style={styles.buttonText}
                                     onPress={() => {
                                     props.navigation.navigate('Auth');
                                     props.navigation.closeDrawer();
                                     }}
-                                >
-                                    BlueScreen
-                                </Text>
+                                    title="Blue Screen"
+                                />
                             </View>
                         </View>
                         <View style={styles.container}>
                             <View style={styles.myButton}>
-                                <Text
+                                <Image source={require('./fg-program.svg')} 
+                                resizeMode='contain'
+                                style={styles.mySvg}/>
+                                {/* <Button
                                     style={styles.buttonText}
                                     onPress={() => {
                                     props.navigation.navigate('DefaultScreen');
                                     props.navigation.closeDrawer();
                                     }}
-                                >
-                                    DefaultScreen
-                                </Text>
+                                    title="Default Screen"
+                            /> */}
+                                
                             </View>
                         </View>
                         <View style={styles.container}>
                             <View style={styles.myButton}>
-                                <Text
+                                <Image source={require('./login.svg')} 
+                                resizeMode='contain'
+                                style={styles.mySvg}/>
+                                {/* <Button
                                     style={styles.buttonText}
                                     onPress={() => {
                                     props.navigation.navigate('Login');
                                     props.navigation.closeDrawer();
                                     }}
-                                >
-                                    LoginScreen
-                                </Text>
+                                    title="Login Screen"
+                            /> */}
                             </View>
                         </View>
                         <View style={styles.container}>
                             <View style={styles.myButton}>
-                                <Text
+                                <Image source={require('./logout.svg')} 
+                                resizeMode='contain'
+                                style={styles.mySvg}/>
+                                {/* <Button
                                     style={styles.buttonText}
                                     onPress={() => {
                                         props.navigation.navigate('Login');
                                         props.navigation.closeDrawer();
                                     }}
-                                >
-                                    Logout
-                                </Text>
+                                    title="Logout"
+                                /> */}
                             </View>
                         </View>
                     </SafeAreaView>
@@ -82,9 +88,10 @@ const BottomTabs = createDrawerNavigator(
  const Stack = createStackNavigator(
     {
         Drawer: {
-            screen: BottomTabs,
+            screen: SideTabs,
+            headerTransparent: true,
             navigationOptions: {
-                header: null,
+                header: null
             },
             
         },
@@ -111,68 +118,37 @@ export default Stack;
 
 const styles = StyleSheet.create({
     menu:{
-        backgroundColor: 'transparent'
+        marginTop: 350,
     },
-    banner:{
-        flex: 1,
-        flexDirection: 'row',
-        backgroundColor: 'pink',
-        justifyContent: 'space-between',
-
-    },
-    textWrapper:{
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        marginBottom: 20,
-        marginTop: 20,
-    },
-    name: {
-        flex: 1,
-        fontSize: 20,
-        textAlign: 'center',
-    },
-    subtitle: {
-        flex: 1,
-        color: '#404040',
-        fontSize: 16,
-    },
-    profilePhotoWrapper:{
-        flex: 0.5,
-        alignItems: 'center',
-        height: 90,
-    },
-    profilePhoto:{
-        flex: 1, 
-        width: 50,
-        height: 50,
-        borderWidth: 1,
-        borderRadius: 50/2,
-        marginTop: 20,
-        marginBottom: 20,
+    mySvg: {
+        height: 40, 
+        width: 40
     },
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        marginBottom: 10,
-        marginTop: 10
+        alignItems: 'flex-end',
+        marginBottom: 12,
+        marginTop: 12,
+        marginRight: 36,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 7 },
+        shadowOpacity: 0.6,
+        shadowRadius: 7
     },
     myButton: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 100,
-        width: 100,  //The Width must be the same as the height
-        borderRadius: 200, //Then Make the Border Radius twice the size of width or Height   
-        backgroundColor: 'rgb(195, 125, 198)',
+        height: 82,
+        width: 82,
+        borderRadius: 164,
+        backgroundColor: '#fff'
 
     },
     buttonText: {
         textAlign: 'center', 
         fontWeight: 'bold',
-        fontSize: 14
+        fontSize: 11
     }
 });
