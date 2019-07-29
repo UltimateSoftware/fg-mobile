@@ -74,7 +74,7 @@ function DatepickerHangouts() {
                 <Text style={{...styles.bodyText}}>Location:</Text>
                 <TextInput
                     style={styles.textinput}
-                    placeholder="  Input location here"
+                    placeholder="Input location here"
                     underlineColorAndroid={'transparent'}
                     onChangeText={(loc) => {setLoc(loc);}}
                 />
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
       fontSize: 14,
       borderColor: '#818282',
       color: '#818282',
+      paddingHorizontal: 10,
       borderWidth: 1,
       width: "80%",
       alignSelf: "center",
