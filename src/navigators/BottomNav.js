@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import FgChapter from "../pages/FgChapter";
 import FgHangouts from "../pages/FgHangouts";
 import FgProfile from "../pages/FgProfile";
+import FgEvents from "../pages/FgEvents";
 
 /*
 Each Screen that is implemented to be part of the bottom navigator must use
@@ -33,7 +34,7 @@ const HangoutTab = createStackNavigator({
     headerMode: 'None'
 });
 const EventsTab = createStackNavigator({
-    Events: FgHangouts // events is delayed!
+    Events: FgEvents // events is delayed!
 });
 const ProfileTab = createStackNavigator({
     Profiles: FgProfile

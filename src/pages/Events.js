@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView, StatusBar, Animated, Image, FlatList, Picker} from 'react-native';
-import {Header, Left, Right, H2, Button, Card} from 'native-base'
+import {Header, Left, Right, H2, Button, Card} from 'native-base';
 import {SCREEN_HEIGHT, SCREEN_WIDTH, BANNER_HEIGHT_WIDTH_RATIO } from "../utils/sharedConstants";
 import { Dropdown } from 'react-native-material-dropdown';
 import {EventService} from "../services/EventService";
