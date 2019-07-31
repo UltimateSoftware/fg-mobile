@@ -7,7 +7,7 @@ import useHangouts from '../domain/models/Hangout';
 
 function CreateHangoutFromTemplate() {
   const [hangout, hangoutActions] = useHangouts();
-  const {Hangouts, Status} = hangout; // Use Hangout to object to populate page
+  const {Hangouts, Templates, Status} = hangout; // Use Hangout to object to populate page
   const { navigate } = useNavigation();
 
 
@@ -15,7 +15,7 @@ function CreateHangoutFromTemplate() {
     //componentDidMount
     (
       async () => {
-        await hangoutActions.loadHangouts();
+        await hangoutActions.loadTemplates();
       }
     )();
 
@@ -25,6 +25,31 @@ function CreateHangoutFromTemplate() {
       }
     )*/
   }, []);
+
+  toTiles = ((templates) => {
+    let tileArray = [];
+    for(template of templates){
+      console.log(template);
+      let s;
+      switch (template.title) {
+        case 'The Supergirl Dilemma': s = require('../../assets/hangout_icons/strong-woman.svg'); break;
+        case 'Girl Drama': s = require('../../assets/hangout_icons/bossgirl.svg'); break;
+        case 'Self Love and Self Esteem': s = require('../../assets/hangout_icons/self-love.svg'); break;
+        case '#GirlBoss': s = require('../../assets/hangout_icons/leadership.svg'); break;
+        case 'Girl Friends': s = require('../../assets/hangout_icons/girlfirnds.svg'); break;
+        case 'Zen Girl': s = require('../../assets/hangout_icons/spiritual.svg'); break;
+        case 'Fearlessness': s = require('../../assets/hangout_icons/woman.svg'); break;
+        case 'Dating and Relationships': s = require('../../assets/hangout_icons/relationships-n-dating.svg'); break;
+        case 'Dream on Baby': s = require('../../assets/hangout_icons/dream.svg'); break;
+      };
+      tileArray.push(
+        {'id':template.id,
+        'source': s,
+        'title': template.title}
+      );
+    };
+    return tileArray;
+  });
 
   return(
         <ScrollView style={{flex: 1}}>
@@ -39,20 +64,10 @@ function CreateHangoutFromTemplate() {
             <View style={{...styles.container, flex: 5}} >
                 <Tiles
                         onAction={(item) => {
-                              navigate('HangoutTemplateDescription', {item: item});
+                              navigate('HangoutTemplateDescription', {item: item, template: Templates.find(x => x.id==item.id)});
                             }
                         }
-                        tiles={[
-                            {'id':'i0', 'source':require('../../assets/hangout_icons/strong-woman.svg'), 'title': 'The Supergirl Dilemma'},
-                            {'id':'i1', 'source':require('../../assets/hangout_icons/bossgirl.svg'), 'title': 'Girl Drama'},
-                            {'id':'i2', 'source':require('../../assets/hangout_icons/self-love.svg'), 'title': 'Self Love and Self Esteem'},
-                            {'id':'i3', 'source':require('../../assets/hangout_icons/leadership.svg'), 'title': '#GirlBoss'},
-                            {'id':'i4', 'source':require('../../assets/hangout_icons/girlfirnds.svg'), 'title': 'Girl Friends'},
-                            {'id':'i5', 'source':require('../../assets/hangout_icons/spiritual.svg'), 'title': 'Zen Girl'},
-                            {'id':'i6', 'source':require('../../assets/hangout_icons/woman.svg'), 'title': 'Fearlessness'},
-                            {'id':'i7', 'source':require('../../assets/hangout_icons/relationships-n-dating.svg'), 'title': 'Dating and Relationships'},
-                            {'id':'i8', 'source':require('../../assets/hangout_icons/dream.svg'), 'title': 'Dream on Baby'}
-                        ]}
+                        tiles={toTiles(Templates)}
 
                     />
             </View>

@@ -1,5 +1,5 @@
 import React, {Component, useState,useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView, TouchableHighlight} from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import {Tiles} from '../components/molecules/Tiles';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
@@ -9,9 +9,25 @@ import FgHangouts from '../pages/FgHangouts';
 
 function HangoutTemplateDescription() {
   const [hangout, hangoutActions] = useHangouts();
-  const {Hangouts, Status} = hangout; // Use Hangout to object to populate page
+  const {Hangouts, CurrentTemplate, Status} = hangout; // Use Hangout to object to populate page
   const { navigate } = useNavigation();
   const item = useNavigationParam('item');
+  const template = useNavigationParam('template');
+
+  useEffect(() => {
+    //componentDidMount
+    (
+      async () => {
+        await hangoutActions.getTemplateById(template.id);
+      }
+    )();
+
+    /*return (
+      () => {
+        //componentDidUnmount
+      }
+    )*/
+  }, []);
 
   //Hangout object to start populating as they go thru the creation process
   let newHangout =
@@ -25,19 +41,20 @@ function HangoutTemplateDescription() {
     description: "",
     state: "Unpublished"
   }
-
+  console.log(CurrentTemplate)
+  console.log(CurrentTemplate.content)
   return(
-        <View style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}>
             <View style={{...styles.title, flex: 3}} >
               <Tiles onAction={() => {}} tiles={[item]} />
             </View>
             <View style={{flex: 5}}>
-              <Text style={{...styles.headingText}}>{item["title"]}</Text>
-              <Text style={{...styles.bodyText}}>Description will be added here once backend is integrated.</Text>
+              <Text style={{...styles.headingText}}>{template["title"]}</Text>
+              <Text style={{...styles.bodyText}}>{CurrentTemplate.content.description}</Text>
               <Text style={{...styles.headingText}}>Discussions</Text>
-              <Text style={{...styles.bodyText}}>Discussions will be added here once backend is integrated.</Text>
-              <Text style={{...styles.headingText}}>Activities</Text>
-              <Text style={{...styles.bodyText}}>Activities will be added here once backend is integrated.</Text>
+              <Text style={{...styles.bodyText}}>{CurrentTemplate.content.discussions}</Text>
+              <Text style={{...styles.headingText}}>Activity</Text>
+              <Text style={{...styles.bodyText}}>{CurrentTemplate.content.activity.content}</Text>
             </View>
             <View style={{...styles.buttonContainer}}>
               <View style={{...styles.selectButton}}>
@@ -46,7 +63,7 @@ function HangoutTemplateDescription() {
                 </TouchableHighlight>
               </View>
             </View>
-        </View>
+        </ScrollView>
       );
 };
 

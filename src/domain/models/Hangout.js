@@ -19,7 +19,25 @@ const HangoutState = { // each of these define a state that can be pulled
     name: "",
     descriptions: "",
     id: ""
-  }], //list of icebreakers
+  }], 
+  Templates: [{ //Template DTO
+    title: "",
+    id: ""
+  }],
+  CurrentTemplate: {
+    title: "",
+    content: {
+      discussions: [],
+      description: "",
+      activity: {
+        bonusActivity: "",
+        content: "",
+        trip: ""
+      },
+      leaderNotes: []
+    },
+    id: ""
+  },
   Status: status.init, // defines if the hangouts are loaded
   
 }
