@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native'
+import { Image, Text, View, StyleSheet, Button} from 'react-native'
 
 export function ProfileFrame({source, avatarSize}) {
     const size = styleValuesFromSize(avatarSize).size;
-    const image = source ? require('../../../assets/Heart_SVG.png') : source
+
+    var image = source
+
     return (
-        <View style={[{flex: 1, alignItems: "center"}, styles.elevation]}>
+        <View style={[{flex: 1, alignItems: 'center'}, styles.elevation]}>
             <Image
           style={[{
             width: size,
@@ -14,7 +16,6 @@ export function ProfileFrame({source, avatarSize}) {
             borderColor: 'white',
             borderWidth: 4,
             flex: 1,
-            
           }, ]}
           source={image}
         />
