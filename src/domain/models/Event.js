@@ -4,7 +4,7 @@ import * as actions from '../services/EventService'
 import {status} from '../constants/Event';
 
 
-const EventState = {
+const EventState = { // each of these define a state that can be pulled
     Event: {
         id: "",
         title: "",
