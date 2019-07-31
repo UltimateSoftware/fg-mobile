@@ -1,25 +1,20 @@
 import {status} from '../constants/Event';
-import {API_BASE} from '../../SharedConstants';
 
 const auth="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlJUazROVE15UVRZMU5EbENNVGN4TURJNE1qQXhSa1pETmtReU1FSTFPRFJHUmpWQk1qRTVNUSJ9.eyJpc3MiOiJodHRwczovL2ZlYXJsZXNzbHlnaXJsLmF1dGgwLmNvbS8iLCJzdWIiOiI3WHkyTGFGMmZreFMzTnZjZURJQ0NrNk9ZQ0NzVTJJVkBjbGllbnRzIiwiYXVkIjoib2F1dGgvdG9rZW4iLCJpYXQiOjE1NjQ1MTEzMTcsImV4cCI6MTU2NDU5NzcxNywiYXpwIjoiN1h5MkxhRjJma3hTM052Y2VESUNDazZPWUNDc1UySVYiLCJzY29wZSI6Im9wZW5pZCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.dx2ZyogJQyBZNXSFyzMK4h3sO2yEHN0u-n5eADXvAENHTpSyra2JOOgBgY2TboLnPkNLT6E_gKk8Jt7hohysykok8xS1fHtWgfZ5WOZmXXBg1HwqelWdcJFnORtNKn9s8jJTDB55OUGxMfIsq4nfdQG1RX3_PX6pCBFnZ8gyCrYh8b-bquaxvb778levIl4HajZtGx5xXRV-RHvKpWGFqD35xsWVVEG2tNx2pfP_LX-9nnbwNTO4NaNSPZBLCIuYQrgH_RWx9FsAOuSf6qHGa279sWW2aj9akAXBLiSQQTKIfzT-O2zRttudkO-RVfLCkowAQouz_pH81VAHvBBj1Q"
 
-export const createEvent = async store => {
-    store.setState({ Status: status.loading });
+// ** for future backend interaction **
+
+export const createEvent = async (store, ) => {
+    store.setState({ Event: {Event: json}, Status: status.loading });
     // perform Event update (?)
     return new Promise((resolve, reject) => {
-        store.setState({ Status: status.ready });
+        store.setState({ Event: {Event: json}, Status: status.ready });
         resolve();
     });
 }
 
-
-
-
 export const loadEvent = async store => {
-    store.setState({ Status: status.loading });
-    // call Event API (?)
-
-    // set state is gonna be an array ??
+    store.setState({ Event: {Event: json}, Status: status.loading });
 
     return new Promise(async (resolve, reject) => {
         try {
@@ -32,7 +27,7 @@ export const loadEvent = async store => {
                 method: 'GET',
             })
             console.log(response);
-            const json = await response.json();
+            const json = await response.json(); 
             console.log(json);
             store.setState({ Event: {Event: json}, Status: status.ready });
             console.log(store);
@@ -45,10 +40,10 @@ export const loadEvent = async store => {
 }
 
 export const updateEvent = async store => {
-    store.setState({ Status: status.loading });
+    store.setState({ Event: {Event: json}, Status: status.loading });
     // perform Event update (?)
     return new Promise((resolve, reject) => {
-        store.setState({ Status: status.ready });
+        store.setState({ Event: {Event: json}, Status: status.ready });
         resolve();
     });
 }

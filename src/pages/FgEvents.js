@@ -1,42 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Agenda} from 'react-native-calendars';
-import useEvents from '../domain/models/Event';
+import useEvent from '../domain/models/Event';
 
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import { CalendarItemPopulated, CalendarItemEmpty } from '../components/atoms/CalendarItem';
 
 function FgEvents() {
-    const [events, eventActions] = useEvents()
-    const {Event, Status} = events;
-    let date = new Date();
+
+    // ** for future backend interaction **
+    // const [events, eventActions] = useEvent()       // event actions are functions from event service
+    // const {Event, Status} = events;                 // extract the Event and Status from the state
+
+    // useEffect(async () => {
+    //     await eventActions.getEvents()              // this line will update the variables (Event, Status)
+    // }, [])
+    
     return (
         <View style={styles.container}>
         
         <Agenda
         items={{
-            '2019-06-27': [],
-            '2019-06-28': [{text: 'item 17 - any js object'}],
-            '2019-06-29': [{text: 'item 18 - any js object'}],
-            '2019-06-30': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
-            '2019-07-01': [{text: 'item 20 - any js object'}],
-            '2019-07-02': [],
-            '2019-07-03': [{text: 'item 22 - any js object'}],
-            '2019-07-04': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
-            '2019-07-05': [{text: 'item 20 - any js object'}],
-            '2019-07-06': [],
-            '2019-07-07': [{text: 'item 22 - any js object'}],
-            '2019-07-08': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
-            '2019-07-09': [{text: 'item 20 - any js object'}],
-            '2019-07-10': [],
-            '2019-07-11': [{text: 'item 22 - any js object'}],
-            '2019-07-12': [{text: 'item 20'}],
-            '2019-07-13': [],
-            '2019-07-14': [{text: 'item 22 - any js object'}],
-            '2019-07-15': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
-            '2019-07-16': [{text: 'item 20 - any js object'}],
-            '2019-07-17': [],
-            '2019-07-18': [{text: 'item 22 - any js object'}]
+            '2019-07-28': [{text: 'item 22 - any js object'}],
+            '2019-07-29': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
+            '2019-07-30': [{text: 'item 20 - any js object'}],
+            '2019-07-31': [],
+            '2019-08-01': [{text: 'item 22 - any js object'}],
+            '2019-08-02': [{text: 'item 22 - any js object'}],
+            '2019-08-03': [{text: 'item 22 - any js object'}]
         }}
 
         renderItem={(item, firstItemInDay) => {
