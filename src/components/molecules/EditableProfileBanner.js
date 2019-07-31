@@ -34,8 +34,6 @@ export class EditableProfileBanner extends Component {
             editMode: !prev.editMode
         }))
 
-        this.editableProfileFrame.current.handleToggleEditMode()
-
         if (this.state.viewStyle === null) {
             this.setState(() => ({
                 viewStyle: styles.editSubViewStyle
@@ -48,10 +46,13 @@ export class EditableProfileBanner extends Component {
     }
 
     render() {
+
+        console.log(this.state.imgUri)
+
         return (
             <View style={styles.container}>
                 <Banner color={styles.color} source={this.state.backImgUri}/>
-                <EditableProfileFrame ref={this.editableProfileFrame} style={styles.frame} source={this.state.imgUri} editable={this.state.editMode} avatarSize={'l'}/>
+                <EditableProfileFrame style={styles.frame} source={this.state.imgUri} editable={this.state.editMode} avatarSize={'l'}/>
                 <View style={[this.state.viewStyle, {marginTop: 15}]}>
                     <TextInput editable={this.state.editMode} style={styles.headerText}>
                     {this.state.headerText}
