@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native'
+import { Image, Text, View, StyleSheet, Button} from 'react-native'
 
 export function ProfileFrame({source, avatarSize}) {
     const size = styleValuesFromSize(avatarSize).size;
