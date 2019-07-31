@@ -51,11 +51,7 @@ function FgChapter() {
     return (
         <ScrollView>
             <View style={styles.container}>
-                {/* REPLACE WITH ProfileBanner COMPONENT in components/molecules/ProfileBanner */}
-                <Banner color={"#6ED4C8"} source={imgUri}> 
-                    <ProfileFrame source={imgUri} size={'l'}/>
-                </Banner>
-                <Inspiration title={"Chapter name"} inspiration={"Chapter number"}/>
+                <ProfileBanner backImgUri={imgUri} lineOneText={'Chapter name'} lineTwoText={'Chapter number'} />
 
                 <ChapterHistoryComponent body={fillerBody} profiles={founders} />
                 <ChapterLeadershipComponent body={fillerBody} profiles={leaders} />
