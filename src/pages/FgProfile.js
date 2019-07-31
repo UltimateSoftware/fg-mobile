@@ -1,12 +1,18 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList, TextInput} from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
-import {ProfileBanner} from '../components/molecules/ProfileBanner';
+import {EditableProfileBanner} from '../components/molecules/EditableProfileBanner';
 import {ProfileFrame} from '../components/primatives/ProfileFrame';
 import Grid from 'react-native-grid-component'
+import {EditableParagraphBlock} from '../components/primatives/EditableParagraphBlock';
 import useProfile from '../domain/models/Profile';
-import { Avatar } from '../components/atoms/Avatar';
+import useChapter from '../domain/models/Chapter'
+import {MemberGrid} from '../components/molecules/MemberGrid';
+import ImagePicker from 'react-native-image-picker'
+
+import defaultImage from '../../assets/Heart_SVG.png'
+import defaultImage2 from '../../assets/fearlesslyGirl_logo.jpg'
 
 function FgProfile() {
 
@@ -17,42 +23,126 @@ function FgProfile() {
 
     const [viewAll, setViewAll] = useState(false);
 
-    const imgUri = 'fearlesslyGirl_logo.jpg';
-    const allMembers = [{name: "test1", source: "fearlesslyGirl_logo.jpg"}, {name: "test2", source: "fearlesslyGirl_logo.jpg"}, {name: "test3", source: "fearlesslyGirl_logo.jpg"}, {name: "test4", source: "fearlesslyGirl_logo.jpg"}, {name: "test5", source: "fearlesslyGirl_logo.jpg"}, {name: "test6", source: "fearlesslyGirl_logo.jpg"}]
-    const [members, setMembers] = useState(allMembers.slice(0,4));
-    var renderMembers = []
+    const editableParagraphBlock = React.createRef();
+    const editableProfileBanner = React.createRef()
 
-    _renderMember = (member, i) => (
-        <View style = {styles.member} key={i}>
-            <Avatar avatarSize='small' name={member.name} source={member.source} />
-            <Text style={[styles.textContainer, styles.nameLabel]}>{member.name}</Text>
-        </View>
-    )
+    const [imgUri, setImgUri] = useState(defaultImage);
+
+    const allMembers = [{name: "test1", source: defaultImage, school: "test school"}, {name: "test2", source: defaultImage, school: "test school"}, {name: "test3", source: defaultImage, school: "test school"}, {name: "test4", source: defaultImage, school: "test school"}, {name: "test5", source: defaultImage, school: "test school"}, {name: "test6", source: defaultImage, school: "test school"}, {name: "test6", source: defaultImage, school: "test school"}, {name: "test6", source: defaultImage, school: "test school"}, {name: "test7", source: defaultImage, school: "test school"}, {name: "test6", source: defaultImage, school: "test school"}, {name: "test8", source: defaultImage, school: "test school"}]
+    const [members, setMembers] = useState(allMembers.slice(0,4));
+    const [editMode, toggleEditMode] = useState(false)
 
     const handleButton = () => {
         setViewAll(true)
         setMembers(allMembers);
     };
 
-    button = !viewAll ?
+    useEffect(() => {
+        //componentDidMount
+        (
+          async () => {
+            await profileActions.loadProfile("99999999-ffff-4a96-b827-fa80954d9cff");
+          }
+        )();
+    
+        /*return (
+          () => {
+            //componentDidUnmount
+          }
+        )*/
+      }, []);
+
+
+    const handleEditableToggle = () => {
+        toggleEditMode(!editMode)
+        editableParagraphBlock.current.handleToggleEditMode();
+        editableProfileBanner.current.handleToggleEditMode()
+        console.log(profile)
+    }
+
+    chooseBannerFile = () => {
+        var options = {
+            title: 'Select Image',
+            storageOptions: {
+                skipBackup: true,
+                path: 'images'
+            }
+        }
+    
+        ImagePicker.showImagePicker(options, response => {
+            if(response.didCancel) {
+                console.log("user canncelled image picker")
+            } else if (response.error){
+                console.log('image picker error: ', response.error)
+            } else if (response.customButton) {
+                alert(response.customButton)
+            } else {
+                source = {uri: response.uri}
+                editableProfileBanner.current.handleEditBanner(source)
+            }
+
+        })
+
+    }
+
+    chooseAvatarFile = () => {
+        var options = {
+            title: 'Select Image',
+            storageOptions: {
+                skipBackup: true,
+                path: 'images'
+            }
+        }
+    
+        ImagePicker.showImagePicker(options, response => {
+            if(response.didCancel) {
+                console.log("user canncelled image picker")
+            } else if (response.error){
+                console.log('image picker error: ', response.error)
+            } else if (response.customButton) {
+                alert(response.customButton)
+            } else {
+                source = {uri: response.uri}
+                editableProfileBanner.current.handleEditAvatar(source)
+            }
+
+        })
+
+    }
+    
+    editButtons = !editMode ? <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/> :
+    <View>
+        <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
+        <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
+        <Button title="choose avatar file" onPress={event => chooseAvatarFile()} textStyle={{fontSize: 14}}/>
+    </View>;
+    viewAllButton = !viewAll ?
     <Button onPress={event => handleButton()} title="View All"></Button> : null;
 
-    return (
+    return profile.Status == "READY" ? (
         <ScrollView>
             <View style={styles.container}>
-                <ProfileBanner backImgUri={imgUri} imgUri={imgUri} lineOneText="test" lineTwoText="Thre" lineThreeText="t"/>
-                <Inspiration title={"Inspiration"} inspiration={"lorem ipsum test text messages"}/>
+                <View style={styles.editButton}>
+                    {editButtons}
+                </View>
+                <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={defaultImage2} imgUri={imgUri} lineOneText={profile.Profile.Profile.firstName + " " + profile.Profile.Profile.lastName} lineTwoText={profile.Profile.Profile.schoolName} lineThreeText={"Class of " + profile.Profile.Profile.gradYear}/>
+                <Inspiration title={"Inspiration"}>
+                    <EditableParagraphBlock ref={editableParagraphBlock} inspiration={profile.Profile.Profile.inspiration}/>
+                </Inspiration>
                 <View style={[styles.titleView, {marginTop: 20}]}>
                     <View style={styles.titleLine}/>
                     <Text style={styles.titleLabel}>Chapter Sisters</Text>
                     <View style={styles.titleLine}/>
                 </View>
-                <Grid style={styles.list} renderItem={this._renderMember} keyExtractor={(item, index) => index.toString()} data={members} refreshing= {false} numColumns={4}/>
-                {button}
+                <MemberGrid members={members}/>
+                {viewAllButton}
 
             </View>
         </ScrollView>
-    );
+    ) : (
+        <View>
+        </View>
+    )
 }
 
 FgProfile.navigationOptions = () => {
@@ -70,17 +160,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
     },
+    editButton: {
+        alignSelf: 'flex-end',
+    },
     title: {
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
         },
-    member: {
-        margin: 7,
-    },
-    list: {
-        flex: 1,
-    },
     nameLabel: {
         fontFamily: 'montserrat-light',
         fontSize: 18,
@@ -93,7 +180,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
-        paddingBottom: 15
+        paddingBottom: 20
     },
     titleLabel: {
         fontFamily: 'montserrat-regular',
