@@ -1,17 +1,12 @@
 import React from 'react';
-import {Alert, Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, StyleSheet, Text, View} from 'react-native';
 import {FgButton} from "../components/FgButton";
-import {PLACEHOLDER_TEXT_COLOR, SCREEN_WIDTH} from "../utils/sharedConstants";
-import {dummySignInAuthorization, onSignIn} from "../Auth";
-import {DataManager, SIGNED_IN_MEMBER} from "../DataManager";
-import {MOCKED_MEMBER_DARIA_with_BANNER_and_AVATAR} from "../test/MockedTypes";
+import {SCREEN_WIDTH} from "../utils/sharedConstants";
 import {AuthSession} from 'expo'
-import jwtDecoder from 'jwt-decode';
 import {AsyncStorage} from 'react-native';
 import config from '../../constants/config'
-
-
-
+import Auth0 from 'react-native-auth0';
+const auth0 = new Auth0({ domain: 'YOUR_DOMAIN', clientId: 'YOUR_CLIENT_ID' });
 
 export class Login extends React.Component {
 
