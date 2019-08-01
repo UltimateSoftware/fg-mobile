@@ -28,7 +28,6 @@ target 'FgMobile' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'A0Auth0', :path => '../node_modules/react-native-auth0'
 
   target 'FgMobileTests' do
     inherit! :search_paths
