@@ -47,25 +47,46 @@ export class EditableProfileBanner extends Component {
 
     render() {
 
-        console.log(this.state.imgUri)
-
-        return (
-            <View style={styles.container}>
-                <Banner color={styles.color} source={this.state.backImgUri}/>
-                <EditableProfileFrame style={styles.frame} source={this.state.imgUri} editable={this.state.editMode} avatarSize={'l'}/>
-                <View style={[this.state.viewStyle, {marginTop: 15}]}>
-                    <TextInput editable={this.state.editMode} style={styles.headerText}>
-                    {this.state.headerText}
-                    </TextInput>
+        if(this.state.editMode)
+        {
+            return (
+                <View style={styles.container}>
+                    <Banner color={styles.color} source={this.state.backImgUri}>
+                        <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
+                    </Banner>
+                    <EditableProfileFrame style={styles.frame} source={this.state.imgUri} editable={this.state.editMode} avatarSize={'l'}/>
+                    <View style={[this.state.viewStyle, {marginTop: 15}]}>
+                        <TextInput editable={this.state.editMode} style={styles.headerText}>
+                        {this.state.headerText}
+                        </TextInput>
+                    </View>
+                    <Text style={styles.subheadingText}>
+                      {this.state.subheadingText}
+                    </Text>
+                    <Text style={styles.footnoteText}>
+                      {this.state.footerText}
+                    </Text>
                 </View>
-                <Text style={styles.subheadingText}>
-                  {this.state.subheadingText}
-                </Text>
-                <Text style={styles.footnoteText}>
-                  {this.state.footerText}
-                </Text>
-            </View>
-        )
+            )
+        } else {
+            return (
+                <View style={styles.container}>
+                    <Banner color={styles.color} source={this.state.backImgUri}/>
+                    <EditableProfileFrame style={styles.frame} source={this.state.imgUri} editable={this.state.editMode} avatarSize={'l'}/>
+                    <View style={[this.state.viewStyle, {marginTop: 15}]}>
+                        <TextInput editable={this.state.editMode} style={styles.headerText}>
+                        {this.state.headerText}
+                        </TextInput>
+                    </View>
+                    <Text style={styles.subheadingText}>
+                      {this.state.subheadingText}
+                    </Text>
+                    <Text style={styles.footnoteText}>
+                      {this.state.footerText}
+                    </Text>
+                </View>
+            )
+        }
     }
 }
 

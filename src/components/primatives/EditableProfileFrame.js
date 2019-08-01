@@ -23,7 +23,6 @@ export function EditableProfileFrame (props){
             source={source}>
                 <Button title="choose avatar file" onPress={event => chooseAvatarFile()} textStyle={{fontSize: 14}}/>
             </ImageBackground>
-            <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
             </View>
         );
     }
