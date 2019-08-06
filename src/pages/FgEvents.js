@@ -61,12 +61,25 @@ function NewEvent(){
     const navigate = useNavigation();
     return (
         <View>
-        <Button color='#F313B7' height='48' width='166' textAlign='center' borderRadius='25' fontSize='12' fontFamily='opensans-bold'
-        title='Create Event' onPress={() => { navigate.navigate('EventForm') }}>
+        {/* <Button color='#F313B7' height='48' width='166' textAlign='center' borderRadius='25' fontSize='12' fontFamily='opensans-bold' */}
+        <Button style={eventButtonStyle.button} title='Create Event' onPress={() => { navigate.navigate('EventForm') }}>
         </Button>
         </View>
     );
 }
+
+//Stylesheet for New Event Button
+const eventButtonStyle = StyleSheet.create({
+    button: {
+        color: '#F313B7',
+        hieght: 48,
+        width: 166,
+        textAlign: 'center',
+        borderRadius: 25,
+        fontSize: 12,
+        fontFamily: 'opensans-bold',
+    }
+})
 
 //Stylesheet for New Event Page
 const otherStyles = StyleSheet.create({
