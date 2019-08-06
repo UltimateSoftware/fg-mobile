@@ -67,13 +67,7 @@ const NewEventFormComponent = () => {
                 confirmBtnText="Confirm"
                 cancelBtnText="Cancel"
                 onDateChange={(date) => {this.setState({date: date})}}
-            />   
-            {/* <TextInput
-                style={styles.textinput}
-                placeholder="Date"
-                underlineColorAndroid={'transparent'}
-                onChangeText={(textChange) => {dispatch({type: 'date', change: textChange})}}
-                /> */}
+            />
             <TextInput
                 style={styles.textinput}
                 placeholder="State"
@@ -100,7 +94,6 @@ const NewEventFormComponent = () => {
         </View>
     )
 }
-//{style={{flex: 1, flexDirection: 'column', margin: 40, justifyContent: 'flex-start', }}>}
 
 const styles = StyleSheet.create({
     header: {

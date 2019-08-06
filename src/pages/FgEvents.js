@@ -62,7 +62,7 @@ function NewEvent(){
     return (
         <View>
         {/* <Button color='#F313B7' height='48' width='166' textAlign='center' borderRadius='25' fontSize='12' fontFamily='opensans-bold' */}
-        <Button style={eventButtonStyle.button} title='Create Event' onPress={() => { navigate.navigate('EventForm') }}>
+        <Button style={eventButtonStyle.button} title='Create Event' color="#F313B7" onPress={() => { navigate.navigate('EventForm') }}>
         </Button>
         </View>
     );
@@ -72,7 +72,7 @@ function NewEvent(){
 const eventButtonStyle = StyleSheet.create({
     button: {
         color: '#F313B7',
-        hieght: 48,
+        height: 48,
         width: 166,
         textAlign: 'center',
         borderRadius: 25,
@@ -116,18 +116,11 @@ const newEventPage = createStackNavigator({
 )
 
 export default newEventPage;
-// export default FgEvents
 
-// ??????? fix
 const styles = StyleSheet.create({
     container: {
         height: '100%',
         backgroundColor: 'pink'
-        // flex: 2,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // backgroundColor: 'white',
-        // margin: 0
         },
     title: {
         fontSize: 20,
