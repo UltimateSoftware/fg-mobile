@@ -27,9 +27,6 @@ export const loadEvent = async store => {
 export const addSingleEvent = async (store, event) => {
     store.setState({ Status: status.loading });
     return new Promise((resolve, reject) => {
-        // var event = {EventName: 'BBQ', EventCoordinator: 'JaNae', DateTime: 'June', Location: 'Cafeteria',
-        //     Description: 'Food'};
-        // console.log(store);
         events = store.state.Events;
         events.Event.push(event)
 

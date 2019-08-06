@@ -25,8 +25,6 @@ const NewEventFormComponent = () => {
                 return {...state, title: action.change}
             case 'description':
                 return {...state, description: action.change}
-            // case 'date':
-            //     return {...state, date: action.change}
             case 'state':
                 return {...state, state: action.change}
             case 'location':
@@ -86,10 +84,8 @@ const NewEventFormComponent = () => {
                 underlineColorAndroid={'transparent'}
                 onChangeText={(textChange) => {dispatch({type: 'icebreakers', change: textChange})}}
                 />
-            <TouchableOpacity onPress={this.buttonClickListener} style={{ margin: 10, alignItems: 'center', borderRadius: 100, backgroundColor: '#F313B7', padding: 20, width: '50%', alignSelf: 'center'}}>
-                <Text style={{ height: 17, width: 42, color: 'white', fontSize: 12, fontFamily: 'opensans-bold' }}>
-                    Submit
-                </Text>
+            <TouchableOpacity onPress={this.buttonClickListener} style={styles.button}>
+                <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
         </View>
     )
@@ -103,10 +99,7 @@ const styles = StyleSheet.create({
         color: '#F313B7',
         paddingBottom: 10,
         paddingTop: 10,
-        // marginBottom: 5,
         marginTop: 5,
-        // borderBottomColor: 'lavender',
-        // borderBottomWidth: 1,
         fontFamily: 'montserrat-light',
     },
     textinput: {
@@ -118,6 +111,22 @@ const styles = StyleSheet.create({
         color: 'dimgrey',
         borderBottomColor: '#f8f8f8',
         borderBottomWidth: 1,
+    },
+    button: {
+        margin: 10,
+        alignItems: 'center',
+        borderRadius: 100,
+        backgroundColor: '#F313B7',
+        padding: 20,
+        width: '50%',
+        alignSelf: 'center',   
+    },
+    buttonText: {
+        height: 17,
+        width: 42,
+        color: 'white',
+        fontSize: 12,
+        fontFamily: 'opensans-bold'
     }
 });
 

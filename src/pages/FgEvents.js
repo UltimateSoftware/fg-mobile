@@ -61,7 +61,6 @@ function NewEvent(){
     const navigate = useNavigation();
     return (
         <View>
-        {/* <Button color='#F313B7' height='48' width='166' textAlign='center' borderRadius='25' fontSize='12' fontFamily='opensans-bold' */}
         <Button style={eventButtonStyle.button} title='Create Event' color="#F313B7" onPress={() => { navigate.navigate('EventForm') }}>
         </Button>
         </View>
