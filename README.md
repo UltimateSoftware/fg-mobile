@@ -1,6 +1,6 @@
 # Fearlessly Girl Mobile App
 
-FearlesslyGirl is an organization dedicated to making the world a kinder place by creating healthy discourse between highschool aged girls.
+[FearlesslyGirl](http://www.fearlesslygirl.com/) is an organization dedicated to making the world a kinder place by creating healthy discourse between highschool aged girls.
 
 ## Table of Contents
 
@@ -108,7 +108,7 @@ Note, this project requires npm to be version 6.4.1 or greater.
 
 #### 3 - Install Android Studio (for android emulation)
 
-Follow the guide [here](https://developer.android.com/studio/install) to install android studio on your mac. You will also need to [create an emulator](https://www.embarcadero.com/starthere/xe5/mobdevsetup/android/en/creating_an_android_emulator.html)
+Follow the guide [here](https://developer.android.com/studio/install) to install android studio on your Windows machine. You will also need to [create an emulator](https://www.embarcadero.com/starthere/xe5/mobdevsetup/android/en/creating_an_android_emulator.html)
 
 ### Running the Code
 
