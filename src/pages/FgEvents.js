@@ -39,11 +39,9 @@ function FgEvents() {
         renderEmptyDate={() => {
             return(<CalendarItemEmpty/>);
         }}
-	
         renderEmptyData={() => {
-            return null;
+            return(<CalendarItemEmpty/>);
         }}
-
         rowHasChanged={(r1, r2) => {
             return r1.text !== r2.text
         }}
@@ -66,13 +64,24 @@ function NewEvent(){
     const navigate = useNavigation();
     return (
         <View>
-        <Button color='cornflowerblue' title='Create Event' type="clear" onPress={() => {
-            navigate.navigate('EventForm') }}>
-        
+        <Button style={eventButtonStyle.button} title='Create Event' color="#F313B7" onPress={() => { navigate.navigate('EventForm') }}>
         </Button>
         </View>
     );
 }
+
+//Stylesheet for New Event Button
+const eventButtonStyle = StyleSheet.create({
+    button: {
+        color: '#F313B7',
+        height: 48,
+        width: 166,
+        textAlign: 'center',
+        borderRadius: 25,
+        fontSize: 12,
+        fontFamily: 'opensans-bold',
+    }
+})
 
 //Stylesheet for New Event Page
 const otherStyles = StyleSheet.create({
@@ -109,11 +118,16 @@ const newEventPage = createStackNavigator({
 )
 
 export default newEventPage;
-// export default FgEvents
 
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-    },
+        backgroundColor: 'white'
+        },
+    title: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        }
 });
 

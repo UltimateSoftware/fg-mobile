@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, TouchableOpacity, TextInput, Alert, AppRegistry
 import { BorderlessButton } from 'react-native-gesture-handler';
 import useEvent from '../domain/models/Event';
 import useChapter from '../domain/models/Chapter';
+import DatePicker from 'react-native-datepicker';
 
 const NewEventFormComponent = () => {
     const [event, eventActions] = useEvent();
@@ -18,15 +19,12 @@ const NewEventFormComponent = () => {
         icebreakers: '',
     }
 
-    // 
     function reduceForm(state, action){
         switch(action.type){
             case 'title':
                 return {...state, title: action.change}
             case 'description':
                 return {...state, description: action.change}
-            case 'date':
-                return {...state, date: action.change}
             case 'state':
                 return {...state, state: action.change}
             case 'location':
@@ -39,7 +37,7 @@ const NewEventFormComponent = () => {
 
     const [formState, dispatch] = useReducer(reduceForm, formInitState)
 
-    buttonClickListener = (event) => { eventActions.addSingleEvent(formState) }
+    buttonClickListener = (event) => {eventActions.addSingleEvent(formState) }
 
     return (
         <View style={{alignSelf:'stretch', margin:10}}> 
@@ -56,12 +54,18 @@ const NewEventFormComponent = () => {
                 underlineColorAndroid={'transparent'}
                 onChangeText={(textChange) => {dispatch({type: 'description', change: textChange})}}
                 />
-            <TextInput
-                style={styles.textinput}
-                placeholder="Date"
-                underlineColorAndroid={'transparent'}
-                onChangeText={(textChange) => {dispatch({type: 'date', change: textChange})}}
-                />
+            <DatePicker
+                style={{width: 200}}
+                date={new Date()}
+                mode="date"
+                placeholder="select date"
+                format="MM-DD-YYYY"
+                minDate="05-01-2016"
+                maxDate="06-01-2020"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                onDateChange={(date) => {this.setState({date: date})}}
+            />
             <TextInput
                 style={styles.textinput}
                 placeholder="State"
@@ -80,37 +84,49 @@ const NewEventFormComponent = () => {
                 underlineColorAndroid={'transparent'}
                 onChangeText={(textChange) => {dispatch({type: 'icebreakers', change: textChange})}}
                 />
-            <TouchableOpacity onPress={this.buttonClickListener} style={{ margin: 10, alignItems: 'center'}}>
-                <Text style={{
-                    backgroundColor: 'cornflowerblue', color: 'white', fontSize: 16,
-                    height: 37, width: 200, textAlign: 'center', padding: 10
-                }}>Submit</Text>
+            <TouchableOpacity onPress={this.buttonClickListener} style={styles.button}>
+                <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
         </View>
     )
 }
-//{style={{flex: 1, flexDirection: 'column', margin: 40, justifyContent: 'flex-start', }}>}
 
 const styles = StyleSheet.create({
     header: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: '600',
         textAlign: 'center',    
-        color: 'cornflowerblue',
+        color: '#F313B7',
         paddingBottom: 10,
         paddingTop: 10,
-        // marginBottom: 5,
         marginTop: 5,
-        // borderBottomColor: 'lavender',
-        // borderBottomWidth: 1,
+        fontFamily: 'montserrat-light',
     },
     textinput: {
         alignSelf: 'stretch',
         height: 40,
         marginBottom: 30,
+        fontFamily: 'montserrat-regular',
+        fontSize: 14,
         color: 'dimgrey',
         borderBottomColor: '#f8f8f8',
         borderBottomWidth: 1,
+    },
+    button: {
+        margin: 10,
+        alignItems: 'center',
+        borderRadius: 100,
+        backgroundColor: '#F313B7',
+        padding: 20,
+        width: '50%',
+        alignSelf: 'center',   
+    },
+    buttonText: {
+        height: 17,
+        width: 42,
+        color: 'white',
+        fontSize: 12,
+        fontFamily: 'opensans-bold'
     }
 });
 
