@@ -2,14 +2,18 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, ScrollView, StatusBar, StatusBarIOS} from 'react-native';
 
 
-export function ParagraphBlock({inspiration}) { 
-    return (
-        <View style={styles.subViewStyle}>
-            <Text style={[styles.inspirationBlock, {marginTop: 40 }]}>
-                {inspiration}
-            </Text>
-        </View>
-    );
+export function ParagraphBlock({inspiration, mar}) { 
+    if (inspiration) {
+        return (
+            <View style={styles.subViewStyle}>
+                <Text style={[styles.inspirationBlock, {marginTop: mar || 40 }]}>
+                    {inspiration}
+                </Text>
+            </View>
+        );
+    } else {
+        return (<View />);
+    }
 }
 
 const styles = StyleSheet.create({

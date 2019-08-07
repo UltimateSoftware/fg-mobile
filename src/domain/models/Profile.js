@@ -1,7 +1,7 @@
 import React from 'react';
 import useGlobalHook from '../../hooks/useGlobalHook';
-import * as actions from '../services/ChapterService'
-import {status} from '../constants/Chapter';
+import * as actions from '../services/ProfileService'
+import {status} from '../constants/Profile';
 
 
 const ProfileState = { // each of these define a state that can be pulled

@@ -5,13 +5,16 @@ import {status} from '../constants/Hangout';
 
 
 const HangoutState = { // each of these define a state that can be pulled
-    Hangout: { // defines a Hangout DTO
+  Hangouts: {
+    Hangout: [{ // defines a Hangout DTO
         title: "",
         location: "",
         content: undefined,
         icebreakers: [], // List of objects to be displayed
         date: "",
-    },
+        id: ""
+    }]
+  },
     Status: status.init, // defines if the hangouts are loaded
 }
 
