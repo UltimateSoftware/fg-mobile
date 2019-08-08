@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     },
     detailtitle: {
         paddingTop: 5,
+        paddingLeft: 7,
         fontFamily: 'montserrat-regular',
         fontSize: 18,
         color: '#59828B'
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     detailtxt: {
         fontFamily: 'open-sans',
         fontSize: 16,
-        paddingLeft: 6,
+        paddingLeft: 12,
         color: '#818282'
     }
 });

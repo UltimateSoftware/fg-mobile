@@ -64,7 +64,12 @@ const NewEventFormComponent = () => {
                 maxDate="06-01-2020"
                 confirmBtnText="Confirm"
                 cancelBtnText="Cancel"
-                onDateChange={(date) => {this.setState({date: date})}}
+                onDateChange = {
+                    (selectedDate) => {
+                        let newDate = selectedDate
+                        this.setState({date: newDate})
+                    }
+                }
             />
             <TextInput
                 style={styles.textinput}

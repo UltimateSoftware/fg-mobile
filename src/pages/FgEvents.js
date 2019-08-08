@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Agenda} from 'react-native-calendars';
+import React, { Component } from 'react';
+import { StyleSheet, View, Button } from 'react-native';
+import { Agenda } from 'react-native-calendars';
 import useEvent from '../domain/models/Event';
+import { createAppContainer, createStackNavigator } from 'react-navigation'
+import { useNavigation } from 'react-navigation-hooks'
+import NewEventFormComponent from './NewEventFormComponent'
 
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import { CalendarItemPopulated, CalendarItemEmpty } from '../components/atoms/CalendarItem';
@@ -21,13 +24,14 @@ function FgEvents() {
         
         <Agenda
         items={{
-            '2019-07-28': [{text: 'item 22 - any js object'}],
-            '2019-07-29': [{text: 'item 19.1 - any js object'}, {text: 'item 19.2 - another one'}, {text: 'item 19.3 - another one'}, {text: 'item 19.4 - another one'}, {text: 'item 19.5 - another one'}],
-            '2019-07-30': [{text: 'item 20 - any js object'}],
-            '2019-07-31': [],
-            '2019-08-01': [{text: 'item 22 - any js object'}],
-            '2019-08-02': [{text: 'item 22 - any js object'}],
-            '2019-08-03': [{text: 'item 22 - any js object'}]
+            '2019-08-04': [],
+            '2019-08-05': [{text: 'item 22 - any js object'}],
+            '2019-08-06': [{text: 'item 22 - any js object'}],
+            '2019-08-07': [{text: 'item 22 - any js object'}],
+            '2019-08-08': [],
+            '2019-08-09': [{text: 'item 22 - any js object'}],
+            '2019-08-10': [{text: 'item 22 - any js object'}],
+            '2019-08-11': [{text: 'item 22 - any js object'}],
         }}
 
         renderItem={(item, firstItemInDay) => {
@@ -60,12 +64,11 @@ FgEvents.navigationOptions = () => {
     };
 };
 
-function NewEvent(){
-    const navigate = useNavigation();
+function NewEvent() {
+    const { navigate } = useNavigation();
     return (
         <View>
-        <Button style={eventButtonStyle.button} title='Create Event' color="#F313B7" onPress={() => { navigate.navigate('EventForm') }}>
-        </Button>
+            <Button style={eventButtonStyle.button} title='Create Event' color="#F313B7" onPress={() => navigate('EventForm') }/>
         </View>
     );
 }
@@ -95,14 +98,11 @@ const otherStyles = StyleSheet.create({
     container: {},
 });
 
-class EventFormScreen extends Component {
-    render(){
-        return (
-            <View>
-                <NewEventFormComponent/>
-            </View>
-        );
-    }
+function EventFormScreen() {
+    return (
+        <View>
+            <NewEventFormComponent/>
+        </View>);
 }
 
 const newEventPage = createStackNavigator({
@@ -116,8 +116,8 @@ const newEventPage = createStackNavigator({
         mode: 'modal'
     },
 )
-
-export default newEventPage;
+const newEventPageContainer = createAppContainer(newEventPage)
+export default newEventPageContainer;
 
 const styles = StyleSheet.create({
     container: {
