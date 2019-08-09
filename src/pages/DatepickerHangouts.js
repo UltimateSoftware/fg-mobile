@@ -67,6 +67,8 @@ function DatepickerHangouts() {
                 <TouchableHighlight underlayColor="transparent" onPress={() => {
                   newhangout["location"] = currentLocation;
                   newhangout["date"] = currentDate + " " + currentTime;
+                  //replace with actual chapter id later
+                  newhangout["chapterId"] = "99999999-cccc-4a96-b827-fa80954d9cff"
                   console.log(newhangout)
                   createHangout = async () => {
                     await hangoutActions.createHangoutFromTemplate(newhangout);
