@@ -6,6 +6,7 @@ import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
 import useProfile from '../domain/models/Profile';
 import LoginScreen from '../pages/LoginScreen';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SideTabs = createDrawerNavigator(
     {
@@ -35,48 +36,48 @@ const SideTabs = createDrawerNavigator(
                         </View>
                         <View style={styles.container}>
                             <View style={styles.myButton}>
-                                <Image source={require('./fg-program.svg')} 
-                                resizeMode='contain'
-                                style={styles.mySvg}/>
-                                {/* <Button
+                                <TouchableOpacity
                                     style={styles.buttonText}
                                     onPress={() => {
                                     props.navigation.navigate('DefaultScreen');
                                     props.navigation.closeDrawer();
                                     }}
-                                    title="Default Screen"
-                            /> */}
-                                
+                                    >
+                                <Image source={require('./fg-program.svg')}
+                                    resizeMode='contain'
+                                    style={styles.mySvg} />
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <View style={styles.container}>
                             <View style={styles.myButton}>
-                                <Image source={require('./login.svg')} 
-                                resizeMode='contain'
-                                style={styles.mySvg}/>
-                                {/* <Button
+                                <TouchableOpacity
                                     style={styles.buttonText}
                                     onPress={() => {
                                     props.navigation.navigate('Login');
                                     props.navigation.closeDrawer();
                                     }}
-                                    title="Login Screen"
-                            /> */}
+                                >
+                                <Image source={require('./login.svg')}
+                                    resizeMode='contain'
+                                    style={styles.mySvg} />
+                                </TouchableOpacity>
+
                             </View>
                         </View>
                         <View style={styles.container}>
                             <View style={styles.myButton}>
-                                <Image source={require('./logout.svg')} 
-                                resizeMode='contain'
-                                style={styles.mySvg}/>
-                                {/* <Button
+                                <TouchableOpacity
                                     style={styles.buttonText}
                                     onPress={() => {
                                         props.navigation.navigate('Login');
                                         props.navigation.closeDrawer();
                                     }}
-                                    title="Logout"
-                                /> */}
+                                >
+                                <Image source={require('./logout.svg')}
+                                    resizeMode='contain'
+                                    style={styles.mySvg} />
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </SafeAreaView>
@@ -121,8 +122,8 @@ const styles = StyleSheet.create({
         marginTop: 350,
     },
     mySvg: {
-        height: 40, 
-        width: 40
+        height: 45, 
+        width: 45
     },
     container: {
         flex: 1,
