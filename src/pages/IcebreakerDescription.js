@@ -16,20 +16,6 @@ function IcebreakerDescription() {
   const icebreaker = useNavigationParam('icebreaker');
   let newhangout = useNavigationParam('newhangout')
 
-  useEffect(() => {
-    //componentDidMount
-    (
-      async () => {
-        await hangoutActions.loadHangouts();
-      }
-    )();
-
-    /*return (
-      () => {
-        //componentDidUnmount
-      }
-    )*/
-  }, []);
 
   return(
         <View style={{flex: 1}}>
@@ -42,8 +28,8 @@ function IcebreakerDescription() {
             </View>
             <View style={{...styles.buttonContainer}}>
               <View style={{...styles.selectButton}}>
-                <TouchableHighlight underlayColor="transparent" onPress={(icebreaker) => {
-                  newhangout["icebreakers"].push(icebreaker);
+                <TouchableHighlight underlayColor="transparent" onPress={() => {
+                  newhangout["icebreakers"].push(icebreaker["name"]);
                   navigate("DatepickerHangouts", {newhangout: newhangout});
                 }}>
                   <Text style={{...styles.buttonText}}>Select</Text>

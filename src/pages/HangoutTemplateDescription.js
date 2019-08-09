@@ -38,7 +38,6 @@ function HangoutTemplateDescription() {
     date: "",
     chapterId: "",
     icebreakers: [],
-    description: "",
     state: "Unpublished"
   }
   console.log(CurrentTemplate)

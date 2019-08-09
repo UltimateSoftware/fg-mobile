@@ -22,7 +22,9 @@ function FgHangouts() {
       //componentDidMount
       (
         async () => {
-          await hangoutActions.loadHangouts();
+            if (Status != "READY"){
+                await hangoutActions.loadHangouts();
+            }
         }
       )();
 

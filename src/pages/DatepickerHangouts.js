@@ -12,27 +12,10 @@ function DatepickerHangouts() {
   const [hangout, hangoutActions] = useHangouts();
   const {Hangouts, Status} = hangout; // Use Hangout to object to populate page
   const { navigate } = useNavigation();
-  const item = useNavigationParam('item');
-  const icebreaker = useNavigationParam('icebreaker');
   let newhangout = useNavigationParam("newhangout");
   const [currentDate, setDate] = useState(new Date());
   const [currentTime, setTime] = useState("12:00");
   const [currentLocation, setLoc] = useState("");
-
-  useEffect(() => {
-    //componentDidMount
-    (
-      async () => {
-        await hangoutActions.loadHangouts();
-      }
-    )();
-
-    /*return (
-      () => {
-        //componentDidUnmount
-      }
-    )*/
-  }, []);
 
   return(
         <View style={{flex: 1}}>
@@ -84,7 +67,12 @@ function DatepickerHangouts() {
                 <TouchableHighlight underlayColor="transparent" onPress={() => {
                   newhangout["location"] = currentLocation;
                   newhangout["date"] = currentDate + " " + currentTime;
-                  console.log(newhangout);
+                  console.log(newhangout)
+                  createHangout = async () => {
+                    await hangoutActions.createHangoutFromTemplate(newhangout);
+                  }
+                  createHangout();
+                  navigate("HangoutHome");
                 }}>
                   <Text style={{...styles.buttonText}}>Finish</Text>
                 </TouchableHighlight>

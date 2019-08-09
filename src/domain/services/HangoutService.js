@@ -141,12 +141,14 @@ export const loadIcebreakers = async store => {
 }
 
 export const createHangoutFromTemplate = async (store, newHangout) => {
+
   store.setState({ Status: status.loading });
 
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/hangouts/template', {
         headers: {
+          Accept: 'application/json',
           'Content-Type': 'application/json',
           Authorization: auth
         },
@@ -156,7 +158,7 @@ export const createHangoutFromTemplate = async (store, newHangout) => {
       console.log(response);
       const json = await response.json();
       await loadHangouts(store);
-      console.log(store);
+      console.log(json);
       resolve();
     } catch(error) {
       console.log(error);
