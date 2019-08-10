@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component, useState, useEffect, useContext} from 'react';
 import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList} from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
@@ -11,16 +11,20 @@ import {ChapterLeadershipComponent} from '../components/ChapterLeadershipCompone
 import {ChapterMissionComponent} from '../components/ChapterMissionComponent';
 import {ChapterFGBylawsComponent} from '../components/ChapterFGBylawsComponent';
 import {ChapterBylawsComponent} from '../components/ChapterBylawsComponent';
+import {UserContext} from '../context/UserContext';
+
 
 function FgChapter() {
+
+    let {state, dispatch} = useContext(UserContext);
 
     const [chapter, chapterActions] = useChapter()
     // See Chapter definition in domain/models/Chapter
     // any new information which the backend provides needs to be reflected in domain/models/Chapter
     const {Chapter, Status} = chapter; // Use Chapter to object to populate page
     
-    // const imgUri = 'fearlesslyGirl_logo.jpg';
-    const imgUri = <ProfileBanner />;
+    const imgUri = '../../assets/images/fearlesslyGirl_logo.jpg';
+    // const imgUri = <ProfileBanner />;
 
     const fillerBody = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
     
@@ -46,11 +50,14 @@ function FgChapter() {
     return (
         <ScrollView>
             <View style={styles.container}>
+                <Text>{state.userId}</Text>
+                <Text>{state.chapterId}</Text>
+                <Text>{state.authToken}</Text>
                 {/* REPLACE WITH ProfileBanner COMPONENT in components/molecules/ProfileBanner */}
                 <Banner color={"#6ED4C8"} source={imgUri}>
                     <ProfileFrame source={imgUri} size={'l'}/>
                 </Banner>
-                <Inspiration title={"Chapter name"} inspiration={"Chapter number"}/>
+                <Inspiration title={"ChapterName"} inspiration={"Chapter number"}/>
 
                 <ChapterHistoryComponent body={fillerBody} profiles={founders} />
                 <ChapterLeadershipComponent body={fillerBody} profiles={leaders} />
@@ -68,6 +75,7 @@ FgChapter.navigationOptions = () => {
     };
 };
 
+//export default withGlobalContext(FgChapter)
 export default FgChapter
 
 const styles = StyleSheet.create({

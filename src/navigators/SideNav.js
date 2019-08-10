@@ -62,7 +62,7 @@ const BottomTabs = createDrawerNavigator(
         AuthLoading: AuthLoading,
     },
     {
-        initialRouteName: 'Drawer', // needs to be changed to Auth, which navigates to AuthLoading
+        initialRouteName: 'AuthLoading', // needs to be changed to Auth, which navigates to AuthLoading
     }
  );
  
