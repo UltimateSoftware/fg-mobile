@@ -7,8 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.0-rc.3",
+    "react": "16.8.6",
+    "react-native": "0.60.4",
+    "react-native-auth0": "^1.5.0",
     "react-native-calendars": "^1.192.0",
     "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^1.1.0",
