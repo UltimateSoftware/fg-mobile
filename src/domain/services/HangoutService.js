@@ -22,7 +22,7 @@ export const loadHangouts = async store => {
             Authorization: AUTH_TOKEN
           },
           method: 'GET',
-        })
+        });
         console.log(response);
         const json = await response.json();
         console.log(json);

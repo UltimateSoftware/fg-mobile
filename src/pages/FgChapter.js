@@ -1,5 +1,5 @@
-import React, {Component, useState, useEffect, useContext} from 'react';
-import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList} from 'react-native';
+import React, {useEffect, useContext} from 'react';
+import {StyleSheet, Text, View, ScrollView } from 'react-native';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {Inspiration} from '../components/atoms/Inspiration';
 import {Banner} from '../components/atoms/Banner';
@@ -12,16 +12,28 @@ import {ChapterMissionComponent} from '../components/ChapterMissionComponent';
 import {ChapterFGBylawsComponent} from '../components/ChapterFGBylawsComponent';
 import {ChapterBylawsComponent} from '../components/ChapterBylawsComponent';
 import {UserContext} from '../context/UserContext';
+import {status} from '../domain/constants/Chapter';
 
 
 function FgChapter() {
 
     let {state, dispatch} = useContext(UserContext);
 
-    const [chapter, chapterActions] = useChapter()
+    const [chapter, actions] = useChapter()
     // See Chapter definition in domain/models/Chapter
     // any new information which the backend provides needs to be reflected in domain/models/Chapter
-    const {Chapter, Status} = chapter; // Use Chapter to object to populate page
+
+
+    useEffect(() => {
+        (
+            async () => {
+                console.log("FGChapter component mounting")
+                if (chapter.Status != status.ready) {
+                    await actions.loadChapter(state.chapterId);
+                }
+            }
+            )();
+        }, [state.chapterId]);
     
     const imgUri = '../../assets/images/fearlesslyGirl_logo.jpg';
     // const imgUri = <ProfileBanner />;
@@ -50,14 +62,14 @@ function FgChapter() {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text>{state.userId}</Text>
+                {/* <Text>{state.userId}</Text>
                 <Text>{state.chapterId}</Text>
-                <Text>{state.authToken}</Text>
+                <Text>{state.authToken}</Text> */}
                 {/* REPLACE WITH ProfileBanner COMPONENT in components/molecules/ProfileBanner */}
-                <Banner color={"#6ED4C8"} source={imgUri}>
-                    <ProfileFrame source={imgUri} size={'l'}/>
-                </Banner>
-                <Inspiration title={"ChapterName"} inspiration={"Chapter number"}/>
+                {/* <Banner color={"#6ED4C8"} source={chapter.Chapter.bannerSource}>
+                    <ProfileFrame source={chapter.Chapter.avatarSource} size={'l'}/>
+                </Banner> */}
+                <Inspiration title={chapter.Chapter.name} inspiration={chapter.Chapter.descripton}/>
 
                 <ChapterHistoryComponent body={fillerBody} profiles={founders} />
                 <ChapterLeadershipComponent body={fillerBody} profiles={leaders} />
@@ -75,7 +87,6 @@ FgChapter.navigationOptions = () => {
     };
 };
 
-//export default withGlobalContext(FgChapter)
 export default FgChapter
 
 const styles = StyleSheet.create({

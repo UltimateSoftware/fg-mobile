@@ -5,7 +5,7 @@ let UserContext = createContext();
 let initialState = {
     userId: 'meep',
     chapterId: 'moop',
-    authToken: 'boop'
+    authToken: 'boop',
 };
 
 let reducer = (state, action) => {

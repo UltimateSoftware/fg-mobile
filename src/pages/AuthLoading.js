@@ -2,6 +2,7 @@ import React, {useEffect, useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useNavigation} from 'react-navigation-hooks';
 import { UserContext, UserContextConsumer, UserContextProvider } from '../context/UserContext';
+import { AUTH_TOKEN } from '../SharedConstants';
 
 
 export default function AuthLoading() {
@@ -9,8 +10,10 @@ export default function AuthLoading() {
     let {state, dispatch} = useContext(UserContext);
 
     let setUserId = () => {dispatch({type: "setUserId", payload: "The User"})}
-    let setChapterId = () => {dispatch({type: "setChapterId", payload: "The Chapter"})}
-    let setAuthToken = () => {dispatch({type: "setAuthToken", payload: "The Auth Token"})}
+    let setChapterId = () => {dispatch({type: "setChapterId", payload: "99999999-cccc-4a96-b827-fa80954d9cff"})}
+    let setAuthToken = () => {dispatch({type: "setAuthToken", payload: AUTH_TOKEN})}
+
+    
 
     useEffect(() => {
         this.timeoutHandle = setTimeout(()=>{
