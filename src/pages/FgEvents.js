@@ -4,6 +4,7 @@ import {Agenda} from 'react-native-calendars';
 import useEvent from '../domain/models/Event';
 
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
+import {createStackNavigator} from 'react-navigation'
 import { CalendarItemPopulated, CalendarItemEmpty } from '../components/atoms/CalendarItem';
 
 function FgEvents() {
@@ -95,14 +96,12 @@ const otherStyles = StyleSheet.create({
     container: {},
 });
 
-class EventFormScreen extends Component {
-    render(){
-        return (
-            <View>
-                <NewEventFormComponent/>
-            </View>
-        );
-    }
+function EventFormScreen() {
+    return (
+        <View>
+            <NewEventFormComponent/>
+        </View>
+    );
 }
 
 const newEventPage = createStackNavigator({
