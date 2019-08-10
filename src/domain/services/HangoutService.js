@@ -1,6 +1,6 @@
 import {status} from '../constants/Hangout';
-import {API_BASE} from '../../SharedConstants';
-const auth = "";
+import {API_BASE, AUTH_TOKEN} from '../../SharedConstants';
+
 export const createHangout = async store => {
     store.setState({ Status: status.loading });
     // perform hangout creation
@@ -15,11 +15,11 @@ export const loadHangouts = async store => {
 
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/hangouts', {
+        const response = await fetch(`${API_BASE}/hangouts`, {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: auth
+            Authorization: AUTH_TOKEN
           },
           method: 'GET',
         })
@@ -41,11 +41,11 @@ export const deleteHangout = async (store,id) => {
 
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/hangouts/'+id, {
+      const response = await fetch(`${API_BASE}:5000/hangouts/${id}`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: auth
+          Authorization: AUTH_TOKEN
         },
         method: 'DELETE',
       })
