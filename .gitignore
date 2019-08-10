@@ -25,7 +25,7 @@ project.xcworkspace
 # Android/IntelliJ
 #
 build/
-.idea
+.idea/
 .gradle
 local.properties
 *.iml
@@ -57,3 +57,6 @@ buck-out/
 
 # Yarn files
 yarn.lock
+
+# expo leftovers
+.expo/
