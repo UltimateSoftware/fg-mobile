@@ -35,6 +35,8 @@ const HangoutTab = createStackNavigator({
 });
 const EventsTab = createStackNavigator({
     Events: FgEvents // events is delayed!
+}, {
+    headerMode: 'None'
 });
 const ProfileTab = createStackNavigator({
     Profiles: FgProfile

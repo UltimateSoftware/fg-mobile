@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Button} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import useEvent from '../domain/models/Event';
-
+import {useNavigation} from 'react-navigation-hooks';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
+import NewEventFormComponent from './NewEventFormComponent';
 import {createStackNavigator} from 'react-navigation'
 import { CalendarItemPopulated, CalendarItemEmpty } from '../components/atoms/CalendarItem';
 
