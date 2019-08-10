@@ -7,7 +7,7 @@
  */
 
 
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,42 +17,16 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 // });
 
 import React, {Component} from 'react';
-import MainApp from './src/Router'
-import Loader from "./src/pages/AnimationLoader";
+import MainApp from './src/Router';
+import { UserContextProvider } from './src/context/UserContext';
 
 export default class App extends Component {
-  state = {
-    appReady: false,
-    rootKey: Math.random(),
-  };
-  componentDidMount() {
-    // console.disableYellowBox = true;
-    this.resetAnimation();
-  }
-
-  resetAnimation() {
-    this.setState({
-      appReady: false,
-      rootKey: Math.random(),
-    });
-
-    setTimeout(() => {
-      console.log("appReady")
-      this.setState({
-        appReady: true,
-      });
-    }, 1000);
-  }
-
-  constructor() {
-    super();
-
-    this._image = require("./assets/Heart_SVG.png");
-  }
  render() {
    return (
-    <View key={this.state.rootKey} style={styles.root}>
-      <MainApp />
+    <View style={styles.root}>
+      <UserContextProvider>
+        <MainApp />
+      </UserContextProvider>
     </View>
       
    );
