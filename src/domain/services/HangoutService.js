@@ -22,7 +22,7 @@ export const loadHangouts = async store => {
             Authorization: AUTH_TOKEN
           },
           method: 'GET',
-        })
+        });
         console.log(response);
         const json = await response.json();
         console.log(json);
@@ -30,10 +30,62 @@ export const loadHangouts = async store => {
         console.log(store);
         resolve();
       } catch(error) {
-        console.log(error)
+        console.log(error);
         reject();
       }
     })
+}
+
+export const loadTemplates = async store => {
+  store.setState({ Status: status.loading });
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(`${API_BASE}/hangouts/templates`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: AUTH_TOKEN
+        },
+        method: 'GET',
+      });
+      console.log(response);
+      const templates = await response.json();
+      console.log(templates);
+      store.setState({ Templates: templates, Status: status.ready });
+      console.log(store);
+      resolve();
+    } catch(error) {
+      console.log(error);
+      reject();
+    }
+  })
+}
+
+export const getTemplateById = async (store,id) => {
+  store.setState({ Status: status.loading });
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(`${API_BASE}/hangouts/templates/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: AUTH_TOKEN
+        },
+        method: 'GET',
+      });
+      console.log(response);
+      const template = await response.json();
+      console.log(template);
+      store.setState({ CurrentTemplate: template, Status: status.ready });
+      console.log(store);
+      resolve();
+    } 
+    catch(error) {
+      console.log(error);
+      reject();
+    }
+  })
+  
 }
 
 export const deleteHangout = async (store,id) => {
@@ -52,11 +104,64 @@ export const deleteHangout = async (store,id) => {
       console.log(response);
       let status = response.status;
       if (status == 204){
-        await loadHangouts(store)
+        await loadHangouts(store);
       }
       resolve();
     } catch(error) {
-      console.log(error)
+      console.log(error);
+      reject();
+    }
+  })
+}
+
+export const loadIcebreakers = async store => {
+  store.setState({ Status: status.loading });
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(`${API_BASE}/icebreakers`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: AUTH_TOKEN
+        },
+        method: 'GET',
+      });
+      console.log(response);
+      const icebreakers = await response.json();
+      console.log(icebreakers);
+      store.setState({ Icebreakers: icebreakers, Status: status.ready });
+      console.log(store);
+      resolve();
+    } catch(error) {
+      console.log(error);
+      reject();
+    }
+  })
+}
+
+export const createHangoutFromTemplate = async (store, newHangout) => {
+
+  store.setState({ Status: status.loading });
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(`${API_BASE}/hangouts/template`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: AUTH_TOKEN
+        },
+        method: 'POST',
+        body: JSON.stringify(newHangout)
+      });
+      console.log(response);
+      const json = await response.json();
+      await loadHangouts(store);
+      console.log(json);
+      resolve();
+    } catch(error) {
+      console.log(error);
       reject();
     }
   })

@@ -1,25 +1,13 @@
 import React, {Component, useState,useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableHighlight, ScrollView} from 'react-native';
 import {Tiles} from '../components/molecules/Tiles';
-import { createAppContainer, createStackNavigator } from 'react-navigation';
 import HamburgerIcon from '../components/primatives/HamburgerIcon';
 import {useNavigation} from 'react-navigation-hooks';
 import useHangouts from '../domain/models/Hangout';
-import FgHangouts from '../pages/FgHangouts';
-//import hangoutIcons from '../assets/hangout_icons'
-//import hangoutLanding from '../pages/HangoutLanding';
-/*
- * FgHangouts might require a router of its own to create Icebreakers/games/etc.
-*/
 
-
-handleDeleteClick = (hangoutId) => {
-
-}
-
-function HangoutDescription() {
+function CreateHangoutFromTemplate() {
   const [hangout, hangoutActions] = useHangouts();
-  const {Hangouts, Status} = hangout; // Use Hangout to object to populate page
+  const {Hangouts, Templates, Status} = hangout; // Use Hangout to object to populate page
   const { navigate } = useNavigation();
 
 
@@ -27,7 +15,7 @@ function HangoutDescription() {
     //componentDidMount
     (
       async () => {
-        await hangoutActions.loadHangouts();
+        await hangoutActions.loadTemplates();
       }
     )();
 
@@ -38,61 +26,74 @@ function HangoutDescription() {
     )*/
   }, []);
 
-  //const item = navigate.getParam(item)
+  toTiles = ((templates) => {
+    let tileArray = [];
+    for(template of templates){
+      console.log(template);
+      let s;
+      switch (template.title) {
+        case 'The Supergirl Dilemma': s = require('../../assets/hangout_icons/strong-woman.svg'); break;
+        case 'Girl Drama': s = require('../../assets/hangout_icons/bossgirl.svg'); break;
+        case 'Self Love and Self Esteem': s = require('../../assets/hangout_icons/self-love.svg'); break;
+        case '#GirlBoss': s = require('../../assets/hangout_icons/leadership.svg'); break;
+        case 'Girl Friends': s = require('../../assets/hangout_icons/girlfirnds.svg'); break;
+        case 'Zen Girl': s = require('../../assets/hangout_icons/spiritual.svg'); break;
+        case 'Fearlessness': s = require('../../assets/hangout_icons/woman.svg'); break;
+        case 'Dating and Relationships': s = require('../../assets/hangout_icons/relationships-n-dating.svg'); break;
+        case 'Dream on Baby': s = require('../../assets/hangout_icons/dream.svg'); break;
+      };
+      tileArray.push(
+        {'id':template.id,
+        'source': s,
+        'title': template.title}
+      );
+    };
+    return tileArray;
+  });
+
   return(
-        <View style={{flex: 1}}>
-            <View style={{...styles.title, flex: 3}} >
-                <Text style={{...styles.title, color: 'white'}}>
-                    {"Create Hangout From Template"}
+        <ScrollView style={{flex: 1}}>
+            <View style={{...styles.title, flex: 2}} >
+                <Text style={{...styles.title}}>
+                    {"Choose a hangout"}
+                </Text>
+                <Text style={{...styles.text}}>
+                    {"Hangouts are the heart of your chapter, bringing girls together each month to talk, connect, share, and break down barriers. A typical hangout consists of an intro, icebreaker activity, topic discussion, group Q&A, and a wrap up. Each hangout is designed to fit into a 60 minute period, but feel free to adjust it to best fit your needs."}
                 </Text>
             </View>
             <View style={{...styles.container, flex: 5}} >
                 <Tiles
                         onAction={(item) => {
+                              navigate('HangoutTemplateDescription', {item: item, template: Templates.find(x => x.id==item.id)});
                             }
                         }
-                        tiles={[ 
-                            {'id':'i', 'source':require('../../assets/hangout_icons/supergirl.png'), 'title': 'The Supergirl Dilemma'},
-                            {'id':'i1', 'source':require('../../assets/hangout_icons/drama.png'), 'title': 'Girl Drama'},
-                            {'id':'i2', 'source':require('../../assets/hangout_icons/self-love.png'), 'title': 'Self Love and Self Esteem'},
-                            {'id':'i3', 'source':require('../../assets/hangout_icons/girlboss.png'), 'title': '#GirlBoss'},
-                            {'id':'i4', 'source':require('../../assets/hangout_icons/girlfriends.png'), 'title': 'Girl Friends'},
-                            {'id':'i5', 'source':require('../../assets/hangout_icons/zen.png'), 'title': 'Zen Girl'},
-                            {'id':'i6', 'source':require('../../assets/hangout_icons/fearless.png'), 'title': 'Fearlessness'},
-                            {'id':'i7', 'source':require('../../assets/hangout_icons/heart.png'), 'title': 'Dating and Relationships'},
-                            {'id':'i8', 'source':require('../../assets/hangout_icons/dream.png'), 'title': 'Dream on Baby'}
-                        ]}
-                        
+                        tiles={toTiles(Templates)}
+
                     />
             </View>
-            <View style={{...styles.buttonContainer}}>
-              <View style={{...styles.selectButton}}>
-                <TouchableHighlight>
-                  <Text style={{...styles.text}}>Select</Text>
-                </TouchableHighlight>
-              </View>
-            </View>
-        </View>
+        </ScrollView>
       );
 };
 
-HangoutDescription.navigationOptions = () => {
+CreateHangoutFromTemplate.navigationOptions = () => {
     return {
         headerRight: <HamburgerIcon/>
     };
 };
 
-export default HangoutDescription;
+export default CreateHangoutFromTemplate;
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: 40,
+        fontSize: 24,
         textAlign: 'center',
-        fontFamily: 'montserrat-bold',
-        backgroundColor: '#070745',
+        fontFamily: 'montserrat-light',
         justifyContent: 'center',
         alignItems: 'center',
-
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 10,
+        color: '#818282'
         },
     container: {
         flex: 1,
@@ -102,25 +103,11 @@ const styles = StyleSheet.create({
         fontFamily: 'montserrat-bold',
         fontSize: 12
         },
-    selectButton: {
-      backgroundColor: "#F313B7",
-      flex: 1,
-      marginLeft: 20,
-      marginRight: 20,
-      borderRadius: 10,
-    },
-    buttonContainer: {
-      flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingBottom: 10
-    },
     text: {
-      fontSize: 20,
-      color: 'white',
+      fontSize: 14,
+      color: '#59828B',
       textAlign: 'center',
-      fontFamily: 'montserrat-bold',
+      fontFamily: 'opensans',
       padding: 10,
     }
 });
