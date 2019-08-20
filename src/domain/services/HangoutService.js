@@ -41,10 +41,10 @@ export const loadTemplates = async store => {
 
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/hangouts/templates', {
+      const response = await fetch(`${API_BASE}/hangouts/templates`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: auth
+          Authorization: AUTH_TOKEN
         },
         method: 'GET',
       });
@@ -66,10 +66,10 @@ export const getTemplateById = async (store,id) => {
 
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/hangouts/templates/'+id, {
+      const response = await fetch(`${API_BASE}/hangouts/templates/${id}`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: auth
+          Authorization: AUTH_TOKEN
         },
         method: 'GET',
       });
@@ -119,11 +119,11 @@ export const loadIcebreakers = async store => {
 
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/icebreakers', {
+      const response = await fetch(`${API_BASE}/icebreakers`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: auth
+          Authorization: AUTH_TOKEN
         },
         method: 'GET',
       });
@@ -146,11 +146,11 @@ export const createHangoutFromTemplate = async (store, newHangout) => {
 
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://ec2-34-201-168-0.compute-1.amazonaws.com:5000/hangouts/template', {
+      const response = await fetch(`${API_BASE}/hangouts/template`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: auth
+          Authorization: AUTH_TOKEN
         },
         method: 'POST',
         body: JSON.stringify(newHangout)
