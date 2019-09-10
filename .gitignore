@@ -61,4 +61,4 @@ yarn.lock
 # expo leftovers
 .expo/
 # Hangout png files created from svg files at runtime
-*/.png-cache
+**/.png-cache

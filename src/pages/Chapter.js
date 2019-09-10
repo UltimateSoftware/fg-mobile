@@ -60,14 +60,14 @@ export class Chapter extends React.Component {
             <View style={styles.container}>
 
                 {/* Render the Banner */}
-                <Banner source={this.state.info.bannerSource}/>
+                {/* <Banner source={this.state.info.bannerSource}/> */}
 
                 {/* Render the Avatar */}
                 <View style={{ top: bannerHeight / 2, flex: 1, marginTop: -170}}>
-                    <Avatar
+                    {/* <Avatar
                         avatarSize={'large'}
                         name={this.state.info.schoolName}
-                        source={this.state.info.avatarSource}/>
+                        source={this.state.info.avatarSource}/> */}
                 </View>
 
 
@@ -117,11 +117,11 @@ const styles = StyleSheet.create({
         fontSize: 24
     },
     schoolLabel: {
-        fontFamily: 'open-sans-regular',
+        fontFamily: 'OpenSans',
         fontSize: 16
     },
     gradYearLabel: {
-        fontFamily: 'open-sans-regular',
+        fontFamily: 'OpenSans',
         fontSize: 14
     },
     inspirationTitle: {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     },
     inspirationBlock: {
         flex:1,
-        fontFamily: 'open-sans-regular',
+        fontFamily: 'OpenSans',
         fontSize: 14,
         textAlign: 'left',
         color: '#818282',

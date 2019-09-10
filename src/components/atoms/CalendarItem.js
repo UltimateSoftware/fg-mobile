@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         color: '#59828B'
     },
     detailtxt: {
-        fontFamily: 'opensans-regular',
+        fontFamily: 'OpenSans',
         fontSize: 16,
         paddingLeft: 6,
         color: '#818282'

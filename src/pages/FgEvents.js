@@ -88,7 +88,7 @@ const eventButtonStyle = StyleSheet.create({
 //Stylesheet for New Event Page
 const otherStyles = StyleSheet.create({
     title: {
-        fontFamily: 'opensans-regular',
+        fontFamily: 'OpenSans',
         fontSize: 20,
         fontWeight: '600',
         color: "darkgray",

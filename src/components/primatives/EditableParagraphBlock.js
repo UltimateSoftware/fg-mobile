@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     inspirationBlock: {
-        fontFamily: 'opensans-regular',
+        fontFamily: 'OpenSans',
         fontSize: 14,
         textAlign: 'left',
         color: '#818282',

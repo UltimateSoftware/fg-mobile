@@ -1,10 +1,9 @@
 import React from 'react'
-import { createAppContainer, createDrawerNavigator, createStackNavigator, } from 'react-navigation';
-import {Platform, StyleSheet, Text, View, ScrollView, SafeAreaView, Image, Button} from 'react-native';
+import { createDrawerNavigator, createStackNavigator, } from 'react-navigation';
+import { StyleSheet, View, ScrollView, SafeAreaView, Image, Button} from 'react-native';
 import BlueScreen from '../pages/BlueScreen';
 import AuthLoading from '../pages/AuthLoading';
 import BottomNav from './BottomNav';
-import useProfile from '../domain/models/Profile';
 import LoginScreen from '../pages/LoginScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -43,7 +42,7 @@ const SideTabs = createDrawerNavigator(
                                     props.navigation.closeDrawer();
                                     }}
                                     >
-                                <Image source={require('./fg-program.svg')}
+                                <Image source={require('../../assets/navigators/fg-program.svg')}
                                     resizeMode='contain'
                                     style={styles.mySvg} />
                                 </TouchableOpacity>
@@ -58,7 +57,7 @@ const SideTabs = createDrawerNavigator(
                                     props.navigation.closeDrawer();
                                     }}
                                 >
-                                <Image source={require('./login.svg')}
+                                <Image source={require('../../assets/navigators/login.svg')}
                                     resizeMode='contain'
                                     style={styles.mySvg} />
                                 </TouchableOpacity>
@@ -74,7 +73,7 @@ const SideTabs = createDrawerNavigator(
                                         props.navigation.closeDrawer();
                                     }}
                                 >
-                                <Image source={require('./logout.svg')}
+                                <Image source={require('../../assets/navigators/logout.svg')}
                                     resizeMode='contain'
                                     style={styles.mySvg} />
                                 </TouchableOpacity>
