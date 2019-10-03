@@ -16,7 +16,7 @@ const NewEventFormComponent = () => {
         date: '',
         state: '',
         location: '',
-        icebreakers: '',
+        chapterId: '',
     }
 
     function reduceForm(state, action){

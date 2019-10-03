@@ -3,13 +3,33 @@ import { AUTH_TOKEN, API_BASE} from '../../SharedConstants';
 
 // ** for future backend interaction **
 
-export const createEvent = async (store, ) => {
-    store.setState({ Event: {Event: json}, Status: status.loading });
+export const addSingleEvent = async (store, event ) => {
+    
+    store.setState({ Status: status.loading });
     // perform Event update (?)
-    return new Promise((resolve, reject) => {
-        store.setState({ Event: {Event: json}, Status: status.ready });
-        resolve();
-    });
+    return new Promise(async (resolve, reject) => {
+        try{
+            console.log(`${API_BASE}/events`)
+            console.log(JSON.stringify(event))
+            const response = await fetch(`${API_BASE}/events`, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: AUTH_TOKEN
+                },
+                method: 'POST',
+                body: JSON.stringify(event)
+            });
+            console.log(response)
+            const json = await response.json();
+            await loadEvents(store);
+            console.log(json);
+            resolve();    
+        } catch(error){
+            console.log(error);
+            reject();
+        }
+    })
 }
 
 export const loadEvents = async store => {
