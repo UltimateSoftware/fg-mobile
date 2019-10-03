@@ -23,11 +23,20 @@ export const loadProfile = async (store,id) => {
             },
             method: 'GET',
           })
+
+          console.log("[GET Profile] Server response: ")
+          console.log(response)
+
           const json = await response.json();
-          store.setState({ Profile: {Profile: json}, Status: status.ready });
+
+          console.log("[GET Profile] json parsing result: ")
           console.log(json)
+
+          store.setState({ Profile: {Profile: json}, Status: status.ready });
           resolve();
+
         } catch(error) {
+          console.log("[GET Profile] ")
           console.log(error)
           reject();
         }

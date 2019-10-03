@@ -3,8 +3,8 @@ import React, {createContext, useReducer} from 'react'
 let UserContext = createContext();
 
 let initialState = {
-    userId: 'meep',
-    chapterId: 'moop',
+    userId: '99999999-ffff-4a96-b827-fa80954d9cff',
+    chapterId: '99999999-cccc-4a96-b827-fa80954d9cff',
     authToken: 'boop'
 };
 

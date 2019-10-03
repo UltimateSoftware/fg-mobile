@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {StyleSheet, Text, View, Button, ScrollView} from 'react-native';
 import {spacing, text_sizes} from '../SharedConstants';
 import {SafeAreaView} from 'react-navigation'
@@ -16,8 +16,11 @@ import defaultImage2 from '../../assets/fearlesslyGirl_logo.jpg'
 
 import loadingImage from '../../assets/Rectangle.png'
 import backgroundImage from '../../assets/background.png'
+import {UserContext} from '../context/UserContext';
 
 function FgProfile() {
+
+    let {state, dispatch} = useContext(UserContext);
 
     const [profile, profileActions] = useProfile()
     // See Profile definition in domain/models/Profile
@@ -44,23 +47,19 @@ function FgProfile() {
         //componentDidMount
         (
           async () => {
-              try{
-                await profileActions.loadProfile("99999999-ffff-4a96-b827-fa80954d9cff");
+              try {
+                console.log("[FgProfile useEffect] Loaded userId: ")
+                console.log(state.userId)
+
+                await profileActions.loadProfile(state.userId);
               }
               catch {
-                console.log("called failed")
+                console.log("Unable to load profile.")
               }
             
           }
         )();
-    
-        /*return (
-          () => {
-            //componentDidUnmount
-          }
-        )*/
       }, []);
-
 
     const handleEditableToggle = () => {
         toggleEditMode(!editMode)
@@ -120,6 +119,7 @@ function FgProfile() {
     }
     
     editButtons = !editMode ? <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/> :
+    
     <View>
         <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
         <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
