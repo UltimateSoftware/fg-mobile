@@ -17,6 +17,7 @@ import defaultImage2 from '../../assets/fearlesslyGirl_logo.jpg'
 import loadingImage from '../../assets/Rectangle.png'
 import backgroundImage from '../../assets/background.png'
 import {UserContext} from '../context/UserContext';
+import { Icon } from 'react-native-elements'
 
 function FgProfile() {
 
@@ -117,11 +118,23 @@ function FgProfile() {
         })
 
     }
-    
-    editButtons = !editMode ? <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/> :
+    // Instead of having a button, we made it an icon with onPress properties that keeps the same functionality
+    editButtons = !editMode ? 
+    <Icon 
+    raised = 'true'
+    name='pencil'
+    type='font-awesome'
+    color='#f50'
+    onPress={event => handleEditableToggle()} /> :
     
     <View>
-        <Button textStyle={{fontSize: 14}} onPress={event => handleEditableToggle()} title="Edit"/>
+        <Icon 
+        raised = 'true'
+        name='pencil'
+        type='font-awesome'
+        color='#f50'
+        onPress={event => handleEditableToggle()} />
+
         <Button title="choose banner file" onPress={event => chooseBannerFile()} textStyle={{fontSize: 14}}/>
         <Button title="choose avatar file" onPress={event => chooseAvatarFile()} textStyle={{fontSize: 14}}/>
     </View>;
@@ -131,9 +144,7 @@ function FgProfile() {
     return profile.Status == "READY" ? (
         <ScrollView>
             <View style={styles.container}>
-                <View style={styles.editButton}>
-                    {editButtons}
-                </View>
+                
                 <EditableProfileBanner ref={editableProfileBanner} editMode={editMode} backImgUri={defaultImage2} imgUri={imgUri} lineOneText={profile.Profile.Profile.firstName + " " + profile.Profile.Profile.lastName} lineTwoText={profile.Profile.Profile.schoolName} lineThreeText={"Class of " + profile.Profile.Profile.gradYear}/>
                 <Inspiration title={"Inspiration"}>
                     <EditableParagraphBlock ref={editableParagraphBlock} inspiration={profile.Profile.Profile.inspiration}/>
@@ -143,6 +154,13 @@ function FgProfile() {
                     <Text style={styles.titleLabel}>Chapter Sisters</Text>
                     <View style={styles.titleLine}/>
                 </View>
+                {/* ////// Moved edit button further down, created an hearthbeat icon to "represent" the edit icon. 
+                We wanted to change the text "edit" to the icon keeping the functionality*/}
+                <View style={styles.editButton}>
+                    {editButtons}
+                </View>
+               
+                
                 <MemberGrid members={members}/>
                 {viewAllButton}
 

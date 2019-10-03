@@ -22,7 +22,7 @@ const Icons = {
     'Chapter': 'book',
     'Events': 'calendar-day',
     'Hangouts': 'user-friends',
-    'Profiles': 'female'
+    'Profiles': 'user'
 }
 
 const ChapterTab = createStackNavigator({
