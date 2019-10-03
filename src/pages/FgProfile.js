@@ -1,18 +1,21 @@
-import React, {Component, useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, Button, ScrollView, FlatList, TextInput} from 'react-native';
-import HamburgerIcon from '../components/primatives/HamburgerIcon';
-import {Inspiration} from '../components/atoms/Inspiration';
-import {EditableProfileBanner} from '../components/molecules/EditableProfileBanner';
-import {ProfileFrame} from '../components/primatives/ProfileFrame';
-import Grid from 'react-native-grid-component'
-import {EditableParagraphBlock} from '../components/primatives/EditableParagraphBlock';
-import useProfile from '../domain/models/Profile';
-import useChapter from '../domain/models/Chapter'
-import {MemberGrid} from '../components/molecules/MemberGrid';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Text, View, Button, ScrollView} from 'react-native';
+import {spacing, text_sizes} from '../SharedConstants';
+import {SafeAreaView} from 'react-navigation'
+import HamburgerIcon from '@components/primatives/HamburgerIcon';
+import {Inspiration} from '@components/atoms/Inspiration';
+import {EditableProfileBanner} from '@components/molecules/EditableProfileBanner';
+import {EditableParagraphBlock} from '@components/primatives/EditableParagraphBlock';
+import useProfile from '@hooks/models/Profile';
+import {MemberGrid} from '@components//molecules/MemberGrid';
+import {ProfileBanner} from '@components//molecules/ProfileBanner';
 import ImagePicker from 'react-native-image-picker'
 
 import defaultImage from '../../assets/Heart_SVG.png'
 import defaultImage2 from '../../assets/fearlesslyGirl_logo.jpg'
+
+import loadingImage from '../../assets/Rectangle.png'
+import backgroundImage from '../../assets/background.png'
 
 function FgProfile() {
 
@@ -41,7 +44,13 @@ function FgProfile() {
         //componentDidMount
         (
           async () => {
-            await profileActions.loadProfile("99999999-ffff-4a96-b827-fa80954d9cff");
+              try{
+                await profileActions.loadProfile("99999999-ffff-4a96-b827-fa80954d9cff");
+              }
+              catch {
+                console.log("called failed")
+              }
+            
           }
         )();
     
@@ -140,8 +149,20 @@ function FgProfile() {
             </View>
         </ScrollView>
     ) : (
-        <View>
-        </View>
+        <SafeAreaView>
+            <View style={[styles.container]}>
+                <ProfileBanner 
+                    imgUri={loadingImage}
+                    backImgUri={backgroundImage}>
+                        <View>
+                            <Text style={{height: 20}}>Something</Text>
+                            <Text style={{height: 20}}>Something longer</Text>
+                            <Text style={{height: 20}}>Somethings</Text>
+                        </View>
+                </ProfileBanner>
+            </View>
+            
+        </SafeAreaView>
     )
 }
 
@@ -156,21 +177,22 @@ export default FgProfile
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
     },
+
     editButton: {
         alignSelf: 'flex-end',
     },
     title: {
-        fontSize: 20,
+        fontSize: text_sizes.lg,
         textAlign: 'center',
-        margin: 10,
+        margin: spacing.xs,
         },
     nameLabel: {
         fontFamily: 'montserrat-light',
-        fontSize: 18,
+        fontSize: text_sizes.md,
     },
     textContainer: {
         color: '#818282',
@@ -180,11 +202,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
-        paddingBottom: 20
+        paddingBottom: spacing.sm
     },
     titleLabel: {
         fontFamily: 'montserrat-regular',
-        fontSize: 18,
+        fontSize: text_sizes.md,
         color: '#818282'
     },
     titleLine: {
