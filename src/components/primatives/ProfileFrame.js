@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native'
+import { Image, Text, View, StyleSheet } from 'react-native';
+import {frames, text_sizes, spacing} from '../../SharedConstants';
 
 export function ProfileFrame({source, avatarSize}) {
+    console.log(avatarSize)
     const size = styleValuesFromSize(avatarSize).size;
+    const margin = styleValuesFromSize(avatarSize).margin;
 
     var image = source
 
     return (
-        <View style={[{flex: 1, alignItems: "center"}, styles.elevation]}>
+        <View style={[{alignItems: "center", marginTop: margin}, styles.elevation]}>
             <Image
           style={[{
             width: size,
@@ -15,7 +18,6 @@ export function ProfileFrame({source, avatarSize}) {
             borderRadius: size / 2,
             borderColor: 'white',
             borderWidth: 4,
-            flex: 1,
             
           }, ]}
           source={image}
@@ -26,11 +28,11 @@ export function ProfileFrame({source, avatarSize}) {
 
     function styleValuesFromSize(size) {
         if (size === 'extraSmall' || size === 'xs'){
-          return {size: 1, font: 24, padding: 4 };
+          return {size: frames.md, font: text_sizes.xs, padding: 4, margin: spacing.xlg };
         } else if (size === 'small' || size === 's') {
-          return { size: 78, font: 42, padding: 8 };
+          return { size: frames.lg, font: text_sizes.sm, padding: 8, margin: spacing.xlg };
         } else if (size === 'large' || size === 'l') {
-          return { size: 128, font: 72, padding: 32 };
+          return { size: frames.xlg, font: text_sizes.lg, padding: 32, margin: spacing.md };
         } else if (size === 'memberList' || size === 'mL') {
           return {
             size: BANNER_HEIGHT_WIDTH_RATIO * SCREEN_WIDTH,

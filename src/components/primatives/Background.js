@@ -8,7 +8,8 @@ import {
     SafeAreaView
 } from 'react-native';
 
-import defaultImage from '../../../assets/fearlesslyGirl_logo.jpg'
+import {SCREEN_WIDTH, frames} from '../../SharedConstants'
+
 
 export default function Background(props){
     const {img, color} = props;
@@ -19,7 +20,7 @@ export default function Background(props){
         <SafeAreaView style={styles.container}>
             {img && <ImageBackground
                     source={image}
-                    resizeMode={"center"}
+                    resizeMode={"cover"}
                     style={[styles.imgBackground]}
                 >
                 {props.children}
@@ -32,17 +33,16 @@ export default function Background(props){
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        width: "100%",
-        height: "100%"
+        width: SCREEN_WIDTH,
+        height: frames.lg,
     },
     imgBackground: {
-        flex: 1,
-    },
-    colorBackground: {
-        flex: 1,
         width: "100%",
         height: "100%",
+    },
+    colorBackground: {
+        width: 100,
+        height: 100,
         alignItems: 'center',
         justifyContent: 'center'
     }
