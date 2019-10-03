@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+        "@fg-mobile": ["./*"],
+        "@components/*": ["components/*"],
+        "@config": ["config/*"],
+        "@hooks": ["domain/*"],
+        "@pages": ["pages/*"],
+        "@assets": ["../assets/*"]
+      }
+    }
+  }
