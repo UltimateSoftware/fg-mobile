@@ -140,7 +140,7 @@ function FgProfile() {
                 </Inspiration>
                 <View style={[styles.titleView, {marginTop: 20}]}>
                     <View style={styles.titleLine}/>
-                    <Text style={styles.titleLabel}>Chapter Sisters</Text>
+                    <Text style={styles.titleLabel}>Chapter Sisterz</Text>
                     <View style={styles.titleLine}/>
                 </View>
                 <MemberGrid members={members}/>
