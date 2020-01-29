@@ -157,7 +157,7 @@ function FgProfile() {
                         <View>
                             <Text style={{height: 20}}>Something</Text>
                             <Text style={{height: 20}}>Something longer</Text>
-                            <Text style={{height: 20}}>Something even longer</Text>
+                            <Text style={{height: 20}}>Nick was here</Text>
                         </View>
                 </ProfileBanner>
             </View>
