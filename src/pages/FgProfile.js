@@ -156,7 +156,7 @@ function FgProfile() {
                     backImgUri={backgroundImage}>
                         <View>
                             <Text style={{height: 20}}>Something</Text>
-                            <Text style={{height: 20}}>Something longer</Text>
+                            <Text style={{height: 20}}>Nick doesn't like rebasing</Text>
                             <Text style={{height: 20}}>Nick was here</Text>
                         </View>
                 </ProfileBanner>
