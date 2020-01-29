@@ -41,7 +41,7 @@ export class ChapterSelector extends React.Component {
                         value={this.state.chapterCode}/>
 
                     <View style={{width: SCREEN_WIDTH / 2, marginTop: 25, marginBottom: 15}}>
-                        <FgButton onPress={() => this.handleChapterSelect()} title={"Select Chapter"}/>
+                        <FgButton onPress={() => this.handleChapterSelect()} title={"Don't Select Chapter"}/>
                     </View>
 
                     <Text style={{
