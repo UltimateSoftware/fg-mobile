@@ -157,3 +157,4 @@ We use basic gitflow. When creating a branch, preface it with `feature/` and pro
 #### Chapter Advisors
 #### Chapter Officers
 #### Chapter Members
+## Bruh Moment
